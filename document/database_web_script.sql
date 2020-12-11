@@ -22,7 +22,7 @@ create table Teacher
     email varchar(40),
     info varchar(1000),
 	number_course int,
-    link_ava varchar(500),
+    link_ava_teacher varchar(500),
 	constraint PK_Te primary key (teacher_id)
 );
 
@@ -32,7 +32,7 @@ create table Student
 	fname varchar(40),
 	lname varchar(40),
     email varchar(40),
-    link_ava varchar(500),
+    link_ava_student varchar(500),
 	constraint PK_St primary key (student_id)
 );
 
@@ -64,7 +64,7 @@ create table Course
     spec int,
     publish_day datetime,
     view_number int,
-    link_ava varchar(500),
+    link_ava_course varchar(500),
 	teacher_id int,
 	constraint PK_Co primary key (course_id)
 );

@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-xl-9 col-lg-8">
 
-        {{!-- Top 3 highlighted courses (rate cao nhất) --}}
+        {{!-- Top 5 highlighted courses (rate cao nhất) --}}
 
         <div class="section3125">
           <h4 class="item_title">Highlight Courses</h4>
@@ -12,20 +12,19 @@
             <div class="owl-carousel featured_courses owl-theme">
 
               {{!-- Mẫu courses --}}
-
-              <div class="item">
+              {{#each this.rating}}
+              <div class="item h-100">
                 <div class="fcrse_1 mb-20">
                   <a href="course_detail_view.html" class="fcrse_img">
-                    <img src="images/courses/img-1.jpg" alt="">
+                    <img src="{{link_ava_course}}" alt="">
                     <div class="course-overlay">
-                      <div class="badge_seller">Bestseller</div>
                       <div class="crse_reviews">
-                        <i class='uil uil-star'></i>4.5
+                        <i class='uil uil-star'></i>{{rating}}
                       </div>
                       <span class="play_btn1"><i class="uil uil-play"></i></span>
-                      <div class="crse_timer">
+                      {{!-- <div class="crse_timer">
                         25 hours
-                      </div>
+                      </div> --}}
                     </div>
                   </a>
                   <div class="fcrse_content">
@@ -39,21 +38,19 @@
                       </div>
                     </div>
                     <div class="vdtodt">
-                      <span class="vdt14">109k views</span>
-                      <span class="vdt14">15 days ago</span>
+                      <span class="vdt14">{{view_number}}</span>
+                      <span class="vdt14">{{day_ago}}</span>
                     </div>
-                    <a href="course_detail_view.html" class="crse14s">Complete Python Bootcamp: Go from zero to hero
-                      in
-                      Python 3</a>
-                    <a href="#" class="crse-cate">Web Development | Python</a>
+                    <a href="course_detail_view.html" class="crse14s">{{name}}</a>
+                    <a href="#" class="crse-cate">{{type_name}} | {{spec_name}}</a>
                     <div class="auth1lnkprce">
-                      <p class="cr1fot">By <a href="#">John Doe</a></p>
-                      <div class="prce142">$10</div>
+                      <p class="cr1fot">By <a href="#">{{fname}} {{lname}}</a></p>
+                      <div class="prce142">${{price}}</div>
                     </div>
                   </div>
                 </div>
               </div>
-
+              {{/each}}
               {{!--  --}}
 
             </div>
