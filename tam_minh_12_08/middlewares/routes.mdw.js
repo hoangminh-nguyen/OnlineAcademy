@@ -11,7 +11,7 @@ module.exports = function (app) {
     // app.use('/admin/categories/', require('../controllers/category.route'));
     // app.use('/admin/products/', require('../controllers/product.route'));
     //app.use(express.static('public'));
-    app.use('/home/', require('../controllers/home.route'));
+    app.use('/', require('../controllers/home.route'));
 
     app.get('/err', function (req, res) {
         throw new Error('Error!');
