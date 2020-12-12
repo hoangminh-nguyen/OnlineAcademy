@@ -8,6 +8,8 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({
   extended: true
 }));
+
+
 app.use(express.static('public'));
 
 require('./middlewares/view.mdw')(app);

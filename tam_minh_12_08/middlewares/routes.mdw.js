@@ -1,5 +1,3 @@
-const productModel = require('../models/product.model');
-const express = require('express')
 module.exports = function (app) {
     // app.get('/', function (req, res) {
 
@@ -12,10 +10,11 @@ module.exports = function (app) {
     // app.use('/admin/products/', require('../controllers/product.route'));
     //app.use(express.static('public'));
     app.use('/', require('../controllers/home.route'));
+    app.use('/courses/', require('../controllers/courses.route'));
 
     app.get('/err', function (req, res) {
         throw new Error('Error!');
-    })
+    });
 
     app.use(function (req, res) {
         res.render('404', {

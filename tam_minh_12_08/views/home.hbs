@@ -1,267 +1,272 @@
-<div class="sa4d25">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-xl-9 col-lg-8">
+<div class="wrapper">
+  <div class="sa4d25">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-9 col-lg-8">
 
-        {{!-- Top 5 highlighted courses (rate cao nhất) --}}
+          {{!-- Top 5 highlighted courses (rate cao nhất) --}}
 
-        <div class="section3125">
-          <h4 class="item_title">Highlight Courses</h4>
-          <a href="#" class="see150">See all</a>
-          <div class="la5lo1">
-            <div class="owl-carousel featured_courses owl-theme">
+          <div class="section3125">
+            <h4 class="item_title">Highlight Courses</h4>
+            <a href="#" class="see150">See all</a>
+            <div class="la5lo1">
+              <div class="owl-carousel featured_courses owl-theme">
 
-              {{!-- Mẫu courses --}}
-              {{#each this.rating}}
-              <div class="item">
-                <div class="fcrse_1 mb-20">
-                  <a href="/course/" class="fcrse_img">
-                    <img style="height: 200px;" src="{{link_ava_course}}" alt="">
-                    <div class="course-overlay">
+                {{!-- Mẫu courses --}}
 
-                      {{#if discount}}
-                      <div class="badge_seller" style="font-size: 15pt;"> <i class="fas fa-tags"></i> {{discount}}%
+                {{#each this.rating}}
+                <div class="item">
+                  <div class="fcrse_1 mb-20">
+                    <a href="/courses/detail/{{course_id}}" class="fcrse_img">
+                      <img style="height: 200px;" src="{{link_ava_course}}" alt="">
+                      <div class="course-overlay">
+
+                        {{#if discount}}
+                        <div class="badge_seller" style="font-size: 15pt;"> <i class="fas fa-tags"></i> {{discount}}%
+                        </div>
+                        {{/if}}
+                        <div class="crse_reviews">
+                          <i class="fas fa-star"></i>{{format_number rating}}
+                        </div>
+                        <span class="play_btn1"><i class="uil uil-play"></i></span>
                       </div>
-                      {{/if}}
-                      <div class="crse_reviews">
-                        <i class="fas fa-star"></i>{{format_number rating}}
+                    </a>
+                    <div class="fcrse_content">
+                      <div class="eps_dots more_dropdown">
+                        <a href="#"><i class='uil uil-ellipsis-v'></i></a>
+                        <div class="dropdown-content">
+                          <span><i class='uil uil-share-alt'></i>Share</span>
+                          <span><i class="uil uil-clock-three"></i>Save</span>
+                          <span><i class='uil uil-ban'></i>Not Interested</span>
+                          <span><i class="uil uil-windsock"></i>Report</span>
+                        </div>
                       </div>
-                      <span class="play_btn1"><i class="uil uil-play"></i></span>
-                    </div>
-                  </a>
-                  <div class="fcrse_content">
-                    <div class="eps_dots more_dropdown">
-                      <a href="#"><i class='uil uil-ellipsis-v'></i></a>
-                      <div class="dropdown-content">
-                        <span><i class='uil uil-share-alt'></i>Share</span>
-                        <span><i class="uil uil-clock-three"></i>Save</span>
-                        <span><i class='uil uil-ban'></i>Not Interested</span>
-                        <span><i class="uil uil-windsock"></i>Report</span>
+                      <div class="vdtodt">
+                        <span class="vdt14">{{view_number}} views</span>
+                        <span class="vdt14">{{rateStu}} ratings</span>
+                        <span class="vdt14">{{day_ago}} days ago</span>
                       </div>
-                    </div>
-                    <div class="vdtodt">
-                      <span class="vdt14">{{view_number}} views</span>
-                      <span class="vdt14">{{numberStu}} rates</span>
-                      <span class="vdt14">{{day_ago}} days ago</span>
-                    </div>
-                    <a href="course_detail_view.html" class="crse14s" style="height: 50px;">{{name}}</a>
-                    <a href="#" class="crse-cate">{{type_name}} | {{spec_name}}</a>
-                    <div class="auth1lnkprce">
-                      <p class="cr1fot">By <a href="#">{{fname}} {{lname}}</a></p>
-                      {{#if discount}}
-                      <div class="prce142">
-                        <span style="color:darkgrey ;text-decoration: line-through; font-size:12pt;">${{price}} <i
-                            class="fas fa-long-arrow-alt-right"> </i></span>
-                        <span> ${{newprice}}</span>
-                      </div>
-                      {{else}}
-                      <div class="prce142">${{price}}</div>
-                      {{/if}}
+                      <a href="/courses/detail/{{course_id}}" class="crse14s" style="height: 50px;">{{name}}</a>
+                      <a href="#" class="crse-cate">{{type_name}} | {{spec_name}}</a>
+                      <div class="auth1lnkprce">
+                        <p class="cr1fot">By <a href="#">{{fname}} {{lname}}</a></p>
+                        {{#if discount}}
+                        <div class="prce142">
+                          <span style="color:darkgrey ;text-decoration: line-through; font-size:12pt;">${{price}} <i
+                              class="fas fa-long-arrow-alt-right"> </i></span>
+                          <span> ${{newprice}}</span>
+                        </div>
+                        {{else}}
+                        <div class="prce142">${{price}}</div>
+                        {{/if}}
 
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              {{/each}}
-              {{!--  --}}
+                {{/each}}
 
+
+                {{!--  --}}
+
+              </div>
             </div>
           </div>
-        </div>
 
-        {{!-- Top 10 most viewed courses (nhiều view nhất) --}}
+          {{!-- Top 10 most viewed courses (nhiều view nhất) --}}
 
-        <div class="section3125 mt-30">
-          <h4 class="item_title">Most Viewed Courses</h4>
-          <a href="#" class="see150">See all</a>
-          <div class="la5lo1">
-            <div class="owl-carousel featured_courses owl-theme">
+          <div class="section3125 mt-30">
+            <h4 class="item_title">Most Viewed Courses</h4>
+            <a href="#" class="see150">See all</a>
+            <div class="la5lo1">
+              <div class="owl-carousel featured_courses owl-theme">
 
-              {{!-- Mẫu courses --}}
+                {{!-- Mẫu courses --}}
 
-              {{#each this.viewed}}
-              <div class="item">
-                <div class="fcrse_1 mb-20">
-                  <a href="course_detail_view.html" class="fcrse_img">
-                    <img style="height: 200px;" src="{{link_ava_course}}" alt="">
-                    <div class="course-overlay">
+                {{#each this.viewed}}
+                <div class="item">
+                  <div class="fcrse_1 mb-20">
+                    <a href="/courses/detail/{{course_id}}" class="fcrse_img">
+                      <img style="height: 200px;" src="{{link_ava_course}}" alt="">
+                      <div class="course-overlay">
 
-                      {{#if discount}}
-                      <div class="badge_seller" style="font-size: 15pt;"> <i class="fas fa-tags"></i> {{discount}}%
+                        {{#if discount}}
+                        <div class="badge_seller" style="font-size: 15pt;"> <i class="fas fa-tags"></i> {{discount}}%
+                        </div>
+                        {{/if}}
+                        <div class="crse_reviews">
+                          <i class="fas fa-star"></i>{{format_number rating}}
+                        </div>
+                        <span class="play_btn1"><i class="uil uil-play"></i></span>
                       </div>
-                      {{/if}}
-                      <div class="crse_reviews">
-                        <i class="fas fa-star"></i>{{format_number rating}}
+                    </a>
+                    <div class="fcrse_content">
+                      <div class="eps_dots more_dropdown">
+                        <a href="#"><i class='uil uil-ellipsis-v'></i></a>
+                        <div class="dropdown-content">
+                          <span><i class='uil uil-share-alt'></i>Share</span>
+                          <span><i class="uil uil-clock-three"></i>Save</span>
+                          <span><i class='uil uil-ban'></i>Not Interested</span>
+                          <span><i class="uil uil-windsock"></i>Report</span>
+                        </div>
                       </div>
-                      <span class="play_btn1"><i class="uil uil-play"></i></span>
-                    </div>
-                  </a>
-                  <div class="fcrse_content">
-                    <div class="eps_dots more_dropdown">
-                      <a href="#"><i class='uil uil-ellipsis-v'></i></a>
-                      <div class="dropdown-content">
-                        <span><i class='uil uil-share-alt'></i>Share</span>
-                        <span><i class="uil uil-clock-three"></i>Save</span>
-                        <span><i class='uil uil-ban'></i>Not Interested</span>
-                        <span><i class="uil uil-windsock"></i>Report</span>
+                      <div class="vdtodt">
+                        <span class="vdt14">{{view_number}} views</span>
+                        <span class="vdt14">{{rateStu}} ratings</span>
+                        <span class="vdt14">{{day_ago}} days ago</span>
                       </div>
-                    </div>
-                    <div class="vdtodt">
-                      <span class="vdt14">{{view_number}} views</span>
-                      <span class="vdt14">{{numberStu}} rates</span>
-                      <span class="vdt14">{{day_ago}} days ago</span>
-                    </div>
-                    <a href="course_detail_view.html" class="crse14s" style="height: 50px;">{{name}}</a>
-                    <a href="#" class="crse-cate">{{type_name}} | {{spec_name}}</a>
-                    <div class="auth1lnkprce">
-                      <p class="cr1fot">By <a href="#">{{fname}} {{lname}}</a></p>
-                      {{#if discount}}
-                      <div class="prce142">
-                        <span style="color:darkgrey ;text-decoration: line-through; font-size:12pt;">${{price}} <i
-                            class="fas fa-long-arrow-alt-right"> </i></span>
-                        <span> ${{newprice}}</span>
-                      </div>
-                      {{else}}
-                      <div class="prce142">${{price}}</div>
-                      {{/if}}
+                      <a href="/courses/detail/{{course_id}}" class="crse14s" style="height: 50px;">{{name}}</a>
+                      <a href="#" class="crse-cate">{{type_name}} | {{spec_name}}</a>
+                      <div class="auth1lnkprce">
+                        <p class="cr1fot">By <a href="#">{{fname}} {{lname}}</a></p>
+                        {{#if discount}}
+                        <div class="prce142">
+                          <span style="color:darkgrey ;text-decoration: line-through; font-size:12pt;">${{price}} <i
+                              class="fas fa-long-arrow-alt-right"> </i></span>
+                          <span> ${{newprice}}</span>
+                        </div>
+                        {{else}}
+                        <div class="prce142">${{price}}</div>
+                        {{/if}}
 
+                      </div>
                     </div>
                   </div>
                 </div>
+                {{/each}}
+
+
+                {{!--  --}}
+
               </div>
-              {{/each}}
-              {{!--  --}}
-
-              {{!--  --}}
-
             </div>
           </div>
-        </div>
 
-        {{!-- Top 10 newest courses (mới nhất) --}}
+          {{!-- Top 10 newest courses (mới nhất) --}}
 
-        <div class="section3125 mt-30">
-          <h4 class="item_title">Newest Courses</h4>
-          <a href="#" class="see150">See all</a>
-          <div class="la5lo1">
-            <div class="owl-carousel featured_courses owl-theme">
+          <div class="section3125 mt-30">
+            <h4 class="item_title">Newest Courses</h4>
+            <a href="#" class="see150">See all</a>
+            <div class="la5lo1">
+              <div class="owl-carousel featured_courses owl-theme">
 
-              {{!-- Mẫu courses --}}
+                {{!-- Mẫu courses --}}
 
-              {{#each this.newest}}
-              <div class="item">
-                <div class="fcrse_1 mb-20">
-                  <a href="course_detail_view.html" class="fcrse_img">
-                    <img style="height: 200px;" src="{{link_ava_course}}" alt="">
-                    <div class="course-overlay">
+                {{#each this.newest}}
+                <div class="item">
+                  <div class="fcrse_1 mb-20">
+                    <a href="/courses/detail/{{course_id}}" class="fcrse_img">
+                      <img style="height: 200px;" src="{{link_ava_course}}" alt="">
+                      <div class="course-overlay">
 
-                      {{#if discount}}
-                      <div class="badge_seller" style="font-size: 15pt;"> <i class="fas fa-tags"></i> {{discount}}%
+                        {{#if discount}}
+                        <div class="badge_seller" style="font-size: 15pt;"> <i class="fas fa-tags"></i> {{discount}}%
+                        </div>
+                        {{/if}}
+                        <div class="crse_reviews">
+                          <i class="fas fa-star"></i>{{format_number rating}}
+                        </div>
+                        <span class="play_btn1"><i class="uil uil-play"></i></span>
                       </div>
-                      {{/if}}
-                      <div class="crse_reviews">
-                        <i class="fas fa-star"></i>{{format_number rating}}
+                    </a>
+                    <div class="fcrse_content">
+                      <div class="eps_dots more_dropdown">
+                        <a href="#"><i class='uil uil-ellipsis-v'></i></a>
+                        <div class="dropdown-content">
+                          <span><i class='uil uil-share-alt'></i>Share</span>
+                          <span><i class="uil uil-clock-three"></i>Save</span>
+                          <span><i class='uil uil-ban'></i>Not Interested</span>
+                          <span><i class="uil uil-windsock"></i>Report</span>
+                        </div>
                       </div>
-                      <span class="play_btn1"><i class="uil uil-play"></i></span>
-                    </div>
-                  </a>
-                  <div class="fcrse_content">
-                    <div class="eps_dots more_dropdown">
-                      <a href="#"><i class='uil uil-ellipsis-v'></i></a>
-                      <div class="dropdown-content">
-                        <span><i class='uil uil-share-alt'></i>Share</span>
-                        <span><i class="uil uil-clock-three"></i>Save</span>
-                        <span><i class='uil uil-ban'></i>Not Interested</span>
-                        <span><i class="uil uil-windsock"></i>Report</span>
+                      <div class="vdtodt">
+                        <span class="vdt14">{{view_number}} views</span>
+                        <span class="vdt14">{{rateStu}} ratings</span>
+                        <span class="vdt14">{{day_ago}} days ago</span>
                       </div>
-                    </div>
-                    <div class="vdtodt">
-                      <span class="vdt14">{{view_number}} views</span>
-                      <span class="vdt14">{{numberStu}} rates</span>
-                      <span class="vdt14">{{day_ago}} days ago</span>
-                    </div>
-                    <a href="course_detail_view.html" class="crse14s" style="height: 50px;">{{name}}</a>
-                    <a href="#" class="crse-cate">{{type_name}} | {{spec_name}}</a>
-                    <div class="auth1lnkprce">
-                      <p class="cr1fot">By <a href="#">{{fname}} {{lname}}</a></p>
-                      {{#if discount}}
-                      <div class="prce142">
-                        <span style="color:darkgrey ;text-decoration: line-through; font-size:12pt;">${{price}} <i
-                            class="fas fa-long-arrow-alt-right"> </i></span>
-                        <span> ${{newprice}}</span>
-                      </div>
-                      {{else}}
-                      <div class="prce142">${{price}}</div>
-                      {{/if}}
+                      <a href="/courses/detail/{{course_id}}" class="crse14s" style="height: 50px;">{{name}}</a>
+                      <a href="#" class="crse-cate">{{type_name}} | {{spec_name}}</a>
+                      <div class="auth1lnkprce">
+                        <p class="cr1fot">By <a href="#">{{fname}} {{lname}}</a></p>
+                        {{#if discount}}
+                        <div class="prce142">
+                          <span style="color:darkgrey ;text-decoration: line-through; font-size:12pt;">${{price}} <i
+                              class="fas fa-long-arrow-alt-right"> </i></span>
+                          <span> ${{newprice}}</span>
+                        </div>
+                        {{else}}
+                        <div class="prce142">${{price}}</div>
+                        {{/if}}
 
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              {{/each}}
-              {{!--  --}}
+                {{/each}}
+                {{!--  --}}
 
+              </div>
             </div>
           </div>
+
+
         </div>
 
+        <div class="col-xl-3 col-lg-4 h">
+          <div class="right_side">
 
-      </div>
+            {{!-- Giữ này lại mốt có Instructor --}}
 
-      <div class="col-xl-3 col-lg-4 h">
-        <div class="right_side">
-
-          {{!-- Giữ này lại mốt có Instructor --}}
-
-          <div class="fcrse_2 mb-30">
-            <div class="tutor_img">
-              <a href="my_instructor_profile_view.html"><img src="images/left-imgs/img-10.jpg" alt=""></a>
-            </div>
-            <div class="tutor_content_dt">
-              <div class="tutor150">
-                <a href="my_instructor_profile_view.html" class="tutor_name">Joginder Singh</a>
-                <div class="mef78" title="Verify">
-                  <i class="uil uil-check-circle"></i>
-                </div>
+            <div class="fcrse_2 mb-30">
+              <div class="tutor_img">
+                <a href="my_instructor_profile_view.html"><img src="images/left-imgs/img-10.jpg" alt=""></a>
               </div>
-              <div class="tutor_cate">Web Developer, Designer, and Teacher</div>
-              <ul class="tutor_social_links">
-                <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
-                <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+              <div class="tutor_content_dt">
+                <div class="tutor150">
+                  <a href="my_instructor_profile_view.html" class="tutor_name">Joginder Singh</a>
+                  <div class="mef78" title="Verify">
+                    <i class="uil uil-check-circle"></i>
+                  </div>
+                </div>
+                <div class="tutor_cate">Web Developer, Designer, and Teacher</div>
+                <ul class="tutor_social_links">
+                  <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                  <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                  <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                  <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                </ul>
+                <div class="tut1250">
+                  <span class="vdt15">615K Students</span>
+                  <span class="vdt15">12 Courses</span>
+                </div>
+                <a href="my_instructor_profile_view.html" class="prfle12link">Go To Profile</a>
+              </div>
+            </div>
+
+            {{!-- Top Field --}}
+
+            <div class="fcrse_3">
+              <div class="cater_ttle">
+                <h4>Top IT Fields</h4>
+              </div>
+              <ul class="allcate15">
+                <li><a href="#" class="ct_item"><i class='uil uil-arrow'></i>Development</a></li>
+                <li><a href="#" class="ct_item"><i class='uil uil-graph-bar'></i>Business</a></li>
+                <li><a href="#" class="ct_item"><i class='uil uil-monitor'></i>IT and Software</a></li>
+                <li><a href="#" class="ct_item"><i class='uil uil-ruler'></i>Design</a></li>
+                <li><a href="#" class="ct_item"><i class='uil uil-chart-line'></i>Marketing</a></li>
+                <li><a href="#" class="ct_item"><i class='uil uil-book-open'></i>Personal Development</a></li>
+                <li><a href="#" class="ct_item"><i class='uil uil-camera'></i>Photography</a></li>
+                <li><a href="#" class="ct_item"><i class='uil uil-music'></i>Music</a></li>
               </ul>
-              <div class="tut1250">
-                <span class="vdt15">615K Students</span>
-                <span class="vdt15">12 Courses</span>
-              </div>
-              <a href="my_instructor_profile_view.html" class="prfle12link">Go To Profile</a>
             </div>
-          </div>
-
-          {{!-- Top Field --}}
-
-          <div class="fcrse_3">
-            <div class="cater_ttle">
-              <h4>Top IT Fields</h4>
+            <div class="get1452">
+              <h4>Become an Instructor</h4>
+              <p>Top instructors from around the world teach millions of students on Cursus. We provide the tools and
+                skills to
+                teach what you love.</p>
+              <button class="Get_btn" onclick="window.location.href = '#';">Contact us</button>
             </div>
-            <ul class="allcate15">
-              <li><a href="#" class="ct_item"><i class='uil uil-arrow'></i>Development</a></li>
-              <li><a href="#" class="ct_item"><i class='uil uil-graph-bar'></i>Business</a></li>
-              <li><a href="#" class="ct_item"><i class='uil uil-monitor'></i>IT and Software</a></li>
-              <li><a href="#" class="ct_item"><i class='uil uil-ruler'></i>Design</a></li>
-              <li><a href="#" class="ct_item"><i class='uil uil-chart-line'></i>Marketing</a></li>
-              <li><a href="#" class="ct_item"><i class='uil uil-book-open'></i>Personal Development</a></li>
-              <li><a href="#" class="ct_item"><i class='uil uil-camera'></i>Photography</a></li>
-              <li><a href="#" class="ct_item"><i class='uil uil-music'></i>Music</a></li>
-            </ul>
-          </div>
-          <div class="get1452">
-            <h4>Become an Instructor</h4>
-            <p>Top instructors from around the world teach millions of students on Cursus. We provide the tools and
-              skills to
-              teach what you love.</p>
-            <button class="Get_btn" onclick="window.location.href = '#';">Contact us</button>
           </div>
         </div>
       </div>
