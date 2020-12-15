@@ -342,7 +342,7 @@ input[type=text] {
     font-size: 10px;
     font-weight: 500;
     color: #fff;
-    background: #ed2a26;
+    background: #009933;
     overflow: hidden;
     width: 5px;
     height: 5px;
@@ -370,7 +370,7 @@ input[type=text] {
 }
 
 .left_footer a:hover {
-	color: #ed2a26 !important;
+	color: #009933 !important;
 }
 
 .left_footer_content {
@@ -476,7 +476,7 @@ i.icon1 {
     position: absolute;
     top: 3px;
     right: 8px;
-    background: #ed2a26;
+    background: #009933;
     color: #fff;
     width: 16px;
     height: 16px;
@@ -500,7 +500,7 @@ i.icon1 {
     font-weight: 500;
     font-family: 'Roboto', sans-serif;
     color: #fff;
-    background: #ed2a26;
+    background: #009933;
     padding: 9px 15px;
     border-radius: 25px;
 	margin-right: 10px;
@@ -615,7 +615,7 @@ i.icon1 {
 }
 
 .dp_link_12:hover {
-    color: #ed2a26 !important;
+    color: #009933 !important;
 }
 
 .ui.dropdown .menu>.channel_item {
@@ -627,7 +627,7 @@ i.icon1 {
 
 .ui.dropdown .menu>.channel_item:hover {
     color: #333 !important;
-    background:#ffecec !important;
+    background:#f2ffec !important;
 }
 
 .rhte85 {
@@ -665,7 +665,7 @@ i.icon1 {
     text-align: center;
     float: left;
     padding: 15px 0;
-    background: #ffecec;
+    background: #f2ffec;
     font-size: 14px;
     color: #333 !important;
     font-family: 'Roboto', sans-serif;
@@ -717,7 +717,7 @@ i.icon1 {
     border-radius: 20px;
     color: #fff;
     font-family: 'Roboto', sans-serif;
-    background: #ed2a26;
+    background: #009933;
     font-size: 14px;
     font-weight: 500;
     display: inline-block;
@@ -725,7 +725,7 @@ i.icon1 {
 
 .btn1542:hover {
     color: #fff !important;
-    background: #c72127;
+    background: #009933;
 }
 
 .lng_btn {
@@ -1064,10 +1064,10 @@ i.icon1 {
 /*Floating CSS End*/
 
 @keyframes example {
-    0%   {background-color: red;}
-    25%  {background-color: #ff7037;}
-    50%  {background-color: red;}
-    100% {background-color: #ff7037;}
+    0%   {background-color: #009933;}
+    25%  {background-color: #1fd471;}
+    50%  {background-color: #009933;}
+    100% {background-color: #1fd471;}
 }
 
 /* --- Dashboard --- */
@@ -1134,7 +1134,7 @@ i.icon1 {
 }
 
 .crdbg_1 {
-	background: #ffc136 !important;
+	background: #1fd471 !important;
 }
 
 .crdbg_2 {
@@ -1142,7 +1142,7 @@ i.icon1 {
 }
 
 .crdbg_3 {
-	background: #ffa052 !important;
+	background: #1fd471 !important;
 }
 
 .crdbg_4 {
@@ -1154,7 +1154,7 @@ i.icon1 {
     font-weight: 500;
     font-family: 'Roboto', sans-serif;
     color: #fff;
-    background: #ed2a26;
+    background: #009933;
     padding: 0px 20px;
     border-radius: 25px;
     border: 0;
@@ -1373,7 +1373,7 @@ i.icon1 {
 
 .dropdown-content span:hover {
 	color: #333 !important;
-	background-color: #ffecec;
+	background-color: #f2ffec;
 }
 
 .more_dropdown:hover .dropdown-content {display: block;}
@@ -1433,16 +1433,16 @@ i.icon1 {
 .courses_performance .owl-nav .owl-prev:hover {
 	color: #fff !important;
 	opacity: 1;
-	background: #ed2a26 !important;
-	border: 1px solid #ed2a26 !important;
+	background: #009933 !important;
+	border: 1px solid #009933 !important;
 	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.07);
 }	
 
 .courses_performance .owl-nav .owl-next:hover {
 	color: #fff !important;
 	opacity: 1;
-	border: 1px solid #ed2a26 !important;
-	background: #ed2a26 !important;
+	border: 1px solid #009933 !important;
+	background: #009933 !important;
 	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.07);
 }
 
@@ -1542,16 +1542,16 @@ i.icon1 {
 .edututs_news .owl-nav .owl-prev:hover {
 	color: #fff !important;
 	opacity: 1;
-	background: #ed2a26 !important;
-	border: 1px solid #ed2a26 !important;
+	background: #009933 !important;
+	border: 1px solid #009933 !important;
 	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.07);
 }	
 
 .edututs_news .owl-nav .owl-next:hover {
 	color: #fff !important;
 	opacity: 1;
-	border: 1px solid #ed2a26 !important;
-	background: #ed2a26 !important;
+	border: 1px solid #009933 !important;
+	background: #009933 !important;
 	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.07);
 }
 
@@ -1592,7 +1592,7 @@ i.icon1 {
 }
 
 .analyics_pr {
-	color: #ed2a26;
+	color: #009933;
 	font-weight: 500;
 }
 
@@ -1675,7 +1675,7 @@ i.icon1 {
     font-size: 12px;
     font-weight: 500;
     margin-left: 10px;
-    background: #ed2a26;
+    background: #009933;
     color: #fff;
     padding: 5px 10px;
     border-radius: 5px;
@@ -1701,12 +1701,12 @@ i.icon1 {
 
 .my_courses_tabs .nav-pills .nav-link.active, .my_courses_tabs .nav-pills .show>.nav-link {
     color: #fff;
-    background-color: #ed2a26 !important;
+    background-color: #009933 !important;
 }
 
 .my_courses_tabs .nav-pills .nav-link:hover {
     color: #fff !important;
-    background-color: #ed2a26 !important;
+    background-color: #009933 !important;
 }
 
 .my_courses_tabs .nav-link {
@@ -1757,7 +1757,7 @@ table.table.ucp-table {
 .ucp-table thead tr th {
     color: #333;
 	font-size: 14px;
-    background-color: #ffecec;
+    background-color: #f2ffec;
 }
 
 .ucp-table tfoot {
@@ -1809,7 +1809,7 @@ table {
 }
 
 .course_active {
-    color: #ed2a26;
+    color: #009933;
 }
 
 .ucp-table tbody tr td {
@@ -1973,15 +1973,15 @@ table {
 
 .datepicker--cell.-selected-, .datepicker--cell.-selected-.-current- {
     color: #fff;
-    background: #ed2a26 !important;
+    background: #009933 !important;
 }
 
 .datepicker--day-name {
-    color: #ed2a26 !important;
+    color: #009933 !important;
 }
 
 .datepicker--cell.-current- {
-    color: #ed2a26 !important;
+    color: #009933 !important;
 }
 
 .datepicker {
@@ -2004,7 +2004,7 @@ table {
     color: #fff;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    background: #ed2a26;
+    background: #009933;
 	width: 100%;
 	text-align: center;
 }
@@ -2056,7 +2056,7 @@ table {
     color: #fff;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    background: #ed2a26;
+    background: #009933;
 	text-align: center;
 	padding: 0 30px;
 }
@@ -2188,7 +2188,7 @@ table {
 }
 
 .text-success1 {
-    color: #ed2a26 !important;
+    color: #009933 !important;
 }
 
 .thumb_img img {
@@ -2273,7 +2273,7 @@ table {
 
 #add-course-tab .step-steps > li.active > a > .number,
 #add-course-tab .step-steps > li.done > a > .number {
-	background-color: #ed2a26;
+	background-color: #009933;
 }
 
 #add-course-tab .step-steps > li.active > a > .number:before,
@@ -2287,7 +2287,7 @@ table {
 }
 
 #add-course-tab .step-steps > li.done:before {
-	background-color: #ed2a26;
+	background-color: #009933;
 }
 
 #add-course-tab .step-steps > li.done > a > .number:after {
@@ -2404,7 +2404,7 @@ table {
     line-height: 0;
     color: #fff;
     content: "Upload File";
-    background-color: #ed2a26;
+    background-color: #009933;
     border-left: inherit;
     border-radius: 0 10rem 10rem 0;
 }
@@ -2468,7 +2468,7 @@ table {
 }
 
 .badge_num {
-    background: #ed2a26;
+    background: #009933;
     color: #fff;
     font-weight: 500;
     font-family: 'Roboto', sans-serif;
@@ -2483,7 +2483,7 @@ table {
 }
 
 .badge_num2 {
-    background: #ed2a26;
+    background: #009933;
     color: #fff;
     font-weight: 500;
     font-family: 'Roboto', sans-serif;
@@ -2532,7 +2532,7 @@ table {
     font-weight: 500 !important;
     font-family: 'Roboto', sans-serif !important;
     color: #fff !important;
-    background: #ed2a26 !important;
+    background: #009933 !important;
     padding: 0px 20px !important;
     border-radius: 25px !important;
     border: 0 !important;
@@ -2687,7 +2687,7 @@ table {
     line-height: 0;
     color: #fff;
     content: "Upload File";
-    background-color: #ed2a26;
+    background-color: #009933;
     border-left: inherit;
     border-radius: 0 10rem 10rem 0;
 }
@@ -2709,7 +2709,7 @@ table {
 }
 
 .badge_mb {
-    background: #ed2a26;
+    background: #009933;
     color: #fff;
     font-weight: 500;
     font-family: 'Roboto', sans-serif;
@@ -2733,7 +2733,7 @@ table {
 }
 
 .badge_min {
-    background: #ed2a26;
+    background: #009933;
     color: #fff;
     font-weight: 500;
     font-family: 'Roboto', sans-serif;
@@ -2765,7 +2765,7 @@ table {
     font-weight: 500;
     font-family: 'Roboto', sans-serif;
     color: #fff;
-    background: #ed2a26;
+    background: #009933;
     padding: 0px 30px;
     border-radius: 25px;
     border: 0;
@@ -2779,16 +2779,16 @@ table {
 
 .ui.checkbox input:checked~.box:before, .ui.checkbox input:checked~label:before {
     background: #fff;
-    border-color: #ed2a26 !important;
+    border-color: #009933 !important;
 }
 
 .ui.radio.checkbox input:checked~.box:after, .ui.radio.checkbox input:checked~label:after {
-    background-color: #ed2a26 !important;
+    background-color: #009933 !important;
 }
 
 .ui.checkbox.mncheck input:checked~.box:after, .ui.checkbox.mncheck input:checked~label:after {
     opacity: 1;
-    color: #ed2a26 !important;
+    color: #009933 !important;
     font-size: 10px !important;
     border-radius: 100%;
     margin-top: 2px;
@@ -2843,7 +2843,7 @@ table {
     font-weight: 500;
     font-family: 'Roboto', sans-serif;
     color: #fff;
-    background: #ed2a26;
+    background: #009933;
     padding: 0px 30px;
     border-radius: 25px;
     border: 0;
@@ -2900,8 +2900,8 @@ i.icon8 {
 }
 
 .chat__message__dt.active, .chat__message__dt:hover {
-    border-left: 4px solid #ed2a26;
-	background: #ffecec;
+    border-left: 4px solid #009933;
+	background: #f2ffec;
 }
 
 .user-status {
@@ -2931,7 +2931,7 @@ i.icon8 {
     border: 2px solid #fff;
     height: 22px;
     width: 22px;
-    background: #ed2a26;
+    background: #009933;
     position: absolute;
     right: 10px;
     bottom: 2px;
@@ -3176,7 +3176,7 @@ i.icon8 {
 .message-inner-dt > p {
 	float: right;
 	width: 60%;
-	background-color: #ed2a26;
+	background-color: #009933;
 	font-size: 14px;
 	font-family: 'Roboto', sans-serif;
 	line-height: 22px;
@@ -3191,7 +3191,7 @@ i.icon8 {
 }
 
 .message-dt.st3 .message-inner-dt > p {
-	background-color: #ffecec;
+	background-color: #f2ffec;
 	color: #686f7a;
 	width: auto;
 	padding: 12px 20px;
@@ -3238,7 +3238,7 @@ i.icon8 {
 	font-weight: 500;
 	font-size: 18px;
 	color: #fff;
-	background: #ed2a26;
+	background: #009933;
 	height: 40px;
 	float: left;
 }
@@ -3257,7 +3257,7 @@ i.icon8 {
     width: 50px;
     font-size: 18px;
     color: #fff;
-    background: #ed2a26;
+    background: #009933;
 }
 
 .add_photo:hover {
@@ -3284,7 +3284,7 @@ i.icon8 {
     float: left;
     padding: 10px 20px;
     color: #fff;
-    background: #ed2a26;
+    background: #009933;
     border-radius: 20px;
     font-size: 14px;
     font-weight: 500;
@@ -3372,7 +3372,7 @@ i.icon8 {
 }
 
 .full-star:before {
-	color: #f2b01e;
+	color: #1fd471;
 	content: "\f005";
 	position: absolute;
 	font-family: "Font Awesome 5 Free";
@@ -3390,7 +3390,7 @@ i.icon8 {
 }
 
 .half-star:before {
-	color: #f2b01e;
+	color: #1fd471;
 	content: "\f005";
 	font-family: "Font Awesome 5 Free";
 	font-weight: 900;
@@ -3440,7 +3440,7 @@ i.icon8 {
 }
 
 .progress1 .progress-bar {
-    background-color: #ed2a26 !important;
+    background-color: #009933 !important;
 }
 
 .w-70 {
@@ -3511,7 +3511,7 @@ i.icon8 {
     border: 0;
     height: 26px;
     width: 26px;
-    background: #ed2a26;
+    background: #009933;
     color: #fff;
     font-size: 14px;
 }
@@ -3726,7 +3726,7 @@ i.icon8 {
 .ui.active.selection.vchrt-dropdown {
     border-top-left-radius: 1.5rem !important;
     border-top-right-radius: 1.5rem !important;
-	border: 1px solid #ed2a26 !important;
+	border: 1px solid #009933 !important;
 }
 
 .date_list152 a {
@@ -3803,7 +3803,7 @@ i.icon8 {
 }
 
 .payout__btn {
-    background: #ed2a26;
+    background: #009933;
     color: #fff;
     float: left;
     width: 100%;
@@ -3873,7 +3873,7 @@ i.icon8 {
 }
 
 .js-earnings__fees-wrapper {
-	color: #ed2a26;
+	color: #009933;
 }
 
 .statement_invoice_content {
@@ -3890,7 +3890,7 @@ i.icon8 {
     padding: 0 8px;
     border-radius: 100%;
     margin-left: 10px;
-    background: #ed2a26;
+    background: #009933;
 }
 
 .st_download_btn:hover {
@@ -4004,7 +4004,7 @@ i.icon8 {
 
 .edututs_required_img i {
     font-size: 36px;
-    color: #ed2a26;
+    color: #009933;
 }
 
 .apply_verify_text {
@@ -4036,7 +4036,7 @@ i.icon8 {
     font-weight: 500;
     font-family: 'Roboto', sans-serif;
     color: #fff;
-    background: #ed2a26;
+    background: #009933;
     padding: 0px 30px;
     border-radius: 25px;
     border: 0;
@@ -4078,7 +4078,7 @@ i.icon8 {
     font-size: 120%;
 	height: 30px;
 	Width: 30px;
-	background: #ffecec;
+	background: #f2ffec;
 	border-radius: 100%;
 	margin-right: 10px;
 	padding: 6px 4px 0;

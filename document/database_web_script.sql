@@ -2,6 +2,8 @@ alter user 'root'@'localhost' IDENTIFIED BY '1234';
 
 alter user 'minh' IDENTIFIED BY '1234';
 
+
+
 drop database OnlineAcademy;
 create database OnlineAcademy;
 use OnlineAcademy;
@@ -223,14 +225,14 @@ insert into Course_spec values (null, 2, 'Graphic Design');
 insert into Course_spec values (null, 2, 'Interior Design');
 
 -- Course
-insert into Course values(null, 'Introduction to CSS', 20, 20, 1, 1, '2020-12-01 00:00:00', 25, 'https://www.dammio.com/wp-content/uploads/2019/08/CSS3.png', 1);
+insert into Course values(null, 'Introduction to CSS', 20, 0, 1, 1, '2020-12-01 00:00:00', 25, 'https://www.dammio.com/wp-content/uploads/2019/08/CSS3.png', 1);
 insert into Course values(null, 'Javascript Zero to Hero', 20, 15, 1, 1, '2020-12-02 00:00:00', 40, 'https://www.educative.io/api/page/5330288608542720/image/download/6288755792019456', 2);
-insert into Course values(null, 'OS for beginners', 15, 10, 1, 2, '2020-12-03 00:00:00', 73, 'https://www.howtogeek.com/thumbcache/2/200/8b2cb8c7c5fc73604d66fd5f0c38be7a/wp-content/uploads/2018/08/img_5b68e80f77e33.png', 3);
+insert into Course values(null, 'OS for beginners', 15, 0, 1, 2, '2020-12-03 00:00:00', 73, 'https://www.howtogeek.com/thumbcache/2/200/8b2cb8c7c5fc73604d66fd5f0c38be7a/wp-content/uploads/2018/08/img_5b68e80f77e33.png', 3);
 insert into Course values(null, 'Learn Linux in 5 days', 17, 15, 1, 2, '2020-12-04 00:00:00', 30, 'https://vivaldi.com/wp-content/uploads/Linux-more-secure-than-Windows.png', 3);
 insert into Course values(null, 'Ultimate Adobe Photoshop Training', 15, 10, 2, 3, '2020-12-05 00:00:00', 56, 'https://tuihocit.com/wp-content/uploads/2020/07/photoshop-cs6.jpg', 5);
 insert into Course values(null, 'Graphic Design Masterclass - Learn GREAT Design', 25, 20, 2, 3, '2020-12-06 00:00:00', 40, 'https://d1j8r0kxyu9tj8.cloudfront.net/images/1557567429825mQH8PotXDSI7.jpg', 6);
-insert into Course values(null, 'How to Use Lighting Design to Transform your Home', 10, 25, 2, 4, '2020-12-07 00:00:00', 13, 'https://www.thespruce.com/thmb/LJ7id3A9UH4mXoZdGjjTmM1iWj8=/1541x1156/smart/filters:no_upscale()/Stocksy_txp3a252ff6ITc200_Medium_2462396-25763eafda2e452dbd1fb83089357aa2.jpg', 7);
-insert into Course values(null, 'How to design a room', 15, 30, 2, 4, '2020-12-08 00:00:00', 25, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9sHwEM7K246oge4Lz1Y7eGjeMk1j8KHRztw&usqp=CAU', 8);
+insert into Course values(null, 'How to Use Lighting Design to Transform your Home', 10, 0, 2, 4, '2020-12-07 00:00:00', 13, 'https://www.thespruce.com/thmb/LJ7id3A9UH4mXoZdGjjTmM1iWj8=/1541x1156/smart/filters:no_upscale()/Stocksy_txp3a252ff6ITc200_Medium_2462396-25763eafda2e452dbd1fb83089357aa2.jpg', 7);
+insert into Course values(null, 'How to design a room', 15, 0, 2, 4, '2020-12-08 00:00:00', 25, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9sHwEM7K246oge4Lz1Y7eGjeMk1j8KHRztw&usqp=CAU', 8);
 
 -- Course_detail
 insert into Course_detail values(1, true, 'This is short info of Introduction to CSS', 'This is long info of Introduction to CSS', '2020-12-03 00:00:00');

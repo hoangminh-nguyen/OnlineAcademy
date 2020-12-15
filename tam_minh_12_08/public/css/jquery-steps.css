@@ -27,7 +27,7 @@
 }
 
 .step-app > .step-steps > li.done:before {
-    background-color: #FDB51C;
+    background-color: #1fd471;
 }
 
 .step-app > .step-steps > li > a ,
@@ -86,8 +86,8 @@
 }
 
 .step-app > .step-steps > li.done > a > .number {
-    background-color: #FDB51C;
-    border-color: #D79A18;
+    background-color: #1fd471;
+    border-color: #0e8343;
 }
 
 .step-app > .step-content {

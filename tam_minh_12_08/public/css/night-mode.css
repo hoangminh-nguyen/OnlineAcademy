@@ -122,7 +122,7 @@ Night Mood
     font-weight: 500;
     font-family: 'Roboto', sans-serif;
     color: #fff !important;
-    background: #ed2a26;
+    background: #009933;
     padding: 9px 15px;
     border-radius: 25px;
 	margin-right: 10px;
@@ -135,7 +135,7 @@ Night Mood
 
 .night-mode .upload_btn:hover {
     color: #fff !important;
-    background: #cc2622 !important;
+    background: #009933 !important;
 }
 
 .night-mode .menu.dropdown_ms {
@@ -185,7 +185,7 @@ Night Mood
     text-align: center;
     float: left;
     padding: 15px 0;
-    background: #ed2a26;
+    background: #009933;
     font-size: 14px;
     color: #fff !important;
     font-family: 'Roboto', sans-serif;
@@ -193,7 +193,7 @@ Night Mood
 }
 
 .night-mode .vbm_btn:hover {
-    background: #cc2622;
+    background: #009933;
     color: #fff !important;
 }
 
@@ -318,16 +318,16 @@ Night Mood
 .night-mode .live_stream .owl-nav .owl-prev:hover {
 	color: #fff !important;
 	opacity: 1;
-	background: #ed2a26 !important;
-	border: 1px solid #ed2a26 !important;
+	background: #009933 !important;
+	border: 1px solid #009933 !important;
 	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.07);
 }	
 
 .night-mode .live_stream .owl-nav .owl-next:hover {
 	color: #fff !important;
 	opacity: 1;
-	border: 1px solid #ed2a26 !important;
-	background: #ed2a26 !important;
+	border: 1px solid #009933 !important;
+	background: #009933 !important;
 	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.07);
 }
 
@@ -348,16 +348,16 @@ Night Mood
 .night-mode .featured_courses .owl-nav .owl-prev:hover {
 	color: #fff !important;
 	opacity: 1;
-	background: #ed2a26 !important;
-	border: 1px solid #ed2a26 !important;
+	background: #009933 !important;
+	border: 1px solid #009933 !important;
 	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.07);
 }	
 
 .night-mode .featured_courses .owl-nav .owl-next:hover {
 	color: #fff !important;
 	opacity: 1;
-	border: 1px solid #ed2a26 !important;
-	background: #ed2a26 !important;
+	border: 1px solid #009933 !important;
+	background: #009933 !important;
 	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.07);
 }
 
@@ -378,16 +378,16 @@ Night Mood
 .night-mode .Student_says .owl-nav .owl-prev:hover {
 	color: #fff !important;
 	opacity: 1;
-	background: #ed2a26 !important;
-	border: 1px solid #ed2a26 !important;
+	background: #009933 !important;
+	border: 1px solid #009933 !important;
 	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.07);
 }	
 
 .night-mode .Student_says .owl-nav .owl-next:hover {
 	color: #fff !important;
 	opacity: 1;
-	border: 1px solid #ed2a26 !important;
-	background: #ed2a26 !important;
+	border: 1px solid #009933 !important;
+	background: #009933 !important;
 	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.07);
 }
 
@@ -484,13 +484,13 @@ Night Mood
 }
 
 .night-mode .live_link {
-    background: #ed2a26;
+    background: #009933;
     color: #fff !important;
 }
 
 .night-mode .live_link:hover {
 	color: #fff;
-    background: #cc2622;
+    background: #009933;
 }
 
 .night-mode .tutor_social_links li a {
@@ -518,8 +518,8 @@ Night Mood
 
 .night-mode .back_link a:hover {
     color: #fff !important;
-    background: #ed2a26;
-    border: 1px solid #ed2a26;
+    background: #009933;
+    border: 1px solid #009933;
 }
 
 .night-mode .toggle_menu i {
@@ -581,12 +581,12 @@ Night Mood
 
 .night-mode .crer_btn_link {
     color: #fff !important;
-    background: #ed2a26;
+    background: #009933;
 }
 
 .night-mode .crer_btn_link:hover {
     color: #fff !important;
-    background: #cc2622;
+    background: #009933;
 }
 
 .night-mode .add_stream_content {
@@ -624,8 +624,8 @@ Night Mood
 
 .night-mode .slive_tabs .nav-item.show .nav-link, .night-mode .slive_tabs .nav-link.active {
     color: #fff !important;
-    background-color: #ed2a26 !important;
-    border-color: #ed2a26 !important;
+    background-color: #009933 !important;
+    border-color: #009933 !important;
     border-radius: 20px;
 }
 
@@ -636,12 +636,12 @@ Night Mood
 }
 
 .night-mode ._6tf7s:hover {
-    background: #cc2622;
+    background: #009933;
     color: #fff;
 }
 
 .night-mode ._145d1:hover {
-    background: #cc2622;
+    background: #009933;
     color: #fff;
 }
 
@@ -753,12 +753,12 @@ Night Mood
 
 .night-mode .career_lnk6 {
     color: #fff !important;
-    background: #ed2a26;
+    background: #009933;
 }
 
 .night-mode .career_lnk6:hover {
     color: #fff !important;
-    background: #cc2622;
+    background: #009933;
 }
 
 .night-mode .vdtodt55 {
@@ -836,7 +836,7 @@ Night Mood
 
 .night-mode .save_btn:hover {
     color: #fff !important;
-    background: #cc2622;
+    background: #009933;
 }
 
 .night-mode .prevlink {
@@ -880,16 +880,16 @@ Night Mood
 .night-mode .feature_careers .owl-nav .owl-prev:hover {
 	color: #fff !important;
 	opacity: 1;
-	background: #ed2a26 !important;
-	border: 1px solid #ed2a26 !important;
+	background: #009933 !important;
+	border: 1px solid #009933 !important;
 	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.07);
 }	
 
 .night-mode .feature_careers .owl-nav .owl-next:hover {
 	color: #fff !important;
 	opacity: 1;
-	border: 1px solid #ed2a26 !important;
-	background: #ed2a26 !important;
+	border: 1px solid #009933 !important;
+	background: #009933 !important;
 	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.07);
 }
 
@@ -908,7 +908,7 @@ Night Mood
 
 .night-mode .career_lnk5:hover {
     color: #fff !important;
-    background: #cc2622;
+    background: #009933;
 }
 
 .night-mode ._cate101 {
@@ -922,12 +922,12 @@ Night Mood
 
 .night-mode  .login-btn:hover {
     color: #fff;
-    background: #cc2622;
+    background: #009933;
 }
 
 .night-mode .catey-tabs .nav-pills .nav-link.active, .night-mode .catey-tabs .nav-pills .show>.nav-link {
     color: #fff !important; 
-    background-color: #ed2a26 !important;
+    background-color: #009933 !important;
 }
 
 .night-mode .certilink__152 {
@@ -954,7 +954,7 @@ Night Mood
 
 .night-mode .knowledge_btn:hover {
     color: #fff;
-    background: #cc2622;
+    background: #009933;
 }
 
 .night-mode .sign_form {
@@ -983,7 +983,7 @@ Night Mood
 
 .night-mode .download_btn:hover {
 	color: #fff !important;
-	background: #cc2622;
+	background: #009933;
 }
 
 .night-mode .test_timer_bg {
@@ -1007,7 +1007,7 @@ Night Mood
 
 .night-mode .test_submit_btn:hover {
     color: #fff !important;
-    background: #cc2622;
+    background: #009933;
 }
 
 .night-mode .test_timer_left li {
@@ -1037,7 +1037,7 @@ Night Mood
 
 .night-mode .save_address_btn:hover {
     color: #fff !important;
-    background: #cc2622;
+    background: #009933;
 }
 
 .night-mode .checkout-tabs .nav-tabs .nav-item {
@@ -1088,7 +1088,7 @@ Night Mood
 
 .night-mode .chckot_btn:hover {
     color: #fff !important;
-    background: #cc2622;
+    background: #009933;
 }
 
 .night-mode .joblink {
@@ -1097,7 +1097,7 @@ Night Mood
 
 .night-mode .joblink:hover {
     color: #fff !important;
-    background: #cc2622;
+    background: #009933;
 }
 
 
@@ -1240,7 +1240,6 @@ Night Mood
 
 .night-mode .caption-content {
     background-color: #333;
-    border: 242424);
 }
 
 .night-mode .caption-content span {
@@ -1297,7 +1296,7 @@ Night Mood
 }
 
 .night-mode .rqst152:hover {
-    background: #cc2622;
+    background: #009933;
 }
 
 .night-mode .ht_title {
@@ -1315,7 +1314,7 @@ Night Mood
 
 .night-mode .cmnt-btn:hover {
     color: #fff;
-    background: #cc2622;
+    background: #009933;
 }
 
 .night-mode .wtch125 {
@@ -1327,7 +1326,7 @@ Night Mood
 }
 
 .night-mode a.rmv-btn:hover {
-    background: #cc2622;
+    background: #009933;
 }
 
 .night-mode .live_input {
@@ -1361,7 +1360,7 @@ Night Mood
 }
 
 .night-mode .prmb_btn:hover {
-    background: #cc2622;
+    background: #009933;
     color: #fff;
 }
 
@@ -1380,11 +1379,11 @@ Night Mood
 
 .night-mode .sbbc145:hover {
     color: #fff;
-    background: #cc2622;
+    background: #009933;
 }
 
 .night-mode .purchased_badge {
-    background: #fa8305;
+    background: #1fd471;
 }
 
 .night-mode .blogleft12 li {
@@ -1448,7 +1447,7 @@ Night Mood
 
 .night-mode .save_payout_btn:hover {
     color: #fff;
-    background: #cc2622;
+    background: #009933;
 }
 
 .night-mode .nt_apt {
@@ -1502,7 +1501,7 @@ Night Mood
 .night-mode .main-tabs .nav-tabs .nav-item.show .nav-link, .night-mode .main-tabs .nav-tabs .nav-link.active {
     color: #fff !important;
     background-color: none !important;
-    border-bottom: 2px solid #ed2a26 !important;
+    border-bottom: 2px solid #009933 !important;
 }
 
 .night-mode .sgntrm145 a {
@@ -1527,7 +1526,7 @@ Night Mood
 
 .night-mode .create_btn_dash:hover {
     color: #fff;
-    background: #cc2622;
+    background: #009933;
 }
 
 .night-mode .courses_performance .owl-nav .owl-prev {
@@ -1545,16 +1544,16 @@ Night Mood
 .night-mode .courses_performance .owl-nav .owl-prev:hover {
 	color: #fff !important;
 	opacity: 1;
-	background: #ed2a26 !important;
-	border: 1px solid #ed2a26 !important;
+	background: #009933 !important;
+	border: 1px solid #009933 !important;
 	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.07);
 }	
 
 .night-mode .courses_performance .owl-nav .owl-next:hover {
 	color: #fff !important;
 	opacity: 1;
-	border: 1px solid #ed2a26 !important;
-	background: #ed2a26 !important;
+	border: 1px solid #009933 !important;
+	background: #009933 !important;
 	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.07);
 }
 
@@ -1573,16 +1572,16 @@ Night Mood
 .night-mode .edututs_news .owl-nav .owl-prev:hover {
 	color: #fff !important;
 	opacity: 1;
-	background: #ed2a26 !important;
-	border: 1px solid #ed2a26 !important;
+	background: #009933 !important;
+	border: 1px solid #009933 !important;
 	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.07);
 }	
 
 .night-mode .edututs_news .owl-nav .owl-next:hover {
 	color: #fff !important;
 	opacity: 1;
-	border: 1px solid #ed2a26 !important;
-	background: #ed2a26 !important;
+	border: 1px solid #009933 !important;
+	background: #009933 !important;
 	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.07);
 }
 
@@ -1613,7 +1612,7 @@ Night Mood
 
 .night-mode .my_courses_tabs .nav-pills .nav-link.active, .night-mode .my_courses_tabs .nav-pills .show>.nav-link {
     color: #fff !important;
-    background-color: #ed2a26 !important;
+    background-color: #009933 !important;
 }
 
 .night-mode .my_crse_nav {
@@ -1666,7 +1665,7 @@ Night Mood
 
 .night-mode .discount_btn:hover {
     color: #fff;
-    background: #cc2622;
+    background: #009933;
 }
 
 .night-mode .promotion_tab {
@@ -1676,7 +1675,7 @@ Night Mood
 
 .night-mode .plan_link_btn:hover {
     color: #fff;
-    background: #cc2622;
+    background: #009933;
 }
 
 .night-mode .analysis_card {
@@ -1739,11 +1738,11 @@ Night Mood
 }
 
 .night-mode #add-course-tab .step-steps > li.active > a > .number, .night-mode #add-course-tab .step-steps > li.done > a > .number {
-    background-color: #ed2a26;
+    background-color: #009933;
 }
 
 .night-mode #add-course-tab .step-steps > li.done:before {
-    background-color: #ed2a26;
+    background-color: #009933;
 }
 
 .night-mode .title-icon {
@@ -1758,7 +1757,7 @@ Night Mood
 
 .night-mode .steps_btn:hover {
     color: #fff !important;
-    background: #cc2622 !important;
+    background: #009933 !important;
 }
 
 .night-mode .part_input .custom-file-label {
@@ -1780,7 +1779,7 @@ Night Mood
 
 .night-mode .ui.form.swdh339 textarea {
     background: #333;
-    color: #33;
+    color: #333;
 }
 
 .night-mode .ui.form.swdh339 textarea:focus {
@@ -1813,12 +1812,12 @@ Night Mood
 
 .night-mode .save_content_btn:hover {
     color: #fff;
-    background: #cc2622;
+    background: #009933;
 }
 
 .night-mode .part_btn_save:hover {
     color: #fff;
-    background: #cc2622;
+    background: #009933;
 }
 
 .night-mode .msg_search {
@@ -1843,7 +1842,7 @@ Night Mood
 }
 
 .night-mode .chat__message__dt.active, .night-mode .chat__message__dt:hover {
-    border-left: 4px solid #ed2a26;
+    border-left: 4px solid #009933;
     background: #242424;
 }
 
@@ -1875,7 +1874,7 @@ Night Mood
 
 .night-mode .setting_noti:hover {
     color: #fff !important;
-    background: #cc2622;
+    background: #009933;
 }
 
 .night-mode .total_rating {
@@ -1960,7 +1959,7 @@ Night Mood
 }
 
 .night-mode .payout__btn:hover {
-    background: #cc2622;
+    background: #009933;
     color: #fff !important;
 }
 
@@ -1978,7 +1977,7 @@ Night Mood
 
 .night-mode .apply_instructor_btn:hover {
     color: #fff !important;
-    background: #cc2622;
+    background: #009933;
 }
 
 .night-mode .alert_verification {
@@ -2009,7 +2008,7 @@ Night Mood
 
 .night-mode .verify_submit_btn:hover {
     color: #fff;
-    background: #cc2622;
+    background: #009933;
 }
 
 .night-mode .preview_video {
@@ -2029,15 +2028,15 @@ Night Mood
 }
 
 .main-p-pagination .pagination .page-link:hover {
-    background: #ed2a26;
-    border: 1px solid #ed2a26;
+    background: #009933;
+    border: 1px solid #009933;
     color: #fff !important;
     box-shadow: none;
 }
 
 .night-mode .main-p-pagination .pagination .page-link.active {
-    background: #ed2a26;
-    border: 1px solid #ed2a26;
+    background: #009933;
+    border: 1px solid #009933;
 }
 
 .night-mode .result_stitles {
