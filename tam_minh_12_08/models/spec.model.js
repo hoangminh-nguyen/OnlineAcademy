@@ -2,7 +2,7 @@ const db = require('../utils/db');
 
 module.exports = {
   async all() {
-    const sql = 'select cs.spec_id, cs.spec_name, ct.type_name from course_spec cs join course_type ct on cs.type_id=ct.type_id';
+    const sql = 'select cs.spec_id, cs.spec_name, ct.type_name, ct.type_id from course_spec cs join course_type ct on cs.type_id=ct.type_id';
     const [rows, fields] = await db.load(sql);
     return rows;
   },
@@ -25,6 +25,24 @@ module.exports = {
 
     return rows[0];
   },
+
+  async getType(id) {
+    const sql = `select ct.type_id, ct.type_name from course_type ct`;
+    const [rows, fields] = await db.load(sql);
+    if (rows.length === 0)
+      return null;
+    return rows;
+  },
+  async getSpecbyType(typeid) {
+    const sql = `select cs.spec_id, cs.spec_name from course_spec cs where cs.type_id = ${typeid}`;
+    const [rows, fields] = await db.load(sql);
+    if (rows.length === 0)
+      return null;
+    return rows;
+  },
+
+
+
 
   async add(category) {
     const [result, fields] = await db.add(category, 'course_spec');

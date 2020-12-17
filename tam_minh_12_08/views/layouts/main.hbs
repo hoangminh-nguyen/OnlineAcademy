@@ -192,17 +192,20 @@
               <span class="menu--label">Categories</span>
             </label>
             {{!-- cat level 1 --}}
+            {{#each this.cate_spec}}
             <ul class="sub_menu">
               <li class="sub_menu--item">
-                <a href="about_us.html" class="sub_menu--link" style="font-weight: bold; font-size: 11pt"><i class="fas fa-caret-right"></i> Type_name</a>
+                <a href="about_us.html" class="sub_menu--link" style="font-weight: bold; font-size: 11pt"><i class="fas fa-caret-right"></i> {{name}}</a>
                 
                 {{!-- cat level 2 --}}
-                <a href="about_us.html" class="sub_menu--link offset-md-1"><i class="far fa-circle" style="font-size: 6pt; vertical-align: middle;"></i> Spec_name 1</a>
-                <a href="about_us.html" class="sub_menu--link offset-md-1"><i class="far fa-circle" style="font-size: 6pt; vertical-align: middle;"></i> Spec_name 2</a>
+                {{#each spec}}
+                <a href="about_us.html" class="sub_menu--link offset-md-1"><i class="far fa-circle" style="font-size: 6pt; vertical-align: middle;"></i> {{spec_name}}</a>
+                {{/each}}
                 {{!-- cat level 2 --}}
               </li>
             </ul>
             {{!-- cat level 1 --}}
+            {{/each}}
           </li>
           <li class="menu--item">
             <a href="saved_courses.html" class="menu--link" title="Saved Courses">
@@ -515,15 +518,6 @@
   </footer>
   <!-- Footer End -->
 
-
-  <script>
-    function calDiscount() {
-      var discount = document.querySelectorAll(#discount);
-      var oldprice = document.querySelectorAll(#oldprice);
-      var newprice = document.querySelectorAll(#newprice);
-      for (let i = 0; i < discount.k)
-    }
-  </script>
   <script src="/js/vertical-responsive-menu.min.js"></script>
   <script src="/js/jquery-3.3.1.min.js"></script>
   <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
