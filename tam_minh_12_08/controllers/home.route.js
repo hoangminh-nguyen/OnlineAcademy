@@ -9,19 +9,6 @@ router.get('/', async function (req, res, next) {
     var viewed = await courseModel.topTenViewed();
     var rating = await courseModel.topFiveRating();
 
-    var cate_spec=[];
-    var type = await specModel.getType();
-    for (let index = 0; index < type.length; index++) {
-        let spec = await specModel.getSpecbyType(type[index].type_id);
-        console.log(spec)
-        cate_spec.push({
-            name: type[index].type_name,
-            id: type[index].type_id,
-            spec:spec
-         })
-        
-    }
-    console.log(cate_spec);
 
     for (let i = 0; i < newest.length; i++) {
         var newprice = (newest[i].price * (100 - newest[i].discount) / 100);
@@ -38,16 +25,12 @@ router.get('/', async function (req, res, next) {
         viewed[i]["newprice"] = newprice;
     }
 
-
-
     res.render('home', {
-        cate_spec,
         newest: newest,
         viewed: viewed,
         rating: rating,
     });
 
-    console.log(newest);
 });
 
 module.exports = router;

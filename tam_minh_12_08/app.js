@@ -13,7 +13,7 @@ app.use(express.urlencoded({
 app.use(express.static('public'));
 
 require('./middlewares/view.mdw')(app);
-//require('./middlewares/locals.mdw')(app);
+require('./middlewares/locals.mdw')(app);
 require('./middlewares/routes.mdw')(app);
 
 app.use(function (err, req, res, next) {

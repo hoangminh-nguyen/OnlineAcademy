@@ -1,8 +1,20 @@
-const categoryModel = require('../models/spec.model');
+const specModel = require('../models/spec.model');
 
 module.exports = function (app) {
     app.use(async function (req, res, next) {
-        res.locals.lcCategories = await categoryModel.allWithDetails();
+        var cate_spec=[];
+        var type = await specModel.getType();
+        for (let index = 0; index < type.length; index++) {
+            let spec = await specModel.getSpecbyType(type[index].type_id);
+            console.log(spec);
+            cate_spec.push({
+                name: type[index].type_name,
+                id: type[index].type_id,
+                spec: spec
+            })
+        }
+        res.locals.lcSpec = cate_spec;
         next();
     });
+
 }
