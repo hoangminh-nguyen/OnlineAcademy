@@ -7,12 +7,29 @@ module.exports = {
     return rows;
   },
 
+  async allChapterbyID(course_id) {
+    const sql = `select * from course_chapter cc where cc.course_id = ${course_id}`;
+    const [rows, fields] = await db.load(sql);
+    return rows;
+  },
 
   async allBySpec(spec_id) {
     const sql = `select * from course where spec=${spec_id}`;
     const [rows, fields] = await db.load(sql);
     return rows;
   },
+
+  async allByTypeName(type__name) {
+    const sql = `select * from course co join course_type ct on co.type=ct.type_id where ct.type_name = '${type__name}'`;
+    const [rows, fields] = await db.load(sql);
+    return rows;
+  },
+  async allBySpecName(spec__name) {
+    const sql = `select * from course co join course_spec cs on (co.type=cs.type_id and co.spec=cs.spec_id) where cs.spec_name= '${spec__name}'`;
+    const [rows, fields] = await db.load(sql);
+    return rows;
+  },
+
 
   async single(course_id) {
     const sql = `select * from course co left join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id  join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id join course_detail cd on co.course_id = cd.course_id where co.course_id = ${course_id};`;

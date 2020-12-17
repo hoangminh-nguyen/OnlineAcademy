@@ -197,13 +197,11 @@
             <ul class="sub_menu">
               <li class="sub_menu--item">
 
-                <a href="about_us.html" class="sub_menu--link" style="font-weight: bold; font-size: 11pt"><i class="fas fa-caret-right"></i> {{name}}</a>
-                
+                <a href="/courses/{{name}}" class="sub_menu--link" style="font-weight: bold; font-size: 11pt"><i class="fas fa-caret-right"></i> {{name}}</a>
                 {{!-- cat level 2 --}}
                 {{#each spec}}
-                <a href="about_us.html" class="sub_menu--link offset-md-1"><i class="far fa-circle" style="font-size: 6pt; vertical-align: middle;"></i> {{spec_name}}</a>
+                <a href="/courses/{{name}}/{{spec_name}}" class="sub_menu--link offset-md-1"><i class="far fa-circle" style="font-size: 6pt; vertical-align: middle;"></i> {{spec_name}}</a>
                 {{/each}}
-
                 {{!-- cat level 2 --}}
               </li>
             </ul>

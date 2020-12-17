@@ -6,7 +6,6 @@ module.exports = function (app) {
         var type = await specModel.getType();
         for (let index = 0; index < type.length; index++) {
             let spec = await specModel.getSpecbyType(type[index].type_id);
-            console.log(spec);
             cate_spec.push({
                 name: type[index].type_name,
                 id: type[index].type_id,
