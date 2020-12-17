@@ -6,6 +6,7 @@ const router = express.Router();
 router.get('/detail/:id', async function (req, res, next) {
     const course_id = +req.params.id;
     const course = await courseModel.single(course_id);
+    const review = await courseModel.allReviewByID(course_id);
     if (course === null) {
         return res.redirect('/');
     }
@@ -21,8 +22,22 @@ router.get('/detail/:id', async function (req, res, next) {
 
     res.render('vwCourses/detail', {
         course: course,
-        register: register
+        spec_name: course["spec_name"],
+        register: register,
+        review: review
     });
+})
+
+router.get('/all', async (req, res) => {
+    var all = await courseModel.all();
+    for (let i = 0; i < all.length; i++) {
+        var newprice = (all[i].price * (100 - all[i].discount) / 100);
+        all[i]["newprice"] = newprice;
+    }
+
+    res.render('vwCourses/all',{ 
+        course: all
+    })
 })
 
 module.exports = router;

@@ -102,6 +102,7 @@ Night Mood
     background: rgba(255, 255, 255, 0.15)!important;
     border: 0 !important;
     color: #393939 !important;
+    width : 100px;
 }
 
 .night-mode i.icon1 {
@@ -134,8 +135,8 @@ Night Mood
 }
 
 .night-mode .upload_btn:hover {
-    color: #fff !important;
-    background: #cc6f22 !important;
+    color: rgb(0, 0, 0) !important;
+    background: #f3aa3d !important;
 }
 
 .night-mode .menu.dropdown_ms {
@@ -453,7 +454,7 @@ Night Mood
 }
 
 .night-mode .btn1542 {
-    color: #fff !important;
+    color: rgb(0, 0, 0) !important;
 }
 
 .night-mode .fcrse_2 {
@@ -1384,7 +1385,7 @@ Night Mood
 }
 
 .night-mode .purchased_badge {
-    background: #fa8305;
+    background: #ff9800;
 }
 
 .night-mode .blogleft12 li {
@@ -1649,7 +1650,7 @@ Night Mood
 }
 
 .night-mode .course_active {
-    color: #fa8305;
+    color: #ff9800;
 }
 
 .night-mode .panel-title {
@@ -2121,7 +2122,7 @@ Night Mood
 .night-mode .responsive-tab.style-2.uk-active,
 .night-mode .responsive-tab .uk-active a,
 .night-mode .uk-tab>.uk-active>a{
-    color: white !important;
+    color: rgb(0, 0, 0) !important;
 }
  
 /* all borders  */ 
