@@ -30,7 +30,7 @@
 }
 
 .toggle_menu i:hover {
-    color: #009933;
+    color: #ff9800;
 }
 	
 .vertical_nav {
@@ -75,13 +75,13 @@
 }
 
 .menu--link:hover {
-	background: #f2ffec;
-	color: #009933 !important;
+	background: #ffecec;
+	color: #ff9800 !important;
 }
 
 .menu--link.active {
-	background: #f2ffec;
-	color: #009933;
+	background: #ffecec;
+	color: #ff9800;
 }
 
 .menu--item__has_sub_menu .menu--link:after {
@@ -95,7 +95,7 @@
 }
 
 .menu--subitens__opened {
-	background:#f2ffec;
+	background: #ffecec;
 }
 
 .menu--subitens__opened .menu--link {
@@ -119,7 +119,7 @@
 }
 
 .menu--link:hover,.menu--link:hover .menu--label {
-	background:#f2ffec;
+	background: #ffecec;
 }
 
 .menu--icon {
@@ -157,8 +157,8 @@
 }
 
 .sub_menu--link:hover {
-	color: #009933 !important;
-	background:#f2ffec;
+	color: #ff9800 !important;
+	background: #ffecec;
 }
 
 .sub_menu--link.active {
@@ -230,7 +230,7 @@
     height: 60px;
     padding: 0;
     border: 0;
-    background: #009933;
+    background: #ff9800;
     color: #fff;
     font-size: 30px;
     margin: 0;
@@ -240,7 +240,7 @@
 
 .collapse_menu:hover {
 	color: #fff;
-	background: #009933;
+	background: #af1f24;
 }
 
 .collapse_menu .collapse_menu--icon {
