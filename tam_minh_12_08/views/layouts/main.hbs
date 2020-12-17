@@ -187,7 +187,7 @@
           </li>
 
           {{!-- CATEGORY --}}
-           <li class="menu--item  menu--item__has_sub_menu">
+          <li class="menu--item  menu--item__has_sub_menu">
             <label class="menu--link" title="Tests">
               <i class='uil uil-clipboard-alt menu--icon'></i>
               <span class="menu--label">Categories</span>
@@ -197,10 +197,12 @@
             <ul class="sub_menu">
               <li class="sub_menu--item">
 
-                <a href="/courses/{{name}}" class="sub_menu--link" style="font-weight: bold; font-size: 11pt"><i class="fas fa-caret-right"></i> {{name}}</a>
+                <a href="/courses/{{name}}" class="sub_menu--link" style="font-weight: bold; font-size: 11pt"><i
+                    class="fas fa-caret-right"></i> {{name}}</a>
                 {{!-- cat level 2 --}}
                 {{#each spec}}
-                <a href="/courses/{{name}}/{{spec_name}}" class="sub_menu--link offset-md-1"><i class="far fa-circle" style="font-size: 6pt; vertical-align: middle;"></i> {{spec_name}}</a>
+                <a href="/courses/{{../name}}/{{spec_name}}" class="sub_menu--link offset-md-1"><i class="far fa-circle"
+                    style="font-size: 6pt; vertical-align: middle;"></i> {{spec_name}}</a>
                 {{/each}}
                 {{!-- cat level 2 --}}
               </li>
