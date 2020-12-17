@@ -239,8 +239,8 @@
 }
 
 .collapse_menu:hover {
-	color: #fff;
-	background: #1faf2b;
+	color: rgb(0, 0, 0);
+	background: #f3aa3d;
 }
 
 .collapse_menu .collapse_menu--icon {
