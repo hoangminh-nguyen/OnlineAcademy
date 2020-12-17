@@ -28,6 +28,8 @@ router.get('/', async function (req, res, next) {
         viewed: viewed,
         rating: rating,
     });
+
+    console.log(newest);
 });
 
 module.exports = router;

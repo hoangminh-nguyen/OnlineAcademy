@@ -11,8 +11,12 @@ module.exports = function (app) {
             },
 
             format_date(val) {
-                return moment(val).format('lll')
-            }
+                return moment(val).format('lll');
+            },
+
+            format_date_diff(val) {
+                return moment(val).fromNow();
+            },
         }
     }));
     app.set('view engine', 'hbs');
