@@ -24,7 +24,8 @@ router.get('/detail/:id', async function (req, res, next) {
         course: course,
         spec_name: course["spec_name"],
         register: register,
-        review: review
+        review: review,
+        full_info: course["full_info"],
     });
 })
 
@@ -35,7 +36,7 @@ router.get('/all', async (req, res) => {
         all[i]["newprice"] = newprice;
     }
 
-    res.render('vwCourses/all',{ 
+    res.render('vwCourses/all',{
         course: all
     })
 })
