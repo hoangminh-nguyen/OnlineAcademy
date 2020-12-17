@@ -54,7 +54,8 @@
                                         </div>
                                         <a href="/courses/detail/{{course_id}}" class="crse14s"
                                             style="height: 50px;">{{name}}</a>
-                                        <a href="#" class="crse-cate">{{type_name}} | {{spec_name}}</a>
+                                        <a href="/courses/{{type_name}}/{{spec_name}}" class="crse-cate">{{type_name}} |
+                                            {{spec_name}}</a>
                                         <div class="auth1lnkprce">
                                             <p class="cr1fot">By <a href="#">{{fname}} {{lname}}</a></p>
                                             {{#if discount}}
@@ -78,5 +79,28 @@
                 </div>
 
             </div>
+
+            <nav>
+                <ul class="pagination">
+                    {{#each this.page_numbers}}
+                    {{#if isCurrentPage}}
+                    <li class="page-item active pagination-lg">
+                        <a class="page-link" href="javascript:;">{{value}}</a>
+                    </li>
+                    {{else}}
+                    <li class="page-item pagination-lg">
+                        <a class="page-link" href="?page={{value}}">{{value}}</a>
+                    </li>
+                    {{/if}}
+                    {{/each}}
+                    <li class="page-item pagination-lg">
+                        <a class="page-link" href="?page={{this.next_page}}">
+                            <span style="margin-right: 5px;">Next</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
+</div>

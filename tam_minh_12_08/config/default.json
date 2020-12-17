@@ -8,5 +8,8 @@
     "waitForConnections": true,
     "connectionLimit": 50,
     "queueLimit": 0
+  },
+  "paginate": {
+    "limit": 6
   }
 }
