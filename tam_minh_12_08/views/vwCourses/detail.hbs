@@ -160,7 +160,7 @@
 
     </div>
   </div>
-
+  {{/with}}
 
   <div class="_215b17">
     <div class="container-fluid">
@@ -1707,12 +1707,14 @@
                         </div>
                       </div>
                       <div class="review_all120">
+
+                        {{#each this.review}}
                         <div class="review_item">
                           <div class="review_usr_dt">
-                            <img src="images/left-imgs/img-1.jpg" alt="">
+                            <img src="{{link_ava_student}}" alt="">
                             <div class="rv1458">
-                              <h4 class="tutor_name1">John Doe</h4>
-                              <span class="time_145">2 hour ago</span>
+                              <h4 class="tutor_name1">{{fname}} {{lname}}</h4>
+                              <span class="time_145">{{format_date_diff comment_date}}</span>
                             </div>
                           </div>
                           <div class="rating-box mt-20">
@@ -1722,9 +1724,7 @@
                             <span class="rating-star full-star"></span>
                             <span class="rating-star half-star"></span>
                           </div>
-                          <p class="rvds10">Nam gravida elit a velit rutrum, eget dapibus ex elementum. Interdum et
-                            malesuada fames ac ante ipsum primis in faucibus. Fusce lacinia, nunc sit amet tincidunt
-                            venenatis.</p>
+                          <p class="rvds10">{{comment}}</p>
                           <div class="rpt100">
                             <span>Was this review helpful?</span>
                             <div class="radio--group-inline-container">
@@ -1740,138 +1740,8 @@
                             <a href="#" class="report145">Report</a>
                           </div>
                         </div>
-                        <div class="review_item">
-                          <div class="review_usr_dt">
-                            <img src="images/left-imgs/img-2.jpg" alt="">
-                            <div class="rv1458">
-                              <h4 class="tutor_name1">Jassica William</h4>
-                              <span class="time_145">12 hour ago</span>
-                            </div>
-                          </div>
-                          <div class="rating-box mt-20">
-                            <span class="rating-star full-star"></span>
-                            <span class="rating-star full-star"></span>
-                            <span class="rating-star full-star"></span>
-                            <span class="rating-star full-star"></span>
-                            <span class="rating-star empty-star"></span>
-                          </div>
-                          <p class="rvds10">Nam gravida elit a velit rutrum, eget dapibus ex elementum. Interdum et
-                            malesuada fames ac ante ipsum primis in faucibus. Fusce lacinia, nunc sit amet tincidunt
-                            venenatis.</p>
-                          <div class="rpt100">
-                            <span>Was this review helpful?</span>
-                            <div class="radio--group-inline-container">
-                              <div class="radio-item">
-                                <input id="radio-3" name="radio1" type="radio">
-                                <label for="radio-3" class="radio-label">Yes</label>
-                              </div>
-                              <div class="radio-item">
-                                <input id="radio-4" name="radio1" type="radio">
-                                <label for="radio-4" class="radio-label">No</label>
-                              </div>
-                            </div>
-                            <a href="#" class="report145">Report</a>
-                          </div>
-                        </div>
-                        <div class="review_item">
-                          <div class="review_usr_dt">
-                            <img src="images/left-imgs/img-3.jpg" alt="">
-                            <div class="rv1458">
-                              <h4 class="tutor_name1">Albert Dua</h4>
-                              <span class="time_145">5 days ago</span>
-                            </div>
-                          </div>
-                          <div class="rating-box mt-20">
-                            <span class="rating-star full-star"></span>
-                            <span class="rating-star full-star"></span>
-                            <span class="rating-star full-star"></span>
-                            <span class="rating-star half-star"></span>
-                            <span class="rating-star empty-star"></span>
-                          </div>
-                          <p class="rvds10">Nam gravida elit a velit rutrum, eget dapibus ex elementum. Interdum et
-                            malesuada fames ac ante ipsum primis in faucibus. Fusce lacinia, nunc sit amet tincidunt
-                            venenatis.</p>
-                          <div class="rpt100">
-                            <span>Was this review helpful?</span>
-                            <div class="radio--group-inline-container">
-                              <div class="radio-item">
-                                <input id="radio-5" name="radio2" type="radio">
-                                <label for="radio-5" class="radio-label">Yes</label>
-                              </div>
-                              <div class="radio-item">
-                                <input id="radio-6" name="radio2" type="radio">
-                                <label for="radio-6" class="radio-label">No</label>
-                              </div>
-                            </div>
-                            <a href="#" class="report145">Report</a>
-                          </div>
-                        </div>
-                        <div class="review_item">
-                          <div class="review_usr_dt">
-                            <img src="images/left-imgs/img-4.jpg" alt="">
-                            <div class="rv1458">
-                              <h4 class="tutor_name1">Zoena Singh</h4>
-                              <span class="time_145">15 days ago</span>
-                            </div>
-                          </div>
-                          <div class="rating-box mt-20">
-                            <span class="rating-star full-star"></span>
-                            <span class="rating-star full-star"></span>
-                            <span class="rating-star full-star"></span>
-                            <span class="rating-star full-star"></span>
-                            <span class="rating-star full-star"></span>
-                          </div>
-                          <p class="rvds10">Nam gravida elit a velit rutrum, eget dapibus ex elementum. Interdum et
-                            malesuada fames ac ante ipsum primis in faucibus. Fusce lacinia, nunc sit amet tincidunt
-                            venenatis.</p>
-                          <div class="rpt100">
-                            <span>Was this review helpful?</span>
-                            <div class="radio--group-inline-container">
-                              <div class="radio-item">
-                                <input id="radio-7" name="radio3" type="radio">
-                                <label for="radio-7" class="radio-label">Yes</label>
-                              </div>
-                              <div class="radio-item">
-                                <input id="radio-8" name="radio3" type="radio">
-                                <label for="radio-8" class="radio-label">No</label>
-                              </div>
-                            </div>
-                            <a href="#" class="report145">Report</a>
-                          </div>
-                        </div>
-                        <div class="review_item">
-                          <div class="review_usr_dt">
-                            <img src="images/left-imgs/img-5.jpg" alt="">
-                            <div class="rv1458">
-                              <h4 class="tutor_name1">Joy Dua</h4>
-                              <span class="time_145">20 days ago</span>
-                            </div>
-                          </div>
-                          <div class="rating-box mt-20">
-                            <span class="rating-star full-star"></span>
-                            <span class="rating-star full-star"></span>
-                            <span class="rating-star full-star"></span>
-                            <span class="rating-star empty-star"></span>
-                            <span class="rating-star empty-star"></span>
-                          </div>
-                          <p class="rvds10">Nam gravida elit a velit rutrum, eget dapibus ex elementum. Interdum et
-                            malesuada fames ac ante ipsum primis in faucibus. Fusce lacinia, nunc sit amet tincidunt
-                            venenatis.</p>
-                          <div class="rpt100">
-                            <span>Was this review helpful?</span>
-                            <div class="radio--group-inline-container">
-                              <div class="radio-item">
-                                <input id="radio-9" name="radio4" type="radio">
-                                <label for="radio-9" class="radio-label">Yes</label>
-                              </div>
-                              <div class="radio-item">
-                                <input id="radio-10" name="radio4" type="radio">
-                                <label for="radio-10" class="radio-label">No</label>
-                              </div>
-                            </div>
-                            <a href="#" class="report145">Report</a>
-                          </div>
-                        </div>
+                        {{/each}}
+
                         <div class="review_item">
                           <a href="#" class="more_reviews">See More Reviews</a>
                         </div>
@@ -1901,11 +1771,11 @@
       {{!-- Top 5 highlighted courses (rate cao nhất) --}}
 
       <div class="section3125">
-        <h4 class="item_title">Bestseller in {{spec_name}}</h4>
+        <h4 class="item_title">Bestseller in {{this.spec_name}}</h4>
         <a href="#" class="see150">See all</a>
         <div class="la5lo1">
           <div class="owl-carousel featured_courses owl-theme">
-            {{/with}}
+
             {{!-- Mẫu courses --}}
 
             {{#each this.register}}
@@ -1961,7 +1831,7 @@
             {{/each}}
 
 
-            {{!--  --}}
+            {{!-- --}}
 
           </div>
         </div>
