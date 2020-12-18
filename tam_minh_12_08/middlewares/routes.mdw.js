@@ -13,6 +13,7 @@ module.exports = function (app) {
     app.use('/', require('../controllers/home.route'));
     app.use('/courses/', require('../controllers/courses.route'));
 
+    app.use('/account/', require('../controllers/account.route'));
     app.get('/err', function (req, res) {
         throw new Error('Error!');
     });
