@@ -11,7 +11,7 @@ use OnlineAcademy;
 create table Account
 (
 	email varchar(40),
-	password varchar(40),
+	password varchar(255),
     mode int,
 	constraint PK_Ac primary key (email)
 );
@@ -33,8 +33,8 @@ create table Student
 	student_id int NOT NULL AUTO_INCREMENT,
 	fname varchar(40),
 	lname varchar(40),
-    email varchar(40),
-    link_ava_student varchar(500),
+    	email varchar(40),
+    	link_ava_student varchar(500),
 	constraint PK_St primary key (student_id)
 );
 
@@ -42,7 +42,7 @@ create table Stu_watchlist
 (
 	student_id int,
 	course_id int,
-    constraint PK_St_Wa primary key (student_id, course_id)
+    	constraint PK_St_Wa primary key (student_id, course_id)
 );
 
 create table Stu_registerlist
@@ -101,8 +101,9 @@ create table Course_type
 create table Course_spec
 (
 	spec_id int NOT NULL AUTO_INCREMENT,
-    type_id int,
-    spec_name varchar(40),
+    	type_id int,
+    	spec_name varchar(40),
+	icon varchar(100),
     constraint PK_Co_Sp primary key (spec_id, type_id)
 );
 
@@ -220,10 +221,10 @@ insert into Course_type values (null, 'IT & Software');
 insert into Course_type values (null, 'Design');
 
 -- Course spec
-insert into Course_spec values (null, 1, 'Software Engineering');
-insert into Course_spec values (null, 1, 'Operating Systems');
-insert into Course_spec values (null, 2, 'Graphic Design');
-insert into Course_spec values (null, 2, 'Interior Design');
+insert into Course_spec values (null, 1, 'Software Engineering','<i class="fas fa-laptop-code"></i>');
+insert into Course_spec values (null, 1, 'Operating Systems','<i class="fab fa-windows"></i>');
+insert into Course_spec values (null, 2, 'Graphic Design','<i class="fas fa-ruler"></i>');
+insert into Course_spec values (null, 2, 'Interior Design','<i class="fas fa-couch"></i>');
 
 -- Course
 insert into Course values(null, 'Introduction to CSS', 20, 0, 1, 1, '2020-12-01 00:00:00', 25, 'https://www.dammio.com/wp-content/uploads/2019/08/CSS3.png', 1);

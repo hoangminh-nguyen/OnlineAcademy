@@ -80,21 +80,21 @@
 
             </div>
 
-            <nav>
+            <nav class="navbar-page">
                 <ul class="pagination">
                     {{#each this.page_numbers}}
                     {{#if isCurrentPage}}
-                    <li class="page-item active pagination-lg">
-                        <a class="page-link" href="javascript:;">{{value}}</a>
+                    <li class="page-item active pagination-lg ">
+                        <a class="page-link active-item" style="color :rgb(0, 0, 0) !important;" href="javascript:;">{{value}}</a>
                     </li>
                     {{else}}
-                    <li class="page-item pagination-lg">
-                        <a class="page-link" href="?page={{value}}">{{value}}</a>
+                    <li class="page-item pagination-lg ">
+                        <a class="page-link non-active-item" style="color :rgb(255, 255, 255) !important;" href="?page={{value}}">{{value}}</a>
                     </li>
                     {{/if}}
                     {{/each}}
                     <li class="page-item pagination-lg">
-                        <a class="page-link" href="?page={{this.next_page}}">
+                        <a style="color :#ff9800 !important; " class="page-link next-button"  href="?page={{this.next_page}}">
                             <span style="margin-right: 5px;">Next</span>
                             <i class="fas fa-chevron-right"></i>
                         </a>

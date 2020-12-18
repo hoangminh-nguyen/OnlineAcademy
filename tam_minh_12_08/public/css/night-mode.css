@@ -2122,7 +2122,7 @@ Night Mood
 .night-mode .responsive-tab.style-2.uk-active,
 .night-mode .responsive-tab .uk-active a,
 .night-mode .uk-tab>.uk-active>a{
-    color: rgb(0, 0, 0) !important;
+    color: #fff !important;
 }
  
 /* all borders  */ 
