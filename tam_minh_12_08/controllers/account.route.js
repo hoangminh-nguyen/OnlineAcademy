@@ -2,7 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const moment = require('moment');
 const userModel = require('../models/account.model');
-//const auth = require('../middlewares/auth.mdw');
+const auth = require('../middlewares/auth.mdw');
 
 const router = express.Router();
 
@@ -10,13 +10,13 @@ const router = express.Router();
 //   res.render('vwAccount/profile');
 // })
 
-router.get('/sign_up', function (req, res, next) {
-  res.render('vwAccount/sign_up',{
+router.get('/signup', function (req, res, next) {
+  res.render('vwAccount/signup',{
     layout: false
   });
 })
 
-router.post('/sign_up', async function (req, res, next) {
+router.post('/signup', async function (req, res, next) {
   const hash = bcrypt.hashSync(req.body.password, 10);
   const user = {
     password: hash,
@@ -28,10 +28,11 @@ router.post('/sign_up', async function (req, res, next) {
     fname: req.body.fname,
     lname: req.body.lname,
     email: req.body.emailaddress,
+    link_ava_student: "https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png",
   }
   await userModel.add(user);
   await userModel.addStudent(student);
-  res.redirect("/");
+  res.redirect("/account/login");
 })
 
 router.get('/is-available', async function (req, res) {
@@ -45,43 +46,52 @@ router.get('/is-available', async function (req, res) {
   res.json(false);
 })
 
-// router.get('/login', function (req, res) {
-//   res.render('vwAccount/login', {
-//     layout: false
-//   });
-// })
+router.get('/login', function (req, res) {
+  res.render('vwAccount/login', {
+    layout: false
+  });
+})
 
-// router.post('/login', async function (req, res) {
-//   const user = await userModel.singleByUserName(req.body.username);
-//   if (user === null) {
-//     return res.render('vwAccount/login', {
-//       layout: false,
-//       err_message: 'Invalid username.'
-//     });
-//   }
+router.post('/login', async function (req, res) {
+  const user = await userModel.single(req.body.email);
+  if (user === null) {
+    return res.render('vwAccount/login', {
+      layout: false,
+      err_message: 'Email does not match any account.'
+    });
+  }
 
-//   const ret = bcrypt.compareSync(req.body.password, user.password);
-//   if (ret === false) {
-//     return res.render('vwAccount/login', {
-//       layout: false,
-//       err_message: 'Invalid password.'
-//     });
-//   }
+  const ret = bcrypt.compareSync(req.body.password, user.password);
+  if (ret === false) {
+    console.log('wrong password');
+    return res.render('vwAccount/login', {
+      layout: false,
+      err_message: 'Invalid password.'
+    });
+  }
+  //Lấy thông tin người dùng
+  var userInfo;
+  if (user.mode == 2){
+    userInfo = await userModel.studentInfo(user.email);
+  }
+  else if (user.mode == 1){
+    userInfo = await userModel.teacherInfo(user.email);
+  }
 
-//   req.session.auth = true;
-//   req.session.authUser = user;
+  req.session.auth = true;
+  req.session.authUser = userInfo;
 
-//   const url = req.session.retUrl || '/';
-//   res.redirect(url);
-// })
+  const url = req.session.retUrl || '/';
+  res.redirect(url);
+})
 
-// router.post('/logout', async function (req, res) {
-//   req.session.auth = false;
-//   req.session.authUser = null;
-//   req.session.retUrl = null;
+router.post('/logout', async function (req, res) {
+  req.session.auth = false;
+  req.session.authUser = null;
+  req.session.retUrl = null;
 
-//   const url = req.headers.referer || '/';
-//   res.redirect(url);
-// })
+  const url = req.headers.referer || '/';
+  res.redirect(url);
+})
 
 module.exports = router;
