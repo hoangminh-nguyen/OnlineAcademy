@@ -11,12 +11,18 @@ const router = express.Router();
 // })
 
 router.get('/signup', function (req, res, next) {
+  if(req.session.auth === true){
+    return res.redirect('/');
+  }
   res.render('vwAccount/signup',{
     layout: false
   });
 })
 
 router.post('/signup', async function (req, res, next) {
+  if(req.session.auth === true){
+    return res.redirect('/');
+  }
   const hash = bcrypt.hashSync(req.body.password, 10);
   const user = {
     password: hash,
@@ -32,7 +38,7 @@ router.post('/signup', async function (req, res, next) {
   }
   await userModel.add(user);
   await userModel.addStudent(student);
-  res.redirect("/account/login");
+  res.redirect('/account/login');
 })
 
 router.get('/is-available', async function (req, res) {
@@ -47,6 +53,9 @@ router.get('/is-available', async function (req, res) {
 })
 
 router.get('/login', function (req, res) {
+  if(req.session.auth === true){
+    return res.redirect('/');
+  }
   res.render('vwAccount/login', {
     layout: false
   });
@@ -63,7 +72,6 @@ router.post('/login', async function (req, res) {
 
   const ret = bcrypt.compareSync(req.body.password, user.password);
   if (ret === false) {
-    console.log('wrong password');
     return res.render('vwAccount/login', {
       layout: false,
       err_message: 'Invalid password.'
@@ -71,16 +79,15 @@ router.post('/login', async function (req, res) {
   }
   //Lấy thông tin người dùng
   var userInfo;
-  if (user.mode == 2){
+  if (user.mode === 2){
     userInfo = await userModel.studentInfo(user.email);
   }
-  else if (user.mode == 1){
+  else if (user.mode === 1){
     userInfo = await userModel.teacherInfo(user.email);
   }
 
   req.session.auth = true;
   req.session.authUser = userInfo;
-
   const url = req.session.retUrl || '/';
   res.redirect(url);
 })
@@ -89,7 +96,6 @@ router.post('/logout', async function (req, res) {
   req.session.auth = false;
   req.session.authUser = null;
   req.session.retUrl = null;
-
   const url = req.headers.referer || '/';
   res.redirect(url);
 })

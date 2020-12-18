@@ -19,7 +19,6 @@ router.get('/detail/:id', async function (req, res, next) {
     register = discount.calcCourses(register);
 
     course["newprice"] = discount.calc(course);
-    console.log(chapter);
 
     res.render('vwCourses/detail', {
         course: course,

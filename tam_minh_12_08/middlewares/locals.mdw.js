@@ -15,6 +15,7 @@ module.exports = function (app) {
         res.locals.lcSpec = cate_spec;
         next();
     });
+    
     app.use(function (req, res, next) {
         if (typeof (req.session.auth) === 'undefined') {
           req.session.auth = false;
