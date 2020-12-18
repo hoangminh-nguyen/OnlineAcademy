@@ -9,6 +9,8 @@ router.get('/', async function (req, res, next) {
     var newest = await courseModel.topTenNewest();
     var viewed = await courseModel.topTenViewed();
     var rating = await courseModel.topFiveRating();
+    const spec = await specModel.getSpecMostStuReLast7Days();
+    //const spec = await specModel.test();
 
     newest = discount.calcCourses(newest);
     viewed = discount.calcCourses(viewed);
@@ -18,6 +20,7 @@ router.get('/', async function (req, res, next) {
         newest: newest,
         viewed: viewed,
         rating: rating,
+        spec: spec,
     });
 
 });

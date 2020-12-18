@@ -250,14 +250,10 @@
                 <h4>Top IT Fields</h4>
               </div>
               <ul class="allcate15">
-                <li><a href="#" class="ct_item"><i class='uil uil-arrow'></i>Development</a></li>
-                <li><a href="#" class="ct_item"><i class='uil uil-graph-bar'></i>Business</a></li>
-                <li><a href="#" class="ct_item"><i class='uil uil-monitor'></i>IT and Software</a></li>
-                <li><a href="#" class="ct_item"><i class='uil uil-ruler'></i>Design</a></li>
-                <li><a href="#" class="ct_item"><i class='uil uil-chart-line'></i>Marketing</a></li>
-                <li><a href="#" class="ct_item"><i class='uil uil-book-open'></i>Personal Development</a></li>
-                <li><a href="#" class="ct_item"><i class='uil uil-camera'></i>Photography</a></li>
-                <li><a href="#" class="ct_item"><i class='uil uil-music'></i>Music</a></li>
+
+                {{#each this.spec}}
+                  <li><a href="#" class="ct_item">{{{icon}}} {{spec_name}}</a></li>
+                {{/each}}
               </ul>
             </div>
             <div class="get1452">

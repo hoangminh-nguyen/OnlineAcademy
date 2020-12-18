@@ -738,6 +738,10 @@ i.icon1 {
 .non-active-item:hover{ 
     background-color: rgb(97, 97, 97) !important;
 }
+/* 
+.fas {
+    margin: 0px 0px 15px 15px ;
+} */
 
 .next-button{
     background-color: #000 !important; 

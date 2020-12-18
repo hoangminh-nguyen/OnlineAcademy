@@ -23,6 +23,12 @@ module.exports = {
     return rows;
   },
 
+  async test() {
+    const sql = 'select * from course_spec';
+    const [rows, fields] = await db.load(sql);
+    return rows;
+  },
+
   async getSpecbyType(typeid) {
     const sql = `select cs.spec_id, cs.spec_name from course_spec cs where cs.type_id = ${typeid}`;
     const [rows, fields] = await db.load(sql);
@@ -31,7 +37,13 @@ module.exports = {
     return rows;
   },
 
-
+  async getSpecMostStuReLast7Days() {
+    const sql = `select * from course_spec cs join (select co.spec, count(st.student_id) as numberStu from stu_registerlist st join course co on st.course_id = co.course_id  where st.register_date between (CURDATE() - INTERVAL 7 DAY ) and CURDATE() group by co.spec) re on cs.spec_id = re.spec limit 5`;
+    const [rows, fields] = await db.load(sql);
+    if (rows.length === 0)
+      return null;
+    return rows;
+  },
 
 
   async add(category) {
