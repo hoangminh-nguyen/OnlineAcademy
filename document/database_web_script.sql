@@ -52,6 +52,7 @@ create table Stu_registerlist
     register_date datetime,
     chap_num int,
     rating int,
+comment_date datetime,
     comment varchar(1000),
     constraint PK_St_Re primary key (student_id, course_id)
 );
@@ -287,19 +288,19 @@ insert into Stu_watchlist values(10, 3);
 insert into Stu_watchlist values(11, 3);
 
 -- Stu_registerlist
-insert into Stu_registerlist values(1, 1, '2020-12-03 00:00:00', 4, 4, 'Nice course, it helps me alot.');
-insert into Stu_registerlist values(1, 3, '2020-12-03 00:00:00', 2, 3, 'Not very helpful, i can search it on Youtube');
-insert into Stu_registerlist values(2, 4, '2020-12-08 00:00:00', 1, 5, 'Teacher is very attracive');
-insert into Stu_registerlist values(3, 2, '2020-12-03 00:00:00', 1, 4, 'Wonderful, go straight to the point, love it');
-insert into Stu_registerlist values(3, 4, '2020-12-07 00:00:00', 1, 5, 'Great Course');
-insert into Stu_registerlist values(4, 2, '2020-12-03 00:00:00', 1, 4, 'Good');
-insert into Stu_registerlist values(5, 5, '2020-12-09 00:00:00', 1, 4, 'Wonderful, go straight to the point, love it');
-insert into Stu_registerlist values(6, 6, '2020-12-08 00:00:00', 1, 5, 'Great Course');
-insert into Stu_registerlist values(7, 7, '2020-12-09 00:00:00', 1, 4, 'Good lectures');
-insert into Stu_registerlist values(8, 6, '2020-12-08 00:00:00', 1, 5, 'Great Course');
-insert into Stu_registerlist values(9, 7, '2020-12-09 00:00:00', 1, 4, 'Good lectures');
-insert into Stu_registerlist values(10, 6, '2020-12-08 00:00:00', 1, 5, 'Great Course');
-insert into Stu_registerlist values(11, 7, '2020-12-09 00:00:00', 1, 3, 'The sound is terrible but the course is OK');
-insert into Stu_registerlist values(12, 7, '2020-12-09 00:00:00', 1, 4, 'Good lectures');
-insert into Stu_registerlist values(13, 6, '2020-12-08 00:00:00', 1, 5, 'Excelent one');
-insert into Stu_registerlist values(14, 7, '2020-12-09 00:00:00', 1, 3, 'The course is OK');
+insert into Stu_registerlist values(1, 1, '2020-12-03 00:00:00', 4, 4,'2020-12-03 00:00:00', 'Nice course, it helps me alot.');
+insert into Stu_registerlist values(1, 3, '2020-12-03 00:00:00', 2, 3,'2020-12-03 00:00:00', 'Not very helpful, i can search it on Youtube');
+insert into Stu_registerlist values(2, 4, '2020-12-08 00:00:00', 1, 5,'2020-12-03 00:00:00', 'Teacher is very attracive');
+insert into Stu_registerlist values(3, 2, '2020-12-03 00:00:00', 1, 4,'2020-12-03 00:00:00', 'Wonderful, go straight to the point, love it');
+insert into Stu_registerlist values(3, 4, '2020-12-07 00:00:00', 1, 5,'2020-12-03 00:00:00', 'Great Course');
+insert into Stu_registerlist values(4, 2, '2020-12-03 00:00:00', 1, 4,'2020-12-03 00:00:00', 'Good');
+insert into Stu_registerlist values(5, 5, '2020-12-09 00:00:00', 1, 4,'2020-12-03 00:00:00', 'Wonderful, go straight to the point, love it');
+insert into Stu_registerlist values(6, 6, '2020-12-08 00:00:00', 1, 5,'2020-12-03 00:00:00', 'Great Course');
+insert into Stu_registerlist values(7, 7, '2020-12-09 00:00:00', 1, 4,'2020-12-03 00:00:00', 'Good lectures');
+insert into Stu_registerlist values(8, 6, '2020-12-08 00:00:00', 1, 5,'2020-12-03 00:00:00', 'Great Course');
+insert into Stu_registerlist values(9, 7, '2020-12-09 00:00:00', 1, 4,'2020-12-03 00:00:00', 'Good lectures');
+insert into Stu_registerlist values(10, 6, '2020-12-08 00:00:00', 1, 5,'2020-12-03 00:00:00', 'Great Course');
+insert into Stu_registerlist values(11, 7, '2020-12-09 00:00:00', 1, 3,'2020-12-03 00:00:00', 'The sound is terrible but the course is OK');
+insert into Stu_registerlist values(12, 7, '2020-12-09 00:00:00', 1, 4,'2020-12-03 00:00:00', 'Good lectures');
+insert into Stu_registerlist values(13, 6, '2020-12-08 00:00:00', 1, 5,'2020-12-03 00:00:00', 'Excelent one');
+insert into Stu_registerlist values(14, 7, '2020-12-09 00:00:00', 1, 3, '2020-12-03 00:00:00', 'The course is OK');
