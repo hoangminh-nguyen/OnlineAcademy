@@ -10,6 +10,7 @@
         text-align: left;
         outline: none;
         font-size: 15px;
+        font-weight: bold;
     }
 
     .cl_active,
@@ -34,7 +35,7 @@
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.2s ease-out;
-        background-color: #f1f1f1;
+        background-color: #000;
     }
 </style>
 {{/section}}
@@ -65,7 +66,7 @@
             <button type="button" class="type_collapsible">{{name}}</button>
             <div class="content">
                 <div class="card-body mt-10">
-                    <table class="table table-hover">
+                    <table class="table table-hover table-dark" style="background-color: #000 !important;">
                         <thead>
                             <tr>
                                 <th scope="col" style="width: 25%;">#</th>
@@ -81,7 +82,8 @@
                                 <td>{{spec_name}}</td>
                                 <td>{{{icon}}}</td>
                                 <td class="text-right">
-                                    <a name="" id="" class="btn btn-sm btn-primary" title="Edit Category"
+                                    <a name="" id="" class="btn btn-sm btn-outline-warning" title="Edit Category"
+                                        style="color: #ff9800 !important; background-color: #000 !important;  border-color:#ff9800 !important;"
                                         href="/admin/specifications/edit?spec_id={{spec_id}}" role="button">
                                         <i class="fa fa-pencil" aria-hidden="true"></i>
                                     </a>
@@ -90,8 +92,9 @@
                             {{/each}}
                         </tbody>
                     </table>
-                    <a class="btn btn-outline-success mt-10" href="/admin/specifications/add?type_id={{id}}"
-                        role="button">
+                    <a class="btn btn-outline-success mt-10"
+                        style="background-color: #000 !important; border-color:#ff9800 !important; color: #ff9800 !important; "
+                        href="/admin/specifications/add?type_id={{id}}" role="button">
                         <i class="fa fa-plus" aria-hidden="true" style="margin-right: 5px;"></i>
                         Add Specification
                     </a>
