@@ -29,6 +29,8 @@
   <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/vendor/semantic/semantic.min.css">
 
+  {{{_sections.css}}}
+
   <script>
     document.documentElement.className += ' night-mode';
   </script>
@@ -46,7 +48,7 @@
       <span class="collapse_menu--label"></span>
     </button>
     <div class="main_logo" id="logo">
-      
+
       <a href="/"><img class="logo-inverse" src="/images/ct_logo.svg" alt=""></a>
     </div>
     <div class="search120">
@@ -136,8 +138,8 @@
             <a class="vbm_btn" href="instructor_notifications.html">View All <i class='uil uil-arrow-right'></i></a>
           </div>
         </li>
-        
-        
+
+
         {{#if auth}}
         <li class="ui dropdown">
           <a href="#" class="opts_account">
@@ -205,8 +207,8 @@
                     class="fas fa-caret-right"></i> {{name}}</a>
                 {{!-- cat level 2 --}}
                 {{#each spec}}
-                <a href="/courses/{{../name}}/{{spec_name}}" class="sub_menu--link offset-md-1"><i class="far fa-circle"
-                    style="font-size: 6pt; vertical-align: middle;"></i> {{spec_name}}</a>
+                <a href="/courses/{{../name}}/{{spec_name}}" class="sub_menu--link offset-md-1"> {{{icon}}}
+                  <span style="margin-left: 5px;">{{spec_name}}</span></a>
                 {{/each}}
                 {{!-- cat level 2 --}}
               </li>
@@ -526,14 +528,6 @@
   <!-- Footer End -->
 
 
-  <script>
-    function calDiscount() {
-      var discount = document.querySelectorAll(#discount);
-      var oldprice = document.querySelectorAll(#oldprice);
-      var newprice = document.querySelectorAll(#newprice);
-      for (let i = 0; i < discount.k)
-    }
-  </script>
   <script src="/js/vertical-responsive-menu.min.js"></script>
   <script src="/js/jquery-3.3.1.min.js"></script>
   <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -542,6 +536,9 @@
   <script src="/js/custom.js"></script>
   <script src="/js/night-mode.js"></script>
   <script src="https://kit.fontawesome.com/03b4109405.js" crossorigin="anonymous"></script>
+
+  {{{_sections.js}}}
+
 </body>
 
 </html>

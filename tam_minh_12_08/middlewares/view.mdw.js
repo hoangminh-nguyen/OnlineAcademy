@@ -1,6 +1,5 @@
 const exphbs = require('express-handlebars');
 const numeral = require('numeral');
-
 const hbs_sections = require('express-handlebars-sections');
 const moment = require('moment')
 
@@ -9,7 +8,7 @@ module.exports = function (app) {
         defaultLayout: 'main.hbs',
         helpers: {
             section: hbs_sections(),
-            
+
             format_number(val) {
                 return numeral(val).format('0,0');
             },

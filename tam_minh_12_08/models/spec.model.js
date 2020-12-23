@@ -8,7 +8,7 @@ module.exports = {
   },
 
   async single(id) {
-    const sql = `select cs.spec_id, ct.type_id cs.spec_name, ct.type_name from course_spec cs join course_type ct on cs.type_id=ct.type_id where cs.spec_id = ${id}`;
+    const sql = `select cs.spec_id, ct.type_id, cs.spec_name, ct.type_name, cs.icon from course_spec cs join course_type ct on cs.type_id=ct.type_id where cs.spec_id = ${id}`;
     const [rows, fields] = await db.load(sql);
     if (rows.length === 0)
       return null;
@@ -30,7 +30,7 @@ module.exports = {
   },
 
   async getSpecbyType(typeid) {
-    const sql = `select cs.spec_id, cs.spec_name from course_spec cs where cs.type_id = ${typeid}`;
+    const sql = `select cs.spec_id, cs.spec_name, cs.icon from course_spec cs where cs.type_id = ${typeid}`;
     const [rows, fields] = await db.load(sql);
     if (rows.length === 0)
       return null;
@@ -38,7 +38,7 @@ module.exports = {
   },
 
   async getSpecMostStuReLast7Days() {
-    const sql = `select * from course_spec cs join (select co.spec, count(st.student_id) as numberStu from stu_registerlist st join course co on st.course_id = co.course_id  where st.register_date between (CURDATE() - INTERVAL 7 DAY ) and CURDATE() group by co.spec) re on cs.spec_id = re.spec limit 5`;
+    const sql = `select * from course_spec cs join (select co.spec, count(st.student_id) as numberStu from stu_registerlist st join course co on st.course_id = co.course_id  where st.register_date between (CURDATE() - INTERVAL 7 DAY ) and CURDATE() group by co.spec) re on cs.spec_id = re.spec join course_type ct on ct.type_id = cs.type_id limit 5`;
     const [rows, fields] = await db.load(sql);
     if (rows.length === 0)
       return null;
@@ -46,9 +46,8 @@ module.exports = {
   },
 
 
-  async add(category) {
-    const [result, fields] = await db.add(category, 'course_spec');
-    // console.log(result);
+  async add(spec) {
+    const [result, fields] = await db.add(spec, 'course_spec');
     return result;
   },
 

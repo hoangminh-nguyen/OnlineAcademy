@@ -1,0 +1,103 @@
+{{#section 'css'}}
+<style>
+    .type_collapsible {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+    }
+
+    .cl_active,
+    .type_collapsible:hover {
+        background-color: #555;
+    }
+
+    .type_collapsible:after {
+        content: '\002B';
+        color: white;
+        font-weight: bold;
+        float: right;
+        margin-left: 5px;
+    }
+
+    .cl_active:after {
+        content: "\2212";
+    }
+
+    .content {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        background-color: #f1f1f1;
+    }
+</style>
+{{/section}}
+
+{{#section 'js'}}
+<script>
+    var coll = document.getElementsByClassName("type_collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("cl_active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+{{/section}}
+
+<div class="wrapper">
+    <div class="sa4d25">
+        <div class="container-fluid">
+            {{#each this.lcSpec}}
+            <button type="button" class="type_collapsible">{{name}}</button>
+            <div class="content">
+                <div class="card-body mt-10">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 25%;">#</th>
+                                <th scope="col" style="width: 25%;">Specification</th>
+                                <th scope="col" style="width: 25%;">Icon</th>
+                                <th scope="col" style="width: 25%;">&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each spec}}
+                            <tr>
+                                <th scope="row">{{spec_id}}</th>
+                                <td>{{spec_name}}</td>
+                                <td>{{{icon}}}</td>
+                                <td class="text-right">
+                                    <a name="" id="" class="btn btn-sm btn-primary" title="Edit Category"
+                                        href="/admin/specifications/edit?spec_id={{spec_id}}" role="button">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                    <a class="btn btn-outline-success mt-10" href="/admin/specifications/add?type_id={{id}}"
+                        role="button">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        Add Specification
+                    </a>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

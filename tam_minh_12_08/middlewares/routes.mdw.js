@@ -9,11 +9,14 @@ module.exports = function (app) {
     // app.use('/admin/categories/', require('../controllers/category.route'));
     // app.use('/admin/products/', require('../controllers/product.route'));
     //app.use(express.static('public'));
-    
+    app.use('/account/', require('../controllers/account.route'));
+
     app.use('/', require('../controllers/home.route'));
     app.use('/courses/', require('../controllers/courses.route'));
 
-    app.use('/account/', require('../controllers/account.route'));
+    app.use('/admin/specifications', require('../controllers/specification-ad.route'));
+
+
     app.get('/err', function (req, res) {
         throw new Error('Error!');
     });

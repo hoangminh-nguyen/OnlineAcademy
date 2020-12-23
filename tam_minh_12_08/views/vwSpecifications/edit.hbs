@@ -1,0 +1,46 @@
+<div class="wrapper">
+    <div class="sa4d25">
+        <div class="container-fluid">
+
+            <form method="POST">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>{{this.spec.type_name}}</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="txtCatID">#</label>
+                            <input type="text" class="form-control" id="txtCatID" name="spec_id" readonly
+                                value="{{this.spec.spec_id}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCatName">Specification</label>
+                            <input type="text" class="form-control" id="txtCatName" name="spec_name" autofocus
+                                value="{{this.spec.spec_name}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCatName">Icon</label>
+                            <input type="text" class="form-control" id="txtCatName" name="icon"
+                                value="{{this.spec.icon}}">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-primary" href="/admin/specifications" role="button">
+                            <i class="fa fa-backward" aria-hidden="true"></i>
+                            Back to List
+                        </a>
+                        <button class="btn btn-danger" type="submit" formaction="/admin/specifications/del">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            Delete
+                        </button>
+                        <button class="btn btn-success" type="submit" formaction="/admin/specifications/patch">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
