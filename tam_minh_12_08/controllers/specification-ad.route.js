@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const specModel = require('../models/spec.model');
 const typeModel = require('../models/type.model');
+const courseModel = require('../models/course.model');
 
 router.get('/', async function (req, res, next) {
     res.render('vwSpecifications/index', {
@@ -41,6 +42,29 @@ router.post('/add', async function (req, res) {
 
     await specModel.add(entity);
     res.redirect('/admin/specifications')
+})
+
+router.get('/is-delete-able', async function (req, res) {
+  console.log(req.query.spec_id);
+  const course = await courseModel.allBySpec(req.query.spec_id);
+  console.log(course);
+
+  if (course.length === 0) {
+    return res.json(true);
+  }
+
+  res.json(false);
+})
+
+router.post('/del', async function (req, res) {
+  console.log(req.body.spec_id);
+  await specModel.del(req.body.spec_id);
+  res.redirect('/admin/specifications');
+})
+
+router.post('/patch', async function (req, res) {
+  await specModel.patch(req.body);
+  res.redirect('/admin/specifications');
 })
 
 module.exports = router;

@@ -61,9 +61,9 @@ module.exports = {
 
   async patch(entity) {
     const condition = {
-      spec_id: entity.CatID
+      spec_id: entity.spec_id
     };
-    delete(entity.CatID);
+    delete(entity.spec_id);
 
     const [result, fields] = await db.patch(entity, condition, 'course_spec');
     return result;
