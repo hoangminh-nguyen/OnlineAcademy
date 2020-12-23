@@ -1,0 +1,140 @@
+{{#section 'css'}}
+<style>
+    .type_collapsible {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .cl_active,
+    .type_collapsible:hover {
+        background-color: #555;
+    }
+
+    .type_collapsible:after {
+        content: '\002B';
+        color: white;
+        font-weight: bold;
+        float: right;
+        margin-left: 5px;
+    }
+
+    .cl_active:after {
+        content: "\2212";
+    }
+
+    .content {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        background-color: #000;
+    }
+</style>
+{{/section}}
+
+{{#section 'js'}}
+<script>
+    var coll = document.getElementsByClassName("type_collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("cl_active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+{{/section}}
+
+<div class="wrapper">
+    <div class="sa4d25">
+        <div class="container-fluid">
+            <button type="button" class="type_collapsible">Student</button>
+            <div class="content">
+                <div class="card-body mt-10">
+                    <table class="table table-hover table-dark" style="background-color: #000 !important;">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 20%;">#</th>
+                                <th scope="col" style="width: 20%;">Email</th>
+                                <th scope="col" style="width: 20%;">First name</th>
+                                <th scope="col" style="width: 20%;">Last name</th>
+                                <th scope="col" style="width: 20%;">&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each this.student}}
+                            <tr>
+                                <th scope="row">{{student_id}}</th>
+                                <th scope="row">{{email}}</th>
+                                <th scope="row">{{fname}}</th>
+                                <th scope="row">{{lname}}</th>
+                                <td class="text-right">
+                                    <a name="" id="" class="btn btn-sm btn-outline-warning" title="Edit Category"
+                                        style="color: #ff9800 !important; background-color: #000 !important;  border-color:#ff9800 !important;"
+                                        href="/admin/accounts/edit?email={{email}}" role="button">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <button type="button" class="type_collapsible">Teacher</button>
+            <div class="content">
+                <div class="card-body mt-10">
+                    <table class="table table-hover table-dark" style="background-color: #000 !important;">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 20%;">#</th>
+                                <th scope="col" style="width: 20%;">Email</th>
+                                <th scope="col" style="width: 20%;">First name</th>
+                                <th scope="col" style="width: 20%;">Last name</th>
+                                <th scope="col" style="width: 20%;">&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each this.teacher}}
+                            <tr>
+                                <th scope="row">{{teacher_id}}</th>
+                                <th scope="row">{{email}}</th>
+                                <th scope="row">{{fname}}</th>
+                                <th scope="row">{{lname}}</th>
+                                <td class="text-right">
+                                    <a name="" id="" class="btn btn-sm btn-outline-warning" title="Edit Category"
+                                        style="color: #ff9800 !important; background-color: #000 !important;  border-color:#ff9800 !important;"
+                                        href="/admin/accounts/edit?email={{email}}" role="button">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                    <a class="btn btn-outline-success mt-10"
+                        style="background-color: #000 !important; border-color:#ff9800 !important; color: #ff9800 !important; "
+                        href="/admin/accounts/add" role="button">
+                        <i class="fa fa-plus" aria-hidden="true" style="margin-right: 5px;"></i>
+                        Add Teacher
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -15,6 +15,8 @@ module.exports = function (app) {
     app.use('/courses/', require('../controllers/courses.route'));
 
     app.use('/admin/specifications', require('../controllers/specification-ad.route'));
+    app.use('/admin/accounts', require('../controllers/account-ad.route'));
+
 
 
     app.get('/err', function (req, res) {
