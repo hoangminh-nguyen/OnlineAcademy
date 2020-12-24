@@ -23,6 +23,10 @@ module.exports = function (app) {
 
         res.locals.auth = req.session.auth;
         res.locals.authUser = req.session.authUser;
+
+        res.locals.isStudent = req.session.isStudent;
+        res.locals.isTeacher = req.session.isTeacher;
+        res.locals.isAdmin = req.session.isAdmin;
         next();
       });
 

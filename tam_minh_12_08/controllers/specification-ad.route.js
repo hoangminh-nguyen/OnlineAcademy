@@ -5,9 +5,11 @@ const typeModel = require('../models/type.model');
 const courseModel = require('../models/course.model');
 
 router.get('/', async function (req, res, next) {
-    res.render('vwSpecifications/index', {
-    });
-
+  if(req.session.isAdmin === false){
+    return res.redirect('/');
+  }
+  res.render('vwSpecifications/index', {
+  });
 })
 
 router.get('/edit', async function (req, res) {

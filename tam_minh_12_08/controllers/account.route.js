@@ -20,14 +20,11 @@ router.get('/signup', function (req, res, next) {
 })
 
 router.post('/signup', async function (req, res, next) {
-  if(req.session.auth === true){
-    return res.redirect('/');
-  }
   const hash = bcrypt.hashSync(req.body.password, 10);
   const user = {
     password: hash,
     email: req.body.emailaddress,
-    mode: 2
+    mode: 2 //student
   }
   const student ={
     student_id : null,
@@ -43,7 +40,6 @@ router.post('/signup', async function (req, res, next) {
 
 router.get('/is-available', async function (req, res) {
   const email = req.query.email;
-  console.log(email);
   const user = await userModel.single(email);
   if (user === null) {
     return res.json(true);
@@ -80,14 +76,23 @@ router.post('/login', async function (req, res) {
   //Lấy thông tin người dùng
   var userInfo;
   if (user.mode === 2){
+    req.session.isStudent = true;
     userInfo = await userModel.studentInfo(user.email);
   }
   else if (user.mode === 1){
+    req.session.isTeacher = true;
     userInfo = await userModel.teacherInfo(user.email);
   }
-
+  else if (user.mode === 0){
+    req.session.isAdmin = true;
+    userInfo = user;
+  }
   req.session.auth = true;
   req.session.authUser = userInfo;
+  
+  if(req.session.isAdmin === true){
+    return res.redirect('/admin/specifications');
+  }
   const url = req.session.retUrl || '/';
   res.redirect(url);
 })
@@ -96,6 +101,9 @@ router.post('/logout', async function (req, res) {
   req.session.auth = false;
   req.session.authUser = null;
   req.session.retUrl = null;
+  req.session.isStudent = false;
+  req.session.isTeacher = false;
+  req.session.isAdmin = false;
   const url = req.headers.referer || '/';
   res.redirect(url);
 })

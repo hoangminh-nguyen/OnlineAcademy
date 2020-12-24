@@ -1,23 +1,15 @@
+const auth = require('../middlewares/auth.mdw');
+
 module.exports = function (app) {
-    // app.get('/', function (req, res) {
-
-    //     res.render('home');
-    // });
-
-    // app.use('/products/', require('../controllers/product-fe.route'));
-
-    // app.use('/admin/categories/', require('../controllers/category.route'));
-    // app.use('/admin/products/', require('../controllers/product.route'));
-    //app.use(express.static('public'));
+    
     app.use('/account/', require('../controllers/account.route'));
 
     app.use('/', require('../controllers/home.route'));
     app.use('/courses/', require('../controllers/courses.route'));
 
-    app.use('/admin/specifications', require('../controllers/specification-ad.route'));
-    app.use('/admin/accounts', require('../controllers/account-ad.route'));
 
-
+    app.use('/admin/specifications', auth.checkAdmin, require('../controllers/specification-ad.route'));
+    app.use('/admin/accounts', auth.checkAdmin, require('../controllers/account-ad.route'));
 
     app.get('/err', function (req, res) {
         throw new Error('Error!');

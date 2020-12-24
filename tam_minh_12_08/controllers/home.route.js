@@ -22,7 +22,6 @@ router.get('/', async function (req, res, next) {
         rating: rating,
         spec: spec,
     });
-
 });
 
 module.exports = router;
