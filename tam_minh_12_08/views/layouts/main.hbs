@@ -231,9 +231,27 @@
             {{/each}}
           </li>
           <li class="menu--item">
-            <a href="saved_courses.html" class="menu--link" title="Saved Courses">
+            {{#if isStudent}}
+            <a href="/student/registeredcourses/{{authUser.student_id}}" class="menu--link" title="My Courses">
+            {{else if isTeacher}}
+            <a href="/" class="menu--link" title="My Courses">
+            {{else}}
+            <a href="/account/login" class="menu--link" title="My Courses">
+            {{/if}}
               <i class="uil uil-heart-alt menu--icon"></i>
-              <span class="menu--label">Saved Courses</span>
+              <span class="menu--label">My Courses</span>
+            </a>
+          </li>
+          <li class="menu--item">
+            {{#if isStudent}}
+            <a href="/student/watchlist/{{authUser.student_id}}" class="menu--link" title="Watch List">
+            {{else if isTeacher}}
+            <a href="/" class="menu--link" title="Watch List">
+            {{else}}
+            <a href="/account/login" class="menu--link" title="Watch List">
+            {{/if}}
+              <i class="uil uil-heart-alt menu--icon"></i>
+              <span class="menu--label">Watch List</span>
             </a>
           </li>
           <li class="menu--item  menu--item__has_sub_menu">

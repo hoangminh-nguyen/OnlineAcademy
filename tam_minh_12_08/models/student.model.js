@@ -23,4 +23,12 @@ module.exports = {
         const [result, fields] = await db.del(condition, 'student');
         return result;
     },
+    async delWatchlistItem(courseid, studentid) {
+        const sql = `delete from stu_watchlist where student_id=${studentid} and course_id =${courseid}`;
+        const [rows, fields] = await db.load(sql);
+    },
+    async delWatchlist(studentid) {
+        const sql = `delete from stu_watchlist where student_id=${studentid}`;
+        const [rows, fields] = await db.load(sql);
+    },
 }

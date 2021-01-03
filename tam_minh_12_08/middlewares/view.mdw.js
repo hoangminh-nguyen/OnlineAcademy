@@ -12,9 +12,8 @@ module.exports = function (app) {
             format_number(val) {
                 return numeral(val).format('0,0');
             },
-
             format_date(val) {
-                return moment(val).format('lll');
+                return moment(val).format('L');
             },
 
             format_date_diff(val) {
