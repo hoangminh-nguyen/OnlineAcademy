@@ -1,22 +1,39 @@
-const db = require('../utils/db');
+const db = require("../utils/db");
 
 module.exports = {
+  async teacherInfo(email) {
+    const sql = `select * from account ac join teacher te on ac.email = te.email where ac.email = '${email}'`;
+    const [rows, fields] = await db.load(sql);
+    if (rows.length === 0) return null;
+    return rows[0];
+  },
 
-    async patch(entity) {
-        const condition = {
-            teacher_id: entity.teacher_id
-        };
-        delete(entity.teacher_id);
+  async allTeacher() {
+    const sql = `select * from teacher tc join account ac on tc.email = ac.email`;
+    const [rows, fields] = await db.load(sql);
+    return rows;
+  },
 
-        const [result, fields] = await db.patch(entity, condition, 'teacher');
-        return result;
-    },
+  async patch(entity) {
+    const condition = {
+      teacher_id: entity.teacher_id,
+    };
+    delete entity.teacher_id;
 
-    async del(id) {
-        const condition = {
-            teacher_id: id
-        };
-        const [result, fields] = await db.del(condition, 'teacher');
-        return result;
-    },
-}
+    const [result, fields] = await db.patch(entity, condition, "teacher");
+    return result;
+  },
+
+  async del(id) {
+    const condition = {
+      teacher_id: id,
+    };
+    const [result, fields] = await db.del(condition, "teacher");
+    return result;
+  },
+
+  async add(teacher) {
+    const [result, fields] = await db.add(teacher, "teacher");
+    return result;
+  },
+};

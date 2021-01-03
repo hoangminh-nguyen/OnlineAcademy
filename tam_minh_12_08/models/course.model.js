@@ -92,7 +92,10 @@ module.exports = {
 
   async allCourseIDByTeacherID(teacher_id) {
     const sql = `select co.course_id from course co where co.teacher_id = ${teacher_id}`;
+    const [rows, fields] = await db.load(sql);
+    return rows;
   },
+
   async allByStudentIDRegister(student_id) {
     const sql = `select co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago, stre.register_date  as register from course co left join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id join stu_registerlist stre on stre.course_id=co.course_id WHERE stre.student_id='${student_id}' order by stre.register_date DESC;`;
     const [rows, fields] = await db.load(sql);

@@ -31,25 +31,38 @@
                         <h4>{{this.spec.type_name}}</h4>
                     </div>
                     <div class="card-body">
-                        <div class="form-group">
-                            <label for="txtCatID">Type#</label>
-                            <input type="text" class="form-control" id="type_id" name="type_id" readonly
-                                value="{{this.spec.type_id}}">
+
+                        <div class="ui search focus">
+                            <div class="ui left icon labeled input swdh11 swdh31">
+                                <div class="ui label lb12" style="width: 115px; text-align: center;">
+                                    ID
+                                </div>
+                                <input class="prompt srch_explore" type="text" id="spec_id" name="spec_id" readonly
+                                    value="{{this.spec.spec_id}}">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="txtCatID">Spec#</label>
-                            <input type="text" class="form-control" id="spec_id" name="spec_id" readonly
-                                value="{{this.spec.spec_id}}">
+
+                        <div class="ui search focus mt-30">
+                            <div class="ui left icon labeled input swdh11 swdh31">
+                                <div class="ui label lb12" style="width: 115px; text-align: center;">
+                                    Specification
+                                </div>
+                                <input class="prompt srch_explore" type="text" id="spec_name" name="spec_name" required
+                                    value="{{this.spec.spec_name}}">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="txtCatName">Specification</label>
-                            <input type="text" class="form-control" id="spec_name" name="spec_name" autofocus
-                                value="{{this.spec.spec_name}}">
+
+                        <div class="ui search focus mt-30">
+                            <div class="ui left icon labeled input swdh11 swdh31">
+                                <div class="ui label lb12" style="width: 115px; text-align: center;">
+                                    Icon
+                                </div>
+                                <input class="prompt srch_explore" type="text" id="icon" name="icon" required
+                                    value="{{this.spec.icon}}">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="txtCatName">Icon</label>
-                            <input type="text" class="form-control" id="icon" name="icon" value="{{this.spec.icon}}">
-                        </div>
+
+
                     </div>
                     <div class="card-footer">
                         <a class="btn btn-primary mt-10"
