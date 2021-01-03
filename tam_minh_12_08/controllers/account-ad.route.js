@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const accountModel = require('../models/account.model');
-const typeModel = require('../models/type.model');
 const courseModel = require('../models/course.model');
+const studentModel = require('../models/student.model');
+const teacherModel = require('../models/teacher.model');
 
 router.get('/', async function (req, res, next) {
     const teacher = await accountModel.allTeacher();
@@ -36,5 +37,45 @@ router.get('/edit', async function (req, res) {
         isStudent: mode === 2,
     });
 })
+
+router.post('/patch', async function (req, res) {
+    const mode = parseInt(req.query.mode);
+
+    if (mode === 1) {
+        await teacherModel.patch(req.body);
+        console.log("teacher");
+    } else {
+        await studentModel.patch(req.body);
+        console.log("student");
+    }
+
+    res.redirect('/admin/accounts');
+})
+
+router.post('/del', async function (req, res) {
+    const mode = parseInt(req.query.mode);
+
+    console.log(mode);
+
+    if (mode === 1) {
+        const id_courses = await courseModel.allCourseIDByTeacherID(req.body.teacher_id);
+
+        console.log(id_courses);
+
+        for (let i = 0; i < id_courses.length; i++) {
+            await courseModel.delCourseByCourseID(id_courses[i]['course_id']);
+        }
+
+        await teacherModel.del(req.body.teacher_id);
+    } else {
+
+        await studentModel.del(req.body.student_id);
+    }
+
+    await accountModel.del(req.body.email);
+
+    res.redirect('/admin/accounts');
+})
+
 
 module.exports = router;

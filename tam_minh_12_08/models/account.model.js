@@ -51,4 +51,12 @@ module.exports = {
     const [rows, fields] = await db.load(sql);
     return rows;
   },
+
+  async del(email) {
+        const condition = {
+            email: email
+        };
+        const [result, fields] = await db.del(condition, 'teacher');
+        return result;
+  },
 };

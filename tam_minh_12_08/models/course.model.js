@@ -89,4 +89,26 @@ module.exports = {
     const [rows, fields] = await db.load(sql);
     return rows;
   },
+
+  async allCourseIDByTeacherID(teacher_id) {
+    const sql = `select co.course_id from course co where co.teacher_id = ${teacher_id}`;
+    const [rows, fields] = await db.load(sql);
+    return rows;
+  },
+
+  async delCourseByCourseID(course_id) {
+    const condition = {
+      course_id: course_id
+    };
+
+    await db.del(condition, 'stu_registerlist');
+    await db.del(condition, 'stu_watchlist');
+    await db.del(condition, 'course_chapter');
+    await db.del(condition, 'course_detail');
+
+    const [result, fields] = await db.del(condition, 'course');
+
+    return result;
+  },
+
 };

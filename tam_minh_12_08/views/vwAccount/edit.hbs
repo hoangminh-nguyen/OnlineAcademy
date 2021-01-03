@@ -11,38 +11,88 @@
                         <h4>Teacher</h4>
                         {{/if}}
                     </div>
+
                     <div class="card-body">
-                        <div class="form-group">
-                            <label for="txtCatID">Mode</label>
-                            <input type="text" class="form-control" id="mode" name="mode" readonly
-                                value="{{this.info.mode}}">
+
+                        <div class="ui search focus ">
+                            <div class="ui left icon labeled input swdh11 swdh31">
+                                <div class="ui label lb12" style="width: 110px; text-align: center;">
+                                    ID
+                                </div>
+                                {{#if this.isStudent}}
+                                <input class="prompt srch_explore" type="text" id="student_id" name="student_id"
+                                    readonly value="{{this.info.student_id}}">
+                                {{else}}
+                                <input class="prompt srch_explore" type="text" id="teacher_id" name="teacher_id"
+                                    readonly value="{{this.info.teacher_id}}">
+                                {{/if}}
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="txtCatName">First name</label>
-                            <input type="text" class="form-control" id="fname" name="fname" autofocus
-                                value="{{this.info.fname}}">
+
+                        <div class="ui search focus mt-30">
+                            <div class="ui left icon labeled input swdh11 swdh31">
+                                <div class="ui label lb12" style="width: 110px; text-align: center;">
+                                    First name
+                                </div>
+                                <input class="prompt srch_explore" type="text" id="fname" name="fname"
+                                    value="{{this.info.fname}}">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="txtCatName">Last name</label>
-                            <input type="text" class="form-control" id="lname" name="lname" value="{{this.info.lname}}">
+
+                        <div class="ui search focus mt-30">
+                            <div class="ui left icon labeled input swdh11 swdh31">
+                                <div class="ui label lb12" style="width: 110px; text-align: center;">
+                                    Last name
+                                </div>
+                                <input class="prompt srch_explore" type="text" id="lname" name="lname"
+                                    value="{{this.info.lname}}">
+                            </div>
                         </div>
+
+                        <div class="ui search focus mt-30">
+                            <div class="ui left icon labeled input swdh11 swdh31">
+                                <div class="ui label lb12" style="width: 110px; text-align: center;">
+                                    Email
+                                </div>
+                                <input class="prompt srch_explore" type="text" id="email" name="email" readonly
+                                    value="{{this.info.email}}">
+                            </div>
+                        </div>
+
                         {{#if this.isStudent}}
-                        <div class="form-group">
-                            <label for="txtCatName">Link avatar</label>
-                            <input type="text" class="form-control" id="link_ava_student" name="link_ava_student"
-                                value="{{this.info.link_ava_student}}">
+                        <div class="ui search focus mt-30">
+                            <div class="ui left icon labeled input swdh11 swdh31">
+                                <div class="ui label lb12" style="width: 110px; text-align: center;">
+                                    Link avatar
+                                </div>
+                                <input class="prompt srch_explore" type="text" id="link_ava_student"
+                                    name="link_ava_student" value="{{this.info.link_ava_student}}">
+                            </div>
                         </div>
+
                         {{else}}
-                        <div class="form-group">
-                            <label for="txtCatName">Link avatar</label>
-                            <input type="text" class="form-control" id="link_ava_teacher" name="link_ava_teacher"
-                                value="{{this.info.link_ava_teacher}}">
+                        <div class="ui search focus mt-30">
+                            <div class="ui left icon labeled input swdh11 swdh31">
+                                <div class="ui label lb12" style="width: 110px; text-align: center;">
+                                    Link avatar
+                                </div>
+                                <input class="prompt srch_explore" type="text" id="link_ava_teacher"
+                                    name="link_ava_teacher" value="{{this.info.link_ava_teacher}}">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="txtCatName">Info</label>
-                            <input type="text" class="form-control" id="info" name="info" value="{{this.info.info}}">
+
+                        <div class="ui search focus mt-30">
+                            <div class="ui left icon labeled input swdh11 swdh31">
+                                <div class="ui label lb12" style="width: 110px; text-align: center;">
+                                    Info
+                                </div>
+                                <input class=" prompt srch_explore" type="text" id="info" name="info"
+                                    value="{{this.info.info}}">
+                            </div>
                         </div>
                         {{/if}}
+
+
                     </div>
                     <div class="card-footer">
                         <a class="btn btn-primary mt-10"
@@ -51,7 +101,8 @@
                             <i class="fa fa-chevron-left" aria-hidden="true" style="margin-right: 5px;"></i>
                             Back to List
                         </a>
-                        <button class="btn btn-outline-danger mt-10" id="del" type="submit" style="margin-right: 10px;">
+                        <button class="btn btn-outline-danger mt-10" id="del" type="submit"
+                            formaction="/admin/accounts/del?mode={{this.info.mode}}" style="margin-right: 10px;">
                             <i class="fa fa-trash-o" aria-hidden="true" style="margin-right: 5px;"></i>
                             Delete
                         </button>
@@ -61,7 +112,7 @@
                             Change Password
                         </button>
                         <button class="btn btn-outline-success mt-10" id="save" type="submit"
-                            formaction="/admin/accounts/patch" style="margin-right: 10px;">
+                            formaction="/admin/accounts/patch?mode={{this.info.mode}}" style="margin-right: 10px;">
                             <i class="fa fa-check" aria-hidden="true" style="margin-right: 5px;"></i>
                             Save
                         </button>
