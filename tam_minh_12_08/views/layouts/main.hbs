@@ -160,6 +160,8 @@
                 <img src="{{authUser.link_ava_student}}" alt="avatar">
                 {{else if isTeacher}}
                 <img src="{{authUser.link_ava_teacher}}" alt="avatar">
+                {{else if isAdmin}}
+                <img src="https://cf.shopee.ph/file/b764818fa084ee6e6159f885aeaee72f" alt="avatar">
                 {{/if}}
                 <div class="pd_content">
                   <div class="rhte85">
@@ -171,15 +173,23 @@
                   <span>{{authUser.email}}</span>
                 </div>
               </div>
-              <a href="my_instructor_profile_view.html" class="dp_link_12">View Profile</a>
             </div>
             {{#if isAdmin}}
             <a href="/admin/specifications" class="item channel_item">Specifications</a>
             <a href="membership.html" class="item channel_item">Create Teacher</a>
-            {{else}}
-            <a href="setting.html" class="item channel_item">Profile</a>
+            <a href="help.html" class="item channel_item">Profile</a>
             <a href="help.html" class="item channel_item">Help</a>
+            {{else if isStudent}}
+            <a href="/student" class="item channel_item">View Profile</a>
+            <a href="/student/registeredcourses" class="item channel_item">My Courses</a>
+            <a href="/student/watchlist" class="item channel_item">Watch List</a>
+            {{else if isTeacher}}
+            <a href="/" class="item channel_item">View Profile</a>
+            <a href="/" class="item channel_item">My Courses</a>
+            <a href="/" class="item channel_item">something</a>
             {{/if}}
+
+
             <form id="frmLogout" action="/account/logout" method="POST"></form>
             <a href="javascript: $('#frmLogout').submit();" class="item channel_item">Logout</a>
           </div>
@@ -232,7 +242,7 @@
           </li>
           <li class="menu--item">
             {{#if isStudent}}
-            <a href="/student/registeredcourses/{{authUser.student_id}}" class="menu--link" title="My Courses">
+            <a href="/student/registeredcourses" class="menu--link" title="My Courses">
             {{else if isTeacher}}
             <a href="/" class="menu--link" title="My Courses">
             {{else}}
@@ -244,7 +254,7 @@
           </li>
           <li class="menu--item">
             {{#if isStudent}}
-            <a href="/student/watchlist/{{authUser.student_id}}" class="menu--link" title="Watch List">
+            <a href="/student/watchlist" class="menu--link" title="Watch List">
             {{else if isTeacher}}
             <a href="/" class="menu--link" title="Watch List">
             {{else}}

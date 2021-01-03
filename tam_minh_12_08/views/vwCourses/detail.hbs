@@ -1,3 +1,4 @@
+
 {{#with this.course}}
 
 <!-- Video Model Start -->
@@ -40,9 +41,9 @@
                   </a>
                 </div>
                 <div class="_215b10">
-                  <a href="#" class="_215b11">
+                  {{!-- <a href="#" class="_215b11">
                     <span><i class='uil uil-heart-alt'></i></span>Wishlist
-                  </a>
+                  </a> --}}
                   <a href="#" class="_215b12">
                     <span><i class="uil uil-windsock"></i></span>Report abuse
                   </a>
@@ -63,34 +64,6 @@
                   <i class="fas fa-user-graduate"></i>
                   {{numberStu}} students enrolled
                 </div>
-                {{!-- <div class="_215b06">
-                  <div class="_215b07">
-                    <span><i class='uil uil-comment'></i></span>
-                    English
-                  </div>
-                  <div class="_215b08">
-                    <span><i class='uil uil-closed-captioning'></i></span>
-                    <span>English, Dutch
-                      <span class="caption_tooltip">
-                        12 more
-                        <span class="caption-content">
-                          <span>French</span>
-                          <span>Hindi</span>
-                          <span>German [Auto-generated]</span>
-                          <span>Indonesian [Auto-generated]</span>
-                          <span>Italian [Auto-generated]</span>
-                          <span>Japanese [Auto-generated]</span>
-                          <span>Korean</span>
-                          <span>Polish</span>
-                          <span>Portuguese [Auto-generated]</span>
-                          <span>Spanish [Auto-generated]</span>
-                          <span>Traditional Chinese</span>
-                          <span>Turkish [Auto-generated]</span>
-                        </span>
-                      </span>
-                    </span>
-                  </div>
-                </div> --}}
                 <div class="_215b05">
                   <i class="fas fa-edit"></i>
                   Last updated {{format_date last_modify}}
@@ -105,8 +78,8 @@
                   {{/if}}
                 </div>
                 <ul class="_215b31">
-                  <li><button class="btn_adcart">Add to Cart</button></li>
-                  <li><button class="btn_buy">Buy Now</button></li>
+                  <li><a href ="/student/watchlist/add?courseid={{course_id}}"><button class="btn_adcart">Add to Watch List</button></a></li>
+                  <li><a href ="/"><button class="btn_buy">Buy Now</button></a></li>
                 </ul>
                 <div class="_215fgt1">
                   30-Day Money-Back Guarantee
