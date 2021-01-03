@@ -61,9 +61,11 @@
     </div>
     <div class="header_right">
       <ul>
+        {{#if isTeacher}}
         <li>
           <a href="create_new_course.html" class="upload_btn">Create New Course</a>
         </li>
+        {{/if}}
         <li>
           <a href="/" class="option_links"><i class='uil uil-home-alt'></i><span class="noti_count">9+</span></a>
         </li>
@@ -143,12 +145,22 @@
         {{#if auth}}
         <li class="ui dropdown">
           <a href="#" class="opts_account">
-            <img src="{{authUser.link_ava_student}}" alt="">
+            {{#if isStudent}}
+            <img src="{{authUser.link_ava_student}}" alt="avatar">
+            {{else if isTeacher}}
+            <img src="{{authUser.link_ava_teacher}}" alt="avatar">
+            {{else if isAdmin}}
+            <img src="https://cf.shopee.ph/file/b764818fa084ee6e6159f885aeaee72f" alt="avatar">
+            {{/if}}
           </a>
           <div class="menu dropdown_account">
             <div class="channel_my">
               <div class="profile_link">
-                <img src="{{authUser.link_ava_student}}" alt="">
+                {{#if isStudent}}
+                <img src="{{authUser.link_ava_student}}" alt="avatar">
+                {{else if isTeacher}}
+                <img src="{{authUser.link_ava_teacher}}" alt="avatar">
+                {{/if}}
                 <div class="pd_content">
                   <div class="rhte85">
                     <h6>{{authUser.fname}} {{authUser.lname}}</h6>
@@ -161,11 +173,13 @@
               </div>
               <a href="my_instructor_profile_view.html" class="dp_link_12">View Profile</a>
             </div>
-            <a href="instructor_dashboard.html" class="item channel_item">Cursus dashboard</a>
-            <a href="membership.html" class="item channel_item">Paid Memberships</a>
-            <a href="setting.html" class="item channel_item">Setting</a>
+            {{#if isAdmin}}
+            <a href="/admin/specifications" class="item channel_item">Specifications</a>
+            <a href="membership.html" class="item channel_item">Create Teacher</a>
+            {{else}}
+            <a href="setting.html" class="item channel_item">Profile</a>
             <a href="help.html" class="item channel_item">Help</a>
-            <a href="feedback.html" class="item channel_item">Send Feedback</a>
+            {{/if}}
             <form id="frmLogout" action="/account/logout" method="POST"></form>
             <a href="javascript: $('#frmLogout').submit();" class="item channel_item">Logout</a>
           </div>
