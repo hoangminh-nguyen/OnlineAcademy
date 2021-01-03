@@ -148,7 +148,7 @@ alter table Course_chapter
 -- THÊM DỮ LIỆU MÃU --
 
 -- Account 
-insert into Account values ('admin', 'admin', 0);
+insert into Account values ('admin@gmail.com', '$2a$10$8KwHPiXQbHpgBwZeYdjy1.FgjuhDw8LC7ELsqw9nFVXUcnCwE7L9G', 0);
 
 insert into Account values ('teacher001@gmail.com', 'teacher001', 1);
 insert into Account values ('teacher002@gmail.com', 'teacher002', 1);
