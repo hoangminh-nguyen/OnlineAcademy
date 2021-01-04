@@ -150,7 +150,8 @@
             {{else if isTeacher}}
             <img src="{{authUser.link_ava_teacher}}" alt="avatar">
             {{else if isAdmin}}
-            <img src="https://cf.shopee.ph/file/b764818fa084ee6e6159f885aeaee72f" alt="avatar">
+            <img src="https://cdn0.iconfinder.com/data/icons/management-1/100/business-05-512.png" alt="avatar"
+              style="background-color: white; border-color: white;">
             {{/if}}
           </a>
           <div class="menu dropdown_account">
@@ -161,11 +162,16 @@
                 {{else if isTeacher}}
                 <img src="{{authUser.link_ava_teacher}}" alt="avatar">
                 {{else if isAdmin}}
-                <img src="https://cf.shopee.ph/file/b764818fa084ee6e6159f885aeaee72f" alt="avatar">
+                <img src="https://cdn0.iconfinder.com/data/icons/management-1/100/business-05-512.png" alt="avatar"
+                  style="background-color: white; border-color: white;">
                 {{/if}}
                 <div class="pd_content">
                   <div class="rhte85">
+                    {{#if isAdmin}}
+                    <h6>Administrator</h6>
+                    {{else}}
                     <h6>{{authUser.fname}} {{authUser.lname}}</h6>
+                    {{/if}}
                     <div class="mef78" title="Verify">
                       <i class='uil uil-check-circle'></i>
                     </div>
@@ -175,10 +181,8 @@
               </div>
             </div>
             {{#if isAdmin}}
-            <a href="/admin/specifications" class="item channel_item">Specifications</a>
-            <a href="membership.html" class="item channel_item">Create Teacher</a>
-            <a href="help.html" class="item channel_item">Profile</a>
-            <a href="help.html" class="item channel_item">Help</a>
+            <a href="/admin/specifications" class="item channel_item">Manage Specifications</a>
+            <a href="/admin/accounts" class="item channel_item">Manage Accounts</a>
             {{else if isStudent}}
             <a href="/student" class="item channel_item">View Profile</a>
             <a href="/student/registeredcourses" class="item channel_item">My Courses</a>
@@ -243,26 +247,26 @@
           <li class="menu--item">
             {{#if isStudent}}
             <a href="/student/registeredcourses" class="menu--link" title="My Courses">
-            {{else if isTeacher}}
-            <a href="/" class="menu--link" title="My Courses">
-            {{else}}
-            <a href="/account/login" class="menu--link" title="My Courses">
-            {{/if}}
-              <i class="uil uil-heart-alt menu--icon"></i>
-              <span class="menu--label">My Courses</span>
-            </a>
+              {{else if isTeacher}}
+              <a href="/" class="menu--link" title="My Courses">
+                {{else}}
+                <a href="/account/login" class="menu--link" title="My Courses">
+                  {{/if}}
+                  <i class="uil uil-heart-alt menu--icon"></i>
+                  <span class="menu--label">My Courses</span>
+                </a>
           </li>
           <li class="menu--item">
             {{#if isStudent}}
             <a href="/student/watchlist" class="menu--link" title="Watch List">
-            {{else if isTeacher}}
-            <a href="/" class="menu--link" title="Watch List">
-            {{else}}
-            <a href="/account/login" class="menu--link" title="Watch List">
-            {{/if}}
-              <i class="uil uil-heart-alt menu--icon"></i>
-              <span class="menu--label">Watch List</span>
-            </a>
+              {{else if isTeacher}}
+              <a href="/" class="menu--link" title="Watch List">
+                {{else}}
+                <a href="/account/login" class="menu--link" title="Watch List">
+                  {{/if}}
+                  <i class="uil uil-heart-alt menu--icon"></i>
+                  <span class="menu--label">Watch List</span>
+                </a>
           </li>
           <li class="menu--item  menu--item__has_sub_menu">
             <label class="menu--link" title="Pages">

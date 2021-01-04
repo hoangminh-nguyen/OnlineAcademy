@@ -1,3 +1,29 @@
+{{#section 'js'}}
+<script>
+    $('#del').on('click', function (e) {
+
+        e.preventDefault();
+
+        var mode;
+
+        if ($('#title').text() === 'Student Info') {
+            mode = 2;
+        }
+        else {
+            mode = 1;
+        }
+
+        const email = $('#email').val();
+
+        if (confirm("Are you sure to delete " + email + "?")) {
+            $('#frmEdit').attr('action', '/admin/accounts/del?mode=' + mode);
+            $('#frmEdit').submit();
+        }
+    });
+</script>
+{{/section}}
+
+
 <div class="wrapper">
     <div class="sa4d25">
         <div class="container-fluid">
@@ -6,9 +32,9 @@
                 <div class="card">
                     <div class="card-header">
                         {{#if this.isStudent}}
-                        <h4>Student Info</h4>
+                        <h4 id="title">Student Info</h4>
                         {{else}}
-                        <h4>Teacher Info</h4>
+                        <h4 id="title">Teacher Info</h4>
                         {{/if}}
                     </div>
 

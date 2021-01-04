@@ -89,9 +89,6 @@ router.post("/login", async function(req, res) {
   req.session.auth = true;
   req.session.authUser = userInfo;
 
-  if (req.session.isAdmin === true) {
-    return res.redirect("/admin/specifications");
-  }
   const url = req.session.retUrl || "/";
   res.redirect(url);
 });

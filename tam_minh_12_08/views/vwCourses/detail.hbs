@@ -1,3 +1,19 @@
+{{#section 'js'}}
+<script>
+  $('#remove').on('click', function (e) {
+
+    e.preventDefault();
+
+    const courses_name = $('#course_name').text();
+
+    if (confirm("Are you sure to delete " + courses_name + "?")) {
+      window.location.replace("/");
+    }
+
+
+  });
+</script>
+{{/section}}
 
 {{#with this.course}}
 
@@ -51,7 +67,7 @@
               </div>
               <div class="col-xl-8 col-lg-7 col-md-6">
                 <div class="_215b03">
-                  <h2>{{name}}</h2>
+                  <h2 id="course_name">{{name}}</h2>
                   <span class="_215b04">{{short_info}}</span>
                 </div>
                 <div class="_215b05">
@@ -78,12 +94,21 @@
                   {{/if}}
                 </div>
                 <ul class="_215b31">
-                  <li><a href ="/student/watchlist/add?courseid={{course_id}}"><button class="btn_adcart">Add to Watch List</button></a></li>
-                  <li><a href ="/"><button class="btn_buy">Buy Now</button></a></li>
+                  {{#if ../isAdmin}}
+                  <li><a href="/"><button class="btn_adcart" id="remove">Remove this course</button></a></li>
+                  {{else}}
+                  <li><a href="/student/watchlist/add?courseid={{course_id}}"><button class="btn_adcart">Add to Watch
+                        List</button></a>
+                  </li>
+                  <li><a href="/"><button class="btn_buy">Buy Now</button></a></li>
+                  {{/if}}
                 </ul>
+                {{#if ../isAdmin}}
+                {{else}}
                 <div class="_215fgt1">
                   30-Day Money-Back Guarantee
                 </div>
+                {{/if}}
               </div>
             </div>
           </div>

@@ -4,19 +4,25 @@
 
         e.preventDefault();
 
-        const spec_id = $('#spec_id').val();
+        const spec_name = $('#spec_name').val();
+
+        if (confirm("Are you sure to delete " + spec_name + "?")) {
+            const spec_id = $('#spec_id').val();
 
 
-        $.getJSON(`/admin/specifications/is-delete-able?spec_id=${spec_id}`, function (data) {
-            console.log(data);
-            if (data === true) {
-                $('#frmEdit').attr('action', '/admin/specifications/del');
-                $('#frmEdit').submit();
+            $.getJSON(`/admin/specifications/is-delete-able?spec_id=${spec_id}`, function (data) {
+                console.log(data);
+                if (data === true) {
+                    $('#frmEdit').attr('action', '/admin/specifications/del');
+                    $('#frmEdit').submit();
 
-            } else {
-                alert('This specification still had one or more course(s).');
-            }
-        });
+                } else {
+                    alert('This specification still had one or more course(s).');
+                }
+            });
+        }
+
+
     });
 </script>
 {{/section}}
