@@ -1,3 +1,11 @@
+{{#section 'css'}}
+<style>
+    .mr-20 {
+        margin-right: 20px;
+    }
+</style>
+{{/section}}
+
 {{#section 'js'}}
 <script>
     $('#del').on('click', function (e) {
@@ -5,7 +13,6 @@
         e.preventDefault();
 
         var mode;
-
         if ($('#title').text() === 'Student Info') {
             mode = 2;
         }
@@ -15,10 +22,52 @@
 
         const email = $('#email').val();
 
-        if (confirm("Are you sure to delete " + email + "?")) {
-            $('#frmEdit').attr('action', '/admin/accounts/del?mode=' + mode);
-            $('#frmEdit').submit();
-        }
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger mr-20'
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const spec_id = $('#spec_id').val();
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Deleted!',
+                    showConfirmButton: false,
+                    timer: 1000,
+                    timerProgressBar: true,
+                }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    if (result.dismiss === Swal.DismissReason.timer || result.dismiss === Swal.DismissReason.backdrop) {
+                        $('#frmEdit').attr('action', '/admin/accounts/del?mode=' + mode);
+                        $('#frmEdit').submit();
+                    }
+                })
+
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Cancel!',
+                    showConfirmButton: false,
+                    timer: 1000,
+                    timerProgressBar: true,
+                })
+            }
+        })
     });
 </script>
 {{/section}}

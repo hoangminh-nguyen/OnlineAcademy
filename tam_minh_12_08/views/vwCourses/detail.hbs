@@ -1,17 +1,66 @@
+{{#section 'css'}}
+<style>
+  .mr-20 {
+    margin-right: 20px;
+  }
+</style>
+{{/section}}
+
 {{#section 'js'}}
 <script>
+
+
   $('#remove').on('click', function (e) {
 
     e.preventDefault();
 
     const course_name = $('#course_name').text();
 
-    if (confirm("Are you sure to delete " + course_name + "?")) {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger mr-20'
+      },
+      buttonsStyling: false
+    })
 
-      $.post('/courses/remove?course_name=' + course_name);
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.post('/courses/remove?course_name=' + course_name);
 
-      window.location.replace('/');
-    }
+        Swal.fire({
+          icon: 'success',
+          title: 'Deleted!',
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true,
+        }).then((result) => {
+          /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer || result.dismiss === Swal.DismissReason.backdrop) {
+            window.location.replace('/');
+          }
+        })
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Cancel!',
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true,
+        })
+      }
+    })
 
   });
   $('#buybutton').on('click', function (e) {
@@ -30,6 +79,9 @@
   });
 </script>
 {{/section}}
+
+
+
 
 {{#with this.course}}
 
@@ -118,7 +170,8 @@
                   </li>
                   <li>
                     <form id="frmRegister" method="POST" action="/student/registeredcourses/add?courseid={{course_id}}">
-                      <button class="btn_buy" type="submit" id="buybutton">Buy Now</button></form>
+                      <button class="btn_buy" type="submit" id="buybutton">Buy Now</button>
+                    </form>
                   </li>
                   {{/if}}
                 </ul>

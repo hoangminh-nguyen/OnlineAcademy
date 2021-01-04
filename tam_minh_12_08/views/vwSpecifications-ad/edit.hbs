@@ -1,3 +1,11 @@
+{{#section 'css'}}
+<style>
+    .mr-20 {
+        margin-right: 20px;
+    }
+</style>
+{{/section}}
+
 {{#section 'js'}}
 <script>
     $('#del').on('click', function (e) {
@@ -6,23 +14,66 @@
 
         const spec_name = $('#spec_name').val();
 
-        if (confirm("Are you sure to delete " + spec_name + "?")) {
-            const spec_id = $('#spec_id').val();
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger mr-20'
+            },
+            buttonsStyling: false
+        })
 
+        swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const spec_id = $('#spec_id').val();
 
-            $.getJSON(`/admin/specifications/is-delete-able?spec_id=${spec_id}`, function (data) {
-                console.log(data);
-                if (data === true) {
-                    $('#frmEdit').attr('action', '/admin/specifications/del');
-                    $('#frmEdit').submit();
-
-                } else {
-                    alert('This specification still had one or more course(s).');
-                }
-            });
-        }
-
-
+                $.getJSON(`/admin/specifications/is-delete-able?spec_id=${spec_id}`, function (data) {
+                    console.log(data);
+                    if (data === true) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Deleted!',
+                            showConfirmButton: false,
+                            timer: 1000,
+                            timerProgressBar: true,
+                        }).then((result) => {
+                            /* Read more about handling dismissals below */
+                            if (result.dismiss === Swal.DismissReason.timer || result.dismiss === Swal.DismissReason.backdrop) {
+                                $('#frmEdit').attr('action', '/admin/specifications/del');
+                                $('#frmEdit').submit();
+                            }
+                        })
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Denied!',
+                            text: "This specification still had one or more course(s).",
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                        })
+                    }
+                });
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Cancel!',
+                    showConfirmButton: false,
+                    timer: 1000,
+                    timerProgressBar: true,
+                })
+            }
+        })
     });
 </script>
 {{/section}}
