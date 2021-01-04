@@ -4,12 +4,14 @@
 
     e.preventDefault();
 
-    const courses_name = $('#course_name').text();
+    const course_name = $('#course_name').text();
 
-    if (confirm("Are you sure to delete " + courses_name + "?")) {
-      window.location.replace("/");
+    if (confirm("Are you sure to delete " + course_name + "?")) {
+
+      $.post('/courses/remove?course_name=' + course_name);
+
+      window.location.replace('/');
     }
-
 
   });
 </script>

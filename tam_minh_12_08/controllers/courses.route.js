@@ -85,12 +85,16 @@ router.get('/:type/:spec_name', async (req, res) => {
     var all = await courseModel.pageBySpecName(spec, offset);
     all = discount.calcCourses(all);
 
-
     res.render('vwCourses/all', {
         course: all,
         page_numbers,
         next_page
     })
+})
+
+router.post('/remove', async function (req, res) {
+    const id = await courseModel.idByCourseName(req.query.course_name);
+    await courseModel.delCourseByCourseID(id[0]['course_id']);
 })
 
 module.exports = router;

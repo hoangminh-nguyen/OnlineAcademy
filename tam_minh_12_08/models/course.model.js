@@ -122,4 +122,10 @@ module.exports = {
     const [rows, fields] = await db.load(sql);
     return rows;
   },
+
+  async idByCourseName(name) {
+    const sql = `select co.course_id from course co WHERE co.name like '${name}'`;
+    const [rows, fields] = await db.load(sql);
+    return rows;
+  },
 };
