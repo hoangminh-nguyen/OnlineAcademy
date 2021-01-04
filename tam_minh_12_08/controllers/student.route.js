@@ -15,6 +15,33 @@ router.get('/registeredcourses', async function (req, res, next) {
         numberCourse: course.length,
     });
 })
+router.post('/registeredcourses/add', async function (req, res, next) {
+    const student_id = parseInt(req.session.authUser.student_id);
+    const course_id = parseInt(req.query.courseid);
+    var d = new Date();
+    var day=d.getDate(), month=(d.getMonth()+1), year=d.getFullYear(), hour=d.getHours(), minute=d.getMinutes(), second=d.getSeconds();
+    if (day <10) day="0"+day;
+    if (month<10) month="0"+month;
+    if (hour<10) hour="0"+hour;
+    if (minute<10) minute="0"+minute;
+    if (second<10) second="0"+second;
+    var date = year+'-'+month+'-'+day+' '+hour+':'+minute+':'+second;
+    await studentModel.addRegisterItem(course_id, student_id, date);
+    const url = '/courses/detail/' + course_id;
+    res.redirect(url);
+})
+
+router.get('/is-not-added', async function (req, res) {
+    const student_id = parseInt(req.session.authUser.student_id);
+    const course_id = req.query.courseid;
+    const check = await studentModel.findRegisterItem(course_id, student_id);
+    if (check === null) {
+      return res.json(true);
+    }
+    res.json(false);
+  })
+
+
 
 router.get('/watchlist', async function (req, res, next) {
     const student_id = req.session.authUser.student_id;

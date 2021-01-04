@@ -1,17 +1,19 @@
 {{#section 'js'}}
 <script>
-  $('#remove').on('click', function (e) {
-
-    e.preventDefault();
-
-    const courses_name = $('#course_name').text();
-
-    if (confirm("Are you sure to delete " + courses_name + "?")) {
-      window.location.replace("/");
-    }
-
-
-  });
+    $('#buybutton').on('click', function (e) {
+        e.preventDefault();
+        const coursename = $('#course_name').text();
+        const courseid = $('#course_id').text();
+        $.getJSON(`/student/is-not-added?courseid=${courseid}`, function (data) {
+            if (data === true) {
+                if (confirm("Are you sure to buy " + coursename + " ?")) {
+                  $('#frmRegister').submit();
+                }
+            } else {
+                $('#buyingalert').text("*You have already bought this course.").css('color', '#ff9800').css('font-weight', 'bold');
+            }
+        })
+    });
 </script>
 {{/section}}
 
@@ -61,7 +63,7 @@
                     <span><i class='uil uil-heart-alt'></i></span>Wishlist
                   </a> --}}
                   <a href="#" class="_215b12">
-                    <span><i class="uil uil-windsock"></i></span>Report abuse
+                    <span><i class="uil uil-windsock"></i></span>Report abuse<span id="course_id"> {{course_id}}</span>
                   </a>
                 </div>
               </div>
@@ -100,13 +102,14 @@
                   <li><a href="/student/watchlist/add?courseid={{course_id}}"><button class="btn_adcart">Add to Watch
                         List</button></a>
                   </li>
-                  <li><a href="/"><button class="btn_buy">Buy Now</button></a></li>
+                  <li><form id="frmRegister" method="POST" action="/student/registeredcourses/add?courseid={{course_id}}"><button class="btn_buy" type="submit" id="buybutton">Buy Now</button></form></li>
                   {{/if}}
                 </ul>
                 {{#if ../isAdmin}}
                 {{else}}
-                <div class="_215fgt1">
-                  30-Day Money-Back Guarantee
+                
+                <div class="_215fgt1" id="buyingalert">
+                  
                 </div>
                 {{/if}}
               </div>

@@ -8,7 +8,7 @@
                 $('#frmRegister').off('submit').submit();
 
             } else {
-                $('#error_email').text("Email has been taken");
+                $('#error_email').text("*Email has been taken, please choose another one.").css('color', 'red').css('font-weight', 'bold');
             }
         })
     });
