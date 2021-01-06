@@ -2,9 +2,34 @@ const express = require('express');
 const courseModel = require('../models/course.model');
 const studentModel = require('../models/student.model');
 const discount = require('../utils/discount');
+const accountModel = require("../models/account.model");
 const { calcNextPage } = require('../utils/pagination');
 const pagination = require('../utils/pagination');
+const bcrypt = require("bcryptjs");
 const router = express.Router();
+
+router.get('/info', async function (req, res, next) {
+    res.render('vwStudent/info', {
+    });
+})
+
+router.post("/info/patch", async function(req, res) {
+    await studentModel.patch(req.body);
+    req.session.authUser = await studentModel.studentInfo(req.body.email);
+    res.locals.authUser = req.session.authUser;
+    res.redirect("/student/info");
+});
+
+router.get('/info/password', async function (req, res, next) {
+    res.render('vwStudent/password', {
+    });
+})
+router.post('/info/password', async function (req, res, next) {
+    var account = req.body;
+    account["password"] = bcrypt.hashSync(req.body.password, 10);
+    await accountModel.patch(account);
+    res.redirect("/student/info");
+})
 
 router.get('/registeredcourses', async function (req, res, next) {
     const student_id = req.session.authUser.student_id;
@@ -15,6 +40,7 @@ router.get('/registeredcourses', async function (req, res, next) {
         numberCourse: course.length,
     });
 })
+
 router.post('/registeredcourses/add', async function (req, res, next) {
     const student_id = parseInt(req.session.authUser.student_id);
     const course_id = parseInt(req.query.courseid);
