@@ -1,0 +1,94 @@
+{{#section 'js'}}
+<script>
+    $('#frmRegister').on('submit', function (e) {
+        e.preventDefault();
+        const email = $('#email').val();
+        $.getJSON(`/admin/accounts/is-available?email=${email}`, function (data) {
+            if (data === true) {
+                $('#frmRegister').off('submit').submit();
+
+            } else {
+                $('#error_email').text("*Email has been taken, please choose another one.").css('color', 'red').css('font-weight', 'bold');
+            }
+        })
+    });
+</script>
+{{/section}}
+
+<div class="wrapper">
+    <div class="sa4d25">
+        <div class="container-fluid">
+
+            <form id="frmRegister" method="POST" action="">
+                <div class="card">
+                    <div class="card-header">
+
+                        <h4>New teacher</h4>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="ui search focus">
+                            <div class="ui left icon labeled input swdh11 swdh31">
+                                <div class="ui label lb12" style="width: 115px; text-align: center;">
+                                    First name
+                                </div>
+                                <input class="prompt srch_explore" type="text" id="fname" name="fname"
+                                    placeholder="Teacher's first name" required>
+                            </div>
+                        </div>
+
+                        <div class="ui search focus mt-30">
+                            <div class="ui left icon labeled input swdh11 swdh31">
+                                <div class="ui label lb12" style="width: 115px; text-align: center;">
+                                    Last name
+                                </div>
+                                <input class="prompt srch_explore" type="text" id="lname" name="lname"
+                                    placeholder="Teacher's last name" required>
+                            </div>
+                        </div>
+
+                        <div class="ui search focus mt-30">
+                            <div class="ui left icon labeled input swdh11 swdh31">
+                                <div class="ui label lb12" style="width: 115px; text-align: center;">
+                                    Email
+                                </div>
+                                <input class="prompt srch_explore" type="text" id="email" name="email"
+                                    placeholder="Teacher's email" required>
+                            </div>
+                            <span class="help-block" id="error_email" style="padding-left: 120px;"> &nbsp</span>
+                        </div>
+
+                        <div class="ui search focus mt-10">
+                            <div class="ui left icon labeled input swdh11 swdh31">
+                                <div class="ui label lb12" style="width: 115px; text-align: center;">
+                                    Password
+                                </div>
+                                <input class="prompt srch_explore" type="password" id="password" name="password"
+                                    placeholder="Teacher's password" required>
+                            </div>
+                            <span class="help-block" id="error_password" style="padding-left: 120px;"></span>
+                        </div>
+
+
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-primary mt-10"
+                            style="background-color: #000 !important; border-color:#ff9800 !important; color: #ff9800 !important; margin-right: 10px;"
+                            href="/admin/accounts" role="button">
+                            <i class="fa fa-chevron-left" aria-hidden="true" style="margin-right: 5px;"></i>
+                            Back to List
+                        </a>
+                        <button class="btn btn-outline-success mt-10" id="save" type="submit"
+                            formaction="/admin/accounts/create" style="margin-right: 10px;">
+                            <i class="fa fa-check" aria-hidden="true" style="margin-right: 5px;"></i>
+                            Create
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

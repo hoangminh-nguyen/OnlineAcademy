@@ -13,4 +13,18 @@ module.exports = {
     }
     next();
   },
+  checkStudent(req, res, next) {
+    if (req.session.auth === false || req.session.isStudent === false) {
+      req.session.retUrl = req.originalUrl;
+      return res.redirect('/');
+    }
+    next();
+  },
+  checkTeacher(req, res, next) {
+    if (req.session.auth === false || req.session.isTeacher === false) {
+      req.session.retUrl = req.originalUrl;
+      return res.redirect('/');
+    }
+    next();
+  },
 }

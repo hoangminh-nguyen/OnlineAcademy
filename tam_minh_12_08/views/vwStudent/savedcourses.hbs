@@ -1,0 +1,86 @@
+﻿
+<div class="wrapper">
+	<div class="sa4d25">
+		<div class="container-fluid">			
+			<div class="row">
+				<div class="col-lg-3 col-md-4 ">
+					<div class="section3125 hstry142">
+						<div class="grp_titles pt-0">
+							<div class="ht_title">Registered Courses</div>
+							{{!-- <a href="#" class="ht_clr">Remove All</a> --}}
+						</div>
+						<div class="tb_145">
+							<div class="wtch125">
+								<span class="vdt14">{{numberCourse}}</span>
+							</div>
+							{{!-- <a href="#" class="rmv-btn"><i class='uil uil-trash-alt'></i>Remove Saved Courses</a> --}}
+						</div>						
+					</div>							
+				</div>					
+				<div class="col-md-9">
+					<div class="_14d25 mb-20">						
+						<div class="row">
+							<div class="col-md-12">
+								<h4 class="mhs_title">Registered Courses</h4>
+
+								{{!-- Bắt đầu danh sách khóa học --}}
+
+								{{#each this.course}}
+								<div class="fcrse_1 mb-20">
+									<a href="/courses/detail/{{course_id}}" class="hf_img">
+										<img style="height: 200px;" src="{{link_ava_course}}" alt="">
+										<div class="course-overlay">
+											{{#if discount}}
+                                            <div class="badge_seller" style="font-size: 15pt;"> <i
+                                                    class="fas fa-tags"></i> {{discount}}%
+                                            </div>
+                                            {{/if}}
+											<div class="crse_reviews">
+												<i class="fas fa-star"></i>{{format_number rating}}
+											</div>
+											<span class="play_btn1"><i class="uil uil-play"></i></span>									
+										</div>
+									</a>
+									<div class="hs_content">
+										{{!-- <div class="eps_dots eps_dots10 more_dropdown">
+											<a href="#"><i class="uil uil-ellipsis-v"></i></a>
+											<div class="dropdown-content">
+												<span><i class='uil uil-times'></i>Remove</span>															
+											</div>																											
+										</div> --}}
+										<div class="vdtodt">
+											<span class="vdt14">{{view_number}} views</span>
+                                            <span class="vdt14">{{rateStu}} ratings</span>
+                                            <span>{{day_ago}} days ago</span>
+											<p style="float: right;">Register in {{format_date register}}</p>
+										</div>
+										<a href="/courses/detail/{{course_id}}" class="crse14s title900">{{name}}</a>
+										<a href="/courses/{{type_name}}/{{spec_name}}" class="crse-cate">{{type_name}} |
+                                            {{spec_name}}</a>
+										<div class="auth1lnkprce">
+											<p class="cr1fot">By <a href="#">{{fname}} {{lname}}</a></p>
+											{{#if discount}}
+                                            <div class="prce142">
+                                                <span
+                                                    style="color:darkgrey ;text-decoration: line-through; font-size:12pt;">${{price}}
+                                                    <i class="fas fa-long-arrow-alt-right"> </i></span>
+                                                <span> ${{newprice}}</span>
+                                            </div>
+                                            {{else}}
+                                            <div class="prce142">${{price}}</div>
+                                            {{/if}}
+										</div>
+									</div>
+								</div>
+								{{/each}}
+
+								{{!-- Kết thúc danh sách khóa học --}}
+							</div>									
+						</div>																		
+					</div>								
+				</div>				
+			</div>
+		</div>
+	</div>
+</div>
+

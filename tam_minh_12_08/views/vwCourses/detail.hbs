@@ -1,3 +1,88 @@
+{{#section 'css'}}
+<style>
+  .mr-20 {
+    margin-right: 20px;
+  }
+</style>
+{{/section}}
+
+{{#section 'js'}}
+<script>
+
+
+  $('#remove').on('click', function (e) {
+
+    e.preventDefault();
+
+    const course_name = $('#course_name').text();
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger mr-20'
+      },
+      buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.post('/courses/remove?course_name=' + course_name);
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Deleted!',
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true,
+        }).then((result) => {
+          /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer || result.dismiss === Swal.DismissReason.backdrop) {
+            window.location.replace('/');
+          }
+        })
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Cancel!',
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true,
+        })
+      }
+    })
+
+  });
+  $('#buybutton').on('click', function (e) {
+    e.preventDefault();
+    const coursename = $('#course_name').text();
+    const courseid = $('#course_id').text();
+    $.getJSON(`/student/is-not-added?courseid=${courseid}`, function (data) {
+      if (data === true) {
+        if (confirm("Are you sure to buy " + coursename + " ?")) {
+          $('#frmRegister').submit();
+        }
+      } else {
+        $('#buyingalert').text("*You have already bought this course.").css('color', '#ff9800').css('font-weight', 'bold');
+      }
+    })
+  });
+</script>
+{{/section}}
+
+
+
+
 {{#with this.course}}
 
 <!-- Video Model Start -->
@@ -40,17 +125,17 @@
                   </a>
                 </div>
                 <div class="_215b10">
-                  <a href="#" class="_215b11">
+                  {{!-- <a href="#" class="_215b11">
                     <span><i class='uil uil-heart-alt'></i></span>Wishlist
-                  </a>
+                  </a> --}}
                   <a href="#" class="_215b12">
-                    <span><i class="uil uil-windsock"></i></span>Report abuse
+                    <span><i class="uil uil-windsock"></i></span>Report abuse<span id="course_id"> {{course_id}}</span>
                   </a>
                 </div>
               </div>
               <div class="col-xl-8 col-lg-7 col-md-6">
                 <div class="_215b03">
-                  <h2>{{name}}</h2>
+                  <h2 id="course_name">{{name}}</h2>
                   <span class="_215b04">{{short_info}}</span>
                 </div>
                 <div class="_215b05">
@@ -63,34 +148,6 @@
                   <i class="fas fa-user-graduate"></i>
                   {{numberStu}} students enrolled
                 </div>
-                {{!-- <div class="_215b06">
-                  <div class="_215b07">
-                    <span><i class='uil uil-comment'></i></span>
-                    English
-                  </div>
-                  <div class="_215b08">
-                    <span><i class='uil uil-closed-captioning'></i></span>
-                    <span>English, Dutch
-                      <span class="caption_tooltip">
-                        12 more
-                        <span class="caption-content">
-                          <span>French</span>
-                          <span>Hindi</span>
-                          <span>German [Auto-generated]</span>
-                          <span>Indonesian [Auto-generated]</span>
-                          <span>Italian [Auto-generated]</span>
-                          <span>Japanese [Auto-generated]</span>
-                          <span>Korean</span>
-                          <span>Polish</span>
-                          <span>Portuguese [Auto-generated]</span>
-                          <span>Spanish [Auto-generated]</span>
-                          <span>Traditional Chinese</span>
-                          <span>Turkish [Auto-generated]</span>
-                        </span>
-                      </span>
-                    </span>
-                  </div>
-                </div> --}}
                 <div class="_215b05">
                   <i class="fas fa-edit"></i>
                   Last updated {{format_date last_modify}}
@@ -105,12 +162,26 @@
                   {{/if}}
                 </div>
                 <ul class="_215b31">
-                  <li><button class="btn_adcart">Add to Cart</button></li>
-                  <li><button class="btn_buy">Buy Now</button></li>
+                  {{#if ../isAdmin}}
+                  <li><a href="/"><button class="btn_adcart" id="remove">Remove this course</button></a></li>
+                  {{else}}
+                  <li><a href="/student/watchlist/add?courseid={{course_id}}"><button class="btn_adcart">Add to Watch
+                        List</button></a>
+                  </li>
+                  <li>
+                    <form id="frmRegister" method="POST" action="/student/registeredcourses/add?courseid={{course_id}}">
+                      <button class="btn_buy" type="submit" id="buybutton">Buy Now</button>
+                    </form>
+                  </li>
+                  {{/if}}
                 </ul>
-                <div class="_215fgt1">
-                  30-Day Money-Back Guarantee
+                {{#if ../isAdmin}}
+                {{else}}
+
+                <div class="_215fgt1" id="buyingalert">
+
                 </div>
+                {{/if}}
               </div>
             </div>
           </div>

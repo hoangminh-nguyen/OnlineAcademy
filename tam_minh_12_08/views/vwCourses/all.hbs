@@ -2,21 +2,95 @@
     <div class="sa4d25">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xl-12 col-lg-8">
+
+                {{!-- {{#if this.isSearch}}
+                <div class="col-xl-12 col-lg-8 mb-30">
                     <div class="section3125">
                         <div class="explore_search">
                             <div class="ui search focus">
                                 <div class="ui left icon input swdh11">
-                                    <input class="prompt srch_explore" type="text"
-                                        placeholder="Search for Tuts Videos, Tutors, Tests and more..">
+                                    <input id="search" class="prompt srch_explore" type="search"
+                                        placeholder="Search for Categories, Courses, Videos, Tutors and more.."
+                                        value="{{this.search}}">
                                     <i class="uil uil-search-alt icon icon2"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                {{/if}} --}}
 
-                <div class="col-md-12">
+
+                <div class="col-md-12 mb-15">
+                    <form>
+                        {{#if this.isSearch}}
+                        <input type="hidden" name="search" value="{{this.search}}">
+                        {{/if}}
+
+                        {{#if this.isSearch}}
+                        {{else}}
+                        <div class="ui inline dropdown flt145" tabindex="0">
+                            <div class="_cate101" style="margin-top: 0px; margin-right: 10px;">
+                                {{#if this.isType}}
+                                <div class="uil cate_icon1 " style="color:black;">
+                                    <i class="fas fa-bars"></i>
+                                </div>
+                                {{this.type}} Courses
+                                {{else}}
+                                <div class="uil cate_icon1 " style="color:black;">
+                                    {{{this.spec.icon}}}
+                                </div>
+                                {{this.spec.spec_name}} Courses
+                                {{/if}}
+                            </div>
+                            <div class="menu" tabindex="-1">
+                                <div class="item"><a href='/courses/{{this.type}}'>{{this.type}}</a></div>
+                                {{#each this.allspec}}
+                                <div class="item"><a href='/courses/{{../this.type}}/{{spec_name}}'>{{spec_name}}</a>
+                                </div>
+                                {{/each}}
+
+                            </div>
+                        </div>
+                        {{/if}}
+
+                        <div class="ui inline dropdown flt145" tabindex="0">
+                            <div class="_cate101" style="margin-top: 0px; margin-right: 10px;">
+                                <div class="uil cate_icon1 " style="color:black;">
+                                    <i class="fas fa-sort"></i>
+                                </div>
+                                {{#if this.isSort}}
+                                {{this.sort}}
+                                {{else if this.isSearch}}
+                                Most Relevance
+                                {{else}}
+                                Highest Rated
+                                {{/if}}
+
+                            </div>
+                            <div class="menu" tabindex="-1">
+                                {{#if this.isSearch}}
+                                <div class="item" onclick="$('#sort').value">Most Relevance</div>
+                                {{/if}}
+                                <div class="item" onclick="$('#sort').value">Highest Rated</div>
+                                <div class="item" onclick="$('#sort').value">Lowest Price</div>
+
+                            </div>
+                            <input id="sort" type="hidden" name="sort" value="" onchange="this.form.submit()">
+                        </div>
+
+
+                        <div class="_cate101" style="margin-top: 0px;">
+                            <div class="uil cate_icon1 " style="color:black;">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            {{this.total}} courses
+                        </div>
+
+                    </form>
+
+
+
                     <div class="_14d25">
                         <div class="row">
                             {{#each this.course}}
@@ -85,16 +159,19 @@
                     {{#each this.page_numbers}}
                     {{#if isCurrentPage}}
                     <li class="page-item active pagination-lg ">
-                        <a class="page-link active-item" style="color :rgb(0, 0, 0) !important;" href="javascript:;">{{value}}</a>
+                        <a class="page-link active-item" style="color :rgb(0, 0, 0) !important;"
+                            href="javascript:;">{{value}}</a>
                     </li>
                     {{else}}
                     <li class="page-item pagination-lg ">
-                        <a class="page-link non-active-item" style="color :rgb(255, 255, 255) !important;" href="?page={{value}}">{{value}}</a>
+                        <a class="page-link non-active-item" style="color :rgb(255, 255, 255) !important;"
+                            href="?page={{value}}">{{value}}</a>
                     </li>
                     {{/if}}
                     {{/each}}
                     <li class="page-item pagination-lg">
-                        <a style="color :#ff9800 !important; " class="page-link next-button"  href="?page={{this.next_page}}">
+                        <a style="color :#ff9800 !important; " class="page-link next-button"
+                            href="?{{this.query}}page={{this.next_page}}">
                             <span style="margin-right: 5px;">Next</span>
                             <i class="fas fa-chevron-right"></i>
                         </a>

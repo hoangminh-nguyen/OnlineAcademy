@@ -1,0 +1,146 @@
+{{#section 'css'}}
+<style>
+    .mr-20 {
+        margin-right: 20px;
+    }
+</style>
+{{/section}}
+
+{{#section 'js'}}
+<script>
+    $('#del').on('click', function (e) {
+
+        e.preventDefault();
+
+        const spec_name = $('#spec_name').val();
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger mr-20'
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const spec_id = $('#spec_id').val();
+
+                $.getJSON(`/admin/specifications/is-delete-able?spec_id=${spec_id}`, function (data) {
+                    console.log(data);
+                    if (data === true) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Deleted!',
+                            showConfirmButton: false,
+                            timer: 1000,
+                            timerProgressBar: true,
+                        }).then((result) => {
+                            /* Read more about handling dismissals below */
+                            if (result.dismiss === Swal.DismissReason.timer || result.dismiss === Swal.DismissReason.backdrop) {
+                                $('#frmEdit').attr('action', '/admin/specifications/del');
+                                $('#frmEdit').submit();
+                            }
+                        })
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Denied!',
+                            text: "This specification still had one or more course(s).",
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                        })
+                    }
+                });
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Cancel!',
+                    showConfirmButton: false,
+                    timer: 1000,
+                    timerProgressBar: true,
+                })
+            }
+        })
+    });
+</script>
+{{/section}}
+
+<div class="wrapper">
+    <div class="sa4d25">
+        <div class="container-fluid">
+
+            <form id="frmEdit" method="POST" action="">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>{{this.spec.type_name}}</h4>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="ui search focus">
+                            <div class="ui left icon labeled input swdh11 swdh31">
+                                <div class="ui label lb12" style="width: 115px; text-align: center;">
+                                    ID
+                                </div>
+                                <input class="prompt srch_explore" type="text" id="spec_id" name="spec_id" readonly
+                                    value="{{this.spec.spec_id}}">
+                            </div>
+                        </div>
+
+                        <div class="ui search focus mt-30">
+                            <div class="ui left icon labeled input swdh11 swdh31">
+                                <div class="ui label lb12" style="width: 115px; text-align: center;">
+                                    Specification
+                                </div>
+                                <input class="prompt srch_explore" type="text" id="spec_name" name="spec_name" required
+                                    value="{{this.spec.spec_name}}">
+                            </div>
+                        </div>
+
+                        <div class="ui search focus mt-30">
+                            <div class="ui left icon labeled input swdh11 swdh31">
+                                <div class="ui label lb12" style="width: 115px; text-align: center;">
+                                    Icon
+                                </div>
+                                <input class="prompt srch_explore" type="text" id="icon" name="icon" required
+                                    value="{{this.spec.icon}}">
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-primary mt-10"
+                            style="background-color: #000 !important; border-color:#ff9800 !important; color: #ff9800 !important; "
+                            href="/admin/specifications" role="button">
+                            <i class="fa fa-chevron-left" aria-hidden="true" style="margin-right: 5px;"></i>
+                            Back to List
+                        </a>
+                        <button class="btn btn-outline-danger mt-10" id="del" type="submit">
+                            <i class="fa fa-trash-o" aria-hidden="true" style="margin-right: 5px;"></i>
+                            Delete
+                        </button>
+                        <button class="btn btn-outline-success mt-10" id="save" type="submit"
+                            formaction="/admin/specifications/patch">
+                            <i class="fa fa-check" aria-hidden="true" style="margin-right: 5px;"></i>
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

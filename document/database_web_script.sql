@@ -23,7 +23,6 @@ create table Teacher
 	lname varchar(40),
     email varchar(40),
     info varchar(1000),
-	number_course int,
     link_ava_teacher varchar(500),
 	constraint PK_Te primary key (teacher_id)
 );
@@ -131,8 +130,6 @@ alter table Course_spec
 -- THÊM RÀNG BUỘC --
 alter table Account
 	add constraint Ck_Ac_Mode CHECK (mode>=0 and mode<=3);
-alter table Teacher
-	add constraint Ck_Te_numberCourse CHECK (number_course>=0);
 alter table Stu_registerlist
 	add constraint Ck_StRe_chapnum CHECK (chap_num >=1),
     add constraint Ck_StRe_rating CHECK (rating>=1 and rating<=5);
@@ -183,16 +180,16 @@ insert into Account values ('student019@gmail.com', 'student019', 2);
 insert into Account values ('student020@gmail.com', 'student020', 2);
 
 -- Teacher
-insert into Teacher values (null,'David Teacher', 'One', 'teacher001@gmail.com', 'David Teacher One is a member of a subspecies of humans known as mutants, who are born with superhuman abilities. He is an exceptionally powerful telepath, who can read and control the minds of others.', 1, 'https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png');
-insert into Teacher values (null,'David Teacher', 'Two', 'teacher002@gmail.com', 'David Teacher Two is a member of a subspecies of humans known as mutants, who are born with superhuman abilities. He is an exceptionally powerful telepath, who can read and control the minds of others.', 1,'https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png');
-insert into Teacher values (null,'Scarlett', 'Johansson', 'teacher003@gmail.com', 'The first and best-known Black Widow is a Russian agent trained as a spy, martial artist, and sniper, and outfitted with an arsenal of high-tech weaponry, including a pair of wrist-mounted energy weapons dubbed her "Widow\'s Bite".', 2, 'https://pbs.twimg.com/profile_images/326138731/scarlettJinred_400x400.png');
-insert into Teacher values (null,'David Teacher', 'Four', 'teacher004@gmail.com', 'David Teacher Four is a member of a subspecies of humans known as mutants, who are born with superhuman abilities. He is an exceptionally powerful telepath, who can read and control the minds of others.', 0, 'https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png');
-insert into Teacher values (null,'David Teacher', 'Five', 'teacher005@gmail.com', 'David Teacher Five is a member of a subspecies of humans known as mutants, who are born with superhuman abilities. He is an exceptionally powerful telepath, who can read and control the minds of others.', 1, 'https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png');
-insert into Teacher values (null,'David Teacher', 'Six', 'teacher006@gmail.com', 'David Teacher Six is a member of a subspecies of humans known as mutants, who are born with superhuman abilities. He is an exceptionally powerful telepath, who can read and control the minds of others.', 1, 'https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png');
-insert into Teacher values (null,'David Teacher', 'Seven', 'teacher007@gmail.com', 'David Teacher Seven is a member of a subspecies of humans known as mutants, who are born with superhuman abilities. He is an exceptionally powerful telepath, who can read and control the minds of others.', 1, 'https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png');
-insert into Teacher values (null,'David Teacher', 'Eight', 'teacher008@gmail.com', 'David Teacher Eight is a member of a subspecies of humans known as mutants, who are born with superhuman abilities. He is an exceptionally powerful telepath, who can read and control the minds of others.', 1, 'https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png');
-insert into Teacher values (null,'David Teacher', 'Nine', 'teacher009@gmail.com', 'David Teacher Nine is a member of a subspecies of humans known as mutants, who are born with superhuman abilities. He is an exceptionally powerful telepath, who can read and control the minds of others.', 0, 'https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png');
-insert into Teacher values (null,'David Teacher', 'Ten', 'teacher010@gmail.com', 'David Teacher Ten is a member of a subspecies of humans known as mutants, who are born with superhuman abilities. He is an exceptionally powerful telepath, who can read and control the minds of others.', 0, 'https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png');
+insert into Teacher values (null,'David Teacher', 'One', 'teacher001@gmail.com', 'David Teacher One is a member of a subspecies of humans known as mutants, who are born with superhuman abilities. He is an exceptionally powerful telepath, who can read and control the minds of others.', 'https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png');
+insert into Teacher values (null,'David Teacher', 'Two', 'teacher002@gmail.com', 'David Teacher Two is a member of a subspecies of humans known as mutants, who are born with superhuman abilities. He is an exceptionally powerful telepath, who can read and control the minds of others.', 'https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png');
+insert into Teacher values (null,'Scarlett', 'Johansson', 'teacher003@gmail.com', 'The first and best-known Black Widow is a Russian agent trained as a spy, martial artist, and sniper, and outfitted with an arsenal of high-tech weaponry, including a pair of wrist-mounted energy weapons dubbed her "Widow\'s Bite".', 'https://pbs.twimg.com/profile_images/326138731/scarlettJinred_400x400.png');
+insert into Teacher values (null,'David Teacher', 'Four', 'teacher004@gmail.com', 'David Teacher Four is a member of a subspecies of humans known as mutants, who are born with superhuman abilities. He is an exceptionally powerful telepath, who can read and control the minds of others.', 'https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png');
+insert into Teacher values (null,'David Teacher', 'Five', 'teacher005@gmail.com', 'David Teacher Five is a member of a subspecies of humans known as mutants, who are born with superhuman abilities. He is an exceptionally powerful telepath, who can read and control the minds of others.', 'https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png');
+insert into Teacher values (null,'David Teacher', 'Six', 'teacher006@gmail.com', 'David Teacher Six is a member of a subspecies of humans known as mutants, who are born with superhuman abilities. He is an exceptionally powerful telepath, who can read and control the minds of others.', 'https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png');
+insert into Teacher values (null,'David Teacher', 'Seven', 'teacher007@gmail.com', 'David Teacher Seven is a member of a subspecies of humans known as mutants, who are born with superhuman abilities. He is an exceptionally powerful telepath, who can read and control the minds of others.', 'https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png');
+insert into Teacher values (null,'David Teacher', 'Eight', 'teacher008@gmail.com', 'David Teacher Eight is a member of a subspecies of humans known as mutants, who are born with superhuman abilities. He is an exceptionally powerful telepath, who can read and control the minds of others.', 'https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png');
+insert into Teacher values (null,'David Teacher', 'Nine', 'teacher009@gmail.com', 'David Teacher Nine is a member of a subspecies of humans known as mutants, who are born with superhuman abilities. He is an exceptionally powerful telepath, who can read and control the minds of others.', 'https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png');
+insert into Teacher values (null,'David Teacher', 'Ten', 'teacher010@gmail.com', 'David Teacher Ten is a member of a subspecies of humans known as mutants, who are born with superhuman abilities. He is an exceptionally powerful telepath, who can read and control the minds of others.', 'https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png');
 
 -- Student
 insert into Student values (null, 'Student', 'One', 'student001@gmail.com', 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png');
@@ -305,3 +302,10 @@ insert into Stu_registerlist values(11, 7, '2020-12-09 00:00:00', 1, 3,'2020-12-
 insert into Stu_registerlist values(12, 7, '2020-12-09 00:00:00', 1, 4,'2020-12-03 00:00:00', 'Good lectures');
 insert into Stu_registerlist values(13, 6, '2020-12-08 00:00:00', 1, 5,'2020-12-03 00:00:00', 'Excelent one');
 insert into Stu_registerlist values(14, 7, '2020-12-09 00:00:00', 1, 3, '2020-12-03 00:00:00', 'The course is OK');
+
+ALTER TABLE course ADD FULLTEXT (name);
+ALTER TABLE chapter ADD FULLTEXT (chap_name);
+ALTER TABLE course_detail ADD FULLTEXT (short_info, full_info);
+ALTER TABLE course_spec ADD FULLTEXT (spec_name);
+ALTER TABLE course_type ADD FULLTEXT (type_name);
+ALTER TABLE teacher ADD FULLTEXT (fname, lname);

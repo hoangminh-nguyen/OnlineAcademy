@@ -7,7 +7,6 @@ module.exports = {
         for (let i = 0; i < courses.length; i++) {
             courses[i]["newprice"] = this.calc(courses[i]);
         }
-
         return courses;
     }
 };

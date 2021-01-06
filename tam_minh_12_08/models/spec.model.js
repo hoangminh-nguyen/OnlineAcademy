@@ -15,6 +15,22 @@ module.exports = {
     return rows[0];
   },
 
+  async singleBySpecName(spec_name) {
+    const sql = `select * from course_spec cs join course_type ct on cs.type_id = ct.type_id where cs.spec_name = '${spec_name}'`;
+    const [rows, fields] = await db.load(sql);
+    if (rows.length === 0)
+      return null;
+    return rows[0];
+  },
+
+  async allByTypeName(type_name) {
+    const sql = `SELECT * FROM course_spec cs join course_type ct on (cs.type_id = ct.type_id) WHERE ct.type_name = '${type_name}'`;
+    const [rows, fields] = await db.load(sql);
+    if (rows.length === 0)
+      return null;
+    return rows;
+  },
+
   async getType(id) {
     const sql = `select ct.type_id, ct.type_name from course_type ct`;
     const [rows, fields] = await db.load(sql);

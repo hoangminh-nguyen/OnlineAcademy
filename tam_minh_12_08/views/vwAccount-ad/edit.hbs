@@ -1,0 +1,201 @@
+{{#section 'css'}}
+<style>
+    .mr-20 {
+        margin-right: 20px;
+    }
+</style>
+{{/section}}
+
+{{#section 'js'}}
+<script>
+    $('#del').on('click', function (e) {
+
+        e.preventDefault();
+
+        var mode;
+        if ($('#title').text() === 'Student Info') {
+            mode = 2;
+        }
+        else {
+            mode = 1;
+        }
+
+        const email = $('#email').val();
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger mr-20'
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const spec_id = $('#spec_id').val();
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Deleted!',
+                    showConfirmButton: false,
+                    timer: 1000,
+                    timerProgressBar: true,
+                }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    if (result.dismiss === Swal.DismissReason.timer || result.dismiss === Swal.DismissReason.backdrop) {
+                        $('#frmEdit').attr('action', '/admin/accounts/del?mode=' + mode);
+                        $('#frmEdit').submit();
+                    }
+                })
+
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Cancel!',
+                    showConfirmButton: false,
+                    timer: 1000,
+                    timerProgressBar: true,
+                })
+            }
+        })
+    });
+</script>
+{{/section}}
+
+
+<div class="wrapper">
+    <div class="sa4d25">
+        <div class="container-fluid">
+
+            <form id="frmEdit" method="POST" action="">
+                <div class="card">
+                    <div class="card-header">
+                        {{#if this.isStudent}}
+                        <h4 id="title">Student Info</h4>
+                        {{else}}
+                        <h4 id="title">Teacher Info</h4>
+                        {{/if}}
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="ui search focus ">
+                            <div class="ui left icon labeled input swdh11 swdh31">
+                                <div class="ui label lb12" style="width: 115px; text-align: center;">
+                                    ID
+                                </div>
+                                {{#if this.isStudent}}
+                                <input class="prompt srch_explore" type="text" id="student_id" name="student_id"
+                                    readonly value="{{this.info.student_id}}">
+                                {{else}}
+                                <input class="prompt srch_explore" type="text" id="teacher_id" name="teacher_id"
+                                    readonly value="{{this.info.teacher_id}}">
+                                {{/if}}
+                            </div>
+                        </div>
+
+                        <div class="ui search focus mt-30">
+                            <div class="ui left icon labeled input swdh11 swdh31">
+                                <div class="ui label lb12" style="width: 115px; text-align: center;">
+                                    First name
+                                </div>
+                                <input class="prompt srch_explore" type="text" id="fname" name="fname" required
+                                    value="{{this.info.fname}}">
+                            </div>
+                        </div>
+
+                        <div class="ui search focus mt-30">
+                            <div class="ui left icon labeled input swdh11 swdh31">
+                                <div class="ui label lb12" style="width: 115px; text-align: center;">
+                                    Last name
+                                </div>
+                                <input class="prompt srch_explore" type="text" id="lname" name="lname" required
+                                    value="{{this.info.lname}}">
+                            </div>
+                        </div>
+
+                        <div class="ui search focus mt-30">
+                            <div class="ui left icon labeled input swdh11 swdh31">
+                                <div class="ui label lb12" style="width: 115px; text-align: center;">
+                                    Email
+                                </div>
+                                <input class="prompt srch_explore" type="text" id="email" name="email" readonly
+                                    value="{{this.info.email}}">
+                            </div>
+                        </div>
+
+                        {{#if this.isStudent}}
+                        <div class="ui search focus mt-30">
+                            <div class="ui left icon labeled input swdh11 swdh31">
+                                <div class="ui label lb12" style="width: 115px; text-align: center;">
+                                    Link avatar
+                                </div>
+                                <input class="prompt srch_explore" type="text" id="link_ava_student"
+                                    name="link_ava_student" required value="{{this.info.link_ava_student}}">
+                            </div>
+                        </div>
+
+                        {{else}}
+                        <div class="ui search focus mt-30">
+                            <div class="ui left icon labeled input swdh11 swdh31">
+                                <div class="ui label lb12" style="width: 115px; text-align: center;">
+                                    Link avatar
+                                </div>
+                                <input class="prompt srch_explore" type="text" id="link_ava_teacher"
+                                    name="link_ava_teacher" required value="{{this.info.link_ava_teacher}}">
+                            </div>
+                        </div>
+
+                        <div class="ui search focus mt-30">
+                            <div class="ui left icon labeled input swdh11 swdh31">
+                                <div class="ui label lb12" style="width: 115px; text-align: center;">
+                                    Info
+                                </div>
+                                <input class=" prompt srch_explore" type="text" id="info" name="info" required
+                                    value="{{this.info.info}}">
+                            </div>
+                        </div>
+                        {{/if}}
+
+
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-primary mt-10"
+                            style="background-color: #000 !important; border-color:#ff9800 !important; color: #ff9800 !important; margin-right: 10px;"
+                            href="/admin/accounts" role="button">
+                            <i class="fa fa-chevron-left" aria-hidden="true" style="margin-right: 5px;"></i>
+                            Back to List
+                        </a>
+                        <button class="btn btn-outline-danger mt-10" id="del" type="submit"
+                            formaction="/admin/accounts/del?mode={{this.info.mode}}" style="margin-right: 10px;">
+                            <i class="fa fa-trash-o" aria-hidden="true" style="margin-right: 5px;"></i>
+                            Delete
+                        </button>
+                        <a class="btn btn-outline-primary mt-10"
+                            href="/admin/accounts/password?email={{this.info.email}}" role="button"
+                            style="margin-right: 10px;">
+                            <i class="fa fa-key" aria-hidden="true" style="margin-right: 5px;"></i>
+                            Change Password
+                        </a>
+                        <button class="btn btn-outline-success mt-10" id="save" type="submit"
+                            formaction="/admin/accounts/patch?mode={{this.info.mode}}" style="margin-right: 10px;">
+                            <i class="fa fa-check" aria-hidden="true" style="margin-right: 5px;"></i>
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
