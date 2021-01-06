@@ -7,6 +7,7 @@ module.exports = function (app) {
     app.use('/', require('../controllers/home.route'));
     app.use('/courses/', require('../controllers/courses.route'));
 
+    app.use('/teacher/', require('../controllers/teacher.route'));
 
     app.use('/admin/specifications', auth.checkAdmin, require('../controllers/specification-ad.route'));
     app.use('/admin/accounts', auth.checkAdmin, require('../controllers/account-ad.route'));

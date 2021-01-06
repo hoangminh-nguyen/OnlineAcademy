@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bootstrap-fileinput": "^5.1.3",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "express-handlebars": "^5.2.0",
