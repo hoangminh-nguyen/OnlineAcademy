@@ -11,11 +11,11 @@ Table Of Content
 =============================================================*/
 
 
-/* ================================================================================== 
+/* ==================================================================================
 Fonts
 ===================================================================================== */
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;display=swap');
-/* ================================================================================== 
+/* ==================================================================================
 Reset Css
 ===================================================================================== */
 
@@ -28,10 +28,10 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video, input {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -40,7 +40,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
@@ -181,7 +181,7 @@ h1 {
 	font-size: 3em;
 	/* 3x body copy size = 48px */
 	line-height: 1.05;
-	/* keep to a multiple of the 20px line height 
+	/* keep to a multiple of the 20px line height
 	and something more appropriate for display headings */
 }
 h2 {
@@ -735,21 +735,21 @@ i.icon1 {
     font-size: 1.3rem !important;
 }
 
-.non-active-item:hover{ 
+.non-active-item:hover{
     background-color: rgb(97, 97, 97) !important;
 }
-/* 
+/*
 .fas {
     margin: 0px 0px 15px 15px ;
 } */
 
 .next-button{
-    background-color: #000 !important; 
+    background-color: #000 !important;
     border-color: #ff9800 !important;
 }
 
 .next-button:hover{
-    background-color: rgb(53, 53, 53) !important; 
+    background-color: rgb(53, 53, 53) !important;
 }
 
 .page-link {
@@ -759,7 +759,7 @@ i.icon1 {
     border-bottom-right-radius: .30rem !important;
 }
 .non-active-item{
-    
+
 }
 
 .stream_1 {
@@ -866,7 +866,7 @@ i.icon1 {
 	background: #ff9800 !important;
 	border: 1px solid #ff9800 !important;
 	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.07);
-}	
+}
 
 .live_stream .owl-nav .owl-next:hover {
 	color: #fff !important;
@@ -1286,7 +1286,7 @@ i.icon1 {
 	background: #ff9800 !important;
 	border: 1px solid #ff9800 !important;
 	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.07);
-}	
+}
 
 .featured_courses .owl-nav .owl-next:hover {
 	color: #fff !important;
@@ -1334,7 +1334,7 @@ i.icon1 {
 	background: #ff9800 !important;
 	border: 1px solid #ff9800 !important;
 	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.07);
-}	
+}
 
 .top_instrutors .owl-nav .owl-next:hover {
 	color: #fff !important;
@@ -1489,7 +1489,7 @@ i.icon1 {
 	-moz-transform: scale(1.1);
 	-ms-transform: scale(1.1);
 	-o-transform: scale(1.1);
-	transform: scale(1.1); 
+	transform: scale(1.1);
 }
 
 .fb {
@@ -1653,7 +1653,7 @@ i.icon1 {
 	float: left;
     font-weight: 500;
     font-family: 'Roboto', sans-serif;
-    margin-bottom: 0;	
+    margin-bottom: 0;
 }
 
 .allcate15 {
@@ -1848,7 +1848,7 @@ i.icon1 {
 	background: #ff9800 !important;
 	border: 1px solid #ff9800 !important;
 	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.07);
-}	
+}
 
 .Student_says .owl-nav .owl-next:hover {
 	color: #fff !important;
@@ -1934,7 +1934,7 @@ i.icon1 {
 }
 
 .btn1542:hover {
-    color: rgb(0, 0, 0) !important; 
+    color: rgb(0, 0, 0) !important;
     background: #f3aa3d;
 }
 
@@ -2014,7 +2014,7 @@ i.icon1 {
 	-moz-transform: scale(1.1);
 	-ms-transform: scale(1.1);
 	-o-transform: scale(1.1);
-	transform: scale(1.1); 	
+	transform: scale(1.1);
 }
 
 .lng_btn .ui.dropdown .menu>.item {
@@ -2079,10 +2079,10 @@ i.icon1 {
 }
 
 @keyframes sk-bouncedelay {
-  0%, 80%, 100% { 
+  0%, 80%, 100% {
     -webkit-transform: scale(0);
     transform: scale(0);
-  } 40% { 
+  } 40% {
     -webkit-transform: scale(1.0);
     transform: scale(1.0);
   }
@@ -2239,7 +2239,7 @@ i.icon1 {
 
 .user_dt_left {
 	float: left;
-} 
+}
 
 .subscribe-btn {
     border: 0;
@@ -2280,7 +2280,7 @@ i.icon1 {
 
 .user_dt_right {
 	float: right;
-} 
+}
 
 .user_dt_right ul li {
     display: inline-block;
@@ -2494,12 +2494,12 @@ i.icon1 {
 .srch_explore {
     background: #fff !important;
     border: 1px solid #e5e5e5 !important;
-    color: #333 !important;	
+    color: #333 !important;
 	box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.1) !important;
 }
 
 .srch_explore:focus {
-    border: 1px solid #333 !important;	
+    border: 1px solid #333 !important;
 	box-shadow: none !important;
 }
 
@@ -3277,7 +3277,7 @@ i.icon2 {
 }
 
 ._rate003 {
-	
+
 }
 
 ._rate004 {
@@ -3618,7 +3618,7 @@ i.icon2 {
 }
 
 ._216b12:hover {
-	color: #fafafa !important; 
+	color: #fafafa !important;
 }
 
 .prfledt1 h2 {
@@ -3711,7 +3711,7 @@ i.icon2 {
 }
 
 ._216b22:hover {
-	color: #fafafa !important; 
+	color: #fafafa !important;
 }
 
 .cmmnt_1526{
@@ -3892,7 +3892,7 @@ i.icon2 {
 .ui[class*="left icon"].swdh15.input>input {
     padding-left: 4.2em!important;
     padding-right: 1em!important;
-    height: 40px !important; 
+    height: 40px !important;
 	font-size: 14px;
     font-weight: 400;
     font-family: 'Roboto', sans-serif;
@@ -5038,7 +5038,7 @@ a.rmv-btn i {
 }
 
 .category-topics.collapsed:after {
-    content: '\f0da'; 
+    content: '\f0da';
     font-size: 14px;
     font-family: "FontAwesome";
     float: right;
@@ -5228,7 +5228,7 @@ a.rmv-btn i {
 }
 
 .blog_link i {
-    margin-right: 5px; 
+    margin-right: 5px;
 }
 
 .bg_blog2 img {
@@ -5510,7 +5510,7 @@ a.rmv-btn i {
 	background: #ff9800 !important;
 	border: 1px solid #ff9800 !important;
 	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.07);
-}	
+}
 
 .feature_careers .owl-nav .owl-next:hover {
 	color: #fff !important;
@@ -5876,7 +5876,7 @@ a.rmv-btn i {
     font-weight: 600;
     font-family: 'Roboto', sans-serif;
 	color: #333;
-	text-align: center;	
+	text-align: center;
 }
 
 .sign_form p {
@@ -5885,7 +5885,7 @@ a.rmv-btn i {
     font-weight: 400;
     font-family: 'Roboto', sans-serif;
 	color: #686f7a;
-	text-align: center;	
+	text-align: center;
 	line-height: 26px;
 }
 
@@ -6146,8 +6146,8 @@ a.rmv-btn i {
 	line-height: 26px;
 }
 
-.panel-title > a:hover, 
-.panel-title > a:active, 
+.panel-title > a:hover,
+.panel-title > a:active,
 .panel-title > a:focus  {
     text-decoration:none;
 }
@@ -6673,7 +6673,7 @@ a.rmv-btn i {
 	margin-top: 0;
 	padding-top: 30px;
 	padding-bottom: 30px;
-	border-top: 1px solid #333; 
+	border-top: 1px solid #333;
 }
 
 .tc_footer_left ul li {
@@ -6903,7 +6903,7 @@ a.rmv-btn i {
 	text-decoration: underline !important;
 }
 
- 
+
 
 .contact1256 {
     float: left;
@@ -7294,8 +7294,8 @@ a.rmv-btn i {
 	line-height: 26px;
 }
 
-.panel-title10 > a:hover, 
-.panel-title10 > a:active, 
+.panel-title10 > a:hover,
+.panel-title10 > a:active,
 .panel-title10 > a:focus  {
     text-decoration:none;
 }
@@ -7430,7 +7430,7 @@ a.rmv-btn i {
     text-align: left;
     line-height: 28px;
 	margin-top: 0;
-	margin-bottom: 24px;	
+	margin-bottom: 24px;
 }
 
 .ques_title span {

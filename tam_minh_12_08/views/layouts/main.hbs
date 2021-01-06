@@ -21,6 +21,7 @@
   <link href="/css/style.css" rel="stylesheet">
   <link href="/css/responsive.css" rel="stylesheet">
   <link href="/css/night-mode.css" rel="stylesheet">
+  <link href="/css/searchbar.css" rel="stylesheet">
 
   <!-- Vendor Stylesheets -->
   <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -53,14 +54,19 @@
 
       <a href="/"><img class="logo-inverse" src="/images/ct_logo.svg" alt=""></a>
     </div>
+
+
     <div class="search120">
       <div class="ui search">
-        <div class="ui left icon input swdh10">
-          <input class="prompt srch10" type="text" placeholder="Search for Tuts Videos, Tutors, Tests and more..">
-          <i class='uil uil-search-alt icon icon1'></i>
+        <div class=" ui left icon input swdh10 " style=" height: 42px;">
+          <input id="search" class="prompt srch10" type="search" placeholder="Search for anything" {{#if this.isSearch}}
+            value='{{this.search}}' {{/if}}>
+          <i class="uil fas fa-search icon icon1"></i>
         </div>
       </div>
     </div>
+
+
     <div class="header_right">
       <ul>
         {{#if isTeacher}}
@@ -588,6 +594,18 @@
 
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script>
+
+  <script>
+    $('document').ready(function () {
+      $('#search').keypress(function (e) {
+        if (e.which == 13) {
+          var search = $('#search').val();
+          window.location.replace('/courses/?search=' + search);
+        }
+      });
+
+    });
+  </script>
 
   {{{_sections.js}}}
 
