@@ -11,6 +11,7 @@ const router = express.Router();
 
 router.get('/detail/:id', async function (req, res, next) {
     const course_id = +req.params.id;
+    await courseModel.updateViewNumber(course_id);
     const course = await courseModel.single(course_id);
     const review = await courseModel.allReviewByID(course_id);
     const chapter = await courseModel.allChapterbyID(course_id);

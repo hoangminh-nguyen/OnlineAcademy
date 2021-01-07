@@ -67,7 +67,7 @@ router.post("/login", async function(req, res) {
       err_message: "Email does not match any account.",
     });
   }
-
+  
   const ret = bcrypt.compareSync(req.body.password, user.password);
   if (ret === false) {
     return res.render("vwAccount/login", {

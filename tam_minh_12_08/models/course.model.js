@@ -85,6 +85,11 @@ module.exports = {
     return rows[0];
   },
 
+  async updateViewNumber(course_id){
+    const sql = `update course set view_number= view_number + 1 where course_id=${course_id}`;
+    const [rows, fields] = await db.load(sql);
+  },
+
   async topTenNewest() {
     const sql = 'select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id order by publish_day desc limit 10;';
     const [rows, fields] = await db.load(sql);

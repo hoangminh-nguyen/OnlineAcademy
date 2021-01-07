@@ -12,9 +12,29 @@ router.get('/info', async function (req, res, next) {
     res.render('vwStudent/info', {
     });
 })
+router.get('/info/is-email-available', async function (req, res) {
+    const email = req.query.email;
+
+    console.log(email);
+
+    const user = await accountModel.single(email);
+    if (user === null) {
+      return res.json(true);
+    }
+    res.json(false);
+  })
 
 router.post("/info/patch", async function(req, res) {
+    if(req.body.email != req.session.authUser.email){
+        const user = {
+            email: req.body.email,
+            password: req.session.authUser.password,
+            mode: 2,   
+          };
+          await accountModel.add(user);
+    }
     await studentModel.patch(req.body);
+    await accountModel.del(req.session.authUser.email);
     req.session.authUser = await studentModel.studentInfo(req.body.email);
     res.locals.authUser = req.session.authUser;
     res.redirect("/student/info");
@@ -26,10 +46,23 @@ router.get('/info/password', async function (req, res, next) {
 })
 router.post('/info/password', async function (req, res, next) {
     var account = req.body;
-    account["password"] = bcrypt.hashSync(req.body.password, 10);
+    account["password"] = bcrypt.hashSync(req.body.newpassword, 10);
+    delete account.oldpassword;
+    delete account.newpassword;
     await accountModel.patch(account);
     res.redirect("/student/info");
 })
+
+router.get('/info/password/is-true', async function (req, res) {
+    const mail = req.session.authUser.email;
+    const password = req.query.password;
+    const user = await accountModel.single(mail);
+    const ret = bcrypt.compareSync(password, user.password);
+    if (ret === false) {
+      return res.json(false);
+    }
+    res.json(true);
+  })
 
 router.get('/rating', async function (req, res, next) {
     const course_id = req.query.courseid;
@@ -60,7 +93,6 @@ router.get('/registeredcourses', async function (req, res, next) {
     const student_id = req.session.authUser.student_id;
     var course = await courseModel.allByStudentIDRegister(student_id);
     course = discount.calcCourses(course);
-    console.log(course);
     res.render('vwStudent/savedcourses', {
         course,
         numberCourse: course.length,

@@ -8,6 +8,7 @@ module.exports = {
     return rows[0];
   },
 
+
   async add(user) {
     const [result, fields] = await db.add(user, "account");
     return result;
