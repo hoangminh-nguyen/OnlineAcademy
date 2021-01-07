@@ -8,7 +8,6 @@ const accountModel = require("../models/account.model");
 const { calcNextPage } = require('../utils/pagination');
 const pagination = require('../utils/pagination');
 const bcrypt = require("bcryptjs");
-const router = express.Router();
 
 
 const router = express.Router();

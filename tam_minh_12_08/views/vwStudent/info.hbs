@@ -70,11 +70,10 @@
 
 
 <div class="wrapper">
-    <div class="sa4d25">
-        <div class="container-fluid">
+        <div class="course__form" style="margin: 0px 30px 0px 30px !important; border-radius: 10px;">
 
             <form id="frmEdit" method="POST" action="">
-                <div class="card">
+                <div class="card-view_info10">
                     <div class="card-header">
                         {{#if this.isStudent}}
                         <h4 id="title">Student Info</h4>
@@ -173,25 +172,25 @@
                             Back to Home
                         </a>
                         {{#if this.isStudent}}
-                        <a class="btn btn-outline-primary mt-10"
+                        <a class="btn btn-outline-primary mt-10 ml-2"
                             href="/student/info/password" role="button"
                             style="margin-right: 10px;">
                             <i class="fa fa-key" aria-hidden="true" style="margin-right: 5px;"></i>
                             Change Password
                         </a>
-                        <button class="btn btn-outline-success mt-10" id="save" type="submit"
+                        <button class="btn btn-outline-success mt-10 ml-2" id="save" type="submit"
                             formaction="/student/info/patch" style="margin-right: 10px;">
                             <i class="fa fa-check" aria-hidden="true" style="margin-right: 5px;"></i>
                             Save
                         </button>
                         {{else}}
-                        <a class="btn btn-outline-primary mt-10"
+                        <a class="btn btn-outline-primary mt-10 ml-2"
                             href="/teacher/info/password" role="button"
                             style="margin-right: 10px;">
                             <i class="fa fa-key" aria-hidden="true" style="margin-right: 5px;"></i>
                             Change Password
                         </a>
-                        <button class="btn btn-outline-success mt-10" id="save" type="submit"
+                        <button class="btn btn-outline-success mt-10 ml-2" id="save" type="submit"
                             formaction="/teacher/info/patch" style="margin-right: 10px;">
                             <i class="fa fa-check" aria-hidden="true" style="margin-right: 5px;"></i>
                             Save
@@ -202,5 +201,4 @@
             </form>
 
         </div>
-    </div>
 </div>

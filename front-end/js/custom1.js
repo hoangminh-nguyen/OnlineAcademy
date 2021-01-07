@@ -157,17 +157,7 @@ $('input[name="paymentmethod"]').on('click', function () {
 });
 
 // Right Click Disable
-window.oncontextmenu = function () {
-	return false;
-}
-$(document).keydown(function (event) {
-	if (event.keyCode == 123) {
-		return false;
-	}
-	else if ((event.ctrlKey && event.shiftKey && event.keyCode == 73) || (event.ctrlKey && event.shiftKey && event.keyCode == 74)) {
-		return false;
-	}
-});
+
 
 
 
