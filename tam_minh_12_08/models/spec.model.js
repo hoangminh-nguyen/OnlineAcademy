@@ -54,7 +54,7 @@ module.exports = {
   },
 
   async getSpecMostStuReLast7Days() {
-    const sql = `select * from course_spec cs join (select co.spec, count(st.student_id) as numberStu from stu_registerlist st join course co on st.course_id = co.course_id  where st.register_date between (CURDATE() - INTERVAL 7 DAY ) and CURDATE() group by co.spec) re on cs.spec_id = re.spec join course_type ct on ct.type_id = cs.type_id limit 5`;
+    const sql = `select * from course_spec cs join (select co.spec, count(st.student_id) as numberStu from stu_registerlist st join course co on st.course_id = co.course_id  where st.register_date >= (CURDATE() - INTERVAL 7 DAY ) group by co.spec) re on cs.spec_id = re.spec join course_type ct on ct.type_id = cs.type_id limit 5`;
     const [rows, fields] = await db.load(sql);
     if (rows.length === 0)
       return null;

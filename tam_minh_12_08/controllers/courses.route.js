@@ -20,9 +20,8 @@ router.get('/detail/:id', async function (req, res, next) {
 
     var register = await courseModel.topFiveRegisterInSpec(course["spec"]);
     register = discount.calcCourses(register);
-
     course["newprice"] = discount.calc(course);
-
+    bestseller.labelBestseller(res.locals.lcBestseller, course);
 
     res.render('vwCourses/detail', {
         course: course,
@@ -92,6 +91,7 @@ router.get('/:type', async (req, res) => {
     }
 
     const allspec = await specModel.allByTypeName(type);
+    bestseller.labelBestseller(res.locals.lcBestseller, all);
     res.render('vwCourses/all', {
         course: all,
         isType: true,
@@ -141,6 +141,7 @@ router.get('/:type/:spec_name', async (req, res) => {
     }
 
     const allspec = await specModel.allByTypeName(type);
+    bestseller.labelBestseller(res.locals.lcBestseller, all);
     res.render('vwCourses/all', {
         isSpec: true,
         spec: specification,
@@ -199,6 +200,7 @@ router.get('/', async (req, res) => {
         isSort = true;
     }
 
+    bestseller.labelBestseller(res.locals.lcBestseller, all);
     res.render('vwCourses/all', {
         search,
         isSearch: true,

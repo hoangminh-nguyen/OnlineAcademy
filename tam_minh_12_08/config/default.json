@@ -11,5 +11,8 @@
   },
   "paginate": {
     "limit": 6
+  },
+  "bestseller":{
+    "limit": 5
   }
 }

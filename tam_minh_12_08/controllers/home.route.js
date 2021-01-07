@@ -4,6 +4,8 @@ const { getType, getSpecbyType } = require('../models/spec.model');
 const specModel = require('../models/spec.model');
 const router = express.Router();
 const discount = require('../utils/discount');
+const bestseller = require('../utils/bestseller');
+
 
 router.get('/', async function (req, res, next) {
     var newest = await courseModel.topTenNewest();
@@ -15,6 +17,10 @@ router.get('/', async function (req, res, next) {
     newest = discount.calcCourses(newest);
     viewed = discount.calcCourses(viewed);
     rating = discount.calcCourses(rating);
+
+    bestseller.labelBestseller(res.locals.lcBestseller, rating);
+    bestseller.labelBestseller(res.locals.lcBestseller, newest);
+    bestseller.labelBestseller(res.locals.lcBestseller, viewed);
 
     res.render('home', {
         newest: newest,

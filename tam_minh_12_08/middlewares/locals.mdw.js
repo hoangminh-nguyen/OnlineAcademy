@@ -1,4 +1,5 @@
 const specModel = require('../models/spec.model');
+const courseModel = require('../models/course.model');
 
 module.exports = function (app) {
     app.use(async function (req, res, next) {
@@ -13,6 +14,7 @@ module.exports = function (app) {
             })
         }
         res.locals.lcSpec = cate_spec;
+        res.locals.lcBestseller = await courseModel.topBestseller();
         next();
     });
 
