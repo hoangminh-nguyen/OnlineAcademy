@@ -304,7 +304,7 @@ insert into Stu_registerlist values(13, 6, '2020-12-08 00:00:00', 1, 5,'2020-12-
 insert into Stu_registerlist values(14, 7, '2020-12-09 00:00:00', 1, 3, '2020-12-03 00:00:00', 'The course is OK');
 
 ALTER TABLE course ADD FULLTEXT (name);
-ALTER TABLE chapter ADD FULLTEXT (chap_name);
+ALTER TABLE course_chapter ADD FULLTEXT (chap_name);
 ALTER TABLE course_detail ADD FULLTEXT (short_info, full_info);
 ALTER TABLE course_spec ADD FULLTEXT (spec_name);
 ALTER TABLE course_type ADD FULLTEXT (type_name);

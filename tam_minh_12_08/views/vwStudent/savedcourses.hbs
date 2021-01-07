@@ -70,6 +70,10 @@
                                             <div class="prce142">${{price}}</div>
                                             {{/if}}
 										</div>
+										<div class="cr1fot">Current Study Chapter: {{chap_num}}</div>
+										{{#unless sturate}}
+										<div class="cr1fot float-right">You have not rated this course: <a href="/student/rating?courseid={{course_id}}"><b style="color: #FF9800;">Rate Now</b></a></div>
+										{{/unless}}
 									</div>
 								</div>
 								{{/each}}

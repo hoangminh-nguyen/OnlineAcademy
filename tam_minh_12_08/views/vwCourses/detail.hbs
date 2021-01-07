@@ -63,6 +63,7 @@
     })
 
   });
+  {{#if isStudent}}
   $('#buybutton').on('click', function (e) {
     e.preventDefault();
     const coursename = $('#course_name').text();
@@ -77,6 +78,7 @@
       }
     })
   });
+  {{/if}}
 </script>
 {{/section}}
 
@@ -164,7 +166,7 @@
                 <ul class="_215b31">
                   {{#if ../isAdmin}}
                   <li><a href="/"><button class="btn_adcart" id="remove">Remove this course</button></a></li>
-                  {{else}}
+                  {{else if ../isStudent}}
                   <li><a href="/student/watchlist/add?courseid={{course_id}}"><button class="btn_adcart">Add to Watch
                         List</button></a>
                   </li>
@@ -172,6 +174,14 @@
                     <form id="frmRegister" method="POST" action="/student/registeredcourses/add?courseid={{course_id}}">
                       <button class="btn_buy" type="submit" id="buybutton">Buy Now</button>
                     </form>
+                  </li>
+                  {{else if ../isTeacher}}
+                  {{else unless ../auth}}
+                  <li><a href="/account/login"><button class="btn_adcart">Add to Watch
+                        List</button></a>
+                  </li>
+                  <li>
+                      <a href="/account/login"><button class="btn_buy" id="buybutton">Buy Now</button></a>
                   </li>
                   {{/if}}
                 </ul>
@@ -393,46 +403,31 @@
                       <div class="review_right">
                         <div class="review_right_heading">
                           <h3>Reviews</h3>
-                          <div class="review_search">
-                            <input class="rv_srch" type="text" placeholder="Search reviews...">
-                            <button class="rvsrch_btn"><i class='uil uil-search'></i></button>
-                          </div>
                         </div>
                       </div>
                       <div class="review_all120">
 
                         {{#each this.review}}
-                        <div class="review_item">
-                          <div class="review_usr_dt">
-                            <img src="{{link_ava_student}}" alt="">
-                            <div class="rv1458">
-                              <h4 class="tutor_name1">{{fname}} {{lname}}</h4>
-                              <span class="time_145">{{format_date_diff comment_date}}</span>
-                            </div>
-                          </div>
-                          <div class="rating-box mt-20">
-                            <span class="rating-star full-star"></span>
-                            <span class="rating-star full-star"></span>
-                            <span class="rating-star full-star"></span>
-                            <span class="rating-star full-star"></span>
-                            <span class="rating-star half-star"></span>
-                          </div>
-                          <p class="rvds10">{{comment}}</p>
-                          <div class="rpt100">
-                            <span>Was this review helpful?</span>
-                            <div class="radio--group-inline-container">
-                              <div class="radio-item">
-                                <input id="radio-1" name="radio" type="radio">
-                                <label for="radio-1" class="radio-label">Yes</label>
-                              </div>
-                              <div class="radio-item">
-                                <input id="radio-2" name="radio" type="radio">
-                                <label for="radio-2" class="radio-label">No</label>
+                          {{#if rating}}
+                          <div class="review_item">
+                            <div class="review_usr_dt">
+                              <img src="{{link_ava_student}}" alt="">
+                              <div class="rv1458">
+                                <h4 class="tutor_name1">{{fname}} {{lname}}</h4>
+                                <span class="time_145">{{format_date_diff comment_date}}</span>
                               </div>
                             </div>
-                            <a href="#" class="report145">Report</a>
+                            <div class="rating-box mt-20">
+                              <span class="mr-2" style="font-size: 16px; font-weight: bold">{{rating}}</span>
+                              <span class="rating-star full-star"></span>
+                              <span class="rating-star full-star"></span>
+                              <span class="rating-star full-star"></span>
+                              <span class="rating-star full-star"></span>
+                              <span class="rating-star half-star"></span>
+                            </div>
+                            <p class="rvds10">{{comment}}</p>
                           </div>
-                        </div>
+                          {{/if}}
                         {{/each}}
 
                         <div class="review_item">

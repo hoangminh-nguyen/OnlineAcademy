@@ -31,10 +31,36 @@ router.post('/info/password', async function (req, res, next) {
     res.redirect("/student/info");
 })
 
+router.get('/rating', async function (req, res, next) {
+    const course_id = req.query.courseid;
+    const course = await courseModel.single(course_id);
+    res.render('vwStudent/rating', {
+        course,
+
+    });
+})
+router.post('/rating', async function (req, res, next) {
+    const rating = req.body.rating;
+    const comment = req.body.comment;
+    const course_id = req.query.courseid;
+    const student_id = req.session.authUser.student_id;
+    var d = new Date();
+    var day=d.getDate(), month=(d.getMonth()+1), year=d.getFullYear(), hour=d.getHours(), minute=d.getMinutes(), second=d.getSeconds();
+    if (day <10) day="0"+day;
+    if (month<10) month="0"+month;
+    if (hour<10) hour="0"+hour;
+    if (minute<10) minute="0"+minute;
+    if (second<10) second="0"+second;
+    var date = year+'-'+month+'-'+day+' '+hour+':'+minute+':'+second;
+    await studentModel.rating(course_id, student_id, rating, comment, date);
+    res.redirect("/student/registeredcourses");
+})
+
 router.get('/registeredcourses', async function (req, res, next) {
     const student_id = req.session.authUser.student_id;
     var course = await courseModel.allByStudentIDRegister(student_id);
     course = discount.calcCourses(course);
+    console.log(course);
     res.render('vwStudent/savedcourses', {
         course,
         numberCourse: course.length,

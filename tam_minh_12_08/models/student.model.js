@@ -78,4 +78,10 @@ module.exports = {
     const sql = `delete from stu_watchlist where student_id=${studentid}`;
     const [rows, fields] = await db.load(sql);
   },
+
+  async rating(courseid, studentid, rating, comment, date){
+    const sql = `update stu_registerlist set rating='${rating}', comment='${comment}', comment_date='${date}' where student_id=${studentid} and course_id=${courseid}`;
+    console.log(sql);
+    const [rows, fields] = await db.load(sql);
+  }
 };

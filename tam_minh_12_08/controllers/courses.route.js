@@ -6,7 +6,7 @@ const { calcCourses } = require('../utils/discount');
 const discount = require('../utils/discount');
 const { calcNextPage } = require('../utils/pagination');
 const pagination = require('../utils/pagination');
-
+const bestseller = require('../utils/bestseller')
 const router = express.Router();
 
 router.get('/detail/:id', async function (req, res, next) {

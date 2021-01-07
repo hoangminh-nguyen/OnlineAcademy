@@ -10,6 +10,8 @@ const pagination = require('../utils/pagination');
 const bcrypt = require("bcryptjs");
 
 
+const router = express.Router();
+
 router.get('/', function (req, res) {
     res.render('vwTeacher/index');
   })
@@ -39,9 +41,6 @@ router.get('/', function (req, res) {
       }
     });
   })
-
-
-
 
 router.get('/info', async function (req, res, next) {
     res.locals.authUser = req.session.authUser;
