@@ -29,13 +29,16 @@
                           <i class="fas fa-star"></i>{{format_number rating}}
                         </div>
                         <span class="play_btn1"><i class="uil uil-play"></i></span>
-                        {{!-- <div class="crse_timer">
+                        {{#if bestseller}}
+                        <div class="crse_timer" style="color: black; background-color: #ff9800; font-weight: bold; ">
+                          <i class="fas fa-fire mr-1"></i>
                           Bestseller
-                        </div> --}}
+                        </div>
+                        {{/if}}
                       </div>
                     </a>
-                    <div class="fcrse_content">
-                      <div class="eps_dots more_dropdown">
+                    <div class=" fcrse_content">
+                      {{!-- <div class="eps_dots more_dropdown">
                         <a href="#"><i class='uil uil-ellipsis-v'></i></a>
                         <div class="dropdown-content">
                           <span><i class='uil uil-share-alt'></i>Share</span>
@@ -43,6 +46,11 @@
                           <span><i class='uil uil-ban'></i>Not Interested</span>
                           <span><i class="uil uil-windsock"></i>Report</span>
                         </div>
+                      </div> --}}
+
+                      <div class="more_dropdown" style="float: right; color:#ff9800; font-weight: 600;">
+                        NEW
+                        <i class="fas fa-grin-alt"></i>
                       </div>
                       <div class="vdtodt">
                         <span class="vdt14">{{view_number}} views</span>
@@ -50,13 +58,14 @@
                         <span class="vdt14">{{day_ago}} days ago</span>
                       </div>
                       <a href="/courses/detail/{{course_id}}" class="crse14s" style="height: 50px;">{{name}}</a>
-                      <a href="/courses/{{type_name}}/{{spec_name}}" class="crse-cate">{{type_name}} | {{spec_name}}</a>
+                      <a href="/courses/{{type_name}}/{{spec_name}}" class="crse-cate">{{type_name}} |
+                        {{spec_name}}</a>
                       <div class="auth1lnkprce">
                         <p class="cr1fot">By <a href="#">{{fname}} {{lname}}</a></p>
                         {{#if discount}}
                         <div class="prce142">
-                          <span style="color:darkgrey ;text-decoration: line-through; font-size:12pt;">${{price}} <i
-                              class="fas fa-long-arrow-alt-right"> </i></span>
+                          <span style="color:darkgrey ;text-decoration: line-through; font-size:12pt;">${{price}}
+                            <i class="fas fa-long-arrow-alt-right"> </i></span>
                           <span> ${{newprice}}</span>
                         </div>
                         {{else}}
@@ -119,7 +128,8 @@
                         <span class="vdt14">{{day_ago}} days ago</span>
                       </div>
                       <a href="/courses/detail/{{course_id}}" class="crse14s" style="height: 50px;">{{name}}</a>
-                      <a href="/courses/{{type_name}}/{{spec_name}}" class="crse-cate">{{type_name}} | {{spec_name}}</a>
+                      <a href="/courses/{{type_name}}/{{spec_name}}" class="crse-cate">{{type_name}} |
+                        {{spec_name}}</a>
                       <div class="auth1lnkprce">
                         <p class="cr1fot">By <a href="#">{{fname}} {{lname}}</a></p>
                         {{#if discount}}
@@ -188,7 +198,8 @@
                         <span class="vdt14">{{day_ago}} days ago</span>
                       </div>
                       <a href="/courses/detail/{{course_id}}" class="crse14s" style="height: 50px;">{{name}}</a>
-                      <a href="/courses/{{type_name}}/{{spec_name}}" class="crse-cate">{{type_name}} | {{spec_name}}</a>
+                      <a href="/courses/{{type_name}}/{{spec_name}}" class="crse-cate">{{type_name}} |
+                        {{spec_name}}</a>
                       <div class="auth1lnkprce">
                         <p class="cr1fot">By <a href="#">{{fname}} {{lname}}</a></p>
                         {{#if discount}}

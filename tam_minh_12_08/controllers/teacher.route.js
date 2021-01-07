@@ -11,9 +11,6 @@ const bcrypt = require("bcryptjs");
 const router = express.Router();
 
 
-const router = express.Router();
-
-
 router.get('/', function (req, res) {
     res.render('vwTeacher/index');
   })
@@ -32,7 +29,7 @@ router.get('/', function (req, res) {
         // cb(null, file.fieldname + '-' + Date.now())
       }
     });
-    
+
     const upload = multer({ storage: storage });
     upload.single('inputGroupFile04')(req, res, function (err) {
       console.log(req.body);
