@@ -668,6 +668,7 @@ i.icon1 {
 .wrapper {
 	padding: 90px 0 0;
     transition: all 0.3s ease-out;
+    min-height: 574px;
 }
 
 .clearfix:after {
@@ -1190,9 +1191,9 @@ i.icon1 {
     box-shadow: 0 0 1px 1px rgba(20,23,28,.1), 0 3px 1px 0 rgba(20,23,28,.1);
 }
 
-.badge_seller:after {
+/* .badge_seller:after {
 	background: inherit;
-    content: '';
+    content: ' ';
     height: 12px;
     position: absolute;
     top: 3px;
@@ -1204,7 +1205,7 @@ i.icon1 {
     border-bottom-left-radius: 2px;
     border-top-left-radius: 3px;
     border-bottom-right-radius: 3px;
-}
+} */
 
 .crse_timer {
     bottom: 0;
@@ -1892,7 +1893,7 @@ i.icon1 {
 	background: #333;
 	width: 100%;
 	padding: 0;
-	float: left;
+    float: left;
 }
 
 .item_f1 {
@@ -5789,7 +5790,6 @@ a.rmv-btn i {
 
 .main_logo25 {
     float: none;
-    width: 135px;
     text-align: center;
     margin: auto !important;
 	padding: 50px 0;

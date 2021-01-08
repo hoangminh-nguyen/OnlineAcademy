@@ -32,15 +32,15 @@
 .toggle_menu i:hover {
     color: #ff9800;
 }
-	
+
 .vertical_nav {
 	position: fixed;
-    left: -240px;
+    left: -250px;
     top: 60px;
     bottom: 0;
     background: #fff;
     overflow: hidden;
-    width: 240px;
+	width: 250px;
     z-index: 995;
 }
 
@@ -102,7 +102,7 @@
 	color: #333;
 }
 
-.menu--subitens__opened .sub_menu { 
+.menu--subitens__opened .sub_menu {
 	display: block;
 }
 
@@ -128,7 +128,7 @@
 	width: 50px;
 	height: 45px;
 	line-height: 43px;
-	font-size: 20px; 
+	font-size: 20px;
 	text-align: center;
 }
 
@@ -162,7 +162,7 @@
 }
 
 .sub_menu--link.active {
-	color: #ff9800;	
+	color: #ff9800;
 	font-weight: 500;
 }
 
@@ -170,11 +170,11 @@
 	display: none;
 }
 
-@media (min-width:992px) {	
+@media (min-width:992px) {
 .vertical_nav{
 	left: 0;
 }
-	
+
 .toggle_menu {
 	display: none;
 }

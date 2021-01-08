@@ -63,7 +63,7 @@
     })
 
   });
-  {{#if isStudent}}
+  { {#if isStudent } }
   $('#buybutton').on('click', function (e) {
     e.preventDefault();
     const coursename = $('#course_name').text();
@@ -78,7 +78,7 @@
       }
     })
   });
-  {{/if}}
+  { { /if}}
 </script>
 {{/section}}
 
@@ -147,11 +147,11 @@
                   ({{rateStu}} ratings)
                 </div>
                 <div class="_215b05">
-                  <i class="fas fa-user-graduate"></i>
+                  <i class="fas fa-user-graduate mr-2"></i>
                   {{numberStu}} students enrolled
                 </div>
                 <div class="_215b05">
-                  <i class="fas fa-edit"></i>
+                  <i class="fas fa-edit mr-2"></i>
                   Last updated {{format_date last_modify}}
                 </div>
                 <div class="_215b05">
@@ -181,7 +181,7 @@
                         List</button></a>
                   </li>
                   <li>
-                      <a href="/account/login"><button class="btn_buy" id="buybutton">Buy Now</button></a>
+                    <a href="/account/login"><button class="btn_buy" id="buybutton">Buy Now</button></a>
                   </li>
                   {{/if}}
                 </ul>
@@ -209,10 +209,12 @@
                 <div class="user_img5">
                   <a href="#"><img src="{{link_ava_teacher}}" alt=""></a>
                 </div>
-                <div class="user_cntnt">
+                <div class="user_cntnt" style="max-width: 800px;">
                   <a href="#" class="_df7852" style="height: 10px; margin-top: 5px;">{{fname}} {{lname}}</a>
-                  <div style="color: darkgrey;" class="mt-3"><b style="color: rgb(214, 214, 214);">Contact:</b> {{email}}</div>
-                  <div style="color: darkgrey;" class="mt-1"><b style="color: rgb(214, 214, 214);">Information:</b> {{info}}</div>
+                  <div style="color: darkgrey;" class="mt-3"><b style="color: rgb(214, 214, 214);">Contact:</b>
+                    {{email}}</div>
+                  <div style="color: darkgrey;" class="mt-1"><b style="color: rgb(214, 214, 214);">Information:</b>
+                    {{info}}</div>
                 </div>
               </div>
             </div>
@@ -409,26 +411,26 @@
                       <div class="review_all120">
 
                         {{#each this.review}}
-                          {{#if rating}}
-                          <div class="review_item">
-                            <div class="review_usr_dt">
-                              <img src="{{link_ava_student}}" alt="">
-                              <div class="rv1458">
-                                <h4 class="tutor_name1">{{fname}} {{lname}}</h4>
-                                <span class="time_145">{{format_date_diff comment_date}}</span>
-                              </div>
+                        {{#if rating}}
+                        <div class="review_item">
+                          <div class="review_usr_dt">
+                            <img src="{{link_ava_student}}" alt="">
+                            <div class="rv1458">
+                              <h4 class="tutor_name1">{{fname}} {{lname}}</h4>
+                              <span class="time_145">{{format_date_diff comment_date}}</span>
                             </div>
-                            <div class="rating-box mt-20">
-                              <span class="mr-2" style="font-size: 16px; font-weight: bold">{{rating}}</span>
-                              <span class="rating-star full-star"></span>
-                              <span class="rating-star full-star"></span>
-                              <span class="rating-star full-star"></span>
-                              <span class="rating-star full-star"></span>
-                              <span class="rating-star half-star"></span>
-                            </div>
-                            <p class="rvds10">{{comment}}</p>
                           </div>
-                          {{/if}}
+                          <div class="rating-box mt-20">
+                            <span class="mr-2" style="font-size: 16px; font-weight: bold">{{rating}}</span>
+                            <span class="rating-star full-star"></span>
+                            <span class="rating-star full-star"></span>
+                            <span class="rating-star full-star"></span>
+                            <span class="rating-star full-star"></span>
+                            <span class="rating-star half-star"></span>
+                          </div>
+                          <p class="rvds10">{{comment}}</p>
+                        </div>
+                        {{/if}}
                         {{/each}}
 
                         <div class="review_item">
@@ -470,48 +472,52 @@
             <div class="item">
               <div class="fcrse_1 mb-20">
                 <a href="/courses/detail/{{course_id}}" class="fcrse_img">
-                  <img style="height: 250px;" src="{{link_ava_course}}" alt="">
+                  <img style="height: 200px;" src="{{link_ava_course}}" alt="">
                   <div class="course-overlay">
 
                     {{#if discount}}
-                    <div class="badge_seller" style="font-size: 15pt;"> <i class="fas fa-tags"></i> {{discount}}%
+                    <div class="badge_seller" style="font-size: 12pt;"> <i class="fas fa-tags"></i>
+                      {{discount}}%
                     </div>
                     {{/if}}
                     <div class="crse_reviews">
-                      <i class="fas fa-star"></i>{{format_number rating}}
+                      <i class="fas fa-star mr-1"></i>{{format_number rating}}
                     </div>
                     <span class="play_btn1"><i class="uil uil-play"></i></span>
+                    {{#if bestseller}}
+                    <div class="crse_timer" style="color: black; background-color: #ff9800; font-weight: bold; ">
+                      <i class="fas fa-fire mr-1"></i>
+                      Bestseller
+                    </div>
+                    {{/if}}
                   </div>
                 </a>
-                <div class="fcrse_content">
-                  <div class="eps_dots more_dropdown">
-                    <a href="#"><i class='uil uil-ellipsis-v'></i></a>
-                    <div class="dropdown-content">
-                      <span><i class='uil uil-share-alt'></i>Share</span>
-                      <span><i class="uil uil-clock-three"></i>Save</span>
-                      <span><i class='uil uil-ban'></i>Not Interested</span>
-                      <span><i class="uil uil-windsock"></i>Report</span>
-                    </div>
+                <div class=" fcrse_content">
+                  {{#if newest}}
+                  <div class="more_dropdown"
+                    style="float: right; color:#ff9800; font-weight: bold; font-family: Roboto;">
+                    NEW
                   </div>
+                  {{/if}}
                   <div class="vdtodt">
                     <span class="vdt14">{{view_number}} views</span>
                     <span class="vdt14">{{rateStu}} ratings</span>
                     <span class="vdt14">{{day_ago}} days ago</span>
                   </div>
                   <a href="/courses/detail/{{course_id}}" class="crse14s" style="height: 50px;">{{name}}</a>
-                  <a href="#" class="crse-cate">{{type_name}} | {{spec_name}}</a>
+                  <a href="/courses/{{type_name}}/{{spec_name}}" class="crse-cate">{{type_name}} |
+                    {{spec_name}}</a>
                   <div class="auth1lnkprce">
                     <p class="cr1fot">By <a href="#">{{fname}} {{lname}}</a></p>
                     {{#if discount}}
                     <div class="prce142">
-                      <span style="color:darkgrey ;text-decoration: line-through; font-size:12pt;">${{price}} <i
-                          class="fas fa-long-arrow-alt-right"> </i></span>
+                      <span style="color:darkgrey ;text-decoration: line-through; font-size:12pt;">${{price}}
+                        <i class="fas fa-long-arrow-alt-right"> </i></span>
                       <span> ${{newprice}}</span>
                     </div>
                     {{else}}
                     <div class="prce142">${{price}}</div>
                     {{/if}}
-
                   </div>
                 </div>
               </div>
