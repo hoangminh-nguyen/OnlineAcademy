@@ -34,6 +34,7 @@ router.get('/', function (req, res) {
     const upload = multer({ storage: storage });
     upload.single('inputGroupFile04')(req, res, function (err) {
       console.log(req.body);
+      console.log(req.body.description);
       if (err) {
         console.log(err);
       } else {

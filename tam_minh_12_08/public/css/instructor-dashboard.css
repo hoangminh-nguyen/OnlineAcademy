@@ -415,11 +415,12 @@ header {
 
 .logo-inverse {
     display: none;
+    height: 48px;
 }
 
 .search120 {
     float: left;
-    margin-left: 80px;
+    margin-left: 125px;
 }
 
 .srch10 {
