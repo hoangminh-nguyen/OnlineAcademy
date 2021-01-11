@@ -63,7 +63,7 @@
     })
 
   });
-  { {#if isStudent } }
+  {{#if isStudent }}
   $('#buybutton').on('click', function (e) {
     e.preventDefault();
     const coursename = $('#course_name').text();
@@ -78,7 +78,7 @@
       }
     })
   });
-  { { /if}}
+  {{/if}}
 </script>
 {{/section}}
 
