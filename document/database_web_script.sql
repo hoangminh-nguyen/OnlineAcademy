@@ -87,6 +87,7 @@ create table Course_chapter
     chap_num int,
     chap_name varchar(200),
     link_vid varchar(500),
+	chap_des text,
     constraint PK_Co_Ch primary key (course_id, chap_num)
 );
 
@@ -244,20 +245,20 @@ insert into Course_detail values(7, false, 'This is short info of How to Use Lig
 insert into Course_detail values(8, false, 'This is short info of How to design a room', 'This is long info of How to design a room', '2020-12-08 00:00:00');
 
 -- Course_chapter
-insert into Course_chapter values(1, 1, 'CSS Tutorial for Beginners - 01 - Introduction to CSS', 'https://www.youtube.com/watch?v=qKoajPPWpmo&list=PLr6-GrHUlVf8JIgLcu3sHigvQjTw_aC9C&index=1&ab_channel=EJMedia');
-insert into Course_chapter values(1, 2, 'CSS Tutorial for Beginners - 02 - Changing font type, color, and size', 'https://www.youtube.com/watch?v=UO0ZPL8yMpU&list=PLr6-GrHUlVf8JIgLcu3sHigvQjTw_aC9C&index=2&ab_channel=EJMedia');
-insert into Course_chapter values(1, 3, 'CSS Tutorial for Beginners - 03 - Multiple selectors and writing rule for more than one element', 'https://www.youtube.com/watch?v=JT0gyzbpD2U&list=PLr6-GrHUlVf8JIgLcu3sHigvQjTw_aC9C&index=3&ab_channel=EJMedia');
-insert into Course_chapter values(1, 4, 'CSS Tutorial for Beginners - 04 - Add a line to header and border property', 'https://www.youtube.com/watch?v=hCoMjvtsyPA&list=PLr6-GrHUlVf8JIgLcu3sHigvQjTw_aC9C&index=4&ab_channel=EJMedia');
-insert into Course_chapter values(1, 5, 'CSS Tutorial for Beginners - 05 - Inheritance and overriding', 'https://www.youtube.com/watch?v=Bj2ZCfDPP2A&list=PLr6-GrHUlVf8JIgLcu3sHigvQjTw_aC9C&index=5&ab_channel=EJMedia');
-insert into Course_chapter values(2, 1, 'JavaScript Tutorials | Statements and comments', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020');
-insert into Course_chapter values(2, 2, 'JavaScript Tutorials | VS code Theme & Live Server Plugin Setup', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020');
-insert into Course_chapter values(3, 1, 'Introduction to Operating System', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020');
-insert into Course_chapter values(3, 2, 'Computer System Operation', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020');
-insert into Course_chapter values(4, 1, 'Introduction to Linux and Basic Linux Commands for Beginners', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020');
-insert into Course_chapter values(5, 1, 'The Complete beginners guide to Adobe Photoshop | Course overview & breakdown', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020');
-insert into Course_chapter values(6, 1, 'Graphic Design | Fluid | Adobe Illustrator/Photoshop', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020');
-insert into Course_chapter values(7, 1, 'Lighting Design 101 Principles, House Design Ideas and Home Decor Tips', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020');
-insert into Course_chapter values(8, 1, 'Basic concept of a fashion room', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020');
+insert into Course_chapter values(1, 1, 'CSS Tutorial for Beginners - 01 - Introduction to CSS', 'https://www.youtube.com/watch?v=qKoajPPWpmo&list=PLr6-GrHUlVf8JIgLcu3sHigvQjTw_aC9C&index=1&ab_channel=EJMedia', 'hello temp');
+insert into Course_chapter values(1, 2, 'CSS Tutorial for Beginners - 02 - Changing font type, color, and size', 'https://www.youtube.com/watch?v=UO0ZPL8yMpU&list=PLr6-GrHUlVf8JIgLcu3sHigvQjTw_aC9C&index=2&ab_channel=EJMedia', 'hello temp');
+insert into Course_chapter values(1, 3, 'CSS Tutorial for Beginners - 03 - Multiple selectors and writing rule for more than one element', 'https://www.youtube.com/watch?v=JT0gyzbpD2U&list=PLr6-GrHUlVf8JIgLcu3sHigvQjTw_aC9C&index=3&ab_channel=EJMedia', 'hello temp');
+insert into Course_chapter values(1, 4, 'CSS Tutorial for Beginners - 04 - Add a line to header and border property', 'https://www.youtube.com/watch?v=hCoMjvtsyPA&list=PLr6-GrHUlVf8JIgLcu3sHigvQjTw_aC9C&index=4&ab_channel=EJMedia', 'hello temp');
+insert into Course_chapter values(1, 5, 'CSS Tutorial for Beginners - 05 - Inheritance and overriding', 'https://www.youtube.com/watch?v=Bj2ZCfDPP2A&list=PLr6-GrHUlVf8JIgLcu3sHigvQjTw_aC9C&index=5&ab_channel=EJMedia', 'hello temp');
+insert into Course_chapter values(2, 1, 'JavaScript Tutorials | Statements and comments', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020', 'hello temp');
+insert into Course_chapter values(2, 2, 'JavaScript Tutorials | VS code Theme & Live Server Plugin Setup', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020', 'hello temp');
+insert into Course_chapter values(3, 1, 'Introduction to Operating System', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020', 'hello temp');
+insert into Course_chapter values(3, 2, 'Computer System Operation', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020', 'hello temp');
+insert into Course_chapter values(4, 1, 'Introduction to Linux and Basic Linux Commands for Beginners', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020', 'hello temp');
+insert into Course_chapter values(5, 1, 'The Complete beginners guide to Adobe Photoshop | Course overview & breakdown', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020', 'hello temp');
+insert into Course_chapter values(6, 1, 'Graphic Design | Fluid | Adobe Illustrator/Photoshop', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020', 'hello temp');
+insert into Course_chapter values(7, 1, 'Lighting Design 101 Principles, House Design Ideas and Home Decor Tips', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020', 'hello temp');
+insert into Course_chapter values(8, 1, 'Basic concept of a fashion room', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020', 'hello temp');
 
 -- Stu_watchlist
 insert into Stu_watchlist values(1, 1);

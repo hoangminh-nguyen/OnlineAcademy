@@ -271,7 +271,7 @@ html {
    font-size: 14px;
 }
 
-.tox-edit-area__iframe:focus, #id_part_description_ifr:focus{
+.tox-edit-area__iframe:focus, #id_part_description_ifr:-moz-focusring{
     background-color: #fff !important;
 }
 
