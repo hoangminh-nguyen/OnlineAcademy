@@ -1,3 +1,4 @@
+const { patch } = require('../utils/db');
 const db = require('../utils/db');
 const { paginate } = require('./../config/default.json');
 const { bestseller } = require('./../config/default.json');
@@ -96,6 +97,11 @@ module.exports = {
     return rows;
   },
 
+  async load_chapter(course_id) {
+    const sql = `select cc.chap_num, cc.chap_name, cc.link_vid from course co join course_chapter cc on (co.course_id = cc.course_id) where co.course_id= ${course_id}`;
+    const [rows, fields] = await db.load(sql);
+    return rows;
+  },
   async topBestseller() {
     const sql = `select co.course_id from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id order by ra.numberStu desc limit ${bestseller.limit}`;
     const [rows, fields] = await db.load(sql);
@@ -188,4 +194,34 @@ module.exports = {
     const [rows, fields] = await db.load(sql);
     return rows;
   },
+  
+  async load_info(course_id) {
+    const sql = `select co.name, cd.short_info, cd.full_info, co.price, ct.type_id, cp.spec_id, ct.type_name, cp.spec_name from course co join course_detail cd on (co.course_id = cd.course_id) join course_type ct on (co.type = ct.type_id) join course_spec cp on (co.spec = cp.spec_id) where co.course_id = ${course_id};`;
+    const [rows, fields] = await db.load(sql);
+    return rows[0];
+  },
+
+  async load_chapter_info(course_id, chap_num){
+    const sql = `select * from course_chapter where course_id = ${course_id} and chap_num = ${chap_num};`;
+    const [rows, fields] = await db.load(sql);
+    return rows[0];
+  },
+
+  async delete_chap(course_id, chap_num){
+    const sql = `delete from course_chapter where course_id = ${course_id} and chap_num = ${chap_num}`;
+    const [rows, fields] = await db.load(sql);
+    return rows[0];
+  },
+
+  async add(course) {
+    const [result, fields] = await db.add(course, "course");
+    return result;
+  },
+
+
+
+  async patch(course) {
+    const [result, fields] = await db.patch(course, "course");
+    return result;
+  }
 };

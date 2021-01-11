@@ -1,11 +1,11 @@
-
 {{#section 'css'}}
-    <link href="/css/instructor-dashboard.css" rel="stylesheet">
-	<link href="/css/instructor-responsive.css" rel="stylesheet">
-    <link href="/css/jquery-steps.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
-	<script src="/vendor/tinymce/tinymce.min.js" ></script>
-	<script>tinymce.init({
+<link href="/css/instructor-dashboard.css" rel="stylesheet">
+<link href="/css/instructor-responsive.css" rel="stylesheet">
+<link href="/css/jquery-steps.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/css/fileinput.min.css" media="all"
+	rel="stylesheet" type="text/css" />
+<script src="/vendor/tinymce/tinymce.min.js"></script>
+<script>tinymce.init({
 		selector: 'textarea',
 		plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
 		toolbar_mode: 'floating',
@@ -13,141 +13,173 @@
 		height: 360,
 		branding: false,
 		skin: 'cursus_hub',
-		setup: function(editor){
-			editor.on('change', function(){
+		setup: function (editor) {
+			editor.on('change', function () {
 				editor.save();
 			})
 		},
-		
-		forced_root_block:false,
-		//forced_root_formatting:true,
-		element_format: 'html',
 	});
-	</script>
+</script>
 {{/section}}
-<form method="POST" action="" enctype="multipart/form-data" id="form1" >
-<div class="wrapper">
+<form method="POST" action="">
+	<div class="wrapper">
 		<div class="sa4d25">
-			<div class="container">			
+			<div class="container">
 				<div class="row">
-					<div class="col-lg-12">	
-						<h2 class="st_title"><i class="uil uil-analysis"></i> Create New Course</h2>
-					</div>					
-				</div>				
+					{{#if check}}
+						<div class="col-lg-12">
+							<h2 class="st_title"><i class="uil uil-analysis"></i> Edit Course</h2>
+						</div>
+					{{else}}
+						<div class="col-lg-12">
+							<h2 class="st_title"><i class="uil uil-analysis"></i> Create New Course</h2>
+						</div>
+					{{/if}}
+					
+				</div>
 				<div class="row">
 					<div class="col-12">
 						<div class="course_tabs_1">
 							<div id="add-course-tab" class="step-app">
 								<ul class="step-steps">
 									<li class="active">
-										<a href="#tab_step1">
+										<a href="/teacher/create_course">
 											<span class="number"></span>
 											<span class="step-name">General Information</span>
 										</a>
 									</li>
 									<li>
-										<a href="#tab_step2">
+										<a href="/teacher/add_pic">
 											<span class="number"></span>
 											<span class="step-name">View</span>
 										</a>
 									</li>
 									<li class="">
-										<a href="#tab_step3">
+										<a href="/teacher/add_chap">
 											<span class="number"></span>
 											<span class="step-name">Course Content</span>
 										</a>
 									</li>
 									<li class="">
-										<a href="#tab_step4">
+										<a href="/teacher/finish">
 											<span class="number"></span>
 											<span class="step-name">Extra Information</span>
 										</a>
 									</li>
 								</ul>
-								
-								
+
+
 								<div class="step-content">
-									
-									<div class="step-tab-panel step-tab-info" id="tab_step1"> 
+
+									<div class="step-tab-panel step-tab-info active" id="tab_step1">
 										<div class="tab-from-content">
 											<div class="title-icon">
-												<h3 class="title"><i class="uil uil-info-circle"></i>General Information</h3>
+												<h3 class="title"><i class="uil uil-info-circle"></i>General Information
+												</h3>
 											</div>
 											<div class="course__form">
 												<div class="view_info10">
 													<div class="row">
-														<div class="col-lg-6 col-md-6">															
+														<div class="col-lg-6 col-md-6">
 															<div class="ui search focus mt-30 lbel25">
 																<label>Course Title*</label>
-																<div class="ui left icon input swdh19">
-																	<input class="prompt srch_explore" type="text" placeholder="Insert your course title." name="title" data-purpose="edit-course-title" maxlength="60" id="main[title]" value="">															
-																	<div class="badge_num">60</div>
-																</div>
-															</div>									
+																{{#if check}}
+																	<div class="ui left icon input swdh19">
+																		<input class="prompt srch_explore" type="text"
+																			name="name" placeholder="Insert your course title."
+																			data-purpose="edit-course-title" maxlength="60"
+																			id="main[title]" value="{{course.name}}">
+																		<div class="badge_num">60</div>
+																	</div>
+																{{else}}
+																	<div class="ui left icon input swdh19">
+																		<input class="prompt srch_explore" type="text"
+																			placeholder="Insert your course title."
+																			name="name"
+																			data-purpose="edit-course-title" maxlength="60"
+																			id="main[title]" value="">
+																		<div class="badge_num">60</div>
+																	</div>
+																{{/if}}
+															</div>
 														</div>
-														<div class="col-lg-6 col-md-6">															
+														<div class="col-lg-6 col-md-6">
 															<div class="ui search focus mt-30 lbel25">
 																<label>Course Subtitle*</label>
-																<div class="ui left icon input swdh19">
-																	<input class="prompt srch_explore" type="text" placeholder="Insert your course Subtitle." name="subtitle" data-purpose="edit-course-title" maxlength="60" id="sub[title]" value="">															
-																	<div class="badge_num2">120</div>
-																</div>
-															</div>									
+																{{#if check}}
+																	<div class="ui left icon input swdh19">
+																		<input class="prompt srch_explore" type="text"
+																		placeholder="Insert your course Subtitle."
+																			name="short_info" data-purpose="edit-course-title"
+																			maxlength="60" id="sub[title]" value="{{course.short_info}}">
+																		<div class="badge_num2">120</div>
+																	</div>
+																{{else}}
+																	<div class="ui left icon input swdh19">
+																		<input class="prompt srch_explore" type="text"
+																			placeholder="Insert your course Subtitle."
+																			name="short_info" data-purpose="edit-course-title"
+																			maxlength="60" id="sub[title]" value="">
+																		<div class="badge_num2">120</div>
+																	</div>
+																{{/if}}
+															</div>
 														</div>
-														<div class="col-lg-12 col-md-12">	
+														<div class="col-lg-12 col-md-12">
 															<div class="course_des_textarea mt-30 lbel25">
 																<label>Course Description</label>
 																<div class="course_des_bg">
-																	<div class="textarea_dt">															
+																	<div class="textarea_dt">
 																		<div class="ui form swdh339">
 																			<div class="field">
-																				<textarea rows="5" name="descriptionz" id="id_part_description" placeholder="Insert your course part description"></textarea>
+																				<textarea rows="5" name="full_info"
+																					id="id_part_description"
+																					placeholder="Insert your course part description">{{course.full_info}}</textarea>
 																			</div>
-																		</div>										
+																		</div>
 																	</div>
 																</div>
 															</div>
 														</div>
+														
 														<div class="col-lg-4 col-md-6">
 															<div class="mt-30 lbel25">
 																<label>Course Category*</label>
 															</div>
-															<div class="ui hj145 dropdown cntry152 prompt srch_explore selection" tabindex="0"><select>
-																<option value="">Select Category</option>
-																<option value="1">Development</option>
-																<option value="2">Business</option>
-																<option value="3">Finance &amp; Accounting</option>
-																<option value="4">IT &amp; Software</option>
-																<option value="5">Office Productivity</option>
-																<option value="6">Personal Development</option>
-																<option value="7">Design</option>
-																<option value="8">Marketing</option>
-																<option value="9">Lifestyle</option>
-																<option value="10">Photography</option>
-																<option value="11">Health &amp; Fitness</option>
-																<option value="12">Music</option>
-																<option value="13">Teaching &amp; Academics</option>
-															</select><i class="dropdown icon"></i><div class="default text">Select Category</div><div class="menu" tabindex="-1"><div class="item" data-value="1">Development</div><div class="item" data-value="2">Business</div><div class="item" data-value="3">Finance &amp; Accounting</div><div class="item" data-value="4">IT &amp; Software</div><div class="item" data-value="5">Office Productivity</div><div class="item" data-value="6">Personal Development</div><div class="item" data-value="7">Design</div><div class="item" data-value="8">Marketing</div><div class="item" data-value="9">Lifestyle</div><div class="item" data-value="10">Photography</div><div class="item" data-value="11">Health &amp; Fitness</div><div class="item" data-value="12">Music</div><div class="item" data-value="13">Teaching &amp; Academics</div></div></div>
+															<div class="ui hj145 dropdown cntry152 prompt srch_explore selection" tabindex="0">
+																<i class="dropdown icon"></i>
+																
+																<div id="type" class="default text">Select Type</div>
+																
+																
+																<div class="menu" tabindex="-1">
+																	{{#each this.lcSpec}}
+																	<div class="item" onclick="$('#temp').value">{{id}}. {{name}}</div>
+																	{{/each}}
+																</div>
+																<input type="hidden" class="temp" id="temp" name="type" value="" onchange="show_spec()">	
+															</div>
 														</div>
 														<div class="col-lg-4 col-md-6">
 															<div class="mt-30 lbel25">
 																<label>Course Subcategory*</label>
 															</div>
-															<div class="ui hj145 dropdown cntry152 prompt srch_explore selection" tabindex="0"><select>
-																<option value="">Select Subcategory</option>
-																<option value="1">Javascript</option>
-																<option value="2">Angular</option>
-																<option value="3">React</option>
-																<option value="4">CSS</option>
-																<option value="5">PHP</option>
-																<option value="6">Node.Js</option>
-																<option value="7">WordPress</option>
-																<option value="8">Vue JS</option>
-																<option value="9">Shopify</option>
-																<option value="10">Magento</option>
-																<option value="11">Open Cart </option>
-															</select><i class="dropdown icon"></i><div class="default text">Select Subcategory</div><div class="menu" tabindex="-1"><div class="item" data-value="1">Javascript</div><div class="item" data-value="2">Angular</div><div class="item" data-value="3">React</div><div class="item" data-value="4">CSS</div><div class="item" data-value="5">PHP</div><div class="item" data-value="6">Node.Js</div><div class="item" data-value="7">WordPress</div><div class="item" data-value="8">Vue JS</div><div class="item" data-value="9">Shopify</div><div class="item" data-value="10">Magento</div><div class="item" data-value="11">Open Cart </div></div></div>
-														</div>													
+															<div class="ui hj145 dropdown cntry152 prompt srch_explore selection" tabindex="0">
+																<i class="dropdown icon"></i>
+																
+																<div id="category" class="default text">Select Specification</div>
+																
+																<div class="menu" tabindex="-1">
+																	{{#each this.lcSpec}}
+																		{{#each spec}}
+																			<div  class="item {{../id}} all"  style="display: none;" onclick="$('#spec_id').value">{{spec_id}}. {{spec_name}}</div>
+																		{{/each}}
+																	{{/each}}
+																	
+																</div>
+																<input type="hidden" class="spec_id" id="spec_id" name="spec_id" value="" >
+															</div>
+														</div>
 													</div>
 												</div>
 												<div class="price_course">
@@ -157,425 +189,79 @@
 																<h4><i class="uil uil-dollar-sign-alt"></i>Pricing</h4>
 															</div>
 														</div>
-														<div class="col-lg-2 col-md-3 col-sm-6">
-															<div class="mt-30 lbel25">
-																<label>Currency*</label>
-															</div>
-															<div class="ui hj145 dropdown cntry152 prompt srch_explore selection" tabindex="0"><select>
-																<option value="">USD</option>
-																<option value="1">USD</option>
-																<option value="2">CAD</option>
-																<option value="3">BRL</option>
-																<option value="4">EUR</option>
-																<option value="5">GBP</option>
-																<option value="6">INR</option>
-															</select><i class="dropdown icon"></i><div class="default text">USD</div><div class="menu transition hidden" tabindex="-1"><div class="item" data-value="1">USD</div><div class="item" data-value="2">CAD</div><div class="item" data-value="3">BRL</div><div class="item" data-value="4">EUR</div><div class="item" data-value="5">GBP</div><div class="item" data-value="6">INR</div></div></div>
-														</div>
 														<div class="col-lg-3 col-md-4 col-sm-6">
-															<div class="mt-30 lbel25">
-																<label>Select*</label>
+															<div class="ui search focus lbel25">
+																{{#if check}}
+																	<div class="ui left icon input swdh19">
+																		<input class="prompt srch_explore" type="text"
+																			name="price" data-purpose="edit-course-title"
+																			placeholder="Insert price"
+																			maxlength="60" id="sub[title]" value="{{course.price}}">
+																		<div class="badge_num2">USD</div>
+																	</div>
+																{{else}}
+																	<div class="ui left icon input swdh19">
+																		<input class="prompt srch_explore" type="text"
+																			placeholder="Insert price"
+																			name="price" data-purpose="edit-course-title"
+																			maxlength="60" id="sub[title]" value="">
+																		<div class="badge_num2">USD</div>
+																	</div>
+																{{/if}}
 															</div>
-															<div class="ui hj145 dropdown cntry152 prompt srch_explore selection" tabindex="0"><select>
-																<option value="">Select</option>
-																<option value="0">Free</option>
-																<option value="1">$24.99 (tier 1)</option>
-																<option value="2">$29.99 (tier 2)</option>
-																<option value="3">$34.99 (tier 3)</option>
-																<option value="4">$39.99 (tier 4)</option>
-																<option value="5">$44.99 (tier 5)</option>
-																<option value="6">$49.99 (tier 6)</option>
-																<option value="7">$54.99 (tier 7)</option>
-																<option value="8">$59.99 (tier 8)</option>
-																<option value="9">$64.99 (tier 9)</option>
-																<option value="10">$69.99 (tier 10)</option>
-																<option value="11">$74.99 (tier 11)</option>
-																<option value="12">$79.99 (tier 12)</option>
-																<option value="13">$84.99 (tier 13)</option>
-																<option value="14">$89.99 (tier 14)</option>
-																<option value="15">$94.99 (tier 15)</option>
-																<option value="16">$99.99 (tier 16)</option>
-																<option value="17">$104.99 (tier 17)</option>
-																<option value="18">$109.99 (tier 18)</option>
-																<option value="19">$114.99 (tier 19)</option>
-																<option value="20">$119.99 (tier 20)</option>
-																<option value="21">$124.99 (tier 21)</option>
-																<option value="22">$129.99 (tier 22)</option>
-																<option value="23">$134.99 (tier 23)</option>
-																<option value="24">$139.99 (tier 24)</option>
-																<option value="25">$144.99 (tier 25)</option>
-																<option value="26">$149.99 (tier 26)</option>
-																<option value="27">$154.99 (tier 27)</option>
-																<option value="28">$159.99 (tier 28)</option>
-																<option value="29">$164.99 (tier 29)</option>
-																<option value="30">$169.99 (tier 30)</option>
-															</select><i class="dropdown icon"></i><div class="default text">Select</div><div class="menu" tabindex="-1"><div class="item" data-value="0">Free</div><div class="item" data-value="1">$24.99 (tier 1)</div><div class="item" data-value="2">$29.99 (tier 2)</div><div class="item" data-value="3">$34.99 (tier 3)</div><div class="item" data-value="4">$39.99 (tier 4)</div><div class="item" data-value="5">$44.99 (tier 5)</div><div class="item" data-value="6">$49.99 (tier 6)</div><div class="item" data-value="7">$54.99 (tier 7)</div><div class="item" data-value="8">$59.99 (tier 8)</div><div class="item" data-value="9">$64.99 (tier 9)</div><div class="item" data-value="10">$69.99 (tier 10)</div><div class="item" data-value="11">$74.99 (tier 11)</div><div class="item" data-value="12">$79.99 (tier 12)</div><div class="item" data-value="13">$84.99 (tier 13)</div><div class="item" data-value="14">$89.99 (tier 14)</div><div class="item" data-value="15">$94.99 (tier 15)</div><div class="item" data-value="16">$99.99 (tier 16)</div><div class="item" data-value="17">$104.99 (tier 17)</div><div class="item" data-value="18">$109.99 (tier 18)</div><div class="item" data-value="19">$114.99 (tier 19)</div><div class="item" data-value="20">$119.99 (tier 20)</div><div class="item" data-value="21">$124.99 (tier 21)</div><div class="item" data-value="22">$129.99 (tier 22)</div><div class="item" data-value="23">$134.99 (tier 23)</div><div class="item" data-value="24">$139.99 (tier 24)</div><div class="item" data-value="25">$144.99 (tier 25)</div><div class="item" data-value="26">$149.99 (tier 26)</div><div class="item" data-value="27">$154.99 (tier 27)</div><div class="item" data-value="28">$159.99 (tier 28)</div><div class="item" data-value="29">$164.99 (tier 29)</div><div class="item" data-value="30">$169.99 (tier 30)</div></div></div>
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-									
-									<div class="step-tab-panel step-tab-gallery active" id="tab_step2">
-										<div class="tab-from-content">
-											<div class="title-icon">
-												<h3 class="title"><i class="uil uil-image-upload"></i>View</h3>
-											</div>
-											<div class="course__form">
-												
-												<div class="view_info10">
-													<div class="row">
-														<div class="col-lg-12">	
-															<div class="view_all_dt">	
-																<div class="view_img_left">	
-																	<div class="view__img">	
-																		<img id="img_test" src="/images/courses/add_img.jpg" alt="">
-																	</div>
-																</div>
-																<div class="view_img_right">	
-																	<h4>Cover Image</h4>
-																	<p>Upload your course image here. It must meet our course image quality standards to be accepted. Important guidelines: 750x422 pixels; .jpg, .jpeg,. gif, or .png. no text on the image.</p>
-																	<div class="upload__input">
-																		<div class="input-group">
-																			<div class="custom-file">
-																				
-																				<input type="file" class="custom-file-input" id="inputGroupFile04" data-preview-file-type="text" name="inputGroupFile04">
-																				<label class="custom-file-label" for="inputGroupFile04">No Choose file</label>
-																				
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-												
-											</div>
-											
-										</div>
-									</div>
+								</div>
 
-									<div class="step-tab-panel step-tab-location" id="tab_step3">
-										<div class="tab-from-content">
-											<div class="title-icon">
-												<h3 class="title"><i class="uil uil-film"></i>Course Content</h3>
-											</div>
-											<div class="course__form">
-												<div class="row">
-													<div class="col-lg-12">		
-														<div class="extra_info">		
-															<h4 class="part__title">New Course Content</h4>
-														</div>
-														<div class="view_info10">
-															<div class="row">
-																<div class="col-lg-12 col-md-12">															
-																	<div class="ui search focus mt-30 lbel25">
-																		<label>Course Content Title*</label>
-																		<div class="ui left icon input swdh19">
-																			<input class="prompt srch_explore" type="text" placeholder="Insert your course content title." name="title" data-purpose="edit-course-title" maxlength="60" id="Content[title]" value="">															
-																		</div>
-																	</div>									
-																</div>
-																<div class="col-lg-12 col-md-12">	
-																	<div class="lecture_title">
-																		<h4>Add Lecture</h4>
-																	</div>
-																</div>
-																<div class="col-lg-4 col-md-12">															
-																	<div class="ui search focus mt-30 lbel25">
-																		<label>Lecture Title*</label>
-																		<div class="ui left icon input swdh19">
-																			<input class="prompt srch_explore" type="text" placeholder="Insert your lecture title." name="title" data-purpose="edit-course-title" maxlength="60" id="lecture[title]" value="">															
-																		</div>
-																	</div>									
-																</div>
-																<div class="col-lg-4 col-md-6">
-																	<div class="part_input mt-30 lbel25">
-																		<label>File*</label>
-																		<div class="input-group">
-																			<div class="custom-file">
-																				<input type="file" class="custom-file-input" id="inputGroupFile06" name="file">
-																				<label class="custom-file-label" for="inputGroupFile06">No Choose file - (Pdf, Video)</label>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<div class="col-lg-4 col-md-6">	
-																	<div class="ui search focus mt-30 lbel25">
-																		<label>Sort</label>
-																		<div class="ui left icon input swdh19">
-																			<input class="prompt srch_explore" type="number" name="sort" min="0" max="100" placeholder="0">															
-																		</div>
-																	</div>										
-																</div>
-																<div class="col-lg-12 col-md-12">	
-																	<div class="course_des_textarea mt-30 lbel25">
-																		<label>Description*</label>
-																		<div class="course_des_bg">
-																			<div class="textarea_dt">															
-																				<div class="ui form swdh339">
-																					<div class="field">
-																						<textarea rows="5" name="description" id="id_part_description" placeholder="Insert your course part description"></textarea>
-																					</div>
-																				</div>										
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<div class="col-lg-5 col-md-6">															
-																	<div class="ui search focus mt-30 lbel25">
-																		<label>Volume*</label>
-																		<div class="ui left icon input swdh19 swdh95">
-																			<input class="prompt srch_explore" type="number" min="0" name="size" required="" placeholder="0">															
-																			<div class="badge_mb">MB</div>
-																		</div>
-																	</div>									
-																</div>
-																<div class="col-lg-5 col-md-6">															
-																	<div class="ui search focus mt-30 lbel25">
-																		<label>Duration*</label>
-																		<div class="ui left icon input swdh19 swdh55">
-																			<input class="prompt srch_explore" type="number" min="0" name="duration" required="" placeholder="0">															
-																			<div class="badge_min">Minutes</div>
-																		</div>
-																	</div>									
-																</div>
-																<div class="col-lg-2 col-md-12">
-																	<button class="part_btn_save prt-sv" type="submit">Save Lecture</button>
-																</div>
-																<div class="col-lg-12 col-md-12">
-																	<div class="table-responsive mt-50 mb-0">
-																		<table class="table ucp-table">
-																			<thead class="thead-s">
-																				<tr>
-																					<th class="text-center" scope="col">Lecture</th>
-																					<th class="cell-ta">Title</th>
-																					<th class="text-center" scope="col">Volume</th>
-																					<th class="text-center" scope="col">Duration</th>
-																					<th class="text-center" scope="col">Page</th>
-																					<th class="text-center" scope="col">File</th>
-																					<th class="text-center" scope="col">Controls</th>
-																				</tr>
-																			</thead>
-																			<tbody>
-																				<tr>
-																					<td class="text-center">1</td>
-																					<td class="cell-ta">Lecture Content Title</td>
-																					<td class="text-center">25</td>
-																					<td class="text-center">6</td>
-																					<td class="text-center">0</td>
-																					<td class="text-center"><a href="#">Video</a></td>
-																					<td class="text-center">
-																						<a href="#" title="Edit" class="gray-s"><i class="uil uil-edit-alt"></i></a>
-																						<a href="#" title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
-																					</td>
-																				</tr>
-																				<tr>
-																					<td class="text-center">2</td>
-																					<td class="cell-ta">Lecture Content Title</td>
-																					<td class="text-center">25</td>
-																					<td class="text-center">0</td>
-																					<td class="text-center">3</td>
-																					<td class="text-center"><a href="#">File</a></td>
-																					<td class="text-center">
-																						<a href="#" title="Edit" class="gray-s"><i class="uil uil-edit-alt"></i></a>
-																						<a href="#" title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
-																					</td>
-																				</tr>
-																			</tbody>
-																		</table>
-																	</div>
-																</div>
-																<div class="col-lg-12 col-md-12">
-																	<div class="save_content">
-																		<button class="save_content_btn" type="Submit">Save Course Content</button>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="table-responsive mt-30">
-												<table class="table ucp-table" id="content-table">
-													<thead class="thead-s">
-														<tr>
-															<th class="text-center" scope="col">Content</th>
-															<th class="cell-ta">Title</th>
-															<th class="text-center" scope="col">lectures</th>
-															<th class="text-center" scope="col">Volume</th>
-															<th class="text-center" scope="col">Duration</th>
-															<th class="text-center" scope="col">Upload Date</th>
-															<th class="text-center" scope="col">Files</th>
-															<th class="text-center" scope="col">Controls</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td class="text-center">1</td>
-															<td class="cell-ta">Course Content Title</td>
-															<td class="text-center">5</td>
-															<td class="text-center">50</td>
-															<td class="text-center">15</td>
-															<td class="text-center">6 April 2019</td>
-															<td class="text-center"><a href="#">View</a></td>
-															<td class="text-center">
-																<a href="#" title="Edit" class="gray-s"><i class="uil uil-edit-alt"></i></a>
-																<a href="#" title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
-															</td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-										</div>
-									</div>
-									
-									<div class="step-tab-panel step-tab-amenities" id="tab_step4">
-										<div class="tab-from-content">
-											<div class="title-icon">
-												<h3 class="title"><i class="uil uil-file-copy-alt"></i>Extra Information</h3>
-											</div>
-										<div class="course__form">
-												<div class="row">
-													<div class="col-lg-12">		
-														<div class="extra_info">		
-															<h4 class="part__title">Captions</h4>
-														</div>
-														<div class="view_info10">
-															<div class="row">
-																<div class="col-md-4">
-																	<div class="caption__check mt-30">
-																		<div class="ui form">
-																			<div class="grouped fields">										
-																				<div class="ui form checkbox_sign cp_458">
-																					<div class="inline field">
-																						<div class="ui checkbox mncheck checked">
-																							<input type="checkbox" tabindex="0" class="hidden">
-																							<label>English<span class="filter__counter">(300)</span></label>
-																						</div>
-																					</div>
-																				</div>
-																				<div class="ui form checkbox_sign cp_458">
-																					<div class="inline field">
-																						<div class="ui checkbox mncheck">
-																							<input type="checkbox" tabindex="0" class="hidden">
-																							<label>Español<span class="filter__counter">(210)</span></label>
-																						</div>
-																					</div>
-																				</div>
-																				<div class="ui form checkbox_sign cp_458">
-																					<div class="inline field">
-																						<div class="ui checkbox mncheck">
-																							<input type="checkbox" tabindex="0" class="hidden">
-																							<label>Português<span class="filter__counter">(170)</span></label>
-																						</div>
-																					</div>
-																				</div>
-																				<div class="ui form checkbox_sign cp_458">
-																					<div class="inline field">
-																						<div class="ui checkbox mncheck">
-																							<input type="checkbox" tabindex="0" class="hidden">
-																							<label>Italiano<span class="filter__counter">(174)</span></label>
-																						</div>
-																					</div>
-																				</div>
-																				<div class="ui form checkbox_sign cp_458">
-																					<div class="inline field">
-																						<div class="ui checkbox mncheck">
-																							<input type="checkbox" tabindex="0" class="hidden">
-																							<label>Français<span class="filter__counter">(120)</span></label>
-																						</div>
-																					</div>
-																				</div>
-																				<div class="ui form checkbox_sign cp_458">
-																					<div class="inline field">
-																						<div class="ui checkbox mncheck">
-																							<input type="checkbox" tabindex="0" class="hidden">
-																							<label>Polski<span class="filter__counter">(130)</span></label>
-																						</div>
-																					</div>
-																				</div>
-																				<div class="ui form checkbox_sign cp_458">
-																					<div class="inline field">
-																						<div class="ui checkbox mncheck">
-																							<input type="checkbox" tabindex="0" class="hidden">
-																							<label>Deutsch<span class="filter__counter">(30)</span></label>
-																						</div>
-																					</div>
-																				</div>
-																				<div class="ui form checkbox_sign cp_458">
-																					<div class="inline field">
-																						<div class="ui checkbox mncheck">
-																							<input type="checkbox" tabindex="0" class="hidden">
-																							<label>Bahasa Indonesia<span class="filter__counter">(20)</span></label>
-																						</div>
-																					</div>
-																				</div>
-																				<div class="ui form checkbox_sign cp_458">
-																					<div class="inline field">
-																						<div class="ui checkbox mncheck">
-																							<input type="checkbox" tabindex="0" class="hidden">
-																							<label>ภาษาไทย<span class="filter__counter">(10)</span></label>
-																						</div>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								
-								</div>
-								
+
+
 								<div class="step-footer step-tab-pager">
-									<button data-direction="prev" class="btn btn-default steps_btn" style="">PREVIOUS</button>
-									<button data-direction="next" class="btn btn-default steps_btn" style="">Next</button>
-									<button data-direction="finish"  class="btn btn-default steps_btn"  >Submit for Review</button>
+
+									<button class="btn btn-default steps_btn" type="submit" style="">Next</button>
+
 								</div>
-								
+
 							</div>
-                        </div>
-                    </div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+	</div>
 </form>
 
 
 {{#section 'js'}}
-<script src="/js/jquery-steps.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/plugins/piexif.min.js" type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/plugins/sortable.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/plugins/piexif.min.js"
+	type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/plugins/sortable.min.js"
+	type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+	crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/fileinput.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.1.3/js/locales/vi.min.js"></script>
 
 <script>
+
+	function show_spec(){
+		console.log("cac");
+		var type = $('#temp').val();
+		$('.all').hide();
+		$('.'+parseInt(type)).show();
+		$('#category').text('Select Subcategory');
+	}
 	
-
-    $('#add-course-tab').steps({
-		  onFinish: function () {
-			//alert('Wizard Completed');
-			//tinyMCE.triggerSave();
-			
-			document.getElementById("form1").submit();
-		  }
-		});		
-	//formsubmit = function(){}
-</script>
-
-<script>
-	function getname(idz){
+	function temp_func(id){
+		console.log(id);
+		$('#temp').attr('value', 'cac');
+	}
+	function getname(idz) {
 		var fullPath = document.getElementById(idz).value;
 		if (fullPath) {
 			var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
@@ -589,16 +275,16 @@
 	function readURL(input) {
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
-			reader.onload = function(e) {
+			reader.onload = function (e) {
 				$('#img_test').attr('src', e.target.result);
 
 			}
 			getname('inputGroupFile04');
-			
+
 			reader.readAsDataURL(input.files[0]); // convert to base64 string
 		}
 	}
-	$("#inputGroupFile04").change(function() {
+	$("#inputGroupFile04").change(function () {
 		readURL(this);
 	});
 </script>
