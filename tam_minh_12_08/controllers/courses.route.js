@@ -34,6 +34,16 @@ router.get('/detail/:id', async function (req, res, next) {
     });
 })
 
+
+
+router.get('/detail/:id/watch/:chap_id', async function(req, res){
+    const course_id = req.params.id;
+    const chap_id = req.params.chap_id;
+    const chapter = await courseModel.get_video(course_id, chap_id);
+    res.render('vwCourses/watch_video',{chapter,});
+
+})
+
 router.get('/all', async (req, res) => {
     const page = req.query.page || 1;
     if (page < 1) page = 1;

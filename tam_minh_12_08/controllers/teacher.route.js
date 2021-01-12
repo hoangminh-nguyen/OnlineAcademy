@@ -152,15 +152,34 @@ router.get('/add_chap', async function (req, res, next){
   });
 })
 
-router.post('/add_chap', async function (req, res, next){
+router.get('/mycourse', async function (req, res){
+  const teacher_id = req.session.authUser.teacher_id;
+  var course = await courseModel.allByTeacherId(teacher_id);
+  course = discount.calcCourses(course);
+  res.render('vwTeacher/view_course', {
+      course,
+      numberCourse: course.length,
+  });
+})
 
+router.get('/edit/:id',async function (req, res){
+  req.session.temp_course_id = req.params.id;
+  res.redirect('/teacher/create_course');
+})
+
+router.post('/add_chap', async function (req, res, next){
   if(req.body.checker){
-    console.log(req.body);
-    console.log("abbb");
     var check = true;
 
     const id = parseInt(req.body.checker);
     var chapter = await courseModel.load_chapter_info(req.session.temp_course_id,id);
+    const path = './public' + chapter.link_vid;
+    console.log(path);
+    try {
+      fs.unlinkSync(path);
+    } catch(err) {
+      console.error(err);
+    }
     if (req.body.Chapter_number=="delete"){
       check = false;
     }
@@ -188,8 +207,7 @@ router.post('/add_chap', async function (req, res, next){
     });
     const upload = multer({ storage: storage });
     upload.single('inputGroupFile06')(req, res, async function (err) {
-      console.log(req.body);
-      console.log("cdddd")
+      
       const chap={
         chap_name : req.body.title_chapter, 
         chap_num : req.body.Chapter_number,

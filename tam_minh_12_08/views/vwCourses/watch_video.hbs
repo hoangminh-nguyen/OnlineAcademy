@@ -1,0 +1,66 @@
+{{#section 'css'}}
+<link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet">
+<script src="https://vjs.zencdn.net/7.10.2/video.min.js"></script>
+{{/section}}
+
+<div class="wrapper">
+		<div class="sa4d25">
+			<div class="container-fluid">			
+				<div class="row">
+					<div class="col">
+						<div class="section3125">
+							<div class="live1452">
+								<video id="my-video" class="video-js vjs-fluid" fluid="true" controls preload="auto" poster="/images/get-img.jpg" data-setup="{}">
+                                    <source src="{{{this.chapter.link_vid}}}" type="video/mp4">
+                                    
+                                </video>
+							</div>
+							<div class="user_dt5">
+								<div class="user_dt_left">
+									<div class="live_user_dt">
+										<div class="user_img5">
+											<img src="/images/left-imgs/img-4.jpg" alt="">												
+										</div>
+										<div class="user_cntnt">
+											<h4>{{this.chapter.full_name}}</h4>
+											<button class="subscribe-btn">Subscribe</button>
+										</div>
+									</div>
+								</div>
+								<div class="user_dt_right">
+									<ul>
+										<li>
+											<a href="#" class="lkcm152"><i class='uil uil-eye'></i><span>1452</span></a>
+										</li>
+										<li>
+											<a href="#" class="lkcm152"><i class='uil uil-thumbs-up'></i><span>100</span></a>
+										</li>
+										<li>
+											<a href="#" class="lkcm152"><i class='uil uil-thumbs-down'></i><span>20</span></a>
+										</li>
+										<li>
+											<a href="#" class="lkcm152"><i class='uil uil-share-alt'></i><span>9</span></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>							
+					</div>
+                    <div class="col-xl-4 col-lg-4">
+						<div class="right_side">							
+							<div class="fcrse_3">
+								<div class="cater_ttle">
+									<h4>Chapter descripsion</h4>
+								</div>
+								<div class="live_chat">
+									<div class="chat1">
+										{{{this.chapter.chap_des}}}
+									</div>
+								</div>
+							</div>													
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
