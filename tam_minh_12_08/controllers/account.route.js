@@ -5,6 +5,8 @@ const studentModel = require("../models/student.model");
 const teacherModel = require('../models/teacher.model');
 const auth = require("../middlewares/auth.mdw");
 var passport = require('passport'), LocalStrategy = require('passport-local').Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
 const router = express.Router();
 
 // router.get('/profile', auth, function (req, res, next) {
@@ -59,55 +61,30 @@ router.get("/login", function(req, res) {
   });
 });
 
+
+// PASSPORT
+
 router.post('/login',
   passport.authenticate('local', { successRedirect: '/', failureRedirect: '/account/login'})
 );
 
-// router.post("/login", async function(req, res) {
-//   const user = await userModel.single(req.body.email);
-//   if (user === null) {
-//     return res.render("vwAccount/login", {
-//       layout: false,
-//       err_message: "Email does not match any account.",
-//     });
-//   }
+router.get('/auth/google',
+  passport.authenticate('google', { scope: ["profile", "email"] }));
 
-//   const ret = bcrypt.compareSync(req.body.password, user.password);
-//   if (ret === false) {
-//     return res.render("vwAccount/login", {
-//       layout: false,
-//       err_message: "Invalid password.",
-//     });
-//   }
-//   //Lấy thông tin người dùng
-//   var userInfo;
-//   if (user.mode === 2) {
-//     req.user.isStudent = true;
-//     userInfo = await studentModel.studentInfo(user.email);
-//   } else if (user.mode === 1) {
-//     req.user.isTeacher = true;
-//     userInfo = await teacherModel.teacherInfo(user.email);
-//   } else if (user.mode === 0) {
-//     req.user.isAdmin = true;
-//     userInfo = user;
-//   }
-//   req.user.auth = true;
-//   req.user.authUser = userInfo;
+router.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/account/login' }),
+  function(req, res) {
+    res.redirect('/');
+  });
 
-//   const url = req.user.retUrl || "/";
-//   res.redirect(url);
-// });
 
-// router.post("/logout", async function(req, res) {
-//   req.user.auth = false;
-//   req.user.authUser = null;
-//   req.user.retUrl = null;
-//   req.user.isStudent = false;
-//   req.user.isTeacher = false;
-//   req.user.isAdmin = false;
-//   const url = req.headers.referer || "/";
-//   res.redirect(url);
-// });
+router.get('/auth/facebook',
+  passport.authenticate('facebook', { scope: ['email'] }));
+
+router.get('/auth/facebook/callback', 
+  passport.authenticate('facebook', { successRedirect: '/', failureRedirect: '/account/login' }));
+
+
 
 router.post('/logout', function(req, res){
   req.session.auth = false;

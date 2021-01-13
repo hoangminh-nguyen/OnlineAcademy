@@ -22,18 +22,18 @@ module.exports = function (app) {
         res.locals.message = req.session.message;
 
         if (!req.user) {
-            console.log("auth = false");
+
             req.session.auth = false;
         }
         else {
-            console.log("auth = true");
+
             req.session.auth = true;
 
             res.locals.authUser = req.user.authUser;
             res.locals.isStudent = req.user.isStudent;
             res.locals.isTeacher = req.user.isTeacher;
             res.locals.isAdmin = req.user.isAdmin;
-            console.log(req.user);
+
         }
 
         res.locals.auth = req.session.auth;
