@@ -174,6 +174,10 @@ router.get('/', async (req, res) => {
     var sort = req.query.sort;
     const search = req.query.search;
 
+    if (search === "") {
+        return res.redirect('/');
+    }
+
     const spec = await specModel.singleBySpecName(search);
     if (spec) {
         return res.redirect('/courses/' + spec['type_name'] + '/' + spec['spec_name']);
