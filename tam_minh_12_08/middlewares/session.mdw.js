@@ -7,8 +7,8 @@ module.exports = function (app) {
 
   app.set('trust proxy', 1)
   app.use(session({
-    secret: 'SECRET_KEY',
-    resave: false,
+    secret: 'keyboard cat',
+    resave: true,
     saveUninitialized: true,
     store: sessionCourse,
     cookie: {
