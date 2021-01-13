@@ -7,6 +7,10 @@ const { calcNextPage } = require('../utils/pagination');
 const pagination = require('../utils/pagination');
 const bcrypt = require("bcryptjs");
 const router = express.Router();
+const multer = require('multer');
+const fs = require('fs');
+const db = require('../utils/db');
+
 
 router.get('/info', async function (req, res, next) {
     res.render('vwStudent/info', {
@@ -123,8 +127,47 @@ router.get('/is-not-added', async function (req, res) {
       return res.json(true);
     }
     res.json(false);
-  })
-
+  });
+  router.get('/info/avatar', async function (req, res, next) {
+    const avatar = await studentModel.get_ava(req.user.authUser.student_id);
+    res.render('vwStudent/avatar', {
+        isStudent: req.user.isStudent,
+        avatar,
+    });
+  });
+  
+  router.post('/info/avatar', async function (req, res, next) {
+    const id = req.user.authUser.student_id;
+      const pathz = '/student/'+id+'/ProfilePic.png';
+      const storage = multer.diskStorage({
+        destination: function (req, file, cb) {
+  
+          const path = './public/student/'+id;
+          fs.mkdirSync(path, { recursive: true });
+          cb(null, path);
+        },
+        filename: function (req, file, cb) {
+          cb(null, "ProfilePic.png");
+        }
+      });
+      const upload = multer({ storage: storage });
+      upload.single('inputGroupFile04')(req, res, async function (err) {
+        if (err) {
+          console.log(err);
+        } else {
+          const condition = {
+            student_id: id,
+          };
+  
+          const course = {
+            link_ava_student : pathz,
+          }
+  
+          await db.patch(course,condition, "student");
+          res.redirect('/student/info')
+        }
+      });
+  });
 
 
 router.get('/watchlist', async function (req, res, next) {

@@ -294,6 +294,49 @@ router.post("/info/patch", async function(req, res) {
   res.redirect("/teacher/info");
 });
 
+router.get('/info/avatar', async function (req, res, next) {
+  const avatar = await teacherModel.get_ava(req.user.authUser.teacher_id);
+
+  res.render('vwStudent/avatar', {
+    isTeacher: req.user.isTeacher,
+    avatar,
+  });
+});
+
+router.post('/info/avatar', async function (req, res, next) {
+  const id = req.user.authUser.teacher_id;
+    const pathz = '/teacher/'+id+'/ProfilePic.png';
+    const storage = multer.diskStorage({
+      destination: function (req, file, cb) {
+
+        const path = './public/teacher/'+id;
+        fs.mkdirSync(path, { recursive: true });
+        cb(null, path);
+      },
+      filename: function (req, file, cb) {
+        cb(null, "ProfilePic.png");
+        // cb(null, file.fieldname + '-' + Date.now())
+      }
+    });
+    const upload = multer({ storage: storage });
+    upload.single('inputGroupFile04')(req, res, async function (err) {
+      if (err) {
+        console.log(err);
+      } else {
+        const condition = {
+          teacher_id: id,
+        };
+
+        const course = {
+          link_ava_teacher : pathz,
+        }
+
+        await db.patch(course,condition, "teacher");
+        res.redirect('/teacher/info')
+      }
+    });
+});
+
 router.get('/info/password', async function (req, res, next) {
     res.render('vwStudent/password', {
     });

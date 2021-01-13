@@ -178,18 +178,24 @@
 
                     </div>
                     <div class="card-footer">
-                        <a class="btn btn-primary mt-10"
+                        <button class="btn btn-primary mt-10"
                             style="background-color: #000 !important; border-color:#ff9800 !important; color: #ff9800 !important; margin-right: 10px;"
                             href="/" role="button">
                             <i class="fa fa-chevron-left" aria-hidden="true" style="margin-right: 5px;"></i>
                             Back to Home
-                        </a>
+                        </button>
                         {{#if this.isStudent}}
                         <a class="btn btn-outline-primary mt-10 ml-2"
                             href="/student/info/password" role="button"
                             style="margin-right: 10px;">
                             <i class="fa fa-key" aria-hidden="true" style="margin-right: 5px;"></i>
                             Change Password
+                        </a>
+                        <a class="btn btn-outline-primary mt-10 ml-2"
+                            href="/student/info/avatar" role="button"
+                            style="margin-right: 10px;">
+                            <i class="fa fa-key" aria-hidden="true" style="margin-right: 5px;"></i>
+                            Change Avatar
                         </a>
                         <button class="btn btn-outline-success mt-10 ml-2" id="save" type="submit"
                             formaction="/student/info/patch" style="margin-right: 10px;">
@@ -198,10 +204,16 @@
                         </button>
                         {{else}}
                         <a class="btn btn-outline-primary mt-10 ml-2"
-                            href="/teacher/info/password" role="button"
+                            href="/teacher/info/password" role="button" type="button"
                             style="margin-right: 10px;">
                             <i class="fa fa-key" aria-hidden="true" style="margin-right: 5px;"></i>
                             Change Password
+                        </a>
+                        <a class="btn btn-outline-primary mt-10 ml-2"
+                            href="/teacher/info/avatar" role="button"
+                            style="margin-right: 10px;">
+                            <i class="fa fa-key" aria-hidden="true" style="margin-right: 5px;"></i>
+                            Change Avatar
                         </a>
                         <button class="btn btn-outline-success mt-10 ml-2" id="save" type="submit"
                             formaction="/teacher/info/patch" style="margin-right: 10px;">

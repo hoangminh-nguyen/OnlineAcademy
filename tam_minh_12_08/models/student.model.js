@@ -55,6 +55,12 @@ module.exports = {
     return rows;
   },
 
+  async get_ava(student_id){
+    const sql = `select link_ava_student as link_ava from student where student_id =${student_id}`;
+    const [rows, fields] = await db.load(sql);
+    return rows[0];
+  },
+
 
   async addWatchlistItem(courseid, studentid) {
     const sql = `insert into stu_watchlist  values(${studentid},${courseid})`;

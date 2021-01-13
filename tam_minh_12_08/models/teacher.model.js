@@ -24,6 +24,13 @@ module.exports = {
     return result;
   },
 
+  async get_ava(teacher_id){
+    const sql = `select link_ava_teacher as link_ava from teacher where teacher_id =${teacher_id}`;
+    const [rows, fields] = await db.load(sql);
+    return rows[0];
+  },
+
+
   async del(id) {
     const condition = {
       teacher_id: id,
