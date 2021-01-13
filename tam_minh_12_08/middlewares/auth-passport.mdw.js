@@ -17,7 +17,7 @@ passport.deserializeUser(async function (email, done) {
         isStudent: false,
         isTeacher: false,
         isAdmin: false,
-        userInfo: null,
+        authUser: null,
     }
 
     var userInfo;
@@ -32,7 +32,7 @@ passport.deserializeUser(async function (email, done) {
         userInfo = user;
     }
 
-    lcUser.userInfo = userInfo;
+    lcUser.authUser = userInfo;
 
     done(null, lcUser);
 });
@@ -41,26 +41,22 @@ passport.deserializeUser(async function (email, done) {
 const verifyLocalCb = async function (req, username, password, done) {
 
     const user = await userModel.single(username);
-
     if (user === null) {
         req.session.message = "Email does not match any account.";
         return done(null, false);
     }
-
     const ret = bcrypt.compareSync(password, user.password);
     if (ret === false) {
         req.session.message = "Invalid password.";
         return done(null, false);
     }
-
+    req.session.message = null;
     return done(null, user)
 }
 
 module.exports.passportSetup = (app) => {
-
-
-app.use(passport.initialize());
-app.use(passport.session());
+    app.use(passport.initialize());
+    app.use(passport.session());
     passport.use(new LocalStrategy({
         usernameField: 'email',
         passwordField: 'password',

@@ -5,7 +5,7 @@ const typeModel = require("../models/type.model");
 const courseModel = require("../models/course.model");
 
 router.get("/", async function(req, res, next) {
-  if (req.session.isAdmin === false) {
+  if (req.user.isAdmin === false) {
     return res.redirect("/");
   }
   res.render("vwSpecifications-ad/index", {});

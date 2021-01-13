@@ -12,7 +12,7 @@ const router = express.Router();
 // })
 
 router.get("/signup", function(req, res, next) {
-  if (req.user.auth === true) {
+  if (req.session.auth === true) {
     return res.redirect("/");
   }
   res.render("vwAccount/signup", {
@@ -51,7 +51,7 @@ router.get("/is-available", async function(req, res) {
 });
 
 router.get("/login", function(req, res) {
-  if (res.locals.auth === true) {
+  if (req.session.auth === true) {
     return res.redirect("/");
   }
   res.render("vwAccount/login", {
@@ -110,7 +110,14 @@ router.post('/login',
 // });
 
 router.post('/logout', function(req, res){
+  req.session.auth = false;
+  req.user.authUser = null;
+  req.user.retUrl = null;
+  req.user.isStudent = false;
+  req.user.isTeacher = false;
+  req.user.isAdmin = false;
   req.logout();
+  req.session.auth = false;
   const url = req.headers.referer || "/";
   res.redirect(url);
 });

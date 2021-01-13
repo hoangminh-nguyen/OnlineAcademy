@@ -156,7 +156,7 @@ router.get('/add_chap', async function (req, res, next){
 })
 
 router.get('/mycourse', async function (req, res){
-  const teacher_id = req.session.authUser.teacher_id;
+  const teacher_id = req.user.authUser.teacher_id;
   var course = await courseModel.allByTeacherId(teacher_id);
   course = discount.calcCourses(course);
   res.render('vwTeacher/view_course', {
@@ -261,7 +261,7 @@ router.post('/finish',async function (req, res, next){
 })
 
 router.get('/info', async function (req, res, next) {
-    res.locals.authUser = req.user;
+    res.locals.authUser = req.user.authUser;
     res.render('vwStudent/info', {
     });
 })
@@ -279,18 +279,18 @@ router.get('/info/is-email-available', async function (req, res) {
 })
 
 router.post("/info/patch", async function(req, res) {
-  if(req.body.email != req.session.authUser.email){
+  if(req.body.email != req.user.authUser.email){
       const user = {
           email: req.body.email,
-          password: req.session.authUser.password,
+          password: req.user.authUser.password,
           mode: 1,
         };
         await accountModel.add(user);
   }
   await teacherModel.patch(req.body);
-  await accountModel.del(req.session.authUser.email);
-  req.session.authUser = await teacherModel.teacherInfo(req.body.email);
-  res.locals.authUser = req.session.authUser;
+  await accountModel.del(req.user.authUser.email);
+  req.user.authUser = await teacherModel.teacherInfo(req.body.email);
+  res.locals.authUser = req.user.authUser;
   res.redirect("/teacher/info");
 });
 
@@ -310,7 +310,7 @@ router.post('/info/password', async function (req, res, next) {
 })
 
 router.get('/info/password/is-true', async function (req, res) {
-  const mail = req.session.authUser.email;
+  const mail = req.user.authUser.email;
   const password = req.query.password;
 
   console.log(mail, password);

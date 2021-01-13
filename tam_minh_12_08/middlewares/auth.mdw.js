@@ -7,21 +7,21 @@ module.exports = {
     next();
   },
   checkAdmin(req, res, next) {
-    if (res.locals.auth === false || res.locals.isAdmin === false) {
+    if (req.session.auth === false || res.locals.isAdmin === false) {
       res.locals.retUrl = req.originalUrl;
       return res.redirect('/');
     }
     next();
   },
   checkStudent(req, res, next) {
-    if (res.locals.auth === false || res.locals.isStudent === false) {
+    if (req.session.auth === false || res.locals.isStudent === false) {
       res.locals.retUrl = req.originalUrl;
       return res.redirect('/');
     }
     next();
   },
   checkTeacher(req, res, next) {
-    if (res.locals.auth === false || res.locals.isTeacher === false) {
+    if (req.session.auth === false || res.locals.isTeacher === false) {
       res.locals.retUrl = req.originalUrl;
       return res.redirect('/');
     }

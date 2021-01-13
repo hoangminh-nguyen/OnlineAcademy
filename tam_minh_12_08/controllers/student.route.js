@@ -25,18 +25,18 @@ router.get('/info/is-email-available', async function (req, res) {
   })
 
 router.post("/info/patch", async function(req, res) {
-    if(req.body.email != req.session.authUser.email){
+    if(req.body.email != req.user.authUser.email){
         const user = {
             email: req.body.email,
-            password: req.session.authUser.password,
+            password: req.user.authUser.password,
             mode: 2,   
           };
           await accountModel.add(user);
     }
     await studentModel.patch(req.body);
-    await accountModel.del(req.session.authUser.email);
-    req.session.authUser = await studentModel.studentInfo(req.body.email);
-    res.locals.authUser = req.session.authUser;
+    await accountModel.del(req.user.authUser.email);
+    req.user.authUser = await studentModel.studentInfo(req.body.email);
+    res.locals.authUser = req.user.authUser;
     res.redirect("/student/info");
 });
 
@@ -54,7 +54,7 @@ router.post('/info/password', async function (req, res, next) {
 })
 
 router.get('/info/password/is-true', async function (req, res) {
-    const mail = req.session.authUser.email;
+    const mail = req.user.authUser.email;
     const password = req.query.password;
     const user = await accountModel.single(mail);
     const ret = bcrypt.compareSync(password, user.password);
@@ -76,7 +76,7 @@ router.post('/rating', async function (req, res, next) {
     const rating = req.body.rating;
     const comment = req.body.comment;
     const course_id = req.query.courseid;
-    const student_id = req.session.authUser.student_id;
+    const student_id = req.user.authUser.student_id;
     var d = new Date();
     var day=d.getDate(), month=(d.getMonth()+1), year=d.getFullYear(), hour=d.getHours(), minute=d.getMinutes(), second=d.getSeconds();
     if (day <10) day="0"+day;
@@ -90,7 +90,7 @@ router.post('/rating', async function (req, res, next) {
 })
 
 router.get('/registeredcourses', async function (req, res, next) {
-    const student_id = req.session.authUser.student_id;
+    const student_id = req.user.authUser.student_id;
     var course = await courseModel.allByStudentIDRegister(student_id);
     course = discount.calcCourses(course);
     res.render('vwStudent/savedcourses', {
@@ -100,7 +100,7 @@ router.get('/registeredcourses', async function (req, res, next) {
 })
 
 router.post('/registeredcourses/add', async function (req, res, next) {
-    const student_id = parseInt(req.session.authUser.student_id);
+    const student_id = parseInt(req.user.authUser.student_id);
     const course_id = parseInt(req.query.courseid);
     var d = new Date();
     var day=d.getDate(), month=(d.getMonth()+1), year=d.getFullYear(), hour=d.getHours(), minute=d.getMinutes(), second=d.getSeconds();
@@ -116,7 +116,7 @@ router.post('/registeredcourses/add', async function (req, res, next) {
 })
 
 router.get('/is-not-added', async function (req, res) {
-    const student_id = parseInt(req.session.authUser.student_id);
+    const student_id = parseInt(req.user.authUser.student_id);
     const course_id = req.query.courseid;
     const check = await studentModel.findRegisterItem(course_id, student_id);
     if (check === null) {
@@ -128,7 +128,7 @@ router.get('/is-not-added', async function (req, res) {
 
 
 router.get('/watchlist', async function (req, res, next) {
-    const student_id = req.session.authUser.student_id;
+    const student_id = req.user.authUser.student_id;
     var course = await courseModel.allByStudentIDWatchlist(student_id);
     course = discount.calcCourses(course);
     
@@ -140,7 +140,7 @@ router.get('/watchlist', async function (req, res, next) {
 })
 
 router.get('/watchlist/add', async function (req, res, next) {
-    const student_id = parseInt(req.session.authUser.student_id);
+    const student_id = parseInt(req.user.authUser.student_id);
     const course_id = parseInt(req.query.courseid);
     const check = await studentModel.findWatchlistItem(course_id, student_id);
     if(!check){
@@ -151,7 +151,7 @@ router.get('/watchlist/add', async function (req, res, next) {
 })
 
 router.get('/watchlist/del', async function (req, res, next) {
-    const student_id = parseInt(req.session.authUser.student_id);
+    const student_id = parseInt(req.user.authUser.student_id);
     const course_id = parseInt(req.query.courseid);
     await studentModel.delWatchlistItem(course_id, student_id);
 
@@ -159,7 +159,7 @@ router.get('/watchlist/del', async function (req, res, next) {
 })
 
 router.get('/watchlist/delall', async function (req, res, next) {
-    const student_id = parseInt(req.session.authUser.student_id);
+    const student_id = parseInt(req.user.authUser.student_id);
     await studentModel.delWatchlist(student_id);
 
     res.redirect('/student/watchlist');
