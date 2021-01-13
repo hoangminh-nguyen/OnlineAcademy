@@ -51,7 +51,7 @@ router.get("/is-available", async function(req, res) {
 });
 
 router.get("/login", function(req, res) {
-  if (req.user.auth === true) {
+  if (res.locals.auth === true) {
     return res.redirect("/");
   }
   res.render("vwAccount/login", {

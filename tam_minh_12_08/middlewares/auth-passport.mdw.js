@@ -14,13 +14,10 @@ passport.deserializeUser(async function (email, done) {
     const user = await userModel.single(email);
 
     lcUser = {
-        auth: true,
         isStudent: false,
         isTeacher: false,
         isAdmin: false,
-        email: null,
-        password: null,
-        mode: null,
+        userInfo: null,
     }
 
     var userInfo;
@@ -34,9 +31,8 @@ passport.deserializeUser(async function (email, done) {
         lcUser.isAdmin = true;
         userInfo = user;
     }
-    lcUser.email = userInfo.email;
-    lcUser.password = userInfo.password;
-    lcUser.mode = userInfo.mode;
+
+    lcUser.userInfo = userInfo;
 
     done(null, lcUser);
 });

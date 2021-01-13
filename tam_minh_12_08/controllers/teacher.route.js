@@ -24,7 +24,7 @@ router.get('/create_course',async function (req, res) {
     console.log("course_id "+req.session.temp_course_id);
     const course = await courseModel.load_info(req.session.temp_course_id);
     console.log(course);
-    
+
   res.render('vwTeacher/create_course',{
     course,
     check: true,
@@ -34,14 +34,14 @@ router.get('/create_course',async function (req, res) {
   else {
     console.log("null course");
     const course={
-      name : "", 
+      name : "",
       price: "",
       type: "",
       spec: "",
       short_info :"",
       full_info : "",
     };
-  
+
   res.render('vwTeacher/create_course',{
     course,
     check: false,
@@ -50,18 +50,18 @@ router.get('/create_course',async function (req, res) {
   }
 })
 
-router.post('/create_course', async function (req, res, next) {    
+router.post('/create_course', async function (req, res, next) {
   if(req.session.temp_course_id){
     console.log("caccccc");
     const course={
-      name : req.body.name, 
+      name : req.body.name,
       price: req.body.price,
       type: parseInt(req.body.type),
       spec: parseInt(req.body.spec_id),
     };
     console.log(course);
     const detail = {
-      short_info :req.body.short_info, 
+      short_info :req.body.short_info,
       full_info : req.body.full_info,
     };
     const condition = {
@@ -73,7 +73,7 @@ router.post('/create_course', async function (req, res, next) {
   }
   else {
     const course={
-      name : req.body.name, 
+      name : req.body.name,
       price: req.body.price,
       type: parseInt(req.body.type),
       spec: parseInt(req.body.spec_id),
@@ -83,31 +83,31 @@ router.post('/create_course', async function (req, res, next) {
       publish_day: date.curDate(),
       link_ava_course: null,
     };
-  
+
     await courseModel.add(course);
     const id = await courseModel.idByCourseName(course.name);
     req.session.temp_course_id = id[0]['course_id'];
-  
+
     const detail = {
       state: 0,
       course_id : req.session.temp_course_id,
-      short_info :req.body.short_info, 
+      short_info :req.body.short_info,
       full_info : req.body.full_info,
       last_modify: date.curDate(),
     }
     await db.add(detail,"course_detail");
-  
+
     res.redirect('/teacher/add_pic');
   }
 }
 );
-  
+
   router.post('/add_pic', async function (req, res, next){
     const id = req.session.temp_course_id;
     const pathz = '/course/'+id+'/Profile pic.png';
     const storage = multer.diskStorage({
       destination: function (req, file, cb) {
-        
+
         const path = './public/course/'+id;
         fs.mkdirSync(path, { recursive: true });
         cb(null, path);
@@ -125,17 +125,17 @@ router.post('/create_course', async function (req, res, next) {
         const condition = {
           course_id: id,
         };
-    
+
         const course = {
           link_ava_course : pathz,
         }
-    
+
         await db.patch(course,condition, "course");
         res.redirect('/teacher/add_chap')
       }
     });
   });
-  
+
 
 
 
@@ -186,10 +186,10 @@ router.post('/add_chap', async function (req, res, next){
     if (req.body.Chapter_number=="delete"){
       check = false;
     }
-    
+
     await courseModel.delete_chap( req.session.temp_course_id,parseInt(id));
     const course = await courseModel.load_chapter(req.session.temp_course_id);
-    
+
     res.render('vwTeacher/chapter_add', {chapter, check,course,})
   }
   else {
@@ -197,7 +197,7 @@ router.post('/add_chap', async function (req, res, next){
     var pathz = '/course/'+id+'/';
     const storage = multer.diskStorage({
       destination: function (req, file, cb) {
-        
+
         const path = './public/course/'+id;
         fs.mkdirSync(path, { recursive: true });
         cb(null, path);
@@ -210,13 +210,13 @@ router.post('/add_chap', async function (req, res, next){
     });
     const upload = multer({ storage: storage });
     upload.single('inputGroupFile06')(req, res, async function (err) {
-      
-      fs.rename('./public'+pathz,'./public/course/'+id+'/'+req.body.Chapter_number+'.mp4',() => { 
-        console.log("\nFile Renamed!\n"); 
+
+      fs.rename('./public'+pathz,'./public/course/'+id+'/'+req.body.Chapter_number+'.mp4',() => {
+        console.log("\nFile Renamed!\n");
         pathz = './public/course/'+id+'/'+req.body.Chapter_number+'.mp4';
       })
       const chap={
-        chap_name : req.body.title_chapter, 
+        chap_name : req.body.title_chapter,
         chap_num : req.body.Chapter_number,
         course_id : req.session.temp_course_id,
         chap_des: req.body.description_chapter,
@@ -225,15 +225,15 @@ router.post('/add_chap', async function (req, res, next){
       if (err) {
         console.log(err);
       } else {
-      
-        
+
+
         await db.add(chap, "course_chapter");
         res.redirect('/teacher/add_chap')
       }
     });
   }
-      
-  
+
+
 })
 
 router.get('/finish',async function (req, res, next){
@@ -261,7 +261,7 @@ router.post('/finish',async function (req, res, next){
 })
 
 router.get('/info', async function (req, res, next) {
-    res.locals.authUser = req.session.authUser;
+    res.locals.authUser = req.user;
     res.render('vwStudent/info', {
     });
 })

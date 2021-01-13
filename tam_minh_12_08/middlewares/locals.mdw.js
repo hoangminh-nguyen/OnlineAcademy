@@ -19,18 +19,27 @@ module.exports = function (app) {
     });
 
     app.use(function (req, res, next) {
-        if (req.user === 'null') {
+        res.locals.message = req.session.message;
+
+        res.locals.auth = null;
+        res.locals.authUser = null;
+
+        res.locals.isStudent = null;
+        res.locals.isTeacher = null;
+        res.locals.isAdmin = null;
+
+        if (!req.user) {
             res.locals.auth = false;
             console.log("asd");
         }
         else {
-        res.locals.message = req.user.message;
+            console.log("asasdfad");
 
-        res.locals.auth = req.user.auth;
-        res.locals.authUser = req.user;
+            res.locals.auth = true;
+            res.locals.authUser = req.user;
 
-        res.locals.isStudent = req.user.isStudent;
-        res.locals.isTeacher = req.user.isTeacher;
+            res.locals.isStudent = req.user.isStudent;
+            res.locals.isTeacher = req.user.isTeacher;
             res.locals.isAdmin = req.user.isAdmin;
         }
         next();
