@@ -40,6 +40,7 @@ router.get('/detail/:id/watch/:chap_id', async function(req, res){
     const course_id = req.params.id;
     const chap_id = req.params.chap_id;
     const chapter = await courseModel.get_video(course_id, chap_id);
+    console.log(chapter.link_vid);
     res.render('vwCourses/watch_video',{chapter,});
 
 })

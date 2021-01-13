@@ -210,23 +210,23 @@ router.post('/add_chap', async function (req, res, next){
     });
     const upload = multer({ storage: storage });
     upload.single('inputGroupFile06')(req, res, async function (err) {
-
-      fs.rename('./public'+pathz,'./public/course/'+id+'/'+req.body.Chapter_number+'.mp4',() => {
-        console.log("\nFile Renamed!\n");
+      
+      fs.rename('./public'+pathz,'./public/course/'+id+'/'+req.body.Chapter_number+'.mp4',() => { 
         pathz = './public/course/'+id+'/'+req.body.Chapter_number+'.mp4';
       })
-      const chap={
-        chap_name : req.body.title_chapter,
-        chap_num : req.body.Chapter_number,
-        course_id : req.session.temp_course_id,
-        chap_des: req.body.description_chapter,
-        link_vid : pathz,
-      };
+      
       if (err) {
         console.log(err);
       } else {
-
-
+        
+        pathz = '/course/'+id+'/'+req.body.Chapter_number+'.mp4';
+        const chap={
+          chap_name : req.body.title_chapter, 
+          chap_num : req.body.Chapter_number,
+          course_id : req.session.temp_course_id,
+          chap_des: req.body.description_chapter,
+          link_vid : pathz,
+        };
         await db.add(chap, "course_chapter");
         res.redirect('/teacher/add_chap')
       }

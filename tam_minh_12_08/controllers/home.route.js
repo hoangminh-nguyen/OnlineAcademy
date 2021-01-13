@@ -28,6 +28,8 @@ router.get('/', async function (req, res, next) {
         rating: rating,
         spec: spec,
     });
+
+    req.session.temp_course_id = null;
 });
 
 module.exports = router;

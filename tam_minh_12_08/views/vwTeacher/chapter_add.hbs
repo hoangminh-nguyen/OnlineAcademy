@@ -112,11 +112,11 @@
 																		<label>Chapter Number*</label>
 																		{{#if check}}
 																			<div class="ui left icon input swdh19">
-																				<input class="prompt srch_explore hacker" type="text" placeholder="Insert your chapter number." name="Chapter_number" data-purpose="edit-course-title" maxlength="60" id="lecture[title]" value="{{chapter.chap_num}}">															
+																				<input class="prompt srch_explore hacker" type="text" placeholder="Insert your chapter number." name="Chapter_number" data-purpose="edit-course-title" maxlength="60" id="chapter_number" value="{{chapter.chap_num}}">															
 																			</div>
 																		{{else}}
 																		<div class="ui left icon input swdh19">
-																			<input class="prompt srch_explore hacker" type="text" placeholder="Insert your chapter number." name="Chapter_number" data-purpose="edit-course-title" maxlength="60" id="lecture[title]" value="">															
+																			<input class="prompt srch_explore hacker" type="text" placeholder="Insert your chapter number." name="Chapter_number" data-purpose="edit-course-title" maxlength="60" id="chapter_number" value="">															
 																		</div>
 																		{{/if}}
 																	</div>									
@@ -143,7 +143,7 @@
 																	</div>
 																</div>
 																<div class="col-lg-2 col-md-12">
-																	<button class="part_btn_save prt-sv" type="submit">Save Chapter</button>
+																	<button class="part_btn_save prt-sv" type="button"  onclick="formsubmit()">Save Chapter</button>
 																</div>
 																<div class="col-lg-12 col-md-12">
 																	<div class="table-responsive mt-50 mb-0">
@@ -163,7 +163,7 @@
 																					<td class="cell-ta">{{chap_name}}</td>
 																					<td class="text-center"><a href="#">Video</a></td>
 																					<td class="text-center">
-																						<a title="Edit" class="gray-s" onclick="formsubmit({{chap_num}})"><i class="uil uil-edit-alt"></i></a>
+																						<a title="Edit" class="gray-s" onclick="formsubmitz({{chap_num}})"><i class="uil uil-edit-alt"></i></a>
 																						<a title="Delete" class="gray-s" onclick="deletez({{chap_num}})"><i class="uil uil-trash-alt"></i></a>
 																					</td>
 																				</tr>
@@ -258,7 +258,27 @@
 	
 	
 	
-	function formsubmit(chap_num){
+	function formsubmit(){
+		var tilte = $('#lecture[title]').val();
+		var chap_num = $('#chapter_number').val();
+		var ext_name = getname('inputGroupFile06');
+		ext_name = ext_name.substr(ext_name.lastIndexOf('.') + 1);
+		if (tilte == "" || chap_num =="" || ext_name!="mp4"){
+			Swal.fire({
+                        icon: 'error',
+                        title: 'Empty input!',
+                        showConfirmButton: true,
+                        timer: 2000,
+                        timerProgressBar: true,
+                    })
+		}
+		else {
+			document.getElementById("form1").submit();
+		}
+		
+	}
+
+	function formsubmitz(chap_num){
 		$('.bulldog').attr('value', chap_num);
 		$('#form1').attr('enctype', '');
 		document.getElementById("form1").submit();
@@ -286,7 +306,9 @@
 				filename = filename.substring(1);
 			}
 			$("label[for=inputGroupFile06]").html(filename);
+			return filename;
 		}
+		return "";
 	}
 
 	$("#inputGroupFile06").change(function() {

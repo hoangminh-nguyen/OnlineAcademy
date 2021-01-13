@@ -118,6 +118,10 @@ router.post('/logout', function(req, res){
   req.user.isAdmin = false;
   req.logout();
   req.session.auth = false;
+
+  
+ 
+  req.session.temp_course_id = null;
   const url = req.headers.referer || "/";
   res.redirect(url);
 });

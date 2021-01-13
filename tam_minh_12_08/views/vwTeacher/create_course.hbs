@@ -21,7 +21,7 @@
 	});
 </script>
 {{/section}}
-<form method="POST" action="">
+<form method="POST" action="" id="form1">
 	<div class="wrapper">
 		<div class="sa4d25">
 			<div class="container">
@@ -196,7 +196,7 @@
 																		<input class="prompt srch_explore" type="text"
 																			name="price" data-purpose="edit-course-title"
 																			placeholder="Insert price"
-																			maxlength="60" id="sub[title]" value="{{course.price}}">
+																			maxlength="60" id="price" value="{{course.price}}">
 																		<div class="badge_num2">USD</div>
 																	</div>
 																{{else}}
@@ -204,7 +204,7 @@
 																		<input class="prompt srch_explore" type="text"
 																			placeholder="Insert price"
 																			name="price" data-purpose="edit-course-title"
-																			maxlength="60" id="sub[title]" value="">
+																			maxlength="60" id="price" value="">
 																		<div class="badge_num2">USD</div>
 																	</div>
 																{{/if}}
@@ -221,7 +221,7 @@
 
 								<div class="step-footer step-tab-pager">
 
-									<button class="btn btn-default steps_btn" type="submit" style="">Next</button>
+									<button class="btn btn-default steps_btn" onclick="formcheck()" type="button" style="">Next</button>
 
 								</div>
 
@@ -292,8 +292,30 @@
 
 <script>
 
+	function formcheck(){
+		
+		var type = $('#temp').val();
+		var spec = $('#spec_id').val();
+		var title = $('#main[title]').val();
+		var sub = $('#sub[title]').val();
+		var price = $('#price').val();
+
+		//arlert(type);
+		if (type == "" || spec =="" || title =="" || sub =="" || price==""){
+			Swal.fire({
+                        icon: 'error',
+                        title: 'Empty input!',
+                        showConfirmButton: true,
+                        timer: 2000,
+                        timerProgressBar: true,
+                    })
+		}
+		else {
+			document.getElementById("form1").submit();
+		}
+	}
+
 	function show_spec(){
-		console.log("cac");
 		var type = $('#temp').val();
 		$('.all').hide();
 		$('.'+parseInt(type)).show();
