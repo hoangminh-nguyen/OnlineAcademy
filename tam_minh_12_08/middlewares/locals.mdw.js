@@ -22,9 +22,11 @@ module.exports = function (app) {
         res.locals.message = req.session.message;
 
         if (!req.user) {
+
             req.session.auth = false;
         }
         else {
+
             req.session.auth = true;
 
             res.locals.authUser = req.user.authUser;
