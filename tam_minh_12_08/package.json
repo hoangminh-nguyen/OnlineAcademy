@@ -27,6 +27,7 @@
     "multer": "^1.4.2",
     "mysql2": "^2.2.5",
     "numeral": "^2.0.6",
+    "passport": "^0.4.1",
     "sweetalert2": "^10.12.7",
     "tinymce": "^5.6.2",
     "video.js": "^7.10.2"

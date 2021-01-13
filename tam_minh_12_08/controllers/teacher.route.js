@@ -28,6 +28,7 @@ router.get('/create_course',async function (req, res) {
   res.render('vwTeacher/create_course',{
     course,
     check: true,
+    editing: true,
   });
   }
   else {
@@ -40,10 +41,11 @@ router.get('/create_course',async function (req, res) {
       short_info :"",
       full_info : "",
     };
-    
+  
   res.render('vwTeacher/create_course',{
     course,
     check: false,
+    editing: true,
   });
   }
 })
@@ -141,7 +143,7 @@ router.post('/create_course', async function (req, res, next) {
 router.get('/add_pic', async function (req, res, next){
   const course = await courseModel.single(req.session.temp_course_id);
   console.log(course);
-  res.render('vwTeacher/picture_add',{course,});
+  res.render('vwTeacher/picture_add',{course,editing: true,});
 })
 
 router.get('/add_chap', async function (req, res, next){
@@ -149,6 +151,7 @@ router.get('/add_chap', async function (req, res, next){
 
   res.render('vwTeacher/chapter_add', {
     course,
+    editing: true,
   });
 })
 
@@ -208,6 +211,10 @@ router.post('/add_chap', async function (req, res, next){
     const upload = multer({ storage: storage });
     upload.single('inputGroupFile06')(req, res, async function (err) {
       
+      fs.rename('./public'+pathz,'./public/course/'+id+'/'+req.body.Chapter_number+'.mp4',() => { 
+        console.log("\nFile Renamed!\n"); 
+        pathz = './public/course/'+id+'/'+req.body.Chapter_number+'.mp4';
+      })
       const chap={
         chap_name : req.body.title_chapter, 
         chap_num : req.body.Chapter_number,
@@ -220,7 +227,6 @@ router.post('/add_chap', async function (req, res, next){
       } else {
       
         
-    
         await db.add(chap, "course_chapter");
         res.redirect('/teacher/add_chap')
       }
@@ -235,6 +241,7 @@ router.get('/finish',async function (req, res, next){
 
   res.render('vwTeacher/finish_check', {
     course,
+    editing: true,
   });
 })
 
@@ -249,6 +256,7 @@ router.post('/finish',async function (req, res, next){
 
   await db.patch(course,condition, "course_detail");
   req.session.temp_course_id = null;
+  req.session.editing = null;
   res.redirect('/');
 })
 
