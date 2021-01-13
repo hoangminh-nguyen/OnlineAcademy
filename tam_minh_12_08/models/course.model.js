@@ -189,8 +189,26 @@ module.exports = {
     return rows;
   },
 
+  async checkStuCo(student_id, course_id){
+    const sql = `select st.course_id from stu_registerlist st  where st.course_id = ${course_id} and st.student_id = ${student_id};`;
+    const [rows, fields] = await db.load(sql);
+    if (rows.length === 0)
+      return null;
+
+    return rows[0];
+  },
+
+  async checkTeCo(teacher_id, course_id){
+    const sql = `select co.course_id from course co  where co.course_id = ${course_id} and co.teacher_id = ${teacher_id};`;
+    const [rows, fields] = await db.load(sql);
+    if (rows.length === 0)
+      return null;
+
+    return rows[0];
+  },
+
   async get_video(course_id,chap_num){
-    const sql = `select cc.link_vid, cc.chap_des, concat(te.fname," " ,te.lname) as full_name, te.link_ava_teacher from course_chapter cc join course co on (co.course_id = cc.course_id) join teacher te on (te.teacher_id = co.teacher_id) where cc.course_id = ${course_id} and cc.chap_num = ${chap_num}`;
+    const sql = `select cc.link_vid, cc.chap_des, concat(te.fname," " ,te.lname) as full_name, cc.chap_name, te.link_ava_teacher,te.info, te.email from course_chapter cc join course co on (co.course_id = cc.course_id) join teacher te on (te.teacher_id = co.teacher_id) where cc.course_id = ${course_id} and cc.chap_num = ${chap_num}`;
     const [rows, fields] = await db.load(sql);
     return rows[0];
   },

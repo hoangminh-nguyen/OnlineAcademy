@@ -16,48 +16,74 @@
                                 </video>
 							</div>
 							<div class="user_dt5">
+								<h1>{{this.chapter.chap_name}}</h1>
 								<div class="user_dt_left">
+									
 									<div class="live_user_dt">
 										<div class="user_img5">
-											<img src="{{this.chapter.link_ava_teacher}}" alt="">												
+										<a href="#"><img src="{{this.chapter.link_ava_teacher}}" alt=""></a>
 										</div>
-										<div class="user_cntnt">
-											<h4>{{this.chapter.full_name}}</h4>
-											<button class="subscribe-btn">Subscribe</button>
+										<div class="user_cntnt" style="max-width: 500px;">
+										<a href="#" class="_df7852" style="height: 10px; margin-top: 5px;">{{this.chapter.full_name}}</a>
+										<div style="color: darkgrey;" class="mt-3"><b style="color: rgb(214, 214, 214);">Contact:</b>
+											{{this.chapter.email}}</div>
+										<div style="color: darkgrey;" class="mt-1"><b style="color: rgb(214, 214, 214);">Information:</b>
+											{{this.chapter.info}}</div>
 										</div>
-									</div>
+								</div>
 								</div>
 								<div class="user_dt_right">
-									<ul>
-										<li>
-											<a href="#" class="lkcm152"><i class='uil uil-eye'></i><span>1452</span></a>
-										</li>
-										<li>
-											<a href="#" class="lkcm152"><i class='uil uil-thumbs-up'></i><span>100</span></a>
-										</li>
-										<li>
-											<a href="#" class="lkcm152"><i class='uil uil-thumbs-down'></i><span>20</span></a>
-										</li>
-										<li>
-											<a href="#" class="lkcm152"><i class='uil uil-share-alt'></i><span>9</span></a>
-										</li>
-									</ul>
+								<ul class="tutor_social_links">
+									<li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+									<li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+									<li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+									<li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+								</ul>
 								</div>
 							</div>
+							
 						</div>							
 					</div>
                     <div class="col-xl-4 col-lg-4">
 						<div class="right_side">							
 							<div class="fcrse_3">
 								<div class="cater_ttle">
-									<h4>Chapter descripsion</h4>
+									<h4>Descripsion</h4>
 								</div>
 								<div class="live_chat">
 									<div class="chat1">
 										{{{this.chapter.chap_des}}}
 									</div>
 								</div>
-							</div>													
+							</div>	
+							<div id="accordion" class="ui-accordion ui-widget ui-helper-reset">
+									{{#each this.course}}
+									<a href="javascript:void(0)"
+									class="accordion-header ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all">
+									<div class="section-header-left">
+										<span class="section-title-wrapper">
+										<i class='uil uil-presentation-play crse_icon'></i>
+										<span class="section-title-text">{{chap_name}}</span>
+										</span>
+									</div>
+									<div class="section-header-right">
+										<span class="section-header-length">22:08</span>
+									</div>
+									</a>
+									<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">
+
+									<div class="lecture-container">
+										<div class="left-content">
+										<i class='uil uil-file icon_142'></i>
+										<div class="top">
+											<a href="{{chap_num}}">video</a>
+										</div>
+										</div>
+
+									</div>
+									</div>
+								{{/each}}
+							</div>												
 						</div>
 					</div>
 				</div>

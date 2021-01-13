@@ -23,7 +23,7 @@ router.get('/detail/:id', async function (req, res, next) {
     register = discount.calcCourses(register);
     course["newprice"] = discount.calc(course);
     bestseller.labelBestseller(res.locals.lcBestseller, course);
-
+    //console.log(chapter);
     res.render('vwCourses/detail', {
         course: course,
         spec_name: course["spec_name"],
@@ -37,11 +37,36 @@ router.get('/detail/:id', async function (req, res, next) {
 
 
 router.get('/detail/:id/watch/:chap_id', async function(req, res){
+    var check = false;
     const course_id = req.params.id;
-    const chap_id = req.params.chap_id;
-    const chapter = await courseModel.get_video(course_id, chap_id);
-    console.log(chapter.link_vid);
-    res.render('vwCourses/watch_video',{chapter,});
+    console.log('cacccc'+req.user);
+    if(req.user.isStudent) {
+        const stuid = req.user.authUser.student_id;
+        const temp_id = await courseModel.checkStuCo(stuid, course_id);
+        console.log(temp_id);
+        if (temp_id != null && temp_id.course_id == course_id) check = true;
+        
+    }
+    else if (req.user.isTeacher){
+        const te = req.user.authUser.teacher_id;
+        const temp_id = await courseModel.checkTeCo(te, course_id);
+        console.log(temp_id);
+
+        if (temp_id != null && temp_id.course_id == course_id) check = true;
+    }
+    
+    if(check == true){
+
+        const chap_id = req.params.chap_id;
+        const course = await courseModel.allChapterbyID(course_id);
+        const chapter = await courseModel.get_video(course_id, chap_id);
+        //console.log(course);
+        res.render('vwCourses/watch_video',{
+            chapter: chapter,
+            course: course,
+        });
+    }
+    else{res.redirect('/courses/detail/'+req.params.id);}
 
 })
 
