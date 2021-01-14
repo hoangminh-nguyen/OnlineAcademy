@@ -66,18 +66,17 @@ router.get("/", async function(req, res) {
   console.log(decode);
   var oldemail = decode.oldemail;
   var newemail = decode.newemail;
-  console.log(oldemail + newemail);
-
-
+  const oldUser = await accountModel.single(oldemail);
+  console.log(oldUser);
   // Tạo account với email mới rồi xóa account có email cũ
   const user = {
     email: newemail,
-    password: req.user.authUser.password,
+    password: oldUser.password,
     activate: 1,
     mode: 2, //student
   };
   await accountModel.add(user);
-  await studentModel.patch({student_id: req.user.authUser.student_id, email: newemail});
+  await studentModel.patch({student_id: oldUser.student_id, email: newemail});
   await accountModel.del(oldemail);
   
   req.session.auth = false;

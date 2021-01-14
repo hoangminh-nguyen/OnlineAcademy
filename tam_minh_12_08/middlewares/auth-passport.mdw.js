@@ -54,6 +54,21 @@ const verifyLocalCb = async function (req, username, password, done) {
         req.session.message = "Please log in with Google or Facebook.";
         return done(null, false);
     }
+
+    var userInfo;
+    if (user.mode === 2) {
+        userInfo = await studentModel.studentInfo(user.email);
+    } else if (user.mode === 1) {
+        userInfo = await teacherModel.teacherInfo(user.email);
+    }
+    if (user.mode != 0){
+        if (userInfo.disable === 1) {
+            req.session.message = "Your account has been locked by admin.";
+            return done(null, false);
+        }
+    }
+
+    
     const ret = bcrypt.compareSync(password, user.password);
     if (ret === false) {
         req.session.message = "Invalid password.";
@@ -68,13 +83,14 @@ const verifyGoogleCb = async function(req, token, tokenSecret, profile, done) {
     console.log(profile);
     var findUser = await userModel.single(profile.emails[0].value);
     if(findUser === null){
-        await userModel.createAccountBytype(profile.emails[0].value, 1);
+        await userModel.createAccountBytype(profile.emails[0].value);
         var newStudent = {
             student_id: null,
             fname: profile.name.familyName,
             lname: profile.name.givenName,
             email: profile.emails[0].value,
             link_ava_student: profile.photos[0].value,
+            disable: 0,
         }
         await studentModel.add(newStudent);
     }
@@ -86,14 +102,16 @@ const verifyGoogleCb = async function(req, token, tokenSecret, profile, done) {
 const verifyFacebookCb = async function(req, token, tokenSecret, profile, done) {
     console.log(profile);
     var findUser = await userModel.single(profile.emails[0].value);
+    console.log("asdads " + findUser);
     if(findUser === null){
-        await userModel.createAccountBytype(profile.emails[0].value, 2);
+        await userModel.createAccountBytype(profile.emails[0].value);
         var newStudent = {
             student_id: null,
             fname: profile.name.familyName,
             lname: profile.name.givenName,
             email: profile.emails[0].value,
             link_ava_student: profile.photos[0].value,
+            disable: 0,
         }
         await studentModel.add(newStudent);
     }

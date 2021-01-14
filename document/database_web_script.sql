@@ -11,6 +11,7 @@ create table Account
 (
 	email varchar(40),
 	password varchar(255),
+activate int,
     mode int,
 	constraint PK_Ac primary key (email)
 );
@@ -149,39 +150,39 @@ alter table Course_chapter
 -- THÊM DỮ LIỆU MÃU --
 
 -- Account 
-insert into Account values ('admin@gmail.com', '$2a$10$8KwHPiXQbHpgBwZeYdjy1.FgjuhDw8LC7ELsqw9nFVXUcnCwE7L9G', 0);
+insert into Account values ('admin@gmail.com', '$2a$10$8KwHPiXQbHpgBwZeYdjy1.FgjuhDw8LC7ELsqw9nFVXUcnCwE7L9G', 1, 0);
 
-insert into Account values ('teacher001@gmail.com', 'teacher001', 1);
-insert into Account values ('teacher002@gmail.com', 'teacher002', 1);
-insert into Account values ('teacher003@gmail.com', 'teacher003', 1);
-insert into Account values ('teacher004@gmail.com', 'teacher004', 1);
-insert into Account values ('teacher005@gmail.com', 'teacher005', 1);
-insert into Account values ('teacher006@gmail.com', 'teacher006', 1);
-insert into Account values ('teacher007@gmail.com', 'teacher007', 1);
-insert into Account values ('teacher008@gmail.com', 'teacher008', 1);
-insert into Account values ('teacher009@gmail.com', 'teacher009', 1);
-insert into Account values ('teacher010@gmail.com', 'teacher010', 1);
+insert into Account values ('teacher001@gmail.com', 'teacher001', 1, 1);
+insert into Account values ('teacher002@gmail.com', 'teacher002', 1, 1);
+insert into Account values ('teacher003@gmail.com', 'teacher003', 1, 1);
+insert into Account values ('teacher004@gmail.com', 'teacher004', 1, 1);
+insert into Account values ('teacher005@gmail.com', 'teacher005', 1, 1);
+insert into Account values ('teacher006@gmail.com', 'teacher006', 1, 1);
+insert into Account values ('teacher007@gmail.com', 'teacher007', 1, 1);
+insert into Account values ('teacher008@gmail.com', 'teacher008', 1, 1);
+insert into Account values ('teacher009@gmail.com', 'teacher009', 1, 1);
+insert into Account values ('teacher010@gmail.com', 'teacher010', 1, 1);
 
-insert into Account values ('student001@gmail.com', 'student001', 2);
-insert into Account values ('student002@gmail.com', 'student002', 2);
-insert into Account values ('student003@gmail.com', 'student003', 2);
-insert into Account values ('student004@gmail.com', 'student004', 2);
-insert into Account values ('student005@gmail.com', 'student005', 2);
-insert into Account values ('student006@gmail.com', 'student006', 2);
-insert into Account values ('student007@gmail.com', 'student007', 2);
-insert into Account values ('student008@gmail.com', 'student008', 2);
-insert into Account values ('student009@gmail.com', 'student009', 2);
-insert into Account values ('student010@gmail.com', 'student010', 2);
-insert into Account values ('student011@gmail.com', 'student011', 2);
-insert into Account values ('student012@gmail.com', 'student012', 2);
-insert into Account values ('student013@gmail.com', 'student013', 2);
-insert into Account values ('student014@gmail.com', 'student014', 2);
-insert into Account values ('student015@gmail.com', 'student015', 2);
-insert into Account values ('student016@gmail.com', 'student016', 2);
-insert into Account values ('student017@gmail.com', 'student017', 2);
-insert into Account values ('student018@gmail.com', 'student018', 2);
-insert into Account values ('student019@gmail.com', 'student019', 2);
-insert into Account values ('student020@gmail.com', 'student020', 2);
+insert into Account values ('student001@gmail.com', 'student001', 1, 2);
+insert into Account values ('student002@gmail.com', 'student002', 1, 2);
+insert into Account values ('student003@gmail.com', 'student003', 1, 2);
+insert into Account values ('student004@gmail.com', 'student004', 1, 2);
+insert into Account values ('student005@gmail.com', 'student005', 1, 2);
+insert into Account values ('student006@gmail.com', 'student006', 1, 2);
+insert into Account values ('student007@gmail.com', 'student007', 1, 2);
+insert into Account values ('student008@gmail.com', 'student008', 1, 2);
+insert into Account values ('student009@gmail.com', 'student009', 1, 2);
+insert into Account values ('student010@gmail.com', 'student010', 1, 2);
+insert into Account values ('student011@gmail.com', 'student011', 1, 2);
+insert into Account values ('student012@gmail.com', 'student012', 1, 2);
+insert into Account values ('student013@gmail.com', 'student013', 1, 2);
+insert into Account values ('student014@gmail.com', 'student014', 1, 2);
+insert into Account values ('student015@gmail.com', 'student015', 1, 2);
+insert into Account values ('student016@gmail.com', 'student016', 1, 2);
+insert into Account values ('student017@gmail.com', 'student017', 1, 2);
+insert into Account values ('student018@gmail.com', 'student018', 1, 2);
+insert into Account values ('student019@gmail.com', 'student019', 1, 2);
+insert into Account values ('student020@gmail.com', 'student020', 1, 2);
 
 -- Teacher
 insert into Teacher values (null,'David Teacher', 'One', 'teacher001@gmail.com', 'David Teacher One is a member of a subspecies of humans known as mutants, who are born with superhuman abilities. He is an exceptionally powerful telepath, who can read and control the minds of others.', 'https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png', 0);

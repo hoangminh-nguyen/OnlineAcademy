@@ -124,6 +124,7 @@ router.post("/addteacher", async function(req, res) {
   const user = {
     password: hash,
     email: req.body.email,
+    activate: 1,
     mode: 1, // teacher
   };
   const teacher = {
@@ -132,7 +133,8 @@ router.post("/addteacher", async function(req, res) {
     lname: req.body.lname,
     email: req.body.email,
     link_ava_teacher:
-      "https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png",
+      "https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png",
+      disable: 0,
   };
   await accountModel.add(user);
   await teacherModel.add(teacher);

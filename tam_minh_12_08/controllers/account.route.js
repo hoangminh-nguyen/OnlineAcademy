@@ -13,9 +13,57 @@ const router = express.Router();
 const nodemailer = require("nodemailer");
 const accountModel = require("../models/account.model");
 
-// router.get('/profile', auth, function (req, res, next) {
-//   res.render('vwAccount/profile');
-// })
+router.get('/forgotpass', function (req, res, next) {
+  res.render('vwAccount/forgotpass', {
+    layout: false,
+  });
+});
+
+router.post('/forgotpass', async function (req, res, next) {
+  const email = req.query.emailaddress;
+
+  var token = jwt.sign({ email: email }, 'forgotpass');
+  let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    host: "smtp.gmail.com",
+    port: 587,
+    //secure: false,
+    auth: {
+        user: 'onlineacademy.helper@gmail.com',
+        pass: 'bxsarjloicaddcyh'
+    }
+  });
+
+  var url = `http://localhost:3000/account/forgot?token=${token}`;
+
+  let info = await transporter.sendMail({
+    from: '"Online Academy Helper" <onlineacademy.helper@gmail.com>',
+    to: email,
+    subject: "Online Academy - Verify your account ",
+    html: `Thank you for interest in Online Academy!<br><br>Click the link below to reset your password:<br><br><a href="${url}">${url}</a><br><br>Cheers,<br><br>Online Academy Team`,
+  });
+  res.redirect("/account/login");
+});
+
+router.get("/forgot", async function(req, res) {
+  var token = req.query.token;
+  const decode = jwt.verify(token, 'forgotpass');
+  req.session.tempMail = decode.email;
+  return res.redirect('/resetpass');
+});
+
+router.get("/resetpass", async function(req, res) {
+  res.render('vwAccount/resetpass', {
+    layout: false,
+    email: req.session.tempMail,
+  });
+});
+
+router.post("/resetpass", async function(req, res) {
+  const user = await accountModel.single(req.query.emailaddress);
+  await accountModel.patch({email: req.query.emailaddress, password: req.body.password});
+  return res.redirect('/account/login');
+});
 
 router.get("/signup", function(req, res, next) {
   if (req.session.auth === true) {
@@ -41,6 +89,7 @@ router.post("/signup", async function(req, res, next) {
     email: req.body.emailaddress,
     link_ava_student:
       "https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png",
+    disable: 0,
   };
   await userModel.add(user);
   await studentModel.add(student);
@@ -133,13 +182,14 @@ router.post('/logout', function(req, res){
   req.user.isStudent = false;
   req.user.isTeacher = false;
   req.user.isAdmin = false;
-  req.logout();
+
   req.session.auth = false;
 
 
 
   req.session.temp_course_id = null;
   const url = req.headers.referer || "/";
+  req.logout();
   res.redirect(url);
 });
 

@@ -284,11 +284,11 @@ router.get('/info/is-email-available', async function (req, res) {
 
   console.log(email);
 
-  const user = await accountModel.single(email);
-  if (user === null) {
-    return res.json(true);
-  }
-  res.json(false);
+  const user = await accountModel.checkAvailableEmail(email);
+    if (user.length === 0 || (user.length === 1 && email === req.user.authUser.email)) {
+      return res.json(true);
+    }
+    res.json(false);
 })
 
 router.post("/info/patch", async function(req, res) {
