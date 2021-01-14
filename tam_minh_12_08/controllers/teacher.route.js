@@ -81,7 +81,7 @@ router.post('/create_course', async function (req, res, next) {
       spec: parseInt(req.body.spec_id),
       view_number: 0,
       discount: 0,
-      disable: 0,
+      disablez: 0,
       teacher_id: req.user.authUser.teacher_id,
       publish_day: date.curDate(),
       link_ava_course: null,
