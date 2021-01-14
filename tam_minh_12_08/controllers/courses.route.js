@@ -13,6 +13,12 @@ router.get('/detail/:id', async function (req, res, next) {
     const course_id = +req.params.id;
     await courseModel.updateViewNumber(course_id);
     const course = await courseModel.single(course_id);
+    console.log(course.disablez);
+    console.log(req.user.isStudent);
+    if ((req.user.isStudent && course.disablez===1)||(req.session.auth === false && course.disablez===1)){
+        console.log("cant go");
+        res.redirect('/');
+    }
     const review = await courseModel.allReviewByID(course_id);
     const chapter = await courseModel.allChapterbyID(course_id);
     if (course === null) {
@@ -257,9 +263,20 @@ router.get('/', async (req, res) => {
     })
 })
 
-router.post('/remove', async function (req, res) {
-    const id = await courseModel.idByCourseName(req.query.course_name);
-    await courseModel.delCourseByCourseID(id[0]['course_id']);
+// router.post('/remove', async function (req, res) {
+//     const id = await courseModel.idByCourseName(req.query.course_name);
+//     await courseModel.delCourseByCourseID(id[0]['course_id']);
+// })
+
+router.post('/disable', async function (req, res) {
+    console.log(req.query.course_id);
+
+    //await courseModel.patch({course_id: req.query.course_id, disable: 1});
+    await courseModel.disableCoursebyID(req.query.course_id);
+})
+
+router.post('/enable', async function (req, res) {
+    await courseModel.enableCoursebyID(req.query.course_id);
 })
 
 module.exports = router;

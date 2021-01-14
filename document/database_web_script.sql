@@ -1,6 +1,4 @@
-alter user 'root'@'localhost' IDENTIFIED BY '1234';
 
-alter user 'minh' IDENTIFIED BY '1234';
 
 
 
@@ -14,6 +12,7 @@ create table Account
 	password varchar(255),
 	activate boolean,
     mode int,
+    disable int,
 	constraint PK_Ac primary key (email)
 );
 
@@ -52,7 +51,7 @@ create table Stu_registerlist
     register_date datetime,
     chap_num int,
     rating int,
-comment_date datetime,
+	comment_date datetime,
     comment varchar(1000),
     constraint PK_St_Re primary key (student_id, course_id)
 );
@@ -69,6 +68,7 @@ create table Course
     view_number int,
     link_ava_course varchar(500),
 	teacher_id int,
+    disable int,
 	constraint PK_Co primary key (course_id)
 );
 

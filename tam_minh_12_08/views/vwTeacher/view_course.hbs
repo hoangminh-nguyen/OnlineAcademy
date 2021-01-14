@@ -67,7 +67,12 @@
                       <div class="prce142">${{price}}</div>
                       {{/if}}
                     </div>
-                    <div class="auth1lnkprce"><a href="/teacher/edit/{{course_id}}">Edit this course</a></div>
+                    <div class="auth1lnkprce"><a href="/teacher/edit/{{course_id}}">Edit this course</a>
+                    
+                      {{#if disablez}}
+                      <div class="prce142" style="color:#ff9800;">Disabled by admin</div>
+                      {{/if}}
+                    </div>
                   </div>
                   
                 </div>

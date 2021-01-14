@@ -310,18 +310,32 @@
 		var chap_num = $('#chapter_number').val();
 		var ext_name = getname('inputGroupFile06');
 		ext_name = ext_name.substr(ext_name.lastIndexOf('.') + 1);
-		if (title === "" || chap_num =="" || ext_name!="mp4" !! chapnum<0){
+		if (title === "" || chap_num =="" || ext_name!="mp4" || chap_num<0 ){
 			Swal.fire({
 				icon: 'error',
-				title: 'Empty input!',
+				title: 'Wrong input!',
 				showConfirmButton: true,
 				timer: 2000,
 				timerProgressBar: true,
-			})
+			});
 		}
-		else {
-			document.getElementById("form1").submit();
-		}
+			else {
+				$.getJSON(`/teacher/check-chapnum?chapnum=${chap_num}`, function (data){
+					if(data === true){
+						document.getElementById("form1").submit();
+					}
+					if (data===false) {
+						Swal.fire({
+							icon: 'error',
+							title: 'Chap Number exist!',
+							showConfirmButton: true,
+							timer: 2000,
+							timerProgressBar: true,
+						});
+					}
+				});
+				
+			}
 		
 	};
 

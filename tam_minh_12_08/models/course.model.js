@@ -6,13 +6,13 @@ const { bestseller } = require('./../config/default.json');
 module.exports = {
 
   async pageAll(offset) {
-    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id limit ${paginate.limit} offset ${offset};`;
+    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id where co.disablez = 0 limit ${paginate.limit} offset ${offset};`;
     const [rows, fields] = await db.load(sql);
     return rows;
   },
 
   async countAll() {
-    const sql = `select count(*) as total from course`;
+    const sql = `select count(*) as total from course co where co.disablez = 0`;
     const [rows, fields] = await db.load(sql);
     return rows[0].total;
   },
@@ -24,55 +24,55 @@ module.exports = {
   },
 
   async allBySpec(spec_id) {
-    const sql = `select * from course where spec=${spec_id}`;
+    const sql = `select * from course co where co.disablez = 0 and co.spec=${spec_id}`;
     const [rows, fields] = await db.load(sql);
     return rows;
   },
 
   async pageByTypeName(type_name, offset) {
-    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, (co.price - co.price*co.discount/100) as newprice, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id  where ct.type_name = '${type_name}' limit ${paginate.limit} offset ${offset}`;
+    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, (co.price - co.price*co.discount/100) as newprice, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id  where co.disablez = 0 and ct.type_name = '${type_name}' limit ${paginate.limit} offset ${offset}`;
     const [rows, fields] = await db.load(sql);
     return rows;
   },
 
   async pageByTypeNameSortRating(type_name, offset) {
-    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, (co.price - co.price*co.discount/100) as newprice, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id  where ct.type_name = '${type_name}' order by ra.rating desc limit ${paginate.limit} offset ${offset}`;
+    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, (co.price - co.price*co.discount/100) as newprice, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id  where co.disablez = 0 and ct.type_name = '${type_name}' order by ra.rating desc limit ${paginate.limit} offset ${offset}`;
     const [rows, fields] = await db.load(sql);
     return rows;
   },
 
   async pageByTypeNameSortPrice(type_name, offset) {
-    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest,  (co.price - co.price*co.discount/100) as newprice, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id  where ct.type_name = '${type_name}' order by newprice asc limit ${paginate.limit} offset ${offset}`;
+    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest,  (co.price - co.price*co.discount/100) as newprice, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id  where co.disablez = 0 and ct.type_name = '${type_name}' order by newprice asc limit ${paginate.limit} offset ${offset}`;
     const [rows, fields] = await db.load(sql);
     return rows;
   },
 
   async countByTypeName(type_name) {
-    const sql = `select count(*) as total from course co join course_type ct on co.type=ct.type_id where ct.type_name = '${type_name}'`;
+    const sql = `select count(*) as total from course co join course_type ct on co.type=ct.type_id where co.disablez = 0 and ct.type_name = '${type_name}'`;
     const [rows, fields] = await db.load(sql);
     return rows[0].total;
   },
 
   async pageBySpecName(spec_name, offset) {
-    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, (co.price - co.price*co.discount/100) as newprice, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id where cs.spec_name= '${spec_name}' limit ${paginate.limit} offset ${offset}`;
+    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, (co.price - co.price*co.discount/100) as newprice, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id where co.disablez = 0 and cs.spec_name= '${spec_name}' limit ${paginate.limit} offset ${offset}`;
     const [rows, fields] = await db.load(sql);
     return rows;
   },
 
   async pageBySpecNameSortRating(spec_name, offset) {
-    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, (co.price - co.price*co.discount/100) as newprice, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id where cs.spec_name= '${spec_name}' order by ra.rating desc limit ${paginate.limit} offset ${offset}`;
+    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, (co.price - co.price*co.discount/100) as newprice, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id where co.disablez = 0 and cs.spec_name= '${spec_name}' order by ra.rating desc limit ${paginate.limit} offset ${offset}`;
     const [rows, fields] = await db.load(sql);
     return rows;
   },
 
   async pageBySpecNameSortPrice(spec_name, offset) {
-    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, (co.price - co.price*co.discount/100) as newprice, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id where cs.spec_name= '${spec_name}' order by newprice asc limit ${paginate.limit} offset ${offset}`;
+    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, (co.price - co.price*co.discount/100) as newprice, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id where co.disablez = 0 and cs.spec_name= '${spec_name}' order by newprice asc limit ${paginate.limit} offset ${offset}`;
     const [rows, fields] = await db.load(sql);
     return rows;
   },
 
   async countBySpecName(spec_name) {
-    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, count(*) as total from course co join course_spec cs on (co.type=cs.type_id and co.spec=cs.spec_id) where cs.spec_name= '${spec_name}'`;
+    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, count(*) as total from course co join course_spec cs on (co.type=cs.type_id and co.spec=cs.spec_id) where co.disablez = 0 and cs.spec_name= '${spec_name}'`;
     const [rows, fields] = await db.load(sql);
     return rows[0].total;
   },
@@ -92,7 +92,7 @@ module.exports = {
   },
 
   async topTenNewest() {
-    const sql = 'select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id order by publish_day desc limit 10;';
+    const sql = 'select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id where co.disablez = 0 order by publish_day desc limit 10;';
     const [rows, fields] = await db.load(sql);
     return rows;
   },
@@ -103,25 +103,25 @@ module.exports = {
     return rows;
   },
   async topBestseller() {
-    const sql = `select co.course_id from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id order by ra.numberStu desc limit ${bestseller.limit}`;
+    const sql = `select co.course_id from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id where co.disablez = 0 order by ra.numberStu desc limit ${bestseller.limit}`;
     const [rows, fields] = await db.load(sql);
     return rows;
   },
 
   async topTenViewed() {
-    const sql = 'select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname, DATEDIFF(curdate(), co.publish_day) as day_ago from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id order by view_number desc limit 10;';
+    const sql = 'select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname, DATEDIFF(curdate(), co.publish_day) as day_ago from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id where co.disablez = 0  order by view_number desc limit 10;';
     const [rows, fields] = await db.load(sql);
     return rows;
   },
 
   async topFiveRating() {
-    const sql = 'select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname, DATEDIFF(curdate(), co.publish_day) as day_ago from course co left join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id order by rating desc limit 5;';
+    const sql = 'select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname, DATEDIFF(curdate(), co.publish_day) as day_ago from course co left join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id where co.disablez = 0  order by rating desc limit 5;';
     const [rows, fields] = await db.load(sql);
     return rows;
   },
 
   async topFiveRegisterInSpec(spec_id) {
-    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname, DATEDIFF(curdate(), co.publish_day) as day_ago from course co left join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id where spec =${spec_id} order by numberStu desc limit 5;`;
+    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname, DATEDIFF(curdate(), co.publish_day) as day_ago from course co left join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id where co.disablez = 0 and spec =${spec_id} order by numberStu desc limit 5;`;
     const [rows, fields] = await db.load(sql);
     return rows;
   },
@@ -136,6 +136,16 @@ module.exports = {
     const sql = `select co.course_id from course co where co.teacher_id = ${teacher_id}`;
     const [rows, fields] = await db.load(sql);
     return rows;
+  },
+
+  async disableCoursebyID(course_id) {
+    const sql = `update course set disablez = 1 where course_id=${course_id}`;
+    const [rows, fields] = await db.load(sql);
+  },
+
+  async enableCoursebyID(course_id) {
+    const sql = `update course set disablez = 0 where course_id=${course_id}`;
+    const [rows, fields] = await db.load(sql);
   },
 
   async delCourseByCourseID(course_id) {
@@ -154,7 +164,7 @@ module.exports = {
   },
 
   async allByStudentIDWatchlist(student_id) {
-    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname, DATEDIFF(curdate(), co.publish_day) as day_ago from course co left join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id join stu_watchlist stwa on stwa.course_id=co.course_id WHERE stwa.student_id='${student_id}'`;
+    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname, DATEDIFF(curdate(), co.publish_day) as day_ago from course co left join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id join stu_watchlist stwa on stwa.course_id=co.course_id WHERE co.disablez = 0 and stwa.student_id='${student_id}'`;
     const [rows, fields] = await db.load(sql);
     return rows;
   },
@@ -166,25 +176,25 @@ module.exports = {
   },
 
   async allByStudentIDRegister(student_id) {
-    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, cd.state, stre.chap_num, stre.rating as sturate, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago, stre.register_date  as register from course co left join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id join stu_registerlist stre on stre.course_id=co.course_id join course_detail cd on (co.course_id = cd.course_id) WHERE stre.student_id='${student_id}' order by stre.register_date DESC;`;
+    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, cd.state, stre.chap_num, co.disablez, stre.rating as sturate, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago, stre.register_date  as register from course co left join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id join stu_registerlist stre on stre.course_id=co.course_id join course_detail cd on (co.course_id = cd.course_id) WHERE stre.student_id='${student_id}' order by stre.register_date DESC;`;
     const [rows, fields] = await db.load(sql);
     return rows;
   },
 
   async allByTeacherId(teacher_id){
-    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, cd.last_modify as register,  co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago from course co left join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id join course_detail cd on co.course_id = cd.course_id WHERE co.teacher_id =${teacher_id};`;
+    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, co.disablez, cd.last_modify as register,  co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago from course co left join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id join course_detail cd on co.course_id = cd.course_id WHERE co.teacher_id =${teacher_id};`;
     const [rows, fields] = await db.load(sql);
     return rows;
   },
 
   async countSearchResult(search) {
-    const sql = `select count(distinct co.course_id) as total from course co join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id join course_chapter cc on co.course_id = cc.course_id join course_detail cd on co.course_id = cd.course_id where match(co.name) against('${search}') or match(cc.chap_name) against('${search}') or match(cd.short_info, cd.full_info) against('${search}') or match(cs.spec_name) against('${search}') or match(ct.type_name) against('${search}') or match(te.fname, te.fname) against('${search}')`;
+    const sql = `select count(distinct co.course_id) as total from course co join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id join course_chapter cc on co.course_id = cc.course_id join course_detail cd on co.course_id = cd.course_id where co.disablez = 0 and ( match(co.name) against('${search}') or match(cc.chap_name) against('${search}') or match(cd.short_info, cd.full_info) against('${search}') or match(cs.spec_name) against('${search}') or match(ct.type_name) against('${search}') or match(te.fname, te.fname) against('${search}'))`;
     const [rows, fields] = await db.load(sql);
     return rows[0].total;
   },
 
   async pageSearchResultSortRelevance(search, offset) {
-    const sql = `select distinct co.course_id, co.name, if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest,  (co.price - co.price*co.discount/100) as newprice,   co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago , match(co.name) against('${search}') as sc1, match(cc.chap_name) against('${search}') as sc2, match(cd.short_info, cd.full_info) against('${search}') as sc3, match(cs.spec_name) against('${search}') as sc4, match(ct.type_name) against('${search}') as sc5, match(te.fname, te.fname) against('${search}') as sc6 from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id join course_chapter cc on co.course_id = cc.course_id join course_detail cd on co.course_id = cd.course_id where match(co.name) against('${search}') or match(cc.chap_name) against('${search}') or match(cd.short_info, cd.full_info) against('${search}') or match(cs.spec_name) against('${search}') or match(ct.type_name) against('${search}') or match(te.fname, te.fname) against('${search}') order by (sc1 + sc2 + sc3 + sc4 + sc5 + sc6) DESC limit ${paginate.limit} offset ${offset};`;
+    const sql = `select distinct co.course_id, co.name, if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest,  (co.price - co.price*co.discount/100) as newprice,   co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago , match(co.name) against('${search}') as sc1, match(cc.chap_name) against('${search}') as sc2, match(cd.short_info, cd.full_info) against('${search}') as sc3, match(cs.spec_name) against('${search}') as sc4, match(ct.type_name) against('${search}') as sc5, match(te.fname, te.fname) against('${search}') as sc6 from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id join course_chapter cc on co.course_id = cc.course_id join course_detail cd on co.course_id = cd.course_id where co.disablez = 0 and ( match(co.name) against('${search}') or match(cc.chap_name) against('${search}') or match(cd.short_info, cd.full_info) against('${search}') or match(cs.spec_name) against('${search}') or match(ct.type_name) against('${search}') or match(te.fname, te.fname) against('${search}') order by (sc1 + sc2 + sc3 + sc4 + sc5 + sc6) DESC limit ${paginate.limit} offset ${offset});`;
     const [rows, fields] = await db.load(sql);
     return rows;
   },
@@ -210,17 +220,20 @@ module.exports = {
   async get_video(course_id,chap_num){
     const sql = `select cc.link_vid,cc.preview, cc.chap_des, concat(te.fname," " ,te.lname) as full_name, cc.chap_name, te.link_ava_teacher,te.info, te.email from course_chapter cc join course co on (co.course_id = cc.course_id) join teacher te on (te.teacher_id = co.teacher_id) where cc.course_id = ${course_id} and cc.chap_num = ${chap_num}`;
     const [rows, fields] = await db.load(sql);
+    if (rows.length === 0)
+      return null;
+
     return rows[0];
   },
 
   async pageSearchResultSortRating(search, offset) {
-    const sql = `select distinct co.course_id, co.name, if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest,  (co.price - co.price*co.discount/100) as newprice,  co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago , match(co.name) against('${search}') as sc1, match(cc.chap_name) against('${search}') as sc2, match(cd.short_info, cd.full_info) against('${search}') as sc3, match(cs.spec_name) against('${search}') as sc4, match(ct.type_name) against('${search}') as sc5, match(te.fname, te.fname) against('${search}') as sc6 from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id join course_chapter cc on co.course_id = cc.course_id join course_detail cd on co.course_id = cd.course_id where match(co.name) against('${search}') or match(cc.chap_name) against('${search}') or match(cd.short_info, cd.full_info) against('${search}') or match(cs.spec_name) against('${search}') or match(ct.type_name) against('${search}') or match(te.fname, te.fname) against('${search}') order by ra.rating desc limit ${paginate.limit} offset ${offset};`;
+    const sql = `select distinct co.course_id, co.name, if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest,  (co.price - co.price*co.discount/100) as newprice,  co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago , match(co.name) against('${search}') as sc1, match(cc.chap_name) against('${search}') as sc2, match(cd.short_info, cd.full_info) against('${search}') as sc3, match(cs.spec_name) against('${search}') as sc4, match(ct.type_name) against('${search}') as sc5, match(te.fname, te.fname) against('${search}') as sc6 from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id join course_chapter cc on co.course_id = cc.course_id join course_detail cd on co.course_id = cd.course_id where co.disablez = 0 and match(co.name) against('${search}') or match(cc.chap_name) against('${search}') or match(cd.short_info, cd.full_info) against('${search}') or match(cs.spec_name) against('${search}') or match(ct.type_name) against('${search}') or match(te.fname, te.fname) against('${search}') order by ra.rating desc limit ${paginate.limit} offset ${offset};`;
     const [rows, fields] = await db.load(sql);
     return rows;
   },
 
   async pageSearchResultSortPrice(search, offset) {
-    const sql = `select distinct co.course_id, co.name, if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest,  (co.price - co.price*co.discount/100) as newprice, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago , match(co.name) against('${search}') as sc1, match(cc.chap_name) against('${search}') as sc2, match(cd.short_info, cd.full_info) against('${search}') as sc3, match(cs.spec_name) against('${search}') as sc4, match(ct.type_name) against('${search}') as sc5, match(te.fname, te.fname) against('${search}') as sc6 from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id join course_chapter cc on co.course_id = cc.course_id join course_detail cd on co.course_id = cd.course_id where match(co.name) against('${search}') or match(cc.chap_name) against('${search}') or match(cd.short_info, cd.full_info) against('${search}') or match(cs.spec_name) against('${search}') or match(ct.type_name) against('${search}') or match(te.fname, te.fname) against('${search}') order by newprice asc limit ${paginate.limit} offset ${offset};`;
+    const sql = `select distinct co.course_id, co.name, if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest,  (co.price - co.price*co.discount/100) as newprice, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago , match(co.name) against('${search}') as sc1, match(cc.chap_name) against('${search}') as sc2, match(cd.short_info, cd.full_info) against('${search}') as sc3, match(cs.spec_name) against('${search}') as sc4, match(ct.type_name) against('${search}') as sc5, match(te.fname, te.fname) against('${search}') as sc6 from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id join course_chapter cc on co.course_id = cc.course_id join course_detail cd on co.course_id = cd.course_id where co.disablez = 0 and match(co.name) against('${search}') or match(cc.chap_name) against('${search}') or match(cd.short_info, cd.full_info) against('${search}') or match(cs.spec_name) against('${search}') or match(ct.type_name) against('${search}') or match(te.fname, te.fname) against('${search}') order by newprice asc limit ${paginate.limit} offset ${offset};`;
     const [rows, fields] = await db.load(sql);
     return rows;
   },

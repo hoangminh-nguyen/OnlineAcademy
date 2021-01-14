@@ -166,6 +166,27 @@
                     </div>
                     {{/if}}
 
+                    <div class="ui search focus mt-30">
+                        <div class="ui left icon labeled input swdh11 swdh31">
+                            <div class="ui label lb12" style="width: 115px; text-align: center;">
+                                Disabled
+                            </div>
+                            {{!-- <input class="prompt srch_explore" type="text" id="rating" name="rating" required>
+                            --}}
+                            <select class="srch_explore"
+                                style="width: 100%; padding-left:10px; border-top-right-radius: 30px; border-bottom-right-radius: 30px;"
+                                id="disable" name="disable">
+                                {{#if this.info.disable}}
+                                <option value="0" >Enable</option>
+                                <option value="1" selected>Disable</option>
+                                {{else}}
+                                <option value="0" selected>Enable</option>
+                                <option value="1">Disable</option>
+                                {{/if}}
+                            </select>
+                        </div>
+
+                    </div>
 
                 </div>
                 <div class="card-footer">

@@ -10,11 +10,11 @@
 <script>
 
 
-  $('#remove').on('click', function (e) {
+  $('#disable').on('click', function (e) {
 
     e.preventDefault();
 
-    const course_name = $('#course_name').text();
+    //const course_name = $('#course_name').text();
 
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -29,23 +29,35 @@
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
+      {{#if this.course.disablez}}
+             
+      confirmButtonText: 'Yes, enable it!',
+      {{else}}
+      confirmButtonText: 'Yes, disable it!',
+      {{/if}}
       cancelButtonText: 'No, cancel!',
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        $.post('/courses/remove?course_name=' + course_name);
-
+        {{#if this.course.disablez}}
+        $.post('/courses/enable?course_id={{this.course.course_id}}');
+        {{else}}
+        $.post('/courses/disable?course_id={{this.course.course_id}}');
+        {{/if}}
         Swal.fire({
           icon: 'success',
-          title: 'Deleted!',
+          {{#if this.course.disablez}}
+             title: 'Enable!',
+          {{else}}
+             title: 'Disable!',
+          {{/if}}
           showConfirmButton: false,
           timer: 1000,
           timerProgressBar: true,
         }).then((result) => {
           /* Read more about handling dismissals below */
           if (result.dismiss === Swal.DismissReason.timer || result.dismiss === Swal.DismissReason.backdrop) {
-            window.location.replace('/');
+            window.location.replace("/courses/detail/{{this.course.course_id}}");
           }
         })
       } else if (
@@ -165,7 +177,13 @@
                 </div>
                 <ul class="_215b31">
                   {{#if ../isAdmin}}
-                  <li><a href="/"><button class="btn_adcart" id="remove">Remove this course</button></a></li>
+
+                  {{#if disablez}}
+                    <li><a href="/"><button class="btn_adcart" id="disable">Enable this course</button></a></li>
+                  {{else}}
+                    <li><a href="/"><button class="btn_adcart" id="disable">Disable this course</button></a></li>
+                  {{/if}}
+
                   {{else if ../isStudent}}
                   <li><a href="/student/watchlist/add?courseid={{course_id}}"><button class="btn_adcart">Add to Watch
                         List</button></a>

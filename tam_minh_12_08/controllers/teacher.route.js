@@ -12,6 +12,8 @@ const date = require("../utils/date");
 const fs = require('fs');
 const db = require('../utils/db');
 const { RSA_NO_PADDING } = require('constants');
+const JSONTransport = require('nodemailer/lib/json-transport');
+const { json } = require('body-parser');
 
 const router = express.Router();
 
@@ -79,6 +81,7 @@ router.post('/create_course', async function (req, res, next) {
       spec: parseInt(req.body.spec_id),
       view_number: 0,
       discount: 0,
+      disable: 0,
       teacher_id: req.user.authUser.teacher_id,
       publish_day: date.curDate(),
       link_ava_course: null,
@@ -238,6 +241,14 @@ router.post('/add_chap', async function (req, res, next){
 
 })
 
+router.get('/check-chapnum', async function (req, res){
+  const course_id = req.session.temp_course_id;
+  const chapnum = req.query.chapnum;
+  const chapter = await courseModel.get_video(course_id,chapnum);
+  if (chapter===null) return res.json(true);
+  return res.json(false);
+})
+
 router.get('/finish',async function (req, res, next){
   var course = await courseModel.single(req.session.temp_course_id);
 
@@ -388,7 +399,13 @@ router.post('/info/avatar', async function (req, res, next) {
 });
 
 router.get('/info/password', async function (req, res, next) {
-    res.render('vwStudent/password', {
+  const user = await accountModel.single(req.user.authUser.email);
+  var hasPassword;
+  if (user.password === null) hasPassword = false;
+  else hasPassword = true;
+  
+  res.render('vwStudent/password', {
+    hasPassword
     });
 })
 router.post('/info/password', async function (req, res, next) {

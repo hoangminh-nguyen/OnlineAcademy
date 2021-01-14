@@ -52,6 +52,9 @@
                       <span>{{day_ago}} days ago</span>
                       <p style="float: right;">Register in {{format_date register}}</p>
                     </div>
+                    {{#if disablez}}
+                      <div class="prce142" style="color:#ff9800;">Disabled by admin</div>
+                      {{/if}}
                     <a href="/courses/detail/{{course_id}}" class="crse14s title900">{{name}}</a>
                     <a href="/courses/{{type_name}}/{{spec_name}}" class="crse-cate">{{type_name}} |
                       {{spec_name}}</a>
@@ -66,6 +69,7 @@
                       {{else}}
                       <div class="prce142">${{price}}</div>
                       {{/if}}
+                      
                     </div>
                     <div class="auth1lnkprce">
                       <p class="cr1fot">Current Study Chapter: {{chap_num}}</p>
