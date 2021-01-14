@@ -50,6 +50,10 @@ const verifyLocalCb = async function (req, username, password, done) {
         req.session.message = "Please verify your email account.";
         return done(null, false);
     }
+    if (user.password === null){
+        req.session.message = "Please log in with Google or Facebook.";
+        return done(null, false);
+    }
     const ret = bcrypt.compareSync(password, user.password);
     if (ret === false) {
         req.session.message = "Invalid password.";

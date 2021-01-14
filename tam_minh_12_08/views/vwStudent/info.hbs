@@ -14,11 +14,11 @@
 
         const email = $('#email').val();
 
-        { {#if this.isStudent } }
-        $.getJSON(`/student/info/is-email-available?email=${email}`, function (data) { {else if this.isTeacher} }
-        $.getJSON(`/teacher/info/is-email-available?email=${email}`, function (data) {
-            {
-                /if}}
+        {{#if this.isStudent }}
+        $.getJSON(`/student/info/is-email-available?email=${email}`, function (data) 
+        {{else if this.isTeacher}}
+        $.getJSON(`/teacher/info/is-email-available?email=${email}`, function (data) 
+        {{/if}}
                 {
                     if (!email.includes("@")) {
                         $('#emailalert').text("*Invalid email.").css('color', '#ff9800').css('font-weight', 'bold');
@@ -45,21 +45,19 @@
                                 const spec_id = $('#spec_id').val();
                                 Swal.fire({
                                     icon: 'success',
-                                    title: 'Change Password successfully!',
+                                    title: 'Change Profile successfully!',
                                     showConfirmButton: false,
                                     timer: 1500,
                                     timerProgressBar: true,
                                 }).then((result) => {
                                     /* Read more about handling dismissals below */
                                     if (result.dismiss === Swal.DismissReason.timer || result.dismiss === Swal.DismissReason.backdrop) {
-                                        { {#if this.isStudent } }
+                                        {{#if this.isStudent }}
                                         $('#frmEdit').attr('action', '/student/info/patch');
-                                        { {else } }
+                                        {{else }}
                                         $('#frmEdit').attr('action', '/teacher/info/patch');
-                                        {
-                                            {
-                                                /if}}
-                                                $('#frmEdit').submit();
+                                        {{/if}}
+                                        $('#frmEdit').submit();
                                             }
                                         })
                             }

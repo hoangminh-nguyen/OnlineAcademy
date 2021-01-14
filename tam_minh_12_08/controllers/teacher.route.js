@@ -329,18 +329,12 @@ router.get("/", async function(req, res) {
   await teacherModel.patch({teacher_id: req.user.authUser.teacher_id, email: newemail});
   await accountModel.del(oldemail);
   
-  //log out
-  req.session.auth = false;
-  req.user.authUser = null;
-  req.user.retUrl = null;
-  req.user.isStudent = false;
-  req.user.isTeacher = false;
-  req.user.isAdmin = false;
-  req.logout();
   req.session.auth = false;
   req.session.temp_course_id = null;
 
   req.session.message = "Email verified. Please login with new email.";
+   //log out
+   req.logout();
   return res.redirect('/account/login');
 });
 
