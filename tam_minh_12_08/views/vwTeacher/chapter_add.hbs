@@ -118,7 +118,7 @@
 																		{{#if check}}
 																		<div class="ui left icon input swdh19">
 																			<input class="prompt srch_explore hacker"
-																				type="text"
+																				type="number" min="1"
 																				placeholder="Insert your chapter number."
 																				name="Chapter_number"
 																				data-purpose="edit-course-title"
@@ -128,7 +128,7 @@
 																		{{else}}
 																		<div class="ui left icon input swdh19">
 																			<input class="prompt srch_explore hacker"
-																				type="text"
+																				type="number" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >=0 ? Math.abs(this.value) : null"
 																				placeholder="Insert your chapter number."
 																				name="Chapter_number"
 																				data-purpose="edit-course-title"
@@ -310,7 +310,7 @@
 		var chap_num = $('#chapter_number').val();
 		var ext_name = getname('inputGroupFile06');
 		ext_name = ext_name.substr(ext_name.lastIndexOf('.') + 1);
-		if (title === "" || chap_num =="" || ext_name!="mp4"){
+		if (title === "" || chap_num =="" || ext_name!="mp4" !! chapnum<0){
 			Swal.fire({
 				icon: 'error',
 				title: 'Empty input!',

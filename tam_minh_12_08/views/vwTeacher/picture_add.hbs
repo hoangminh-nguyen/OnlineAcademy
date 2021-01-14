@@ -102,7 +102,7 @@
 								
 								<div class="step-footer step-tab-pager">
                                     <button data-direction="prev" class="btn btn-default steps_btn" style=""><a href="/teacher/create_course">PREVIOUS</a></button>
-									<button data-direction="next" class="btn btn-default steps_btn" onclick="formsubmit()" style="">Next</button>
+									<button data-direction="next" class="btn btn-default steps_btn" onclick="formsubmit()" type="button" style="">Next</button>
 								
 								</div>
 								
@@ -172,9 +172,24 @@
 <script>
 	
 	
-	formsubmit = function(){
-		document.getElementById("form1").submit();
-	}
+	function formsubmit(){
+		var ext_name = getname('inputGroupFile04');
+		ext_name = ext_name.substr(ext_name.lastIndexOf('.') + 1);
+		console.log(ext_name);
+		if (ext_name!="jpg" && ext_name!="png"){
+			Swal.fire({
+				icon: 'error',
+				title: 'Wrong input!',
+				showConfirmButton: true,
+				timer: 2000,
+				timerProgressBar: true,
+			})
+		}
+		else {
+			document.getElementById("form1").submit();
+		}
+		
+	};
 </script>
 
 <script>
@@ -187,7 +202,9 @@
 				filename = filename.substring(1);
 			}
 			$("label[for=inputGroupFile04]").html(filename);
+			return filename;
 		}
+		return "";
 	}
 	function readURL(input) {
 		if (input.files && input.files[0]) {

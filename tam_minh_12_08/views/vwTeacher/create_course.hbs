@@ -43,25 +43,25 @@
 							<div id="add-course-tab" class="step-app">
 								<ul class="step-steps">
 									<li class="active">
-										<a href="/teacher/create_course">
+										<a href="#">
 											<span class="number"></span>
 											<span class="step-name">General Information</span>
 										</a>
 									</li>
 									<li>
-										<a href="/teacher/add_pic">
+										<a href="#">
 											<span class="number"></span>
 											<span class="step-name">View</span>
 										</a>
 									</li>
 									<li class="">
-										<a href="/teacher/add_chap">
+										<a href="#">
 											<span class="number"></span>
 											<span class="step-name">Course Content</span>
 										</a>
 									</li>
 									<li class="">
-										<a href="/teacher/finish">
+										<a href="#">
 											<span class="number"></span>
 											<span class="step-name">Extra Information</span>
 										</a>
@@ -193,7 +193,7 @@
 															<div class="ui search focus lbel25">
 																{{#if check}}
 																	<div class="ui left icon input swdh19">
-																		<input class="prompt srch_explore" type="text"
+																		<input class="prompt srch_explore" type="number" min="0"
 																			name="price" data-purpose="edit-course-title"
 																			placeholder="Insert price"
 																			maxlength="60" id="price" value="{{course.price}}">
@@ -201,7 +201,7 @@
 																	</div>
 																{{else}}
 																	<div class="ui left icon input swdh19">
-																		<input class="prompt srch_explore" type="text"
+																		<input class="prompt srch_explore" type="number" min="0"
 																			placeholder="Insert price"
 																			name="price" data-purpose="edit-course-title"
 																			maxlength="60" id="price" value="">
@@ -301,7 +301,7 @@
 		var price = $('#price').val();
 
 		//arlert(type);
-		if (type == "" || spec =="" || title =="" || sub =="" || price==""){
+		if (type == "" || spec =="" || title =="" || sub =="" || price=="" || price<0){
 			Swal.fire({
                         icon: 'error',
                         title: 'Empty input!',
