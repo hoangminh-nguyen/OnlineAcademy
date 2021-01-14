@@ -213,19 +213,19 @@ router.post('/add_chap', async function (req, res, next){
     });
     const upload = multer({ storage: storage });
     upload.single('inputGroupFile06')(req, res, async function (err) {
-      
-      fs.rename('./public'+pathz,'./public/course/'+id+'/'+req.body.Chapter_number+'.mp4',() => { 
+
+      fs.rename('./public'+pathz,'./public/course/'+id+'/'+req.body.Chapter_number+'.mp4',() => {
         pathz = './public/course/'+id+'/'+req.body.Chapter_number+'.mp4';
       })
-      
+
       if (err) {
         console.log(err);
       } else {
-        
+
         var preview = (req.body.stream_ss1 == '') ? 1 : 0;
         pathz = '/course/'+id+'/'+req.body.Chapter_number+'.mp4';
         const chap={
-          chap_name : req.body.title_chapter, 
+          chap_name : req.body.title_chapter,
           chap_num : req.body.Chapter_number,
           course_id : req.session.temp_course_id,
           chap_des: req.body.description_chapter,
@@ -304,9 +304,9 @@ router.post("/info/patch", async function(req, res) {
           pass: 'bxsarjloicaddcyh'
       }
     });
-  
-    var url = `http://localhost:3000/teacher/?token=${token}`;
-  
+
+    var url = `https://online-academy-se.herokuapp.com/teacher/?token=${token}`;
+
     let info = await transporter.sendMail({
       from: '"Online Academy Helper" <onlineacademy.helper@gmail.com>',
       to: req.body.email,
@@ -316,7 +316,7 @@ router.post("/info/patch", async function(req, res) {
   }
   req.body.email = req.user.authUser.email;
   await teacherModel.patch(req.body);
-  
+
   req.user.authUser = await teacherModel.teacherInfo(req.body.email);
   //res.locals.authUser = req.user.authUser;
   res.redirect("/teacher/info");
@@ -341,7 +341,7 @@ router.get("/", async function(req, res) {
   await accountModel.add(user);
   await teacherModel.patch({teacher_id: req.user.authUser.teacher_id, email: newemail});
   await accountModel.del(oldemail);
-  
+
   req.session.auth = false;
   req.session.temp_course_id = null;
 
@@ -403,7 +403,7 @@ router.get('/info/password', async function (req, res, next) {
   var hasPassword;
   if (user.password === null) hasPassword = false;
   else hasPassword = true;
-  
+
   res.render('vwStudent/password', {
     hasPassword
     });

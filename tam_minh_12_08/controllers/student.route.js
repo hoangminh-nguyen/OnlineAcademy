@@ -42,9 +42,9 @@ router.post("/info/patch", async function(req, res) {
             pass: 'bxsarjloicaddcyh'
         }
       });
-    
-      var url = `http://localhost:3000/student/?token=${token}`;
-    
+
+      var url = `https://online-academy-se.herokuapp.com/student/?token=${token}`;
+
       let info = await transporter.sendMail({
         from: '"Online Academy Helper" <onlineacademy.helper@gmail.com>',
         to: req.body.email,
@@ -54,7 +54,7 @@ router.post("/info/patch", async function(req, res) {
     }
     req.body.email = req.user.authUser.email;
     await studentModel.patch(req.body);
-    
+
     req.user.authUser = await studentModel.studentInfo(req.body.email);
     //res.locals.authUser = req.user.authUser;
     res.redirect("/student/info");
@@ -78,7 +78,7 @@ router.get("/", async function(req, res) {
   await accountModel.add(user);
   await studentModel.patch({student_id: oldUser.student_id, email: newemail});
   await accountModel.del(oldemail);
-  
+
   req.session.auth = false;
   req.session.temp_course_id = null;
 
@@ -195,13 +195,13 @@ router.get('/is-not-added', async function (req, res) {
         avatar,
     });
   });
-  
+
   router.post('/info/avatar', async function (req, res, next) {
     const id = req.user.authUser.student_id;
       const pathz = '/student/'+id+'/ProfilePic.png';
       const storage = multer.diskStorage({
         destination: function (req, file, cb) {
-  
+
           const path = './public/student/'+id;
           fs.mkdirSync(path, { recursive: true });
           cb(null, path);
@@ -218,11 +218,11 @@ router.get('/is-not-added', async function (req, res) {
           const condition = {
             student_id: id,
           };
-  
+
           const course = {
             link_ava_student : pathz,
           }
-  
+
           await db.patch(course,condition, "student");
           res.redirect('/student/info')
         }
@@ -234,7 +234,7 @@ router.get('/watchlist', async function (req, res, next) {
     const student_id = req.user.authUser.student_id;
     var course = await courseModel.allByStudentIDWatchlist(student_id);
     course = discount.calcCourses(course);
-    
+
     res.render('vwStudent/watchlist', {
         student_id,
         course,

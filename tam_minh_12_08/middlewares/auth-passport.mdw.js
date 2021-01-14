@@ -68,7 +68,7 @@ const verifyLocalCb = async function (req, username, password, done) {
         }
     }
 
-    
+
     const ret = bcrypt.compareSync(password, user.password);
     if (ret === false) {
         req.session.message = "Invalid password.";
@@ -137,7 +137,7 @@ module.exports.passportSetup = (app) => {
     passport.use(new GoogleStrategy({
         clientID: "872750390574-lnp54pa3n0c4tiv14a94cm98fkoj7pkv.apps.googleusercontent.com",
         clientSecret: "A_1dLemyIQ04rcNGLA_v6nlw",
-        callbackURL: "http://localhost:3000/account/auth/google/callback",
+        callbackURL: "https://online-academy-se.herokuapp.com/account/auth/google/callback",
         passReqToCallback: true,
       },
         verifyGoogleCb,
@@ -146,7 +146,7 @@ module.exports.passportSetup = (app) => {
     passport.use(new FacebookStrategy({
         clientID: "1075361089631626",
         clientSecret: "0a2b16279e5439107cf492d0729b243b",
-        callbackURL: "http://localhost:3000/account/auth/facebook/callback",
+        callbackURL: "https://online-academy-se.herokuapp.com/account/auth/facebook/callback",
         profileFields: ['id', 'email', 'gender', 'link', 'locale', 'name', 'timezone', 'updated_time', 'verified', 'picture.type(large)'],
         passReqToCallback: true,
       },

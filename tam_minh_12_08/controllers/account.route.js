@@ -1,4 +1,4 @@
-process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
+// process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
 const express = require("express");
 const bcrypt = require("bcryptjs");
@@ -33,7 +33,7 @@ router.post('/forgotpass', async function (req, res, next) {
     }
   });
 
-  var url = `http://localhost:3000/account/resetpass?token=${token}`;
+  var url = `https://online-academy-se.herokuapp.com/account/resetpass?token=${token}`;
 
   let info = await transporter.sendMail({
     from: '"Online Academy Helper" <onlineacademy.helper@gmail.com>',
@@ -103,7 +103,7 @@ router.post("/signup", async function(req, res, next) {
     }
   });
 
-  var url = `http://localhost:3000/account/?token=${token}`;
+  var url = `https://online-academy-se.herokuapp.com/account/?token=${token}`;
 
   let info = await transporter.sendMail({
     from: '"Online Academy Helper" <onlineacademy.helper@gmail.com>',
