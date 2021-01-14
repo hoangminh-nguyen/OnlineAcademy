@@ -1,5 +1,5 @@
 {
-  "mysql": {
+  "mysql_1": {
     "host": "localhost",
     "port": 3306,
     "user": "root",
@@ -9,6 +9,15 @@
     "connectionLimit": 50,
     "queueLimit": 0
   },
+
+  "mysql": {
+    "host": "bg85kd1rrxvqujotmaqg-mysql.services.clever-cloud.com",
+    "port": 3306,
+    "user": "uisdjplgkw41udeo",
+    "password": "7JIpvVkcsbGjJhMsRChs",
+    "database": "bg85kd1rrxvqujotmaqg"
+  },
+
   "paginate": {
     "limit": 6
   },

@@ -43,7 +43,11 @@ app.use(function (err, req, res, next) {
   })
 })
 
-const PORT = 3000;
-app.listen(PORT, function () {
-  console.log(`E-Commerce app is listening at http://localhost:${PORT}`)
-})
+// const PORT = 3000;
+// app.listen(PORT, function () {
+//   console.log(`E-Commerce app is listening at http://localhost:${PORT}`)
+// })
+
+app.listen(process.env.PORT || 3000, function () {
+ console.log(`E-Commerce app is listening at http://localhost:3000`)
+ })
