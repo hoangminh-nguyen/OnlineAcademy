@@ -13,7 +13,7 @@ router.get('/', async function (req, res, next) {
     var rating = await courseModel.topFiveRating();
     const spec = await specModel.getSpecMostStuReLast7Days();
     //const spec = await specModel.test();
-
+    console.log("Home" + req.user);
     newest = discount.calcCourses(newest);
     viewed = discount.calcCourses(viewed);
     rating = discount.calcCourses(rating);

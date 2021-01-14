@@ -6,6 +6,11 @@ module.exports = {
     const [rows, fields] = await db.load(sql);
   },
 
+  async activate(email) {
+    const sql = `update account set activate = 1 where email = '${email}'`;
+    const [rows, fields] = await db.load(sql);
+  },
+
   async single(email) {
     const sql = `select * from account where email = '${email}'`;
     const [rows, fields] = await db.load(sql);
@@ -43,4 +48,5 @@ module.exports = {
     const [result, fields] = await db.patch(entity, condition, "account");
     return result;
   },
+
 };

@@ -51,6 +51,10 @@ const verifyLocalCb = async function (req, username, password, done) {
         req.session.message = "Invalid password.";
         return done(null, false);
     }
+    if (user.activate === 0) {
+        req.session.message = "Please verify your email account.";
+        return done(null, false);
+    }
     req.session.message = null;
     return done(null, user)
 }

@@ -11,6 +11,7 @@ var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var jwt = require('jsonwebtoken');
 const router = express.Router();
 const nodemailer = require("nodemailer");
+const accountModel = require("../models/account.model");
 
 // router.get('/profile', auth, function (req, res, next) {
 //   res.render('vwAccount/profile');
@@ -44,8 +45,7 @@ router.post("/signup", async function(req, res, next) {
   await userModel.add(user);
   await studentModel.add(student);
 
-  var token = jwt.sign({ email: user.email, password: user.password }, 'singup');
-
+  var token = jwt.sign({ email: user.email }, 'singup');
 
   let transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -58,22 +58,29 @@ router.post("/signup", async function(req, res, next) {
     }
   });
 
-  var url = "http://localhost:3000/account"
+  var url = `http://localhost:3000/account/?token=${token}`;
 
   let info = await transporter.sendMail({
     from: '"Online Academy Helper" <onlineacademy.helper@gmail.com>',
     to: user.email,
     subject: "Online Academy - Verify your account ",
-    text: `Hello ${user.fname} ${user.lname},\n\nPlease click the link below to activate your account:\n\n`,
+    html: `Hello ${student.fname} ${student.lname},<br><br>Thank you for interest in Online Academy!<br><br>To confirm that you want to use this email address for Online Academy, please kindly click the verification link below:<br><br><a href="${url}">${url}</a><br><br>Cheers,<br><br>Online Academy Team`,
   });
 
-  console.log("Message sent: %s", info.messageId);
-
-  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 
 
   res.redirect("/account/login");
 });
+
+router.get("/", async function(req, res) {
+  var token = req.query.token;
+  const decode = jwt.verify(token, 'singup')
+  console.log(decode);
+  await accountModel.activate(decode.email);
+  req.session.message = "Email verified. Please login.";
+  return res.redirect('/account/login');
+});
+
 
 router.get("/is-available", async function(req, res) {
   const email = req.query.email;
