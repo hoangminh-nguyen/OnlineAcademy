@@ -120,7 +120,7 @@
                             {{#each this.teacher}}
                             <tr>
                                 <th scope="row">{{teacher_id}}</th>
-                                <th scope="row">{{email}}</th>
+                                <th scope="row"><a href="viewcourse/{{teacher_id}}">{{email}}</a></th>
                                 <th scope="row">{{fname}}</th>
                                 <th scope="row">{{lname}}</th>
                                 {{#if disable}}

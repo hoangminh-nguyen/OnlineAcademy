@@ -9,6 +9,8 @@ module.exports = function (app) {
 
     app.use('/admin/specifications', auth.checkAdmin, require('../controllers/specification-ad.route'));
     app.use('/admin/accounts', auth.checkAdmin, require('../controllers/account-ad.route'));
+    app.use('/admin/', auth.checkAdmin, require('../controllers/account-ad.route'));
+
 
     app.use('/teacher', auth.checkTeacher, require('../controllers/teacher.route'));
     app.use('/student', auth.checkStudent, require('../controllers/student.route'));

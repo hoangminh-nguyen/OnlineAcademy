@@ -5,6 +5,7 @@ const accountModel = require("../models/account.model");
 const courseModel = require("../models/course.model");
 const studentModel = require("../models/student.model");
 const teacherModel = require("../models/teacher.model");
+const discount = require('../utils/discount');
 
 router.get("/", async function(req, res, next) {
   const teacher = await teacherModel.allTeacher();
@@ -93,6 +94,16 @@ router.post("/change", async function(req, res) {
 
   res.redirect("/admin/accounts");
 });
+
+router.get('/viewcourse/:teacher_id',async function(req, res){
+  const teacher_id = req.params.teacher_id;
+  var course = await courseModel.allByTeacherId(teacher_id);
+  course = discount.calcCourses(course);
+  res.render('vwTeacher/view_course', {
+      course,
+      numberCourse: course.length,
+  });
+})
 
 router.get("/addteacher", async function(req, res) {
   res.render("vwAccount-ad/addteacher", {});
