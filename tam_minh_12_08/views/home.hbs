@@ -229,80 +229,82 @@
 
             {{!-- Giữ này lại mốt có Instructor --}}
             {{#if auth}}
-             {{#if isStudent}}
-             <div class="fcrse_2 mb-30">
-                <div class="tutor_img">
-                  <a href="/student/info"><img src="{{authUser.link_ava_student}}" alt=""></a>
-                </div>
-                <div class="tutor_content_dt">
-                  <div class="tutor150">
-                    <a href="/student/info" class="tutor_name">{{authUser.fname}} {{authUser.lname}} </a>
-                    <div class="mef78" title="Verify">
-                      <i class="uil uil-check-circle"></i>
-                    </div>
-                  </div>
-                  <ul class="tutor_social_links">
-                    <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
-                    <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
-                  </ul>
-                  <div class="tut1250">
-                    <span class="vdt15">Students</span>
-                  </div>
-                  <a href="/student/info" class="prfle12link">Go To Profile</a>
-                </div>
+            {{#if isStudent}}
+            <div class="fcrse_2 mb-30">
+              <div class="tutor_img">
+                <a href="/student/info"><img src="{{authUser.link_ava_student}}" alt=""></a>
               </div>
-             {{else if isTeacher}}
-             <div class="fcrse_2 mb-30">
-                <div class="tutor_img">
-                  <a href="/teacher/info"><img src="{{authUser.link_ava_teacher}}" alt=""></a>
-                </div>
-                <div class="tutor_content_dt">
-                  <div class="tutor150">
-                    <a href="/teacher/info" class="tutor_name">{{authUser.fname}} {{authUser.lname}}</a>
-                    <div class="mef78" title="Verify">
-                      <i class="uil uil-check-circle"></i>
-                    </div>
+              <div class="tutor_content_dt">
+                <div class="tutor150">
+                  <a href="/student/info" class="tutor_name">{{authUser.fname}} {{authUser.lname}} </a>
+                  <div class="mef78" title="Verify">
+                    <i class="uil uil-check-circle"></i>
                   </div>
-                  <ul class="tutor_social_links">
-                    <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
-                    <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
-                  </ul>
-                  <div class="tut1250">
-                    <span class="vdt15">Teacher</span>
-                  </div>
-                  <a href="/teacher/info" class="prfle12link">Go To Profile</a>
                 </div>
+                <ul class="tutor_social_links">
+                  <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                  <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                  <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                  <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                </ul>
+                <div class="tut1250">
+                  <span class="vdt15">Students</span>
+                </div>
+                <a href="/student/info" class="prfle12link">Go To Profile</a>
               </div>
-             {{else if isAdmin}}
-             <div class="fcrse_2 mb-30">
-                <div class="tutor_img">
-                  <a href="/admin/accounts"><img src="https://cdn0.iconfinder.com/data/icons/management-1/100/business-05-512.png" alt="" style="background-color: white; border-color: white;"></a>
-                </div>
-                <div class="tutor_content_dt">
-                  <div class="tutor150">
-                    <a href="/admin/accounts" class="tutor_name">Admininstrator</a>
-                    <div class="mef78" title="Verify">
-                      <i class="uil uil-check-circle"></i>
-                    </div>
-                  </div>
-                  <ul class="tutor_social_links">
-                    <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
-                    <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
-                  </ul>
-                  <div class="tut1250">
-                    <span class="vdt15">Admin</span>
-                  </div>
-                  <a href="/admin/accounts" class="prfle12link">Go To Profile</a>
-                </div>
+            </div>
+            {{else if isTeacher}}
+            <div class="fcrse_2 mb-30">
+              <div class="tutor_img">
+                <a href="/teacher/info"><img src="{{authUser.link_ava_teacher}}" alt=""></a>
               </div>
-             {{/if}}
-              
+              <div class="tutor_content_dt">
+                <div class="tutor150">
+                  <a href="/teacher/info" class="tutor_name">{{authUser.fname}} {{authUser.lname}}</a>
+                  <div class="mef78" title="Verify">
+                    <i class="uil uil-check-circle"></i>
+                  </div>
+                </div>
+                <ul class="tutor_social_links" style="margin-top: 20px; margin-bottom: 20px;">
+                  <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                  <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                  <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                  <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                </ul>
+                <div class="tut1250">
+                  <span class="vdt15">Teacher</span>
+                </div>
+                <a href="/teacher/info" class="prfle12link">Go To Profile</a>
+              </div>
+            </div>
+            {{else if isAdmin}}
+            <div class="fcrse_2 mb-30">
+              <div class="tutor_img">
+                <a href="/admin/accounts"><img
+                    src="https://cdn0.iconfinder.com/data/icons/management-1/100/business-05-512.png" alt=""
+                    style="background-color: white; border-color: white;"></a>
+              </div>
+              <div class="tutor_content_dt">
+                <div class="tutor150">
+                  <a href="/admin/accounts" class="tutor_name">Admininstrator</a>
+                  <div class="mef78" title="Verify">
+                    <i class="uil uil-check-circle"></i>
+                  </div>
+                </div>
+                <ul class="tutor_social_links" style="margin-top: 20px; margin-bottom: 20px;">
+                  <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                  <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                  <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                  <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                </ul>
+                <div class="tut1250">
+                  <span class="vdt15">Admin</span>
+                </div>
+                <a href="/admin/accounts" class="prfle12link">Go To Profile</a>
+              </div>
+            </div>
+            {{/if}}
+
             {{else}}
             <div class="fcrse_2 mb-30">
               <div class="tutor_img">
@@ -315,19 +317,20 @@
                     <i class="uil uil-check-circle"></i>
                   </div>
                 </div>
-                <ul class="tutor_social_links">
+                <ul class="tutor_social_links" style="margin-top: 20px; margin-bottom: 20px;">
                   <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
                   <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
                   <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
                   <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
                 </ul>
                 <div class="tut1250">
+                  Welcome to Online Academy
                 </div>
-                <a href="/account/login" class="prfle12link">Go To Profile</a>
+                <a href="/account/login" class="prfle12link">Please login</a>
               </div>
             </div>
             {{/if}}
-            
+
 
             {{!-- Top Field --}}
 
@@ -354,7 +357,7 @@
       </div>
     </div>
   </div>
-    <footer class="footer mt-30" style="bottom: 0;">
+  <footer class="footer mt-30" style="bottom: 0;">
     <div class="container">
       <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-6">
