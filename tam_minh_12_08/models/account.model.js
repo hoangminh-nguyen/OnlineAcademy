@@ -18,6 +18,12 @@ module.exports = {
     return rows[0];
   },
 
+  async checkAvailableEmail(email) {
+    const sql = `select * from account where email = '${email}'`;
+    const [rows, fields] = await db.load(sql);
+    return rows;
+  },
+
   async findOrCreate(email){
     if (this.single(email) === null){
       const sql = `select * from account where email = '${email}'`;

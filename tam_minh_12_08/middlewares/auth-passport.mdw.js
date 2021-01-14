@@ -46,13 +46,13 @@ const verifyLocalCb = async function (req, username, password, done) {
         req.session.message = "Email does not match any account.";
         return done(null, false);
     }
+    if (user.activate === 0) {
+        req.session.message = "Please verify your email account.";
+        return done(null, false);
+    }
     const ret = bcrypt.compareSync(password, user.password);
     if (ret === false) {
         req.session.message = "Invalid password.";
-        return done(null, false);
-    }
-    if (user.activate === 0) {
-        req.session.message = "Please verify your email account.";
         return done(null, false);
     }
     req.session.message = null;
@@ -64,7 +64,7 @@ const verifyGoogleCb = async function(req, token, tokenSecret, profile, done) {
     console.log(profile);
     var findUser = await userModel.single(profile.emails[0].value);
     if(findUser === null){
-        await userModel.createAccountBytype(profile.emails[0].value);
+        await userModel.createAccountBytype(profile.emails[0].value, 1);
         var newStudent = {
             student_id: null,
             fname: profile.name.familyName,
@@ -83,7 +83,7 @@ const verifyFacebookCb = async function(req, token, tokenSecret, profile, done) 
     console.log(profile);
     var findUser = await userModel.single(profile.emails[0].value);
     if(findUser === null){
-        await userModel.createAccountBytype(profile.emails[0].value);
+        await userModel.createAccountBytype(profile.emails[0].value, 2);
         var newStudent = {
             student_id: null,
             fname: profile.name.familyName,

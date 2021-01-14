@@ -280,19 +280,73 @@ router.get('/info/is-email-available', async function (req, res) {
 
 router.post("/info/patch", async function(req, res) {
   if(req.body.email != req.user.authUser.email){
-      const user = {
-          email: req.body.email,
-          password: req.user.authUser.password,
-          mode: 1,
-        };
-        await accountModel.add(user);
+    var token = jwt.sign({ oldemail: req.user.authUser.email, newemail: req.body.email }, 'changeemail');
+    let transporter = nodemailer.createTransport({
+      service: 'gmail',
+      host: "smtp.gmail.com",
+      port: 587,
+      //secure: false,
+      auth: {
+          user: 'onlineacademy.helper@gmail.com',
+          pass: 'bxsarjloicaddcyh'
+      }
+    });
+  
+    var url = `http://localhost:3000/teacher/?token=${token}`;
+  
+    let info = await transporter.sendMail({
+      from: '"Online Academy Helper" <onlineacademy.helper@gmail.com>',
+      to: req.body.email,
+      subject: "Online Academy - Verify your account ",
+      html: `Hello ${req.user.authUser.fname} ${req.user.authUser.lname},<br><br>Thank you for interest in Online Academy!<br><br>To confirm that you want to use this email address for Online Academy, please kindly click the verification link below:<br><br><a href="${url}">${url}</a><br><br>Cheers,<br><br>Online Academy Team`,
+    });
   }
+  req.body.email = req.user.authUser.email;
   await teacherModel.patch(req.body);
-  await accountModel.del(req.user.authUser.email);
+  
   req.user.authUser = await teacherModel.teacherInfo(req.body.email);
-  res.locals.authUser = req.user.authUser;
+  //res.locals.authUser = req.user.authUser;
   res.redirect("/teacher/info");
 });
+
+router.get("/", async function(req, res) {
+  var token = req.query.token;
+  const decode = jwt.verify(token, 'changeemail');
+  console.log(decode);
+  var oldemail = decode.oldemail;
+  var newemail = decode.newemail;
+  console.log(oldemail + newemail);
+
+
+  // Tạo account với email mới rồi xóa account có email cũ
+  const user = {
+    email: newemail,
+    password: req.user.authUser.password,
+    activate: 1,
+    mode: 1, //teacher
+  };
+  await accountModel.add(user);
+  await teacherModel.patch({teacher_id: req.user.authUser.teacher_id, email: newemail});
+  await accountModel.del(oldemail);
+  
+  //log out
+  req.session.auth = false;
+  req.user.authUser = null;
+  req.user.retUrl = null;
+  req.user.isStudent = false;
+  req.user.isTeacher = false;
+  req.user.isAdmin = false;
+  req.logout();
+  req.session.auth = false;
+  req.session.temp_course_id = null;
+
+  req.session.message = "Email verified. Please login with new email.";
+  return res.redirect('/account/login');
+});
+
+
+
+
 
 router.get('/info/avatar', async function (req, res, next) {
   const avatar = await teacherModel.get_ava(req.user.authUser.teacher_id);
@@ -355,10 +409,11 @@ router.post('/info/password', async function (req, res, next) {
 router.get('/info/password/is-true', async function (req, res) {
   const mail = req.user.authUser.email;
   const password = req.query.password;
-
-  console.log(mail, password);
-
   const user = await accountModel.single(mail);
+
+  if (user.password === null){
+    return res.json(true);
+  }
   const ret = bcrypt.compareSync(password, user.password);
   if (ret === false) {
     return res.json(false);

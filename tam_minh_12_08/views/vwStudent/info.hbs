@@ -20,7 +20,7 @@
         $.getJSON(`/teacher/info/is-email-available?email=${email}`, function (data)
         {{/if}}
         {
-        if(!email.includes("@gmail.com")){
+        if(!email.includes("@")){
             $('#emailalert').text("*Invalid email.").css('color', '#ff9800').css('font-weight', 'bold');
         }
         else if (data === true) {
@@ -149,7 +149,7 @@
                                     Link avatar
                                 </div>
                                 <input class="prompt srch_explore" type="text" id="link_ava_student"
-                                    name="link_ava_student" required value="{{authUser.link_ava_student}}">
+                                    name="link_ava_student" readonly required value="{{authUser.link_ava_student}}">
                             </div>
                         </div>
 
@@ -160,7 +160,7 @@
                                     Link avatar
                                 </div>
                                 <input class="prompt srch_explore" type="text" id="link_ava_teacher"
-                                    name="link_ava_teacher" required value="{{authUser.link_ava_teacher}}">
+                                    name="link_ava_teacher" readonly required value="{{authUser.link_ava_teacher}}">
                             </div>
                         </div>
 

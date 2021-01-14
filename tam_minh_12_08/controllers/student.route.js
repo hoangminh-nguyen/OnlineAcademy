@@ -10,7 +10,8 @@ const router = express.Router();
 const multer = require('multer');
 const fs = require('fs');
 const db = require('../utils/db');
-
+var jwt = require('jsonwebtoken');
+const nodemailer = require("nodemailer");
 
 router.get('/info', async function (req, res, next) {
     res.render('vwStudent/info', {
@@ -21,8 +22,8 @@ router.get('/info/is-email-available', async function (req, res) {
 
     console.log(email);
 
-    const user = await accountModel.single(email);
-    if (user === null) {
+    const user = await accountModel.checkAvailableEmail(email);
+    if (user.length === 0 || (user.length === 1 && email === req.user.authUser.email)) {
       return res.json(true);
     }
     res.json(false);
@@ -30,19 +31,76 @@ router.get('/info/is-email-available', async function (req, res) {
 
 router.post("/info/patch", async function(req, res) {
     if(req.body.email != req.user.authUser.email){
-        const user = {
-            email: req.body.email,
-            password: req.user.authUser.password,
-            mode: 2,   
-          };
-          await accountModel.add(user);
+      var token = jwt.sign({ oldemail: req.user.authUser.email, newemail: req.body.email }, 'changeemail');
+      let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        host: "smtp.gmail.com",
+        port: 587,
+        //secure: false,
+        auth: {
+            user: 'onlineacademy.helper@gmail.com',
+            pass: 'bxsarjloicaddcyh'
+        }
+      });
+    
+      var url = `http://localhost:3000/student/?token=${token}`;
+    
+      let info = await transporter.sendMail({
+        from: '"Online Academy Helper" <onlineacademy.helper@gmail.com>',
+        to: req.body.email,
+        subject: "Online Academy - Verify your account ",
+        html: `Hello ${req.user.authUser.fname} ${req.user.authUser.lname},<br><br>Thank you for interest in Online Academy!<br><br>To confirm that you want to use this email address for Online Academy, please kindly click the verification link below:<br><br><a href="${url}">${url}</a><br><br>Cheers,<br><br>Online Academy Team`,
+      });
     }
+    req.body.email = req.user.authUser.email;
     await studentModel.patch(req.body);
-    await accountModel.del(req.user.authUser.email);
+    
     req.user.authUser = await studentModel.studentInfo(req.body.email);
-    res.locals.authUser = req.user.authUser;
+    //res.locals.authUser = req.user.authUser;
     res.redirect("/student/info");
 });
+
+router.get("/", async function(req, res) {
+  var token = req.query.token;
+  const decode = jwt.verify(token, 'changeemail');
+  console.log(decode);
+  var oldemail = decode.oldemail;
+  var newemail = decode.newemail;
+  console.log(oldemail + newemail);
+
+
+  // Tạo account với email mới rồi xóa account có email cũ
+  const user = {
+    email: newemail,
+    password: req.user.authUser.password,
+    activate: 1,
+    mode: 2, //student
+  };
+  await accountModel.add(user);
+  await studentModel.patch({student_id: req.user.authUser.student_id, email: newemail});
+  await accountModel.del(oldemail);
+  
+  //log out
+  req.session.auth = false;
+  req.user.authUser = null;
+  req.user.retUrl = null;
+  req.user.isStudent = false;
+  req.user.isTeacher = false;
+  req.user.isAdmin = false;
+  req.logout();
+  req.session.auth = false;
+  req.session.temp_course_id = null;
+
+  req.session.message = "Email verified. Please login with new email.";
+  return res.redirect('/account/login');
+});
+
+
+
+
+
+
+
 
 router.get('/info/password', async function (req, res, next) {
     res.render('vwStudent/password', {
@@ -61,6 +119,10 @@ router.get('/info/password/is-true', async function (req, res) {
     const mail = req.user.authUser.email;
     const password = req.query.password;
     const user = await accountModel.single(mail);
+
+    if (user.password === null){
+      return res.json(true);
+    }
     const ret = bcrypt.compareSync(password, user.password);
     if (ret === false) {
       return res.json(false);

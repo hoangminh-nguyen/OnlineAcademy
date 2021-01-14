@@ -46,7 +46,6 @@ router.post("/signup", async function(req, res, next) {
   await studentModel.add(student);
 
   var token = jwt.sign({ email: user.email }, 'singup');
-
   let transporter = nodemailer.createTransport({
     service: 'gmail',
     host: "smtp.gmail.com",
@@ -67,14 +66,14 @@ router.post("/signup", async function(req, res, next) {
     html: `Hello ${student.fname} ${student.lname},<br><br>Thank you for interest in Online Academy!<br><br>To confirm that you want to use this email address for Online Academy, please kindly click the verification link below:<br><br><a href="${url}">${url}</a><br><br>Cheers,<br><br>Online Academy Team`,
   });
 
-
+  req.session.message = "Please verify your email account.";
 
   res.redirect("/account/login");
 });
 
 router.get("/", async function(req, res) {
   var token = req.query.token;
-  const decode = jwt.verify(token, 'singup')
+  const decode = jwt.verify(token, 'singup');
   console.log(decode);
   await accountModel.activate(decode.email);
   req.session.message = "Email verified. Please login.";
@@ -93,6 +92,7 @@ router.get("/is-available", async function(req, res) {
 });
 
 router.get("/login", function(req, res) {
+  req.session.message = "";
   if (req.session.auth === true) {
     return res.redirect("/");
   }
