@@ -60,7 +60,7 @@ const verifyGoogleCb = async function(req, token, tokenSecret, profile, done) {
     console.log(profile);
     var findUser = await userModel.single(profile.emails[0].value);
     if(findUser === null){
-        await userModel.createAccountBytype(profile.emails[0].value, 1);
+        await userModel.createAccountBytype(profile.emails[0].value);
         var newStudent = {
             student_id: null,
             fname: profile.name.familyName,
@@ -79,7 +79,7 @@ const verifyFacebookCb = async function(req, token, tokenSecret, profile, done) 
     console.log(profile);
     var findUser = await userModel.single(profile.emails[0].value);
     if(findUser === null){
-        await userModel.createAccountBytype(profile.emails[0].value, 2);
+        await userModel.createAccountBytype(profile.emails[0].value);
         var newStudent = {
             student_id: null,
             fname: profile.name.familyName,

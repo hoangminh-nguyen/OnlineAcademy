@@ -1,16 +1,9 @@
 const db = require("../utils/db");
 
 module.exports = {
-  async createAccountBytype(email, type) {
-    const sql = `insert into account values ('${email}', null, ${type}, 2)`;
+  async createAccountBytype(email) {
+    const sql = `insert into account values ('${email}', null, 1, 2)`;
     const [rows, fields] = await db.load(sql);
-  },
-
-  async singleBytype(email, type) {
-    const sql = `select * from account where email = '${email}' and type = ${type}`;
-    const [rows, fields] = await db.load(sql);
-    if (rows.length === 0) return null;
-    return rows[0];
   },
 
   async single(email) {
@@ -26,7 +19,6 @@ module.exports = {
       const [rows, fields] = await db.load(sql);
     }
   },
-
 
   async add(user) {
     const [result, fields] = await db.add(user, "account");
