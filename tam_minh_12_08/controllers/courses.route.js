@@ -14,9 +14,8 @@ router.get('/detail/:id', async function (req, res, next) {
     await courseModel.updateViewNumber(course_id);
     const course = await courseModel.single(course_id);
     console.log(course.disablez);
-    console.log(req.user.isStudent);
-    if ((req.user.isStudent && course.disablez===1)||(req.session.auth === false && course.disablez===1)){
-        console.log("cant go");
+    if ((course.disablez===1)&&(req.session.auth=== false||req.user.isStudent)){
+    //if ((req.session.auth === false && course.disablez===1)||(course.disablez===1 && req.user.isStudent )){
         res.redirect('/');
     }
     const review = await courseModel.allReviewByID(course_id);
@@ -45,7 +44,11 @@ router.get('/detail/:id', async function (req, res, next) {
 router.get('/detail/:id/watch/:chap_id', async function(req, res){
     var check = false;
     const course_id = req.params.id;
-    if(req.user.isStudent) {
+    if(req.session.auth === false){
+        const temp = await courseModel.get_video(course_id,req.params.chap_id);
+        if ((temp.preview === 1)) check = true;
+    }
+    else if(req.user.isStudent) {
         
         const temp = await courseModel.get_video(course_id,req.params.chap_id);
         const stuid = req.user.authUser.student_id;

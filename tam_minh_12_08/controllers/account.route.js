@@ -185,6 +185,7 @@ router.post('/logout', function(req, res){
 
 
   req.session.temp_course_id = null;
+  req.logout();
   res.redirect("/");
 });
 
