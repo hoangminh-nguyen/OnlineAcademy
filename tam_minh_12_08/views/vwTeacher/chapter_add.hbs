@@ -85,13 +85,25 @@
 																	<div class="ui search focus mt-30 lbel25">
 																		<label>Chapter Title*</label>
 																		{{#if check}}
-																			<div class="ui left icon input swdh19">
-																				<input class="prompt srch_explore" type="text" placeholder="Insert your chapter title." name="title_chapter" data-purpose="edit-course-title" maxlength="60" id="lecturetitle" value="{{chapter.chap_name}}">															
-																			</div>
+																		<div class="ui left icon input swdh19">
+																			<input class="prompt srch_explore"
+																				type="text"
+																				placeholder="Insert your chapter title."
+																				name="title_chapter"
+																				data-purpose="edit-course-title"
+																				maxlength="60" id="lecturetitle"
+																				value="{{chapter.chap_name}}">
+																		</div>
 																		{{else}}
-																			<div class="ui left icon input swdh19">
-																				<input class="prompt srch_explore" type="text" placeholder="Insert your chapter title." name="title_chapter" data-purpose="edit-course-title" maxlength="60" id="lecturetitle" value="">															
-																			</div>
+																		<div class="ui left icon input swdh19">
+																			<input class="prompt srch_explore"
+																				type="text"
+																				placeholder="Insert your chapter title."
+																				name="title_chapter"
+																				data-purpose="edit-course-title"
+																				maxlength="60" id="lecturetitle"
+																				value="">
+																		</div>
 																		{{/if}}
 
 																	</div>
@@ -128,7 +140,8 @@
 																		{{else}}
 																		<div class="ui left icon input swdh19">
 																			<input class="prompt srch_explore hacker"
-																				type="number" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >=0 ? Math.abs(this.value) : null"
+																				type="number" min="0"
+																				oninput="this.value = !!this.value && Math.abs(this.value) >=0 ? Math.abs(this.value) : null"
 																				placeholder="Insert your chapter number."
 																				name="Chapter_number"
 																				data-purpose="edit-course-title"
@@ -167,13 +180,17 @@
 																</div>
 																<div class="col-lg-12 col-md-1 ">
 																	<div class="ui toggle checkbox _1457s2 float-right">
-																		<input type="checkbox" name="stream_ss1" value="" tabindex="0" class="hidden bulldogzz">
+																		<input type="checkbox" name="stream_ss1"
+																			value="" tabindex="0"
+																			class="hidden bulldogzz">
 																		<label>Preivew</label>
-																		<p class="ml5">Unsubscriber can watch this chapter video.</p>
+																		<p class="ml5">Unsubscriber can watch this
+																			chapter video.</p>
 																	</div>
 																</div>
 																<div class="col-lg-12 col-md-12">
-																	<button class="part_btn_save prt-sv" type="button"  onclick="formsubmit()">Save Chapter</button>
+																	<button class="part_btn_save prt-sv" type="button"
+																		onclick="formsubmit()">Save Chapter</button>
 																</div>
 
 																<div class="col-lg-12 col-md-12">
@@ -230,8 +247,8 @@
 								<div class="step-footer step-tab-pager">
 									<button data-direction="prev" class="btn btn-default steps_btn" style=""><a
 											href="/teacher/add_pic">PREVIOUS</a></button>
-									<button data-direction="next" class="btn btn-default steps_btn" style=""><a
-											href="/teacher/finish">Next</a></button>
+									<button data-direction="next" class="btn btn-default steps_btn" type="button"
+										style=""><a href="/teacher/finish">Next</a></button>
 
 								</div>
 
@@ -302,15 +319,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.1.3/js/locales/vi.min.js"></script>
 
 <script>
-	
-	
-	
-	function formsubmit(){
+
+
+
+	function formsubmit() {
 		var title = $('#lecturetitle').val();
 		var chap_num = $('#chapter_number').val();
 		var ext_name = getname('inputGroupFile06');
 		ext_name = ext_name.substr(ext_name.lastIndexOf('.') + 1);
-		if (title === "" || chap_num =="" || ext_name!="mp4" || chap_num<0 ){
+		if (title === "" || chap_num == "" || ext_name != "mp4" || chap_num < 0) {
 			Swal.fire({
 				icon: 'error',
 				title: 'Wrong input!',
@@ -319,24 +336,24 @@
 				timerProgressBar: true,
 			});
 		}
-			else {
-				$.getJSON(`/teacher/check-chapnum?chapnum=${chap_num}`, function (data){
-					if(data === true){
-						document.getElementById("form1").submit();
-					}
-					if (data===false) {
-						Swal.fire({
-							icon: 'error',
-							title: 'Chap Number exist!',
-							showConfirmButton: true,
-							timer: 2000,
-							timerProgressBar: true,
-						});
-					}
-				});
-				
-			}
-		
+		else {
+			$.getJSON(`/teacher/check-chapnum?chapnum=${chap_num}`, function (data) {
+				if (data === true) {
+					document.getElementById("form1").submit();
+				}
+				if (data === false) {
+					Swal.fire({
+						icon: 'error',
+						title: 'Chap Number exist!',
+						showConfirmButton: true,
+						timer: 2000,
+						timerProgressBar: true,
+					});
+				}
+			});
+
+		}
+
 	};
 
 	function formsubmitz(chap_num) {
@@ -344,8 +361,8 @@
 		$('#form1').attr('enctype', '');
 		document.getElementById("form1").submit();
 	};
-	
-	
+
+
 </script>
 
 <script>

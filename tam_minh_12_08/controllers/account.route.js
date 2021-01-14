@@ -185,9 +185,7 @@ router.post('/logout', function(req, res){
 
 
   req.session.temp_course_id = null;
-  const url = req.headers.referer || "/";
-  req.logout();
-  res.redirect(url);
+  res.redirect("/");
 });
 
 module.exports = router;
