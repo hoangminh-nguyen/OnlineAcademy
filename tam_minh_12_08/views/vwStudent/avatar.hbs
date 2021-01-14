@@ -1,109 +1,300 @@
 {{#section 'css'}}
-    <link href="/css/instructor-dashboard.css" rel="stylesheet">
-	<link href="/css/instructor-responsive.css" rel="stylesheet">
-    <link href="/css/jquery-steps.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
-	<script src="/vendor/tinymce/tinymce.min.js" ></script>
-	</script>
+<link href="/css/instructor-dashboard.css" rel="stylesheet">
+<link href="/css/instructor-responsive.css" rel="stylesheet">
+<link href="/css/jquery-steps.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/css/fileinput.min.css" media="all"
+	rel="stylesheet" type="text/css" />
+<script src="/vendor/tinymce/tinymce.min.js"></script>
+</script>
 {{/section}}
 
-<form method="POST" action="" enctype="multipart/form-data" id="form1" >
-<div class="wrapper">
+<form method="POST" action="" enctype="multipart/form-data" id="form1">
+	<div class="wrapper">
 		<div class="sa4d25">
-			<div class="container">			
+			<div class="container">
 				<div class="row">
-                    <div class="col-lg-12">	
-						<h2 class="st_title"><i class="uil uil-analysis"></i> Edit your avatar</h2>
-					</div>			
 					<div class="col-lg-12">
-						
-							<div id="add-course-tab" class="step-app">
-								
-								<div class="step-content">
-									
-									
-									<div class="step-tab-panel step-tab-gallery active" id="tab_step2">
-										<div class="tab-from-content">
-											
-											<div class="course__form">
-												<div class="view_info10">
-													<div class="row">
-														<div class="col-lg-12">	
-															<div class="view_all_dt">	
-																<div class="view_img_left">	
-																	<div class="view__img">	
-                                                                        {{#if this.avatar}} 
-                                                                        <img id="img_test" src="{{this.avatar.link_ava}}" alt="">
-                                                                        {{else}}
-                                                                        <img id="img_test" src="/images/courses/add_img.jpg" alt="">
-                                                                        {{/if}}
-																		
-																	</div>
+						<h2 class="st_title"><i class="uil uil-analysis"></i> Edit your avatar</h2>
+					</div>
+					<div class="col-lg-12">
+
+						<div id="add-course-tab" class="step-app">
+
+							<div class="step-content">
+
+
+								<div class="step-tab-panel step-tab-gallery active" id="tab_step2">
+									<div class="tab-from-content">
+
+										<div class="course__form">
+											<div class="view_info10">
+												<div class="row">
+													<div class="col-lg-12">
+														<div class="view_all_dt">
+															<div class="view_img_left">
+																<div class="view__img">
+																	{{#if this.avatar}}
+																	<img id="img_test" src="{{this.avatar.link_ava}}"
+																		alt="">
+																	{{else}}
+																	<img id="img_test" src="/images/courses/add_img.jpg"
+																		alt="">
+																	{{/if}}
+
 																</div>
-																<div class="view_img_right">	
-																	<h4>Your Avatar</h4>
-																	<div class="upload__input">
-																		<div class="input-group">
-																			<div class="custom-file">
-																				<input type="file" class="custom-file-input" id="inputGroupFile04" name="inputGroupFile04">
-																				<label class="custom-file-label" for="inputGroupFile04">No Choose file</label>
-																			</div>
+															</div>
+															<div class="view_img_right">
+																<h4>Your Avatar</h4>
+																<div class="upload__input">
+																	<div class="input-group">
+																		<div class="custom-file">
+																			<input type="file" class="custom-file-input"
+																				id="inputGroupFile04"
+																				name="inputGroupFile04">
+																			<label class="custom-file-label"
+																				for="inputGroupFile04">No Choose
+																				file</label>
 																		</div>
 																	</div>
 																</div>
 															</div>
-															
 														</div>
+
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
+								</div>
 
-									 
-									
-									
-								   
-								</div>
-								<div class="step-footer step-tab-pager">
-                                    {{#if this.isTeacher}}
-                                    <button data-direction="prev" class="btn btn-default steps_btn" style=""><a href="/teacher/info/">PREVIOUS</a></button>
-                                    {{else}}
-                                    <button data-direction="prev" class="btn btn-default steps_btn" style=""><a href="/student/info/">PREVIOUS</a></button>
-                                    {{/if}}
-									<button data-direction="next" class="btn btn-default steps_btn" type="submit">Save Change</button>
-								</div>
+
+
+
+
 							</div>
-                        
+							<div class="step-footer step-tab-pager">
+								{{#if this.isTeacher}}
+								<button data-direction="prev" class="btn btn-default steps_btn" style=""><a
+										href="/teacher/info/">PREVIOUS</a></button>
+								{{else}}
+								<button data-direction="prev" class="btn btn-default steps_btn" style=""><a
+										href="/student/info/">PREVIOUS</a></button>
+								{{/if}}
+								<button data-direction="next" class="btn btn-default steps_btn" type="submit">Save
+									Change</button>
+							</div>
+						</div>
 
 
-                        
-                    </div>
+
+
+					</div>
 				</div>
 			</div>
 		</div>
-</div>
-		
+		<footer class="footer mt-30" style="bottom: 0;">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-md-3 col-sm-6">
+						<div class="item_f1">
+							<a href="about_us.html">About</a>
+							<a href="our_blog.html">Blog</a>
+							<a href="career.html">Careers</a>
+							<a href="press.html">Press</a>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-6">
+						<div class="item_f1">
+							<a href="help.html">Help</a>
+							<a href="coming_soon.html">Advertise</a>
+							<a href="coming_soon.html">Developers</a>
+							<a href="contact_us.html">Contact Us</a>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-6">
+						<div class="item_f1">
+							<a href="terms_of_use.html">Copyright Policy</a>
+							<a href="terms_of_use.html">Terms</a>
+							<a href="terms_of_use.html">Privacy Policy</a>
+							<a href="#">Sitemap</a>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-6">
+						<div class="item_f3">
+							<a href="#" class="btn1542">Teach on Cursus</a>
+							<div class="lng_btn">
+								<div class="ui language bottom right pointing dropdown floating" id="languages"
+									data-content="Select Language">
+									<a href="#"><i class='uil uil-globe lft'></i>Language<i
+											class='uil uil-angle-down rgt'></i></a>
+									<div class="menu">
+										<div class="scrolling menu">
+											<div class="item" data-percent="100" data-value="en" data-english="English">
+												<span class="description">English</span>
+												English
+											</div>
+											<div class="item" data-percent="94" data-value="da" data-english="Danish">
+												<span class="description">dansk</span>
+												Danish
+											</div>
+											<div class="item" data-percent="94" data-value="es" data-english="Spanish">
+												<span class="description">Español</span>
+												Spanish
+											</div>
+											<div class="item" data-percent="34" data-value="zh" data-english="Chinese">
+												<span class="description">简体中文</span>
+												Chinese
+											</div>
+											<div class="item" data-percent="54" data-value="zh_TW"
+												data-english="Chinese (Taiwan)">
+												<span class="description">中文 (臺灣)</span>
+												Chinese (Taiwan)
+											</div>
+											<div class="item" data-percent="79" data-value="fa" data-english="Persian">
+												<span class="description">پارسی</span>
+												Persian
+											</div>
+											<div class="item" data-percent="41" data-value="fr" data-english="French">
+												<span class="description">Français</span>
+												French
+											</div>
+											<div class="item" data-percent="37" data-value="el" data-english="Greek">
+												<span class="description">ελληνικά</span>
+												Greek
+											</div>
+											<div class="item" data-percent="37" data-value="ru" data-english="Russian">
+												<span class="description">Русский</span>
+												Russian
+											</div>
+											<div class="item" data-percent="36" data-value="de" data-english="German">
+												<span class="description">Deutsch</span>
+												German
+											</div>
+											<div class="item" data-percent="23" data-value="it" data-english="Italian">
+												<span class="description">Italiano</span>
+												Italian
+											</div>
+											<div class="item" data-percent="21" data-value="nl" data-english="Dutch">
+												<span class="description">Nederlands</span>
+												Dutch
+											</div>
+											<div class="item" data-percent="19" data-value="pt_BR"
+												data-english="Portuguese">
+												<span class="description">Português(BR)</span>
+												Portuguese
+											</div>
+											<div class="item" data-percent="17" data-value="id"
+												data-english="Indonesian">
+												<span class="description">Indonesian</span>
+												Indonesian
+											</div>
+											<div class="item" data-percent="12" data-value="lt"
+												data-english="Lithuanian">
+												<span class="description">Lietuvių</span>
+												Lithuanian
+											</div>
+											<div class="item" data-percent="11" data-value="tr" data-english="Turkish">
+												<span class="description">Türkçe</span>
+												Turkish
+											</div>
+											<div class="item" data-percent="10" data-value="kr" data-english="Korean">
+												<span class="description">한국어</span>
+												Korean
+											</div>
+											<div class="item" data-percent="7" data-value="ar" data-english="Arabic">
+												<span class="description">العربية</span>
+												Arabic
+											</div>
+											<div class="item" data-percent="6" data-value="hu" data-english="Hungarian">
+												<span class="description">Magyar</span>
+												Hungarian
+											</div>
+											<div class="item" data-percent="6" data-value="vi"
+												data-english="Vietnamese">
+												<span class="description">tiếng Việt</span>
+												Vietnamese
+											</div>
+											<div class="item" data-percent="5" data-value="sv" data-english="Swedish">
+												<span class="description">svenska</span>
+												Swedish
+											</div>
+											<div class="item" data-precent="4" data-value="pl" data-english="Polish">
+												<span class="description">polski</span>
+												Polish
+											</div>
+											<div class="item" data-percent="6" data-value="ja" data-english="Japanese">
+												<span class="description">日本語</span>
+												Japanese
+											</div>
+											<div class="item" data-percent="0" data-value="ro" data-english="Romanian">
+												<span class="description">românește</span>
+												Romanian
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12">
+						<div class="footer_bottm">
+							<div class="row">
+								<div class="col-md-6">
+									<ul class="fotb_left">
+										<li>
+											<a href="index.html">
+												<div class="footer_logo">
+													<img src="/images/logo1.svg" alt="">
+												</div>
+											</a>
+										</li>
+										<li>
+											<p>© 2020 <strong>Cursus</strong>. All Rights Reserved.</p>
+										</li>
+									</ul>
+								</div>
+								<div class="col-md-6">
+									<div class="edu_social_links">
+										<a href="#"><i class="fab fa-facebook-f"></i></a>
+										<a href="#"><i class="fab fa-twitter"></i></a>
+										<a href="#"><i class="fab fa-google-plus-g"></i></a>
+										<a href="#"><i class="fab fa-linkedin-in"></i></a>
+										<a href="#"><i class="fab fa-instagram"></i></a>
+										<a href="#"><i class="fab fa-youtube"></i></a>
+										<a href="#"><i class="fab fa-pinterest-p"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+
 </form>
 {{#section 'js'}}
 <script src="/js/jquery-steps.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/plugins/piexif.min.js" type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/plugins/sortable.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/plugins/piexif.min.js"
+	type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/plugins/sortable.min.js"
+	type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+	crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/fileinput.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.1.3/js/locales/vi.min.js"></script>
 
 <script>
-	
-	
-	formsubmit = function(){
+
+
+	formsubmit = function () {
 		document.getElementById("form1").submit();
 	}
 </script>
 
 <script>
-	function getname(idz){
+	function getname(idz) {
 		var fullPath = document.getElementById(idz).value;
 		if (fullPath) {
 			var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
@@ -117,16 +308,16 @@
 	function readURL(input) {
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
-			reader.onload = function(e) {
+			reader.onload = function (e) {
 				$('#img_test').attr('src', e.target.result);
 
 			}
 			getname('inputGroupFile04');
-			
+
 			reader.readAsDataURL(input.files[0]); // convert to base64 string
 		}
 	}
-	$("#inputGroupFile04").change(function() {
+	$("#inputGroupFile04").change(function () {
 		readURL(this);
 	});
 </script>
