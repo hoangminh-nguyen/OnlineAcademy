@@ -58,12 +58,13 @@ router.post("/signup", async function(req, res, next) {
     }
   });
 
+  var url = "http://localhost:3000/account"
 
   let info = await transporter.sendMail({
     from: '"Online Academy Helper" <onlineacademy.helper@gmail.com>',
     to: user.email,
     subject: "Online Academy - Verify your account ",
-    text: `Hello ${user.fname} ${user.lname}`,
+    text: `Hello ${user.fname} ${user.lname},\n\nPlease click the link below to activate your account:\n\n`,
   });
 
   console.log("Message sent: %s", info.messageId);
