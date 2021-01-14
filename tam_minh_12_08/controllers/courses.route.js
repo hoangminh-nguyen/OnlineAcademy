@@ -39,20 +39,22 @@ router.get('/detail/:id', async function (req, res, next) {
 router.get('/detail/:id/watch/:chap_id', async function(req, res){
     var check = false;
     const course_id = req.params.id;
-    console.log('cacccc'+req.user);
     if(req.user.isStudent) {
+        
+        const temp = await courseModel.get_video(course_id,req.params.chap_id);
         const stuid = req.user.authUser.student_id;
         const temp_id = await courseModel.checkStuCo(stuid, course_id);
         console.log(temp_id);
-        if (temp_id != null && temp_id.course_id == course_id) check = true;
+        if ((temp_id != null && temp_id.course_id == course_id)||(temp.preview == 1)) check = true;
         
     }
     else if (req.user.isTeacher){
+        const temp = await courseModel.get_video(course_id,req.params.chap_id);
         const te = req.user.authUser.teacher_id;
         const temp_id = await courseModel.checkTeCo(te, course_id);
         console.log(temp_id);
 
-        if (temp_id != null && temp_id.course_id == course_id) check = true;
+        if ((temp_id != null && temp_id.course_id == course_id)||(temp.preview == 1)) check = true;
     }
     
     if(check == true){
