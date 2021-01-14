@@ -228,19 +228,93 @@
           <div class="right_side">
 
             {{!-- Giữ này lại mốt có Instructor --}}
-
+            {{#if auth}}
+             {{#if isStudent}}
+             <div class="fcrse_2 mb-30">
+                <div class="tutor_img">
+                  <a href="/student/info"><img src="{{authUser.link_ava_student}}" alt=""></a>
+                </div>
+                <div class="tutor_content_dt">
+                  <div class="tutor150">
+                    <a href="/student/info" class="tutor_name">{{authUser.fname}} {{authUser.lname}} </a>
+                    <div class="mef78" title="Verify">
+                      <i class="uil uil-check-circle"></i>
+                    </div>
+                  </div>
+                  <ul class="tutor_social_links">
+                    <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                  </ul>
+                  <div class="tut1250">
+                    <span class="vdt15">Students</span>
+                  </div>
+                  <a href="/student/info" class="prfle12link">Go To Profile</a>
+                </div>
+              </div>
+             {{else if isTeacher}}
+             <div class="fcrse_2 mb-30">
+                <div class="tutor_img">
+                  <a href="/teacher/info"><img src="{{authUser.link_ava_teacher}}" alt=""></a>
+                </div>
+                <div class="tutor_content_dt">
+                  <div class="tutor150">
+                    <a href="/teacher/info" class="tutor_name">{{authUser.fname}} {{authUser.lname}}</a>
+                    <div class="mef78" title="Verify">
+                      <i class="uil uil-check-circle"></i>
+                    </div>
+                  </div>
+                  <ul class="tutor_social_links">
+                    <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                  </ul>
+                  <div class="tut1250">
+                    <span class="vdt15">Teacher</span>
+                  </div>
+                  <a href="/teacher/info" class="prfle12link">Go To Profile</a>
+                </div>
+              </div>
+             {{else if isAdmin}}
+             <div class="fcrse_2 mb-30">
+                <div class="tutor_img">
+                  <a href="/admin/accounts"><img src="https://cdn0.iconfinder.com/data/icons/management-1/100/business-05-512.png" alt="" style="background-color: white; border-color: white;"></a>
+                </div>
+                <div class="tutor_content_dt">
+                  <div class="tutor150">
+                    <a href="/admin/accounts" class="tutor_name">Admininstrator</a>
+                    <div class="mef78" title="Verify">
+                      <i class="uil uil-check-circle"></i>
+                    </div>
+                  </div>
+                  <ul class="tutor_social_links">
+                    <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                  </ul>
+                  <div class="tut1250">
+                    <span class="vdt15">Admin</span>
+                  </div>
+                  <a href="/admin/accounts" class="prfle12link">Go To Profile</a>
+                </div>
+              </div>
+             {{/if}}
+              
+            {{else}}
             <div class="fcrse_2 mb-30">
               <div class="tutor_img">
-                <a href="my_instructor_profile_view.html"><img src="images/left-imgs/img-10.jpg" alt=""></a>
+                <a href="/account/login"><img src="/images/temp.jpg" alt=""></a>
               </div>
               <div class="tutor_content_dt">
                 <div class="tutor150">
-                  <a href="my_instructor_profile_view.html" class="tutor_name">Joginder Singh</a>
+                  <a href="/account/login" class="tutor_name">Guest</a>
                   <div class="mef78" title="Verify">
                     <i class="uil uil-check-circle"></i>
                   </div>
                 </div>
-                <div class="tutor_cate">Web Developer, Designer, and Teacher</div>
                 <ul class="tutor_social_links">
                   <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
                   <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
@@ -248,18 +322,18 @@
                   <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
                 </ul>
                 <div class="tut1250">
-                  <span class="vdt15">615K Students</span>
-                  <span class="vdt15">12 Courses</span>
                 </div>
-                <a href="my_instructor_profile_view.html" class="prfle12link">Go To Profile</a>
+                <a href="/account/login" class="prfle12link">Go To Profile</a>
               </div>
             </div>
+            {{/if}}
+            
 
             {{!-- Top Field --}}
 
             <div class="fcrse_3">
               <div class="cater_ttle">
-                <h4>Top IT Fields</h4>
+                <h4>Top Fields</h4>
               </div>
               <ul class="allcate15">
 
