@@ -48,21 +48,21 @@
 					<form id="frmEdit" method="POST" action="">
 						<div class="ui search focus mt-50">
 							<div class="ui left icon input swdh95">
-								<input class="prompt srch_explore" type="email" name="emailaddress" readonly required="" value="{{email}}" maxlength="64" placeholder="Email Address">															
+								<input class="prompt srch_explore" type="email" name="email" readonly required="" value="{{email}}" maxlength="64" placeholder="Email Address">															
 								<i class="uil uil-envelope icon icon2"></i>
 							</div>
 						</div>
 
-						<div class="ui search focus mt-50">
+						<div class="ui search focus mt-25">
 							<div class="ui left icon input swdh95">
-								<input class="prompt srch_explore" type="password" id="password" name="password" required="" maxlength="64" placeholder="Email Address">															
+								<input class="prompt srch_explore" type="password" id="password" name="password" required="" maxlength="64" placeholder="Password">															
 								<i class="uil uil-key-skeleton-alt icon icon2"></i>
 							</div>
 						</div>
 
-						<div class="ui search focus mt-50">
+						<div class="ui search focus mt-25">
 							<div class="ui left icon input swdh95">
-								<input class="prompt srch_explore" type="password" id="passwordcheck" name="passwordcheck" required="" maxlength="64" placeholder="Email Address">															
+								<input class="prompt srch_explore" type="password" id="passwordcheck" name="passwordcheck" required="" maxlength="64" placeholder="Confirm Password">															
 								<i class="uil uil-key-skeleton-alt icon icon2"></i>
 							</div>
 						</div>
@@ -91,7 +91,8 @@
             e.preventDefault();
             var password = $('#password').val();
 			var passwordcheck = $('#passwordcheck').val();
-			if (data === true){
+			console.log(password);
+			if (password != passwordcheck){
 				$('#message').text("*Password and Confirm Password are not match.");
 			}
 			else{

@@ -20,8 +20,7 @@ router.get('/forgotpass', function (req, res, next) {
 });
 
 router.post('/forgotpass', async function (req, res, next) {
-  const email = req.query.emailaddress;
-
+  const email = req.body.emailaddress;
   var token = jwt.sign({ email: email }, 'forgotpass');
   let transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -34,7 +33,7 @@ router.post('/forgotpass', async function (req, res, next) {
     }
   });
 
-  var url = `http://localhost:3000/account/forgot?token=${token}`;
+  var url = `http://localhost:3000/account/resetpass?token=${token}`;
 
   let info = await transporter.sendMail({
     from: '"Online Academy Helper" <onlineacademy.helper@gmail.com>',
@@ -45,23 +44,21 @@ router.post('/forgotpass', async function (req, res, next) {
   res.redirect("/account/login");
 });
 
-router.get("/forgot", async function(req, res) {
+router.get("/resetpass", async function(req, res) {
   var token = req.query.token;
   const decode = jwt.verify(token, 'forgotpass');
-  req.session.tempMail = decode.email;
-  return res.redirect('/resetpass');
-});
-
-router.get("/resetpass", async function(req, res) {
   res.render('vwAccount/resetpass', {
     layout: false,
-    email: req.session.tempMail,
+    email: decode.email,
   });
 });
 
+
 router.post("/resetpass", async function(req, res) {
-  const user = await accountModel.single(req.query.emailaddress);
-  await accountModel.patch({email: req.query.emailaddress, password: req.body.password});
+  var account = req.body;
+  account["password"] = bcrypt.hashSync(req.body.password, 10);
+  delete account.passwordcheck;
+  await accountModel.patch(account);
   return res.redirect('/account/login');
 });
 

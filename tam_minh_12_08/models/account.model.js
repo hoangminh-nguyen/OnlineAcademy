@@ -5,7 +5,7 @@ module.exports = {
     const sql = `insert into account values ('${email}', null, 1, 2)`;
     const [rows, fields] = await db.load(sql);
   },
-
+  
   async activate(email) {
     const sql = `update account set activate = 1 where email = '${email}'`;
     const [rows, fields] = await db.load(sql);
