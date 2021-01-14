@@ -154,9 +154,9 @@
         <li class="ui dropdown">
           <a href="#" class="opts_account">
             {{#if isStudent}}
-            <img src="{{authUser.link_ava_student}}" alt="avatar">
+            <img src="{{authUser.link_ava_student}}" alt="avatar" style="background-color: white; border-color: white;">
             {{else if isTeacher}}
-            <img src="{{authUser.link_ava_teacher}}" alt="avatar">
+            <img src="{{authUser.link_ava_teacher}}" alt="avatar" style="background-color: white; border-color: white;">
             {{else if isAdmin}}
             <img src="https://cdn0.iconfinder.com/data/icons/management-1/100/business-05-512.png" alt="avatar"
               style="background-color: white; border-color: white;">
@@ -198,7 +198,6 @@
             {{else if isTeacher}}
             <a href="/teacher/info" class="item channel_item">View Profile</a>
             <a href="/teacher/mycourse" class="item channel_item">My Courses</a>
-            <a href="/" class="item channel_item">something</a>
             {{/if}}
 
 
@@ -252,30 +251,69 @@
             {{!-- cat level 1 --}}
             {{/each}}
           </li>
+
+          {{#if isStudent}}
           <li class="menu--item">
-            {{#if isStudent}}
+            <a href="/student/info" class="menu--link" title="My Courses">
+              <i class="uil uil-user-circle menu--icon"></i>
+              <span class="menu--label">Personal Info</span>
+            </a>
+          </li>
+          <li class="menu--item">
             <a href="/student/registeredcourses" class="menu--link" title="My Courses">
-              {{else if isTeacher}}
-              <a href="/" class="menu--link" title="My Courses">
-                {{else}}
-                <a href="/account/login" class="menu--link" title="My Courses">
-                  {{/if}}
-                  <i class="uil uil-book-alt menu--icon"></i>
-                  <span class="menu--label">My Courses</span>
-                </a>
+              <i class="uil uil-book-alt menu--icon"></i>
+              <span class="menu--label">My Courses</span>
+            </a>
           </li>
           <li class="menu--item">
-            {{#if isStudent}}
             <a href="/student/watchlist" class="menu--link" title="Watch List">
-              {{else if isTeacher}}
-              <a href="/" class="menu--link" title="Watch List">
-                {{else}}
-                <a href="/account/login" class="menu--link" title="Watch List">
-                  {{/if}}
-                  <i class="uil uil-heart-alt menu--icon"></i>
-                  <span class="menu--label">Watch List</span>
-                </a>
+              <i class="uil uil-heart-alt menu--icon"></i>
+              <span class="menu--label">Watch List</span>
+            </a>
           </li>
+          {{else if isTeacher}}
+          <li class="menu--item">
+            <a href="/teacher/info" class="menu--link" title="My Courses">
+              <i class="uil uil-user-circle menu--icon"></i>
+              <span class="menu--label">Personal Info</span>
+            </a>
+          </li>
+          <li class="menu--item">
+            <a href="/teacher/mycourse" class="menu--link" title="My Courses">
+              <i class="uil uil-book-alt menu--icon"></i>
+              <span class="menu--label">My Courses</span>
+            </a>
+          </li>
+
+          {{else if isAdmin}}
+          <li class="menu--item">
+            <a href="/admin/accounts" class="menu--link" title="My Courses">
+              <i class="uil uil-users-alt menu--icon"></i>
+              <span class="menu--label">Manage Accounts</span>
+            </a>
+          </li>
+          <li class="menu--item">
+            <a href="/admin/specifications" class="menu--link" title="My Courses">
+              <i class="uil uil-bright menu--icon"></i>
+              <span class="menu--label">Manage Specifications</span>
+            </a>
+          </li>
+          {{else}}
+          <li class="menu--item">
+            <a href="/account/login" class="menu--link" title="My Courses">
+              <i class="uil uil-book-alt menu--icon"></i>
+              <span class="menu--label">My Courses</span>
+            </a>
+          </li>
+          <li class="menu--item">
+            <a href="/account/login" class="menu--link" title="Watch List">
+              <i class="uil uil-heart-alt menu--icon"></i>
+              <span class="menu--label">Watch List</span>
+            </a>
+          </li>
+          {{/if}}
+
+
           <li class="menu--item  menu--item__has_sub_menu">
             <label class="menu--link" title="Pages">
               <i class='uil uil-file menu--icon'></i>
@@ -407,9 +445,9 @@
   <!-- Body End -->
 
   <!-- Footer Start -->
-  
+
   <!-- Footer End -->
-  
+
   <script src="/js/vertical-responsive-menu.min.js"></script>
   <script src="/js/jquery-3.3.1.min.js"></script>
   <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
