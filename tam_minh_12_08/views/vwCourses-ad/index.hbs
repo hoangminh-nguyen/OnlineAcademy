@@ -61,11 +61,7 @@
 {{/section}}
 
 {{#section 'js'}}
-<script>
-  $(document).ready(function () {
-    $('table').DataTable();
-  });
-</script>
+
 <script>
   var coll = document.getElementsByClassName("type_collapsible");
   var i;
@@ -82,34 +78,50 @@
     });
   }
 </script>
+<script>
+  $(document).ready(function () {
+    $('table').DataTable();
+  });
+</script>
 {{/section}}
 
 <div class="wrapper">
   <div class="sa4d25">
     <div class="container-fluid">
-      {{#each this.lcSpec}}
-      <button type="button" class="type_collapsible">{{name}}</button>
+      <button type="button" class="type_collapsible">All courses</button>
       <div class="content">
         <div class="card-body mt-10">
-          <table class="table table-hover table-dark" style="background-color: #000 !important;">
+          <table id="courses" class="table table-hover table-dark" style="background-color: #000 !important;">
             <thead>
               <tr>
-                <th scope="col" style="width: 25%;">#</th>
-                <th scope="col" style="width: 25%;">Specification</th>
-                <th scope="col" style="width: 25%;">Icon</th>
-                <th scope="col" style="width: 25%;">&nbsp;</th>
+                <th scope="col" style="width: 14.28%;">#</th>
+                <th scope="col" style="width: 14.28%;">Name</th>
+                <th scope="col" style="width: 14.28%;">Type</th>
+                <th scope="col" style="width: 14.28%;">Specification</th>
+                <th scope="col" style="width: 14.28%;">Teacher</th>
+                <th scope="col" style="width: 14.28%;">State</th>
+                <th scope="col" style="width: 14.28%;">&nbsp;</th>
               </tr>
             </thead>
             <tbody>
-              {{#each spec}}
+              {{#each courses}}
               <tr style="background-color: #000;">
-                <th scope="row">{{spec_id}}</th>
+                <th scope="row">{{course_id}}</th>
+                <td>{{name}}</td>
+                <td>{{type_name}}</td>
                 <td>{{spec_name}}</td>
-                <td>{{{icon}}}</td>
+                <td>{{fname}} {{lname}}</td>
+
+                {{#if disablez}}
+                <td>Disabled</td>
+                {{else}}
+                <td>&nbsp;</td>
+                {{/if}}
+
                 <td class="text-right">
                   <a name="" id="" class="btn btn-sm btn-outline-warning" title="Edit Category"
                     style="color: #ff9800 !important; background-color: #000 !important;  border-color:#ff9800 !important;"
-                    href="/admin/specifications/edit?spec_id={{spec_id}}" role="button">
+                    href="/courses/detail/{{course_id}}" role="button">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                   </a>
                 </td>
@@ -117,15 +129,9 @@
               {{/each}}
             </tbody>
           </table>
-          <a class="btn btn-outline-success mt-10"
-            style="background-color: #000 !important; border-color:#ff9800 !important; color: #ff9800 !important; "
-            href="/admin/specifications/add?type_id={{id}}" role="button">
-            <i class="fa fa-plus" aria-hidden="true" style="margin-right: 5px;"></i>
-            Add Specification
-          </a>
         </div>
       </div>
-      {{/each}}
+
     </div>
   </div>
   <footer class="footer mt-30" style="bottom: 0;">

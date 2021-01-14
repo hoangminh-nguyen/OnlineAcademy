@@ -1,4 +1,4 @@
-{{#section 'css'}}
+sc{{#section 'css'}}
 <style>
     .type_collapsible {
         background-color: #777;
@@ -37,7 +37,29 @@
         transition: max-height 0.2s ease-out;
         background-color: #000;
     }
+
+
+    label {
+        color: white;
+    }
+
+    input {
+        color: white;
+    }
+
+    select {
+        color: white;
+    }
+
+    .dataTables_info {
+        color: white !important;
+    }
+
+    option {
+        color: #000;
+    }
 </style>
+
 {{/section}}
 
 {{#section 'js'}}
@@ -57,6 +79,12 @@
         });
     }
 </script>
+<script>
+    $(document).ready(function () {
+        $('#student').DataTable();
+        $('#teacher').DataTable();
+    });
+</script>
 {{/section}}
 
 <div class="wrapper">
@@ -65,7 +93,7 @@
             <button type="button" class="type_collapsible">Student</button>
             <div class="content">
                 <div class="card-body mt-10">
-                    <table class="table table-hover table-dark" style="background-color: #000 !important;">
+                    <table id="student" class="table table-hover table-dark" style="background-color: #000 !important;">
                         <thead>
                             <tr>
                                 <th scope="col" style="width: 20%;">#</th>
@@ -78,7 +106,7 @@
                         </thead>
                         <tbody>
                             {{#each this.student}}
-                            <tr>
+                            <tr style="background-color: #000;">
                                 <th scope="row">{{student_id}}</th>
                                 <th scope="row">{{email}}</th>
                                 <th scope="row">{{fname}}</th>
@@ -105,7 +133,7 @@
             <button type="button" class="type_collapsible">Teacher</button>
             <div class="content">
                 <div class="card-body mt-10">
-                    <table class="table table-hover table-dark" style="background-color: #000 !important;">
+                    <table id="teacher" class="table table-hover table-dark" style="background-color: #000 !important;">
                         <thead>
                             <tr>
                                 <th scope="col" style="width: 20%;">#</th>
@@ -118,8 +146,8 @@
                         </thead>
                         <tbody>
                             {{#each this.teacher}}
-                            <tr>
-                                <th scope="row">{{teacher_id}}</th>
+                            <tr style="background-color: #000;">
+                                <th scope=" row">{{teacher_id}}</th>
                                 <th scope="row"><a href="viewcourse/{{teacher_id}}">{{email}}</a></th>
                                 <th scope="row">{{fname}}</th>
                                 <th scope="row">{{lname}}</th>

@@ -4,6 +4,11 @@ const { paginate } = require('./../config/default.json');
 const { bestseller } = require('./../config/default.json');
 
 module.exports = {
+  async all() {
+    const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, co.disablez, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id`;
+    const [rows, fields] = await db.load(sql);
+    return rows;
+  },
 
   async pageAll(offset) {
     const sql = `select if(DATEDIFF(curdate(), co.publish_day) < 14, 1, null) as newest, co.course_id, co.name, co.link_ava_course, co.discount, co.view_number, co.price, ra.numberStu, ra.rateStu, ra.rating, cs.spec_name, ct.type_name, te.fname, te.lname,  DATEDIFF(curdate(), co.publish_day) as day_ago from course co left  join (select course_id, avg(rating) as rating, count(student_id) as numberStu, count(if(rating > 0, 1, null)) as rateStu from stu_registerlist group by course_id) ra on co.course_id = ra.course_id join course_spec cs on co.spec = cs.spec_id join teacher te on co.teacher_id = te.teacher_id join course_type ct on co.type=ct.type_id where co.disablez = 0 limit ${paginate.limit} offset ${offset};`;
@@ -237,7 +242,7 @@ module.exports = {
     const [rows, fields] = await db.load(sql);
     return rows;
   },
-  
+
   async load_info(course_id) {
     const sql = `select co.name, cd.short_info, cd.full_info, co.price, ct.type_id, cp.spec_id, ct.type_name, cp.spec_name from course co join course_detail cd on (co.course_id = cd.course_id) join course_type ct on (co.type = ct.type_id) join course_spec cp on (co.spec = cp.spec_id) where co.course_id = ${course_id};`;
     const [rows, fields] = await db.load(sql);
