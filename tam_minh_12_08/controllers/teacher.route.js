@@ -219,6 +219,7 @@ router.post('/add_chap', async function (req, res, next){
         console.log(err);
       } else {
         
+        var preview = (req.body.stream_ss1 == '') ? 1 : 0;
         pathz = '/course/'+id+'/'+req.body.Chapter_number+'.mp4';
         const chap={
           chap_name : req.body.title_chapter, 
@@ -226,6 +227,7 @@ router.post('/add_chap', async function (req, res, next){
           course_id : req.session.temp_course_id,
           chap_des: req.body.description_chapter,
           link_vid : pathz,
+          preview : preview,
         };
         await db.add(chap, "course_chapter");
         res.redirect('/teacher/add_chap')
