@@ -224,7 +224,7 @@ insert into student values (null, 'Student', 'Nineteen', 'student019@gmail.com',
 insert into student values (null, 'Student', 'Twenty', 'student020@gmail.com', 'https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png', 0);
 
 -- course_type
-insert into course_type values (null, 'IT & Software');
+insert into course_type values (null, 'IT Software');
 insert into course_type values (null, 'Design');
 
 -- course spec
@@ -242,8 +242,20 @@ insert into course values(null, 'Ultimate Adobe Photoshop Training', 15, 10, 2, 
 insert into course values(null, 'Graphic Design Masterclass - Learn GREAT Design', 25, 20, 2, 3, '2020-12-06 00:00:00', 40, 'https://d1j8r0kxyu9tj8.cloudfront.net/images/1557567429825mQH8PotXDSI7.jpg', 6, 0);
 insert into course values(null, 'How to Use Lighting Design to Transform your Home', 10, 0, 2, 4, '2020-12-07 00:00:00', 13, 'https://www.thespruce.com/thmb/LJ7id3A9UH4mXoZdGjjTmM1iWj8=/1541x1156/smart/filters:no_upscale()/Stocksy_txp3a252ff6ITc200_Medium_2462396-25763eafda2e452dbd1fb83089357aa2.jpg', 7, 0);
 insert into course values(null, 'How to design a room', 15, 0, 2, 4, '2020-12-08 00:00:00', 25, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9sHwEM7K246oge4Lz1Y7eGjeMk1j8KHRztw&usqp=CAU', 8, 0);
-insert into course values(null, 'Beginners Programming Python', 20, 20, 1, 1, '2021-12-01 00:00:00', 13, 'https://www.thespruce.com/thmb/LJ7id3A9UH4mXoZdGjjTmM1iWj8=/1541x1156/smart/filters:no_upscale()/Stocksy_txp3a252ff6ITc200_Medium_2462396-25763eafda2e452dbd1fb83089357aa2.jpg', 1, 0);
-insert into course values(null, '20 Web Projects With Vanilla JavaScript', 15, 0, 1, 1, '2021-07-01 00:00:00', 25, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9sHwEM7K246oge4Lz1Y7eGjeMk1j8KHRztw&usqp=CAU', 1, 0);
+insert into course values(null, 'Beginners Programming Python', 20, 20, 1, 1, '2021-01-01 00:00:00', 13, 'https://www.thespruce.com/thmb/LJ7id3A9UH4mXoZdGjjTmM1iWj8=/1541x1156/smart/filters:no_upscale()/Stocksy_txp3a252ff6ITc200_Medium_2462396-25763eafda2e452dbd1fb83089357aa2.jpg', 1, 0);
+insert into course values(null, '20 Web Projects With Vanilla JavaScript', 15, 0, 1, 1, '2021-01-03 00:00:00', 25, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9sHwEM7K246oge4Lz1Y7eGjeMk1j8KHRztw&usqp=CAU', 1, 0);
+
+insert into course values(null, 'Learn Python Programming Masterclass', 20, 0, 1, 1, '2020-12-01 00:00:00', 25, 'https://img-b.udemycdn.com/course/240x135/629302_8a2d_2.jpg?secure=4Jhe5DaZLnlwbyeZlTJ4pg%3D%3D%2C1610755829', 1, 0);
+insert into course values(null, 'Graphic Design Masterclass - Learn GREAT Design', 20, 15, 2, 3, '2020-12-30 00:00:00', 40, 'https://img-a.udemycdn.com/course/240x135/1643044_e281.jpg?gZrqfTDLCWSa8-MpoPk_Boj8DPqkCu_ZMeysMTh71XGfbfvUy74Tyi271ngQJdwneM1W4AvFayx-vc0_qxXSCfcEFyxXmC_J7ZXJgKFQTgQtmff5tTmgkT0-exIHFQ', 2, 0);
+insert into course values(null, '50 Projects In 50 Days - HTML, CSS & JavaScript', 15, 0, 1, 1, '2020-12-24 00:00:00', 73, 'https://img-a.udemycdn.com/course/240x135/3671332_b86a.jpg?mVsr0im-hdQb3AJYdcNch2vw76GvpUc3o3x2aQCkWUzPRNkOzjXezKDExqsEWVHJSeDZJM80Rn5yQ06a0D45L7u0GUJq_oYsiTzPXRYUXM5YGhIjadEm44kgGzEVyA', 3, 0);
+insert into course values(null, 'JavaScript Web Build Your Portfolio', 17, 15, 1, 1, '2020-01-04 00:00:00', 30, 'https://vivaldi.com/wp-content/uploads/Linux-more-secure-than-Windows.png', 3, 0);
+insert into course values(null, 'JavaScript Basics for Beginners', 15, 10, 1, 1, '2020-01-12 00:00:00', 56, 'https://img-b.udemycdn.com/course/240x135/1336656_a6cf_9.jpg?secure=zNCJtq4y_OfxRSW3fvSRIQ%3D%3D%2C1610741806', 5, 0);
+insert into course values(null, 'Learning Windows PowerShell', 25, 20, 1, 2, '2021-01-13 00:00:00', 40, 'https://img-a.udemycdn.com/course/240x135/328292_ec6a_6.jpg?sotafiUI6LmcqRMHxbJd6tFBKF5KRC3R2WPq1BxgG6pekO_qYimdhuR2WolCgt2xvv_QZCIQBnJfiCnborHV0Md_BhqR2vwqhJIg4xdmJgbFXdHwP68jUa0PzX0M1v0', 6, 0);
+insert into course values(null, 'Learn Linux Administration and Supercharge Your Career', 10, 0, 1, 2, '2020-12-24 00:00:00', 13, 'https://img-a.udemycdn.com/course/240x135/442254_faba_4.jpg?ooEAPVkisMahOy6uRUYGYKvtIr6Eh6zTeeXfRHoBtwtUb7L_WQjtHkNTvMwWsWAZESj_KKi5YpjDlqCp8umMgguH1fLFhxp201NBZ_R8wTsNrJBA1jcC9xIbHQeBvwU', 7, 0);
+insert into course values(null, 'How to Design a Room in 10 Easy Steps', 15, 0, 2, 4, '2020-12-27 00:00:00', 25, 'https://img-b.udemycdn.com/course/240x135/871756_5356_2.jpg?secure=0SjMQB0u33InCFSoPRouPA%3D%3D%2C1610749113', 8, 0);
+insert into course values(null, 'Sustainable Design to Improve your Life', 20, 20, 2, 4, '2021-01-01 00:00:00', 13, 'https://img-a.udemycdn.com/course/240x135/1693060_8015_10.jpg?4uyy4HF5uKMzC6Qef15MSk63YecTlRY46l6IteC50tPJmHx2_lxwy2m0LE9vtyc7cFVm61MQujsewBLeph4ILNslTw7AvZFpg7lfTXe11lZMJYeWGG5jWzmNTvs3ljtpjw', 1, 0);
+insert into course values(null, 'How to Design Your Dream Kitchen', 15, 0, 2, 4, '2021-01-07 00:00:00', 25, 'https://img-b.udemycdn.com/course/240x135/2389088_0341.jpg?secure=-qTSW9gMNBs_AH53CsFPNA%3D%3D%2C1610754378', 1, 0);
+
 
 -- course_detail
 insert into course_detail values(1, true, 'This is short info of Introduction to CSS', 'This is long info of Introduction to CSS', '2020-12-03 00:00:00');
@@ -257,8 +269,20 @@ insert into course_detail values(8, false, 'This is short info of How to design 
 insert into course_detail values(9, false, 'This is short info of Beginners Programming Python', 'This is long info of Beginners Programming Python', '2021-12-01 00:00:00');
 insert into course_detail values(10, false, 'This is short info of 20 Web Projects With Vanilla JavaScript', 'This is long info of 20 Web Projects With Vanilla JavaScript', '2021-11-01 00:00:00');
 
+insert into course_detail values(11, false, 'This is short info of Learn Python Programming Masterclass', 'This is long info of Learn Python Programming Masterclass', '2020-12-01 00:00:00');
+insert into course_detail values(12, false, 'This is short info of Graphic Design Masterclass - Learn GREAT Design', 'This is long info of Graphic Design Masterclass - Learn GREAT Design', '2020-12-30 00:00:00');
+insert into course_detail values(13, false, 'This is short info of 50 Projects In 50 Days - HTML, CSS & JavaScript', 'This is long info of 50 Projects In 50 Days - HTML, CSS & JavaScript', '2020-12-24 00:00:00');
+insert into course_detail values(14, false, 'This is short info of JavaScript Web Build Your Portfolio', 'This is long info of JavaScript Web Build Your Portfolio', '2020-01-04 00:00:00');
+insert into course_detail values(15, false, 'This is short info of JavaScript Basics for Beginners', 'This is long info of JavaScript Basics for Beginners', '2020-01-12 00:00:00');
+insert into course_detail values(16, false, 'This is short info of Learning Windows PowerShell', 'This is long info of Learning Windows PowerShell', '2021-01-13 00:00:00');
+insert into course_detail values(17, false, 'This is short info of Learn Linux Administration and Supercharge Your Career', 'This is long info of Learn Linux Administration and Supercharge Your Career', '2020-12-24 00:00:00');
+insert into course_detail values(18, false, 'This is short info of How to Design a Room in 10 Easy Steps', 'This is long info of How to Design a Room in 10 Easy Steps', '2020-12-27 00:00:00');
+insert into course_detail values(19, false, 'This is short info of Sustainable Design to Improve your Life', 'This is long info of Sustainable Design to Improve your Life', '2021-01-01 00:00:00');
+insert into course_detail values(20, false, 'This is short info of How to Design Your Dream Kitchen', 'This is long info of How to Design Your Dream Kitchen', '2021-01-07 00:00:00');
+
+
 -- course_chapter
-insert into course_chapter values(1, 1, 'CSS Tutorial for Beginners - 01 - Introduction to CSS', '/course/1/1.mp4', 'hello temp',0);
+insert into course_chapter values(1, 1, 'CSS Tutorial for Beginners - 01 - Introduction to CSS', '/course/1/1.mp4', 'hello temp',1);
 insert into course_chapter values(1, 2, 'CSS Tutorial for Beginners - 02 - Changing font type, color, and size', '/course/1/2.mp4', 'hello temp',0);
 insert into course_chapter values(1, 3, 'CSS Tutorial for Beginners - 03 - Multiple selectors and writing rule for more than one element', '/course/1/3.mp4', 'hello temp',0);
 insert into course_chapter values(1, 4, 'CSS Tutorial for Beginners - 04 - Add a line to header and border property', '/course/1/4.mp4', 'hello temp',0);
@@ -272,6 +296,59 @@ insert into course_chapter values(5, 1, 'The Complete beginners guide to Adobe P
 insert into course_chapter values(6, 1, 'Graphic Design | Fluid | Adobe Illustrator/Photoshop', '/course/6/1.mp4', 'hello temp',0);
 insert into course_chapter values(7, 1, 'Lighting Design 101 Principles, House Design Ideas and Home Decor Tips', '/course/7/1.mp4', 'hello temp',0);
 insert into course_chapter values(8, 1, 'Basic concept of a fashion room', '/course/8/1.mp4', 'hello temp',0);
+insert into course_chapter values(9, 1, 'Beginners Programming Python Chap 1', '/course/9/1.mp4', 'hello temp',0);
+insert into course_chapter values(10, 1, '20 Web Projects With Vanilla JavaScript Chap 1', '/course/10/1.mp4', 'hello temp',0);
+
+insert into course_chapter values(11, 1, 'Learn Python Programming Masterclass chap 1', '/course/11/1.mp4', 'hello temp',1);
+insert into course_chapter values(11, 2, 'Learn Python Programming Masterclass chap 2', '/course/11/2.mp4', 'hello temp',0);
+insert into course_chapter values(11, 3, 'Learn Python Programming Masterclass chap 3', '/course/11/3.mp4', 'hello temp',0);
+insert into course_chapter values(11, 4, 'Learn Python Programming Masterclass chap 4', '/course/11/4.mp4', 'hello temp',0);
+
+
+insert into course_chapter values(12, 1, 'Graphic Design Masterclass - Learn GREAT Design chap 1', '/course/12/1.mp4', 'hello temp',1);
+insert into course_chapter values(12, 2, 'Graphic Design Masterclass - Learn GREAT Design chap 2', '/course/12/2.mp4', 'hello temp',0);
+insert into course_chapter values(12, 3, 'Graphic Design Masterclass - Learn GREAT Design chap 3', '/course/12/3.mp4', 'hello temp',0);
+insert into course_chapter values(12, 4, 'Graphic Design Masterclass - Learn GREAT Design chap 4', '/course/12/4.mp4', 'hello temp',0);
+
+insert into course_chapter values(13, 1, '50 Projects In 50 Days - HTML, CSS & JavaScript chap 1', '/course/13/1.mp4', 'hello temp',1);
+insert into course_chapter values(13, 2, '50 Projects In 50 Days - HTML, CSS & JavaScript chap 2', '/course/13/2.mp4', 'hello temp',0);
+insert into course_chapter values(13, 3, '50 Projects In 50 Days - HTML, CSS & JavaScript chap 3', '/course/13/3.mp4', 'hello temp',0);
+insert into course_chapter values(13, 4, '50 Projects In 50 Days - HTML, CSS & JavaScript chap 4', '/course/13/4.mp4', 'hello temp',0);
+
+insert into course_chapter values(14, 1, 'JavaScript Web Build Your Portfolio chap 1', '/course/14/1.mp4', 'hello temp',1);
+insert into course_chapter values(14, 2, 'JavaScript Web Build Your Portfolio chap 2', '/course/14/2.mp4', 'hello temp',0);
+insert into course_chapter values(14, 3, 'JavaScript Web Build Your Portfolio chap 3', '/course/14/3.mp4', 'hello temp',0);
+insert into course_chapter values(14, 4, 'JavaScript Web Build Your Portfolio chap 4', '/course/14/4.mp4', 'hello temp',0);
+
+insert into course_chapter values(15, 1, 'JavaScript Basics for Beginners chap 1', '/course/15/1.mp4', 'hello temp',1);
+insert into course_chapter values(15, 2, 'JavaScript Basics for Beginners chap 2', '/course/15/2.mp4', 'hello temp',0);
+insert into course_chapter values(15, 3, 'JavaScript Basics for Beginners chap 3', '/course/15/3.mp4', 'hello temp',0);
+insert into course_chapter values(15, 4, 'JavaScript Basics for Beginners chap 4', '/course/15/4.mp4', 'hello temp',0);
+
+insert into course_chapter values(16, 1, 'Learning Windows PowerShell chap 1', '/course/16/1.mp4', 'hello temp',1);
+insert into course_chapter values(16, 2, 'Learning Windows PowerShell chap 2', '/course/16/2.mp4', 'hello temp',0);
+insert into course_chapter values(16, 3, 'Learning Windows PowerShell chap 3', '/course/16/3.mp4', 'hello temp',0);
+insert into course_chapter values(16, 4, 'Learning Windows PowerShell chap 4', '/course/16/4.mp4', 'hello temp',0);
+
+insert into course_chapter values(17, 1, 'Learn Linux Administration and Supercharge Your Career chap 1', '/course/17/1.mp4', 'hello temp',1);
+insert into course_chapter values(17, 2, 'Learn Linux Administration and Supercharge Your Career chap 2', '/course/17/2.mp4', 'hello temp',0);
+insert into course_chapter values(17, 3, 'Learn Linux Administration and Supercharge Your Career chap 3', '/course/17/3.mp4', 'hello temp',0);
+insert into course_chapter values(17, 4, 'Learn Linux Administration and Supercharge Your Career chap 4', '/course/17/4.mp4', 'hello temp',0);
+
+insert into course_chapter values(18, 1, 'How to Design a Room in 10 Easy Steps chap 1', '/course/18/1.mp4', 'hello temp',1);
+insert into course_chapter values(18, 2, 'How to Design a Room in 10 Easy Steps chap 2', '/course/18/2.mp4', 'hello temp',0);
+insert into course_chapter values(18, 3, 'How to Design a Room in 10 Easy Steps chap 3', '/course/18/3.mp4', 'hello temp',0);
+insert into course_chapter values(18, 4, 'How to Design a Room in 10 Easy Steps chap 4', '/course/18/4.mp4', 'hello temp',0);
+
+insert into course_chapter values(19, 1, 'Sustainable Design to Improve your Life chap 1', '/course/19/1.mp4', 'hello temp',1);
+insert into course_chapter values(19, 2, 'Sustainable Design to Improve your Life chap 2', '/course/19/2.mp4', 'hello temp',0);
+insert into course_chapter values(19, 3, 'Sustainable Design to Improve your Life chap 3', '/course/19/3.mp4', 'hello temp',0);
+insert into course_chapter values(19, 4, 'Sustainable Design to Improve your Life chap 4', '/course/19/4.mp4', 'hello temp',0);
+
+insert into course_chapter values(20, 1, 'How to Design Your Dream Kitchen chap 1', '/course/20/1.mp4', 'hello temp',1);
+insert into course_chapter values(20, 2, 'How to Design Your Dream Kitchen chap 2', '/course/20/2.mp4', 'hello temp',0);
+insert into course_chapter values(20, 3, 'How to Design Your Dream Kitchen chap 3', '/course/20/3.mp4', 'hello temp',0);
+insert into course_chapter values(20, 4, 'How to Design Your Dream Kitchen chap 4', '/course/20/4.mp4', 'hello temp',0);
 
 -- stu_watchlist
 insert into stu_watchlist values(1, 1);
