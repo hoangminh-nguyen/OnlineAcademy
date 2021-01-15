@@ -111,7 +111,7 @@
 																		<input class="prompt srch_explore" type="text"
 																		placeholder="Insert your course Subtitle."
 																			name="short_info" data-purpose="edit-course-title"
-																			maxlength="60" id="sub[title]" value="{{course.short_info}}">
+																			maxlength="60" id="subtitle" value="{{course.short_info}}">
 																		<div class="badge_num2">120</div>
 																	</div>
 																{{else}}
@@ -119,7 +119,7 @@
 																		<input class="prompt srch_explore" type="text"
 																			placeholder="Insert your course Subtitle."
 																			name="short_info" data-purpose="edit-course-title"
-																			maxlength="60" id="sub[title]" value="">
+																			maxlength="60" id="subtitle" value="">
 																		<div class="badge_num2">120</div>
 																	</div>
 																{{/if}}
@@ -299,11 +299,11 @@
 		var type = $('#temp').val();
 		var spec = $('#spec_id').val();
 		var title = $('#main[title]').val();
-		var sub = $('#sub[title]').val();
+		var sub = $('#subtitle').val();
 		var price = $('#price').val();
 
 		//arlert(type);
-		if (type == "" || spec =="" || title =="" || sub =="" || price=="" || price<0){
+		if (type == "" || spec =="" || title =="" || sub ==="" || price=="" || price<0){
 			Swal.fire({
                         icon: 'error',
                         title: 'Empty input!',
