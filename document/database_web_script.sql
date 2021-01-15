@@ -3,6 +3,11 @@ alter user 'root'@'localhost' IDENTIFIED BY '';
 
 
 
+
+
+
+
+
 drop database OnlineAcademy;
 create database OnlineAcademy;
 use OnlineAcademy;
@@ -249,24 +254,24 @@ insert into course_detail values(5, false, 'This is short info of Ultimate Adobe
 insert into course_detail values(6, false, 'This is short info of Graphic Design Masterclass - Learn GREAT Design', 'This is long info of Graphic Design Masterclass - Learn GREAT Design', '2020-12-06 00:00:00');
 insert into course_detail values(7, false, 'This is short info of How to Use Lighting Design to Transform your Home', 'This is long info of How to Use Lighting Design to Transform your Home', '2020-12-07 00:00:00');
 insert into course_detail values(8, false, 'This is short info of How to design a room', 'This is long info of How to design a room', '2020-12-08 00:00:00');
-insert into course_detail values(9, false, 'This is short info of Beginners Programming Python', 'This is long info of Beginners Programming Python', '2021-13-01 00:00:00');
-insert into course_detail values(10, false, 'This is short info of 20 Web Projects With Vanilla JavaScript', 'This is long info of 20 Web Projects With Vanilla JavaScript', '2021-15-01 00:00:00');
+insert into course_detail values(9, false, 'This is short info of Beginners Programming Python', 'This is long info of Beginners Programming Python', '2021-12-01 00:00:00');
+insert into course_detail values(10, false, 'This is short info of 20 Web Projects With Vanilla JavaScript', 'This is long info of 20 Web Projects With Vanilla JavaScript', '2021-11-01 00:00:00');
 
 -- course_chapter
-insert into course_chapter values(1, 1, 'CSS Tutorial for Beginners - 01 - Introduction to CSS', 'https://www.youtube.com/watch?v=qKoajPPWpmo&list=PLr6-GrHUlVf8JIgLcu3sHigvQjTw_aC9C&index=1&ab_channel=EJMedia', 'hello temp',0);
-insert into course_chapter values(1, 2, 'CSS Tutorial for Beginners - 02 - Changing font type, color, and size', 'https://www.youtube.com/watch?v=UO0ZPL8yMpU&list=PLr6-GrHUlVf8JIgLcu3sHigvQjTw_aC9C&index=2&ab_channel=EJMedia', 'hello temp',0);
-insert into course_chapter values(1, 3, 'CSS Tutorial for Beginners - 03 - Multiple selectors and writing rule for more than one element', 'https://www.youtube.com/watch?v=JT0gyzbpD2U&list=PLr6-GrHUlVf8JIgLcu3sHigvQjTw_aC9C&index=3&ab_channel=EJMedia', 'hello temp',0);
-insert into course_chapter values(1, 4, 'CSS Tutorial for Beginners - 04 - Add a line to header and border property', 'https://www.youtube.com/watch?v=hCoMjvtsyPA&list=PLr6-GrHUlVf8JIgLcu3sHigvQjTw_aC9C&index=4&ab_channel=EJMedia', 'hello temp',0);
-insert into course_chapter values(1, 5, 'CSS Tutorial for Beginners - 05 - Inheritance and overriding', 'https://www.youtube.com/watch?v=Bj2ZCfDPP2A&list=PLr6-GrHUlVf8JIgLcu3sHigvQjTw_aC9C&index=5&ab_channel=EJMedia', 'hello temp',0);
-insert into course_chapter values(2, 1, 'JavaScript Tutorials | Statements and comments', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020', 'hello temp',0);
-insert into course_chapter values(2, 2, 'JavaScript Tutorials | VS code Theme & Live Server Plugin Setup', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020', 'hello temp',0);
-insert into course_chapter values(3, 1, 'Introduction to Operating System', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020', 'hello temp',0);
-insert into course_chapter values(3, 2, 'Computer System Operation', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020', 'hello temp',0);
-insert into course_chapter values(4, 1, 'Introduction to Linux and Basic Linux Commands for Beginners', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020', 'hello temp',0);
-insert into course_chapter values(5, 1, 'The Complete beginners guide to Adobe Photoshop | course overview & breakdown', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020', 'hello temp',0);
-insert into course_chapter values(6, 1, 'Graphic Design | Fluid | Adobe Illustrator/Photoshop', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020', 'hello temp',0);
-insert into course_chapter values(7, 1, 'Lighting Design 101 Principles, House Design Ideas and Home Decor Tips', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020', 'hello temp',0);
-insert into course_chapter values(8, 1, 'Basic concept of a fashion room', 'https://www.youtube.com/watch?v=I4bAebs3Bew&ab_channel=ChampionsLeague2020', 'hello temp',0);
+insert into course_chapter values(1, 1, 'CSS Tutorial for Beginners - 01 - Introduction to CSS', '/course/1/1.mp4', 'hello temp',0);
+insert into course_chapter values(1, 2, 'CSS Tutorial for Beginners - 02 - Changing font type, color, and size', '/course/1/2.mp4', 'hello temp',0);
+insert into course_chapter values(1, 3, 'CSS Tutorial for Beginners - 03 - Multiple selectors and writing rule for more than one element', '/course/1/3.mp4', 'hello temp',0);
+insert into course_chapter values(1, 4, 'CSS Tutorial for Beginners - 04 - Add a line to header and border property', '/course/1/4.mp4', 'hello temp',0);
+insert into course_chapter values(1, 5, 'CSS Tutorial for Beginners - 05 - Inheritance and overriding', '/course/1/5.mp4', 'hello temp',0);
+insert into course_chapter values(2, 1, 'JavaScript Tutorials | Statements and comments', '/course/2/1.mp4', 'hello temp',0);
+insert into course_chapter values(2, 2, 'JavaScript Tutorials | VS code Theme & Live Server Plugin Setup', '/course/2/2.mp4', 'hello temp',0);
+insert into course_chapter values(3, 1, 'Introduction to Operating System', '/course/3/1.mp4', 'hello temp',0);
+insert into course_chapter values(3, 2, 'Computer System Operation', '/course/4/2.mp4', 'hello temp',0);
+insert into course_chapter values(4, 1, 'Introduction to Linux and Basic Linux Commands for Beginners', '/course/4/1.mp4', 'hello temp',0);
+insert into course_chapter values(5, 1, 'The Complete beginners guide to Adobe Photoshop | course overview & breakdown', '/course/5/1.mp4', 'hello temp',0);
+insert into course_chapter values(6, 1, 'Graphic Design | Fluid | Adobe Illustrator/Photoshop', '/course/6/1.mp4', 'hello temp',0);
+insert into course_chapter values(7, 1, 'Lighting Design 101 Principles, House Design Ideas and Home Decor Tips', '/course/7/1.mp4', 'hello temp',0);
+insert into course_chapter values(8, 1, 'Basic concept of a fashion room', '/course/8/1.mp4', 'hello temp',0);
 
 -- stu_watchlist
 insert into stu_watchlist values(1, 1);
